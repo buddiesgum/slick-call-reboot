@@ -113,7 +113,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 4 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 mt-1 w-52 bg-popover border border-border rounded-md shadow-xl overflow-hidden z-50"
+                    className="absolute top-full left-0 mt-1 w-52 bg-popover border border-border rounded-md shadow-xl z-50"
                   >
                     {serviceLinks.map((link) => {
                       const hasSub = !!link.subLinks;
@@ -150,7 +150,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                                   animate={{ opacity: 1, x: 0 }}
                                   exit={{ opacity: 0, x: -4 }}
                                   transition={{ duration: 0.15 }}
-                                  className="absolute top-0 left-full ml-1 w-56 bg-popover border border-border rounded-md shadow-xl overflow-hidden z-50"
+                                  className="absolute top-0 left-full w-56 bg-popover border border-border rounded-md shadow-xl overflow-hidden z-50"
                                 >
                                   {link.subLinks!.map((sub) => (
                                     <Link
