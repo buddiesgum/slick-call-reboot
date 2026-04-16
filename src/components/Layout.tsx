@@ -413,6 +413,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Link to="/contact" className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all">
                   Contact
                 </Link>
+                <Link to="/privacy-policy" className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all">
+                  Privacy Policy
+                </Link>
               </div>
             </div>
             <div>
