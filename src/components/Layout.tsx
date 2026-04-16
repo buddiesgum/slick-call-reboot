@@ -18,6 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
+  const { selected: currentLocation } = useLocationContext();
   const servicesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
