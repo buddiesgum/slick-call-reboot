@@ -1,30 +1,44 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LocationSelector from "./LocationSelector";
 
 const PHONE_NUMBER = "tel:+15555555555";
 
-const navLinks = [
-  { label: "Home", path: "/" },
+const serviceLinks = [
   { label: "Plumbing", path: "/plumbing" },
   { label: "Excavation", path: "/excavation" },
   { label: "Restoration", path: "/restoration" },
   { label: "Remodels", path: "/remodels" },
   { label: "Foundations", path: "/foundations" },
-  { label: "Projects", path: "/projects" },
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
+  const servicesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  const isServicePage = serviceLinks.some((l) => location.pathname === l.path);
 
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-secondary">
         <div className="container flex items-center justify-between h-16 md:h-20">
+          {/* Logo + Location */}
           <div className="flex items-center gap-4">
             <Link to="/" className="flex-shrink-0">
               <img
@@ -38,23 +52,86 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`px-4 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
-                  location.pathname === link.path
+          <nav className="hidden lg:flex items-center gap-6">
+            {/* Bible verse */}
+            <span className="text-[11px] italic text-secondary-foreground/50 font-body tracking-wide mr-2 hidden xl:block">
+              "For God so loved the world…" — John 3:16
+            </span>
+
+            {/* Services dropdown */}
+            <div
+              ref={servicesRef}
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                onClick={() => setServicesOpen(!servicesOpen)}
+                className={`flex items-center gap-1 px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
+                  isServicePage
                     ? "text-primary"
                     : "text-secondary-foreground/80 hover:text-primary"
                 }`}
               >
-                {link.label}
-              </Link>
-            ))}
+                Services
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {servicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 4 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-1 w-52 bg-popover border border-border rounded-md shadow-xl overflow-hidden z-50"
+                  >
+                    {serviceLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        onClick={() => setServicesOpen(false)}
+                        className={`block px-4 py-2.5 text-sm font-display uppercase tracking-wider transition-colors hover:bg-accent hover:text-primary ${
+                          location.pathname === link.path
+                            ? "text-primary bg-accent/50"
+                            : "text-popover-foreground"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <Link
+              to="/projects"
+              className={`px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
+                location.pathname === "/projects"
+                  ? "text-primary"
+                  : "text-secondary-foreground/80 hover:text-primary"
+              }`}
+            >
+              Projects
+            </Link>
+
+            <Link
+              to="/about"
+              className={`px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
+                location.pathname === "/about"
+                  ? "text-primary"
+                  : "text-secondary-foreground/80 hover:text-primary"
+              }`}
+            >
+              About Us
+            </Link>
+
             <a
               href={PHONE_NUMBER}
-              className="ml-4 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
+              className="ml-2 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
             >
               <Phone className="w-4 h-4" />
               Contact Us
@@ -82,20 +159,77 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               className="lg:hidden overflow-hidden bg-secondary"
             >
               <nav className="container flex flex-col py-4 gap-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setMobileOpen(false)}
-                    className={`px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
-                      location.pathname === link.path
-                        ? "text-primary"
-                        : "text-secondary-foreground/80 hover:text-primary"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {/* Bible verse mobile */}
+                <p className="px-4 py-2 text-[11px] italic text-secondary-foreground/50 font-body">
+                  "For God so loved the world…" — John 3:16
+                </p>
+
+                {/* Services accordion */}
+                <button
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className={`flex items-center justify-between px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
+                    isServicePage
+                      ? "text-primary"
+                      : "text-secondary-foreground/80"
+                  }`}
+                >
+                  Services
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {mobileServicesOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      {serviceLinks.map((link) => (
+                        <Link
+                          key={link.path}
+                          to={link.path}
+                          onClick={() => setMobileOpen(false)}
+                          className={`block pl-8 pr-4 py-2.5 font-display text-sm uppercase tracking-wider transition-colors ${
+                            location.pathname === link.path
+                              ? "text-primary"
+                              : "text-secondary-foreground/60 hover:text-primary"
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <Link
+                  to="/projects"
+                  onClick={() => setMobileOpen(false)}
+                  className={`px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
+                    location.pathname === "/projects"
+                      ? "text-primary"
+                      : "text-secondary-foreground/80 hover:text-primary"
+                  }`}
+                >
+                  Projects
+                </Link>
+
+                <Link
+                  to="/about"
+                  onClick={() => setMobileOpen(false)}
+                  className={`px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
+                    location.pathname === "/about"
+                      ? "text-primary"
+                      : "text-secondary-foreground/80 hover:text-primary"
+                  }`}
+                >
+                  About Us
+                </Link>
+
                 <a
                   href={PHONE_NUMBER}
                   className="mx-4 mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
@@ -132,7 +266,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 Services
               </h4>
               <div className="flex flex-col gap-2">
-                {navLinks.slice(1).map((link) => (
+                {serviceLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
