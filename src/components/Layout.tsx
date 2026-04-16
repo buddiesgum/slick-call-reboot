@@ -115,20 +115,67 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     transition={{ duration: 0.15 }}
                     className="absolute top-full left-0 mt-1 w-52 bg-popover border border-border rounded-md shadow-xl overflow-hidden z-50"
                   >
-                    {serviceLinks.map((link) => (
-                      <Link
-                        key={link.path}
-                        to={link.path}
-                        onClick={() => setServicesOpen(false)}
-                        className={`block px-4 py-2.5 text-sm font-display uppercase tracking-wider transition-colors hover:bg-accent hover:text-primary ${
-                          location.pathname === link.path
-                            ? "text-primary bg-accent/50"
-                            : "text-popover-foreground"
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
+                    {serviceLinks.map((link) => {
+                      const hasSub = !!link.subLinks;
+                      return (
+                        <div
+                          key={link.path}
+                          className="relative"
+                          onMouseEnter={() => hasSub && setPlumbingOpen(true)}
+                          onMouseLeave={() => hasSub && setPlumbingOpen(false)}
+                        >
+                          <Link
+                            to={link.path}
+                            onClick={() => {
+                              setServicesOpen(false);
+                              setPlumbingOpen(false);
+                            }}
+                            className={`flex items-center justify-between px-4 py-2.5 text-sm font-display uppercase tracking-wider transition-colors hover:bg-accent hover:text-primary ${
+                              location.pathname === link.path ||
+                              (hasSub && isPlumbingPage)
+                                ? "text-primary bg-accent/50"
+                                : "text-popover-foreground"
+                            }`}
+                          >
+                            {link.label}
+                            {hasSub && <ChevronRight className="w-3.5 h-3.5 ml-2" />}
+                          </Link>
+
+                          {/* Nested submenu */}
+                          {hasSub && (
+                            <AnimatePresence>
+                              {plumbingOpen && (
+                                <motion.div
+                                  initial={{ opacity: 0, x: -4 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  exit={{ opacity: 0, x: -4 }}
+                                  transition={{ duration: 0.15 }}
+                                  className="absolute top-0 left-full ml-1 w-56 bg-popover border border-border rounded-md shadow-xl overflow-hidden z-50"
+                                >
+                                  {link.subLinks!.map((sub) => (
+                                    <Link
+                                      key={sub.path}
+                                      to={sub.path}
+                                      onClick={() => {
+                                        setServicesOpen(false);
+                                        setPlumbingOpen(false);
+                                      }}
+                                      className={`block px-4 py-2.5 text-sm font-display uppercase tracking-wider transition-colors hover:bg-accent hover:text-primary ${
+                                        location.pathname === sub.path
+                                          ? "text-primary bg-accent/50"
+                                          : "text-popover-foreground"
+                                      }`}
+                                    >
+                                      {sub.label}
+                                    </Link>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          )}
+                        </div>
+                      );
+                    })}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -211,20 +258,68 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      {serviceLinks.map((link) => (
-                        <Link
-                          key={link.path}
-                          to={link.path}
-                          onClick={() => setMobileOpen(false)}
-                          className={`block pl-8 pr-4 py-2.5 font-display text-sm uppercase tracking-wider transition-colors ${
-                            location.pathname === link.path
-                              ? "text-primary"
-                              : "text-secondary-foreground/60 hover:text-primary"
-                          }`}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
+                      {serviceLinks.map((link) => {
+                        const hasSub = !!link.subLinks;
+                        if (!hasSub) {
+                          return (
+                            <Link
+                              key={link.path}
+                              to={link.path}
+                              onClick={() => setMobileOpen(false)}
+                              className={`block pl-8 pr-4 py-2.5 font-display text-sm uppercase tracking-wider transition-colors ${
+                                location.pathname === link.path
+                                  ? "text-primary"
+                                  : "text-secondary-foreground/60 hover:text-primary"
+                              }`}
+                            >
+                              {link.label}
+                            </Link>
+                          );
+                        }
+                        return (
+                          <div key={link.path}>
+                            <button
+                              onClick={() => setMobilePlumbingOpen(!mobilePlumbingOpen)}
+                              className={`w-full flex items-center justify-between pl-8 pr-4 py-2.5 font-display text-sm uppercase tracking-wider transition-colors ${
+                                isPlumbingPage
+                                  ? "text-primary"
+                                  : "text-secondary-foreground/60 hover:text-primary"
+                              }`}
+                            >
+                              {link.label}
+                              <ChevronDown
+                                className={`w-4 h-4 transition-transform ${mobilePlumbingOpen ? "rotate-180" : ""}`}
+                              />
+                            </button>
+                            <AnimatePresence>
+                              {mobilePlumbingOpen && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="overflow-hidden"
+                                >
+                                  {link.subLinks!.map((sub) => (
+                                    <Link
+                                      key={sub.path}
+                                      to={sub.path}
+                                      onClick={() => setMobileOpen(false)}
+                                      className={`block pl-12 pr-4 py-2 font-display text-xs uppercase tracking-wider transition-colors ${
+                                        location.pathname === sub.path
+                                          ? "text-primary"
+                                          : "text-secondary-foreground/50 hover:text-primary"
+                                      }`}
+                                    >
+                                      {sub.label}
+                                    </Link>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        );
+                      })}
                     </motion.div>
                   )}
                 </AnimatePresence>
