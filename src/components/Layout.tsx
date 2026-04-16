@@ -54,7 +54,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6">
             {/* Bible verse */}
-            <span className="text-[11px] italic text-secondary-foreground/50 font-body tracking-wide mr-2 hidden xl:block">
+            <span className="text-[11px] italic text-secondary-foreground/50 font-body tracking-wide mr-2">
               "For God so loved the world…" — John 3:16
             </span>
 
