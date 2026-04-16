@@ -280,15 +280,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </div>
             <div>
               <h4 className="font-display uppercase text-sm tracking-wider mb-4 text-primary">
-                Contact
+                Contact — {currentLocation.label}
               </h4>
-              <a
-                href={currentLocation.phone}
-                className="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
-              >
-                <Phone className="w-4 h-4" />
-                Call Us Today
-              </a>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-start gap-2 text-sm opacity-70">
+                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                  <span>{currentLocation.address}</span>
+                </div>
+                <a
+                  href={currentLocation.phone}
+                  className="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
+                >
+                  <Phone className="w-4 h-4" />
+                  {currentLocation.phoneDisplay}
+                </a>
+              </div>
             </div>
           </div>
           <div className="mt-10 pt-6 border-t border-muted-foreground/20 text-center text-xs opacity-50">
