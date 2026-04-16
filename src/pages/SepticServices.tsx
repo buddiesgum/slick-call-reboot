@@ -1,0 +1,42 @@
+import Layout from "@/components/Layout";
+import ServiceHero from "@/components/ServiceHero";
+import ServiceCard from "@/components/ServiceCard";
+
+const SepticServices = () => (
+  <Layout>
+    <ServiceHero
+      title="Septic Services"
+      subtitle="Pumping, installation, and repair — keep your system running clean, safe, and trouble-free."
+      image="https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1558ab56-4173-4f20-8067-eb28ac0ad8d3/P1660752.jpg"
+    />
+    <section className="py-16 md:py-24">
+      <div className="container space-y-20">
+        <ServiceCard
+          title="Septic Tank Pumping"
+          description="Regular pumping is the single best way to keep your septic system running efficiently and avoid costly problems down the line. We remove built-up waste, prevent backups, and extend the life of your system. Whether it's routine maintenance or an urgent issue, our team handles residential and commercial systems with a clean, safe, and stress-free process from start to finish."
+          items={[
+            "Routine maintenance pumping",
+            "Emergency response",
+            "Residential & commercial",
+            "Clean, mess-free service",
+          ]}
+          image="https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/aeba162f-76c2-4be4-bde3-b4e53ea11397/Screenshot+2025-04-07+at+4.02.13+PM.png"
+        />
+        <ServiceCard
+          title="Installation & Repair"
+          description="Building new, upgrading an outdated system, or facing a septic emergency — Hukill's has you covered. From system design and permitting to excavation and final hookup, we handle every step with precision. If your existing system shows signs of failure — slow drains, odors, or standing water — we diagnose the issue and provide reliable, cost-effective repairs."
+          items={[
+            "New system design & permitting",
+            "Excavation & final hookup",
+            "Failure diagnosis (odors, slow drains, standing water)",
+            "Cost-effective repairs",
+          ]}
+          image="https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1558ab56-4173-4f20-8067-eb28ac0ad8d3/P1660752.jpg"
+          reverse
+        />
+      </div>
+    </section>
+  </Layout>
+);
+
+export default SepticServices;
