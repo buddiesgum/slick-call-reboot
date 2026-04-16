@@ -164,10 +164,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               className="lg:hidden overflow-hidden bg-secondary"
             >
               <nav className="container flex flex-col py-4 gap-1">
-                {/* Bible verse mobile */}
-                <p className="px-4 py-2 text-[11px] italic text-secondary-foreground/50 font-body">
-                  "For God so loved the world…" — John 3:16
-                </p>
 
                 {/* Services accordion */}
                 <button
