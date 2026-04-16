@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X, ChevronDown } from "lucide-react";
+import { Phone, Menu, X, ChevronDown, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LocationSelector from "./LocationSelector";
-
-const PHONE_NUMBER = "tel:+15555555555";
+import { useLocationContext } from "@/context/LocationContext";
 
 const serviceLinks = [
   { label: "Plumbing", path: "/plumbing" },
@@ -19,6 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
+  const { selected: currentLocation } = useLocationContext();
   const servicesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -135,7 +135,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </Link>
 
             <a
-              href={PHONE_NUMBER}
+              href={currentLocation.phone}
               className="ml-2 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
             >
               <Phone className="w-4 h-4" />
@@ -232,7 +232,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 </Link>
 
                 <a
-                  href={PHONE_NUMBER}
+                  href={currentLocation.phone}
                   className="mx-4 mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
                 >
                   <Phone className="w-4 h-4" />
@@ -280,15 +280,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </div>
             <div>
               <h4 className="font-display uppercase text-sm tracking-wider mb-4 text-primary">
-                Contact
+                Contact — {currentLocation.label}
               </h4>
-              <a
-                href={PHONE_NUMBER}
-                className="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
-              >
-                <Phone className="w-4 h-4" />
-                Call Us Today
-              </a>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-start gap-2 text-sm opacity-70">
+                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                  <span>{currentLocation.address}</span>
+                </div>
+                <a
+                  href={currentLocation.phone}
+                  className="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
+                >
+                  <Phone className="w-4 h-4" />
+                  {currentLocation.phoneDisplay}
+                </a>
+              </div>
             </div>
           </div>
           <div className="mt-10 pt-6 border-t border-muted-foreground/20 text-center text-xs opacity-50">
@@ -299,7 +305,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
       {/* Sticky Call Button */}
       <a
-        href={PHONE_NUMBER}
+        href={currentLocation.phone}
         className="fixed bottom-6 right-6 z-50 bg-primary text-primary-foreground w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
         aria-label="Call Hukill's"
       >
