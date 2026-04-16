@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X, ChevronDown } from "lucide-react";
+import { Phone, Menu, X, ChevronDown, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LocationSelector from "./LocationSelector";
-
-const PHONE_NUMBER = "tel:+15555555555";
+import { useLocationContext } from "@/context/LocationContext";
 
 const serviceLinks = [
   { label: "Plumbing", path: "/plumbing" },
