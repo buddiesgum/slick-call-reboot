@@ -37,7 +37,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-secondary">
-        <div className="container flex items-center justify-between h-16 md:h-20">
+        {/* Bible verse bar */}
+        <div className="bg-secondary-foreground/5 border-b border-secondary-foreground/10">
+          <div className="container flex justify-center py-1">
+            <span className="text-[10px] sm:text-[11px] italic text-secondary-foreground/50 font-body tracking-wide">
+              "For God so loved the world, that he gave his only begotten Son…" — John 3:16
+            </span>
+          </div>
+        </div>
+
+        <div className="container flex items-center justify-between h-14 md:h-18">
           {/* Logo + Location */}
           <div className="flex items-center gap-4">
             <Link to="/" className="flex-shrink-0">
@@ -53,10 +62,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {/* Bible verse */}
-            <span className="text-[11px] italic text-secondary-foreground/50 font-body tracking-wide mr-2">
-              "For God so loved the world…" — John 3:16
-            </span>
 
             {/* Services dropdown */}
             <div
@@ -159,10 +164,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               className="lg:hidden overflow-hidden bg-secondary"
             >
               <nav className="container flex flex-col py-4 gap-1">
-                {/* Bible verse mobile */}
-                <p className="px-4 py-2 text-[11px] italic text-secondary-foreground/50 font-body">
-                  "For God so loved the world…" — John 3:16
-                </p>
 
                 {/* Services accordion */}
                 <button
