@@ -1,22 +1,41 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X, ChevronDown, MapPin } from "lucide-react";
+import { Phone, Menu, X, ChevronDown, ChevronRight, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LocationSelector from "./LocationSelector";
 import { useLocationContext } from "@/context/LocationContext";
 
-const serviceLinks = [
+const plumbingSubLinks = [
   { label: "Plumbing", path: "/plumbing" },
+  { label: "Drain Cleaning", path: "/drain-cleaning" },
+  { label: "Leak Detection", path: "/leak-detection" },
+  { label: "Water Heaters", path: "/water-heaters" },
+  { label: "Septic Services", path: "/septic-services" },
+  { label: "New Build Plumbing", path: "/new-build-plumbing" },
+];
+
+type ServiceLink = {
+  label: string;
+  path: string;
+  subLinks?: { label: string; path: string }[];
+};
+
+const serviceLinks: ServiceLink[] = [
+  { label: "Plumbing", path: "/plumbing", subLinks: plumbingSubLinks },
   { label: "Excavation", path: "/excavation" },
   { label: "Restoration", path: "/restoration" },
   { label: "Remodels", path: "/remodels" },
   { label: "Foundations", path: "/foundations" },
 ];
 
+const plumbingPaths = plumbingSubLinks.map((l) => l.path);
+
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [plumbingOpen, setPlumbingOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobilePlumbingOpen, setMobilePlumbingOpen] = useState(false);
   const location = useLocation();
   const { selected: currentLocation } = useLocationContext();
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -25,13 +44,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     const handler = (e: MouseEvent) => {
       if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
         setServicesOpen(false);
+        setPlumbingOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const isServicePage = serviceLinks.some((l) => location.pathname === l.path);
+  const isPlumbingPage = plumbingPaths.includes(location.pathname);
+  const isServicePage =
+    serviceLinks.some((l) => location.pathname === l.path) || isPlumbingPage;
 
   return (
     <div className="min-h-screen flex flex-col">
