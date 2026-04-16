@@ -135,7 +135,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </Link>
 
             <a
-              href={PHONE_NUMBER}
+              href={currentLocation.phone}
               className="ml-2 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
             >
               <Phone className="w-4 h-4" />
@@ -232,7 +232,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 </Link>
 
                 <a
-                  href={PHONE_NUMBER}
+                  href={currentLocation.phone}
                   className="mx-4 mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
                 >
                   <Phone className="w-4 h-4" />
@@ -283,7 +283,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 Contact
               </h4>
               <a
-                href={PHONE_NUMBER}
+                href={currentLocation.phone}
                 className="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
               >
                 <Phone className="w-4 h-4" />
@@ -299,7 +299,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
       {/* Sticky Call Button */}
       <a
-        href={PHONE_NUMBER}
+        href={currentLocation.phone}
         className="fixed bottom-6 right-6 z-50 bg-primary text-primary-foreground w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
         aria-label="Call Hukill's"
       >
