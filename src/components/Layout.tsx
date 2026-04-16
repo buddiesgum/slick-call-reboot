@@ -367,7 +367,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Footer */}
       <footer className="section-dark py-12">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
               <img
                 src="https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png"
@@ -393,6 +393,25 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     {link.label}
                   </Link>
                 ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="font-display uppercase text-sm tracking-wider mb-4 text-primary">
+                Company
+              </h4>
+              <div className="flex flex-col gap-2">
+                <Link to="/about" className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all">
+                  About Us
+                </Link>
+                <Link to="/projects" className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all">
+                  Projects
+                </Link>
+                <Link to="/careers" className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all">
+                  Careers
+                </Link>
+                <Link to="/contact" className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all">
+                  Contact
+                </Link>
               </div>
             </div>
             <div>
