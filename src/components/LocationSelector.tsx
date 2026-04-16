@@ -1,13 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { MapPin, ChevronDown } from "lucide-react";
-
-const locations = [
-  { id: "fort-worth", label: "Fort Worth, TX", short: "Fort Worth" },
-  { id: "medford", label: "Medford, OR", short: "Medford" },
-];
+import { locations, useLocationContext } from "@/context/LocationContext";
 
 const LocationSelector = () => {
-  const [selected, setSelected] = useState(locations[0]);
+  const { selected, setSelected } = useLocationContext();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
