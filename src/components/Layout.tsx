@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import LocationSelector from "./LocationSelector";
 
 const PHONE_NUMBER = "tel:+15555555555";
 
@@ -12,6 +13,7 @@ const navLinks = [
   { label: "Restoration", path: "/restoration" },
   { label: "Remodels", path: "/remodels" },
   { label: "Foundations", path: "/foundations" },
+  { label: "Projects", path: "/projects" },
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -23,13 +25,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-secondary">
         <div className="container flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex-shrink-0">
-            <img
-              src="https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png"
-              alt="Hukill's"
-              className="h-10 md:h-14 w-auto"
-            />
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link to="/" className="flex-shrink-0">
+              <img
+                src="https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png"
+                alt="Hukill's"
+                className="h-10 md:h-14 w-auto"
+              />
+            </Link>
+            <div className="hidden sm:block h-6 w-px bg-secondary-foreground/20" />
+            <LocationSelector />
+          </div>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">

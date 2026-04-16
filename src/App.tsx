@@ -9,6 +9,7 @@ import Excavation from "./pages/Excavation.tsx";
 import Restoration from "./pages/Restoration.tsx";
 import Remodels from "./pages/Remodels.tsx";
 import Foundations from "./pages/Foundations.tsx";
+import Projects from "./pages/Projects.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/restoration" element={<Restoration />} />
           <Route path="/remodels" element={<Remodels />} />
           <Route path="/foundations" element={<Foundations />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
