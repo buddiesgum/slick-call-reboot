@@ -4,6 +4,7 @@ import { Phone, Menu, X, ChevronDown, ChevronRight, MapPin } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion";
 import LocationSelector from "./LocationSelector";
 import { useLocationContext } from "@/context/LocationContext";
+import hukillsLogo from "@/assets/hukills-logo.png";
 
 const plumbingSubLinks = [
   { label: "Plumbing", path: "/plumbing" },
@@ -73,7 +74,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="flex items-center gap-4">
             <Link to="/" className="flex-shrink-0">
               <img
-                src="/lovable-uploads/fc82a6ee-fdee-418d-a661-f0f6a885aa84.png"
+                src={hukillsLogo}
                 alt="Hukill's"
                 className="h-10 md:h-14 w-auto"
               />
@@ -370,7 +371,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
               <img
-                src="/lovable-uploads/56796426-0c0c-469a-881d-ed0fdcde1ac5.png"
+                src={hukillsLogo}
                 alt="Hukill's"
                 className="h-12 w-auto mb-4"
               />
