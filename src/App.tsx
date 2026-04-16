@@ -17,6 +17,8 @@ import Remodels from "./pages/Remodels.tsx";
 import Foundations from "./pages/Foundations.tsx";
 import Projects from "./pages/Projects.tsx";
 import About from "./pages/About.tsx";
+import Careers from "./pages/Careers.tsx";
+import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
