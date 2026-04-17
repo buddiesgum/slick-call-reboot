@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Phone, Wrench, Mountain, Home, Shield, Landmark } from "lucide-react";
+import { Phone, MessageSquare, Wrench, Mountain, Home, Shield, Landmark } from "lucide-react";
 import Layout from "@/components/Layout";
 
 const PHONE_NUMBER = "tel:+15555555555";
@@ -78,6 +78,13 @@ const Index = () => {
               >
                 <Phone className="w-5 h-5" />
                 Call Now
+              </a>
+              <a
+                href={`sms:${PHONE_NUMBER.replace("tel:", "")}`}
+                className="inline-flex items-center gap-2 bg-primary-foreground text-secondary px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground/90 transition-colors rounded-sm"
+              >
+                <MessageSquare className="w-5 h-5" />
+                Text Us
               </a>
               <Link
                 to="/plumbing"
