@@ -76,7 +76,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <img
                 src={hukillsLogo}
                 alt="Hukill's"
-                className="h-10 md:h-14 w-auto"
+                className="h-[46px] md:h-16 w-auto"
               />
             </Link>
             <div className="hidden sm:block h-6 w-px bg-secondary-foreground/20" />
