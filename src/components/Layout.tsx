@@ -385,7 +385,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <img
                 src={hukillsLogo}
                 alt="Hukill's"
-                className="h-12 w-auto mb-4"
+                className="h-[67px] w-auto mb-4"
               />
               <p className="text-sm opacity-70 leading-relaxed">
                 Family-owned company serving communities for over 40 years.
