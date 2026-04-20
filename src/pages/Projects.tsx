@@ -7,6 +7,7 @@ interface Project {
   id: string;
   title: string;
   category: string;
+  market: "Residential" | "Commercial";
   heroImage: string;
   gallery: string[];
   videoUrl?: string;
@@ -19,6 +20,7 @@ const projects: Project[] = [
     id: "foundation-repair-fw",
     title: "Foundation Repair — Fort Worth Residence",
     category: "Foundations",
+    market: "Residential",
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/da9697e4-24db-4628-b0f3-72f5b525cdb3/Screenshot+2025-08-04+at+2.32.46%E2%80%AFPM.png",
     gallery: [
@@ -33,6 +35,7 @@ const projects: Project[] = [
     id: "water-restoration-medford",
     title: "Water Damage Restoration — Medford Office",
     category: "Restoration",
+    market: "Commercial",
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png",
     gallery: [
@@ -46,6 +49,7 @@ const projects: Project[] = [
     id: "kitchen-remodel-fw",
     title: "Full Kitchen Remodel — Historic Fort Worth Home",
     category: "Remodels",
+    market: "Residential",
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/da9697e4-24db-4628-b0f3-72f5b525cdb3/Screenshot+2025-08-04+at+2.32.46%E2%80%AFPM.png",
     gallery: [
@@ -58,16 +62,20 @@ const projects: Project[] = [
 ];
 
 const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
+const markets = ["All", "Residential", "Commercial"] as const;
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [activeMarket, setActiveMarket] = useState<(typeof markets)[number]>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
 
-  const filtered =
-    activeCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+  const filtered = projects.filter((project) => {
+    const matchesCategory = activeCategory === "All" || project.category === activeCategory;
+    const matchesMarket = activeMarket === "All" || project.market === activeMarket;
+
+    return matchesCategory && matchesMarket;
+  });
 
   return (
     <Layout>
@@ -94,7 +102,24 @@ const Projects = () => {
 
       {/* Filters */}
       <section className="sticky top-16 md:top-20 z-30 bg-background/95 backdrop-blur-md border-b border-border">
-        <div className="container flex items-center gap-2 py-3 overflow-x-auto no-scrollbar">
+        <div className="container flex flex-wrap items-center gap-2 py-3">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+            {markets.map((market) => (
+              <button
+                key={market}
+                onClick={() => setActiveMarket(market)}
+                className={`px-4 py-1.5 rounded-full text-xs font-display uppercase tracking-wider whitespace-nowrap transition-colors ${
+                  activeMarket === market
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {market === "All" ? "All Projects" : market}
+              </button>
+            ))}
+          </div>
+          <div className="h-6 w-px bg-border hidden sm:block" />
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -108,6 +133,7 @@ const Projects = () => {
               {cat}
             </button>
           ))}
+          </div>
         </div>
       </section>
 
