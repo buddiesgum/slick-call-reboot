@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Phone, ArrowRight, Clock, MapPin } from "lucide-react";
 import { useLocationContext } from "@/context/LocationContext";
 
-const Foundations = () => {
+const LeakDetection = () => {
   const { selected } = useLocationContext();
 
   return (
