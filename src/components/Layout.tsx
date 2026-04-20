@@ -86,6 +86,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6">
 
+            <Link
+              to="/"
+              className={`px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
+                location.pathname === "/"
+                  ? "text-primary"
+                  : "text-secondary-foreground/80 hover:text-primary"
+              }`}
+            >
+              Home
+            </Link>
+
             {/* Services dropdown */}
             <div
               ref={servicesRef}
@@ -204,13 +215,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               About Us
             </Link>
 
-            <a
-              href={currentLocation.phone}
-              className="ml-2 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
-            >
-              <Phone className="w-4 h-4" />
-              Contact Us
-            </a>
+                <a
+                  href={currentLocation.phone}
+                  className="ml-2 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
+                >
+                  Contact Us
+                </a>
           </nav>
 
           {/* Mobile menu button */}
