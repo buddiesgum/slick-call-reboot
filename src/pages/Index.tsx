@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Phone, MessageSquare, Wrench, Mountain, Home, Shield, Landmark } from "lucide-react";
+import { Phone, MessageSquare, Wrench, Mountain, Home, Shield, Landmark, Building2 } from "lucide-react";
 import Layout from "@/components/Layout";
+import aboutHero from "@/assets/about-hero.jpg";
+import aboutMission from "@/assets/about-mission.jpg";
+import aboutValues from "@/assets/about-values.jpg";
+import aboutVision from "@/assets/about-vision.jpg";
 
 const PHONE_NUMBER = "tel:+15555555555";
 
@@ -11,30 +15,42 @@ const services = [
     title: "Plumbing",
     desc: "Repairs, replacements, trenchless technology and more.",
     path: "/plumbing",
+    image: aboutMission,
+  },
+  {
+    icon: Building2,
+    title: "Commercial Plumbing",
+    desc: "Large-scale water, sewer, septic, excavation, and utility work.",
+    path: "/commercial-plumbing",
+    image: aboutHero,
   },
   {
     icon: Mountain,
     title: "Excavation",
     desc: "Trenching, septic prep, demolition and underground work.",
     path: "/excavation",
+    image: aboutVision,
   },
   {
     icon: Shield,
     title: "Restoration",
     desc: "Water, fire, and storm damage restoration — 24/7.",
     path: "/restoration",
+    image: aboutValues,
   },
   {
     icon: Home,
     title: "Remodels",
     desc: "Kitchens, baths, painting, cabinets and flooring.",
     path: "/remodels",
+    image: aboutHero,
   },
   {
     icon: Landmark,
     title: "Foundations",
     desc: "Push piers, crawl space repair, basement waterproofing.",
     path: "/foundations",
+    image: aboutVision,
   },
 ];
 
@@ -98,7 +114,8 @@ const Index = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 md:py-28">
+      <section className="section-dark py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary/95 to-secondary" />
         <div className="container">
           <motion.div
             {...fadeUp}
@@ -106,17 +123,17 @@ const Index = () => {
             viewport={{ once: true }}
             whileInView="animate"
             initial="initial"
-            className="text-center mb-14"
+            className="relative z-10 text-center mb-14"
           >
-            <h2 className="text-3xl md:text-5xl font-display uppercase tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-primary-foreground">
               What We <span className="text-primary">Do</span>
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+            <p className="mt-4 text-primary-foreground/70 max-w-xl mx-auto">
               From emergency repairs to complete renovations, our experienced team handles it all.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service, i) => (
               <motion.div
                 key={service.title}
@@ -127,13 +144,22 @@ const Index = () => {
               >
                 <Link
                   to={service.path}
-                  className="group block p-8 bg-card border border-border rounded-lg hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+                  className="group relative flex min-h-72 overflow-hidden border border-primary-foreground/10 hover:border-primary transition-all duration-300"
                 >
-                  <service.icon className="w-10 h-10 text-primary mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-display uppercase tracking-tight mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{service.desc}</p>
+                  <img
+                    src={service.image}
+                    alt={`${service.title} services`}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/75 to-secondary/25" />
+                  <div className="relative z-10 flex h-full flex-col justify-end p-7">
+                    <service.icon className="w-10 h-10 text-primary mb-5 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-2xl font-display uppercase tracking-tight mb-3 text-primary-foreground">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-primary-foreground/75 leading-relaxed">{service.desc}</p>
+                  </div>
                 </Link>
               </motion.div>
             ))}
