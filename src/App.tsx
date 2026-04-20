@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LocationProvider } from "@/context/LocationContext";
 import Index from "./pages/Index.tsx";
+import AllServices from "./pages/AllServices.tsx";
 import Plumbing from "./pages/Plumbing.tsx";
 import DrainCleaning from "./pages/DrainCleaning.tsx";
 import LeakDetection from "./pages/LeakDetection.tsx";
@@ -34,6 +35,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/all-services" element={<AllServices />} />
           <Route path="/plumbing" element={<Plumbing />} />
           <Route path="/drain-cleaning" element={<DrainCleaning />} />
           <Route path="/leak-detection" element={<LeakDetection />} />
