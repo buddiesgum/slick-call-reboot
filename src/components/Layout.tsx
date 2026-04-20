@@ -12,7 +12,6 @@ const plumbingSubLinks = [
   { label: "Leak Detection", path: "/leak-detection" },
   { label: "Water Heaters", path: "/water-heaters" },
   { label: "Septic Services", path: "/septic-services" },
-  { label: "New Build Plumbing", path: "/new-build-plumbing" },
 ];
 
 type ServiceLink = {
@@ -23,6 +22,7 @@ type ServiceLink = {
 
 const serviceLinks: ServiceLink[] = [
   { label: "Plumbing", path: "/plumbing", subLinks: plumbingSubLinks },
+  { label: "New Build Plumbing", path: "/new-build-plumbing" },
   { label: "Excavation", path: "/excavation" },
   { label: "Restoration", path: "/restoration" },
   { label: "Remodels", path: "/remodels" },
