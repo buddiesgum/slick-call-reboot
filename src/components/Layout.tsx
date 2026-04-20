@@ -22,6 +22,7 @@ type ServiceLink = {
 
 const serviceLinks: ServiceLink[] = [
   { label: "Plumbing", path: "/plumbing", subLinks: plumbingSubLinks },
+  { label: "Commercial Plumbing", path: "/commercial-plumbing" },
   { label: "New Build Plumbing", path: "/new-build-plumbing" },
   { label: "Excavation", path: "/excavation" },
   { label: "Restoration", path: "/restoration" },
