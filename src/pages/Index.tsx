@@ -114,8 +114,7 @@ const Index = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="section-dark py-20 md:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary/95 to-secondary" />
+      <section className="py-20 md:py-28 bg-background">
         <div className="container">
           <motion.div
             {...fadeUp}
@@ -123,17 +122,17 @@ const Index = () => {
             viewport={{ once: true }}
             whileInView="animate"
             initial="initial"
-            className="relative z-10 text-center mb-14"
+            className="text-center mb-14"
           >
-            <h2 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-primary-foreground">
+            <h2 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-foreground">
               What We <span className="text-primary">Do</span>
             </h2>
-            <p className="mt-4 text-primary-foreground/70 max-w-xl mx-auto">
+            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
               From emergency repairs to complete renovations, our experienced team handles it all.
             </p>
           </motion.div>
 
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service, i) => (
               <motion.div
                 key={service.title}
