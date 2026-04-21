@@ -50,7 +50,7 @@ site only — no backend, no env vars required.
   `react-refresh/only-export-components` as a warning — don't try to fix these.
 - Fonts: `font-display` = Oswald, `font-body` = Inter (Tailwind theme extends).
 - Provider order in `App.tsx` matters: `QueryClientProvider > TooltipProvider >
-  LocationProvider > Toaster/Sonner > BrowserRouter`. `<ScrollToTop />` inside
+LocationProvider > Toaster/Sonner > BrowserRouter`. `<ScrollToTop />` inside
   BrowserRouter resets scroll position on every route change.
 
 ## Testing

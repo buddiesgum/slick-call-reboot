@@ -72,9 +72,24 @@
 							]
 						},
 						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
-						{ "name": "description", "label": "Meta Description", "widget": "text", "required": false },
-						{ "name": "canonical", "label": "Canonical URL Override", "widget": "string", "required": false },
-						{ "name": "ogImage", "label": "OG Image Override", "widget": "image", "required": false }
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						}
 					]
 				}
 			]
