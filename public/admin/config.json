@@ -24,15 +24,59 @@
 			"label": "SEO",
 			"file": "src/cms/seo.json",
 			"fields": [
-				{ "name": "siteName", "widget": "string" },
-				{ "name": "siteDescription", "widget": "string" },
-				{ "name": "pageTitle", "widget": "string" },
-				{ "name": "pageDescription", "widget": "string" },
-				{ "name": "pageCanonicalUrl", "widget": "string" },
-				{ "name": "ogImage", "widget": "image" },
-				{ "name": "ogImageAlt", "widget": "string" },
-				{ "name": "ogImageWidth", "widget": "number", "min": 0 },
-				{ "name": "ogImageHeight", "widget": "number", "min": 0 }
+				{
+					"name": "default",
+					"label": "Site Defaults",
+					"widget": "object",
+					"fields": [
+						{ "name": "siteName", "label": "Site Name", "widget": "string" },
+						{ "name": "title", "label": "Default Page Title", "widget": "string" },
+						{ "name": "description", "label": "Default Meta Description", "widget": "text" },
+						{ "name": "canonicalBase", "label": "Canonical Base URL", "widget": "string" },
+						{ "name": "ogImage", "label": "Default OG Image", "widget": "image" },
+						{ "name": "ogImageAlt", "label": "OG Image Alt Text", "widget": "string" },
+						{ "name": "ogImageWidth", "label": "OG Image Width", "widget": "number", "min": 0 },
+						{ "name": "ogImageHeight", "label": "OG Image Height", "widget": "number", "min": 0 }
+					]
+				},
+				{
+					"name": "routes",
+					"label": "Per-Route SEO",
+					"label_singular": "Route",
+					"widget": "list",
+					"fields": [
+						{
+							"name": "path",
+							"label": "Route Path",
+							"widget": "select",
+							"options": [
+								"/",
+								"/all-services",
+								"/plumbing",
+								"/drain-cleaning",
+								"/leak-detection",
+								"/water-heaters",
+								"/septic-services",
+								"/new-build-plumbing",
+								"/commercial-plumbing",
+								"/excavation",
+								"/restoration",
+								"/remodels",
+								"/foundations",
+								"/projects",
+								"/about",
+								"/careers",
+								"/contact",
+								"/call-us",
+								"/privacy-policy"
+							]
+						},
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{ "name": "description", "label": "Meta Description", "widget": "text", "required": false },
+						{ "name": "canonical", "label": "Canonical URL Override", "widget": "string", "required": false },
+						{ "name": "ogImage", "label": "OG Image Override", "widget": "image", "required": false }
+					]
+				}
 			]
 		}
 	]

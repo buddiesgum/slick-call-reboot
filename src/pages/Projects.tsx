@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X, ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 
 interface Project {
   id: string;
@@ -79,6 +80,7 @@ const Projects = () => {
 
   return (
     <Layout>
+      <Seo route="/projects" />
       {/* Hero */}
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-secondary" />

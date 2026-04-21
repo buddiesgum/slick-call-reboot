@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { Phone, MapPin, Clock, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -9,6 +10,7 @@ const Contact = () => {
 
   return (
     <Layout>
+      <Seo route="/contact" />
       {/* HERO */}
       <section className="relative h-[40vh] min-h-[320px] flex items-center overflow-hidden">
         <img

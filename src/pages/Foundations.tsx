@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import ServiceHero from "@/components/ServiceHero";
 import ServiceCard from "@/components/ServiceCard";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ const Foundations = () => {
 
   return (
     <Layout>
+      <Seo route="/foundations" />
       <ServiceHero
         title="Leak Detection"
         subtitle="Pinpoint accuracy with state-of-the-art equipment — find leaks before they find your foundation."

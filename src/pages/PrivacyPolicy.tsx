@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import { Shield } from "lucide-react";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -20,6 +21,7 @@ const SubSection = ({ title, children }: { title: string; children: React.ReactN
 const PrivacyPolicy = () => {
   return (
     <Layout>
+      <Seo route="/privacy-policy" />
       {/* Hero */}
       <section className="section-dark py-20 md:py-28">
         <div className="container">

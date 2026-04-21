@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { Award, Heart, Users, HandHeart, Target, Eye, Scale } from "lucide-react";
 import aboutHero from "@/assets/about-hero.jpg";
@@ -35,6 +36,7 @@ const values = [
 
 const About = () => (
   <Layout>
+    <Seo route="/about" />
     {/* HERO */}
     <section className="relative h-[60vh] min-h-[420px] flex items-center overflow-hidden">
       <img

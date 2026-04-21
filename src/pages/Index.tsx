@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Phone, MessageSquare, ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import ServiceImageGrid from "@/components/ServiceImageGrid";
 import { featuredServices } from "@/data/services";
 
@@ -15,6 +16,7 @@ const fadeUp = {
 const Index = () => {
   return (
     <Layout>
+      <Seo route="/" />
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div

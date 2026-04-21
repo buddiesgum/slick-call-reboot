@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, MessageSquare, Phone, Play, Star } from "lucide-react";
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import LocationSelector from "@/components/LocationSelector";
 import ServiceImageGrid from "@/components/ServiceImageGrid";
 import { useLocationContext } from "@/context/LocationContext";
@@ -20,6 +21,7 @@ const AllServices = () => {
 
   return (
     <Layout>
+      <Seo route="/all-services" />
       <section className="relative min-h-[560px] flex items-center overflow-hidden section-dark">
         <img src={aboutHero} alt="Hukill's service fleet and crew" className="absolute inset-0 w-full h-full object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-secondary/40" />

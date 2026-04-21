@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import ServiceHero from "@/components/ServiceHero";
 import ServiceCard from "@/components/ServiceCard";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ const DrainCleaning = () => {
 
   return (
     <Layout>
+      <Seo route="/drain-cleaning" />
       <ServiceHero
         title="Drain Cleaning"
         subtitle="From a clogged sink to a stubborn sewer line — we have the right tool for every drain."

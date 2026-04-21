@@ -16,6 +16,9 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-      dedupe: ["react", "react-dom", "@tanstack/react-query"],
+    dedupe: ["react", "react-dom", "@tanstack/react-query"],
+  },
+  ssgOptions: {
+    dirStyle: "nested",
   },
 });

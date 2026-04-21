@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { ArrowRight, Building2, Droplets, HardHat, ShieldCheck, Waves } from "lucide-react";
 
@@ -20,6 +21,7 @@ const scalePoints = [
 
 const CommercialPlumbing = () => (
   <Layout>
+    <Seo route="/commercial-plumbing" />
     <section className="relative min-h-[640px] flex items-center overflow-hidden section-dark">
       <img
         src="https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422119-FY52WQS4PPKSN6X0HGZ5/P1670180.jpg"

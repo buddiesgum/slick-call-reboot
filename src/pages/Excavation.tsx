@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import ServiceHero from "@/components/ServiceHero";
 import ServiceCard from "@/components/ServiceCard";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ const Excavation = () => {
 
   return (
     <Layout>
+      <Seo route="/excavation" />
       <ServiceHero
         title="Excavation"
         subtitle="Our fleet of excavators, backhoes, and dump trucks ensures swift and efficient completion of your projects."

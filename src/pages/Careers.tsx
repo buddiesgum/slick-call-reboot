@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import { Briefcase, Hammer, HardHat, Wrench, Upload, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -38,6 +39,7 @@ const Careers = () => {
 
   return (
     <Layout>
+      <Seo route="/careers" />
       {/* HERO */}
       <section className="relative h-[50vh] min-h-[380px] flex items-center overflow-hidden">
         <img

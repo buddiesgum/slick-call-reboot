@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import ServiceHero from "@/components/ServiceHero";
 import ServiceCard from "@/components/ServiceCard";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ const WaterHeaters = () => {
 
   return (
     <Layout>
+      <Seo route="/water-heaters" />
       <ServiceHero
         title="Water Heaters"
         subtitle="Service, install, and repair — tank and tankless. Our team helps you choose what's right for your home."

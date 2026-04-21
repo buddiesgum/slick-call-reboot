@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import ServiceHero from "@/components/ServiceHero";
 import ServiceCard from "@/components/ServiceCard";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ const NewBuildPlumbing = () => {
 
   return (
     <Layout>
+      <Seo route="/new-build-plumbing" />
       <ServiceHero
         title="New Build Plumbing"
         subtitle="Licensed, experienced, and built into your project from day one — seamless plumbing for new construction."

@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import ServiceHero from "@/components/ServiceHero";
 import ServiceCard from "@/components/ServiceCard";
 import { Link } from "react-router-dom";
@@ -11,6 +12,7 @@ const LeakDetection = () => {
 
   return (
     <Layout>
+      <Seo route="/leak-detection" />
       <ServiceHero
         title="Foundations"
         subtitle="Foundation issues can affect the safety, appearance and value of your home."

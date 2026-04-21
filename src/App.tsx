@@ -1,10 +1,5 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useEffect } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { LocationProvider } from "@/context/LocationContext";
+import type { RouteRecord } from "vite-react-ssg";
+import RootLayout from "@/components/RootLayout";
 import Index from "./pages/Index.tsx";
 import AllServices from "./pages/AllServices.tsx";
 import Plumbing from "./pages/Plumbing.tsx";
@@ -25,52 +20,33 @@ import Contact from "./pages/Contact.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
-const queryClient = new QueryClient();
-
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname]);
-
-  return null;
-};
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <LocationProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/all-services" element={<AllServices />} />
-          <Route path="/plumbing" element={<Plumbing />} />
-          <Route path="/drain-cleaning" element={<DrainCleaning />} />
-          <Route path="/leak-detection" element={<LeakDetection />} />
-          <Route path="/water-heaters" element={<WaterHeaters />} />
-          <Route path="/septic-services" element={<SepticServices />} />
-          <Route path="/new-build-plumbing" element={<NewBuildPlumbing />} />
-          <Route path="/commercial-plumbing" element={<CommercialPlumbing />} />
-          <Route path="/excavation" element={<Excavation />} />
-          <Route path="/restoration" element={<Restoration />} />
-          <Route path="/remodels" element={<Remodels />} />
-          <Route path="/foundations" element={<Foundations />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/call-us" element={<Contact />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-      </LocationProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+export const routes: RouteRecord[] = [
+  {
+    path: "/",
+    element: <RootLayout />,
+    entry: "src/components/RootLayout.tsx",
+    children: [
+      { index: true, Component: Index },
+      { path: "all-services", Component: AllServices },
+      { path: "plumbing", Component: Plumbing },
+      { path: "drain-cleaning", Component: DrainCleaning },
+      { path: "leak-detection", Component: LeakDetection },
+      { path: "water-heaters", Component: WaterHeaters },
+      { path: "septic-services", Component: SepticServices },
+      { path: "new-build-plumbing", Component: NewBuildPlumbing },
+      { path: "commercial-plumbing", Component: CommercialPlumbing },
+      { path: "excavation", Component: Excavation },
+      { path: "restoration", Component: Restoration },
+      { path: "remodels", Component: Remodels },
+      { path: "foundations", Component: Foundations },
+      { path: "projects", Component: Projects },
+      { path: "about", Component: About },
+      { path: "careers", Component: Careers },
+      { path: "contact", Component: Contact },
+      { path: "call-us", Component: Contact },
+      { path: "privacy-policy", Component: PrivacyPolicy },
+      { path: "404", Component: NotFound },
+      { path: "*", Component: NotFound },
+    ],
+  },
+];
