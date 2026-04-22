@@ -1,0 +1,51 @@
+{
+	"hero": {
+		"eyebrow": "Commercial Plumbing",
+		"title": "Big Problems Need",
+		"titleAccent": "Big Crews.",
+		"subtitle": "Hukill's takes on the commercial plumbing work that stops business cold — excavation, sewer and septic, water lines, underground utilities, and job-site coordination at scale.",
+		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422119-FY52WQS4PPKSN6X0HGZ5/P1670180.jpg",
+		"imageAlt": "Commercial plumbing crew working on a large utility project",
+		"ctaLabel": "Start the Conversation",
+		"ctaPath": "/contact"
+	},
+	"scale": {
+		"eyebrow": "Built for Scale",
+		"heading": "From One Broken Line to an Entire Site.",
+		"body": "Commercial plumbing is not just fixing a leak. It is protecting tenants, schedules, inventory, equipment, customers, and revenue. Our team is built to diagnose fast, move dirt when needed, coordinate with other trades, and finish with systems that can take a beating.",
+		"items": [
+			{
+				"icon": "HardHat",
+				"label": "Excavation",
+				"text": "When the work goes below grade, we bring the equipment, crew, and planning to open the site and solve it right."
+			},
+			{
+				"icon": "Waves",
+				"label": "Sewer & Septic",
+				"text": "From backups to full line replacement, we handle the dirty work that keeps businesses open."
+			},
+			{
+				"icon": "Droplets",
+				"label": "Water Lines",
+				"text": "High-volume water service, leak repairs, trenchless options, and replacements built for long service life."
+			},
+			{
+				"icon": "ShieldCheck",
+				"label": "Commercial Response",
+				"text": "Fast, accountable service for property managers, contractors, facilities teams, and business owners."
+			}
+		]
+	},
+	"capabilities": {
+		"eyebrow": "What We Handle",
+		"heading": "The Kind of Work That Cannot Wait.",
+		"items": [
+			"Commercial water service installation and replacement",
+			"Sewer mains, septic systems, and storm drainage",
+			"Excavation, trenching, backfill, and site restoration",
+			"Underground utilities for new builds and expansions",
+			"Emergency pipe failures, backups, and water intrusion",
+			"Fixture, grease line, and high-demand system upgrades"
+		]
+	}
+}

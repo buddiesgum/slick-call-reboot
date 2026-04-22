@@ -1303,6 +1303,110 @@
 			]
 		},
 		{
+			"name": "commercialPlumbingPage",
+			"label": "Commercial Plumbing Page",
+			"file": "src/cms/commercial-plumbing-page.json",
+			"fields": [
+				{
+					"name": "hero",
+					"label": "Hero Section",
+					"widget": "object",
+					"fields": [
+						{
+							"name": "eyebrow",
+							"label": "Eyebrow Text",
+							"widget": "string",
+							"required": true,
+							"hint": "Small label above the heading, e.g. \"Commercial Plumbing\""
+						},
+						{
+							"name": "title",
+							"label": "Title (before accent)",
+							"widget": "string",
+							"required": true,
+							"hint": "e.g. \"Big Problems Need\""
+						},
+						{
+							"name": "titleAccent",
+							"label": "Title Accent",
+							"widget": "string",
+							"required": true,
+							"hint": "Displayed in the primary color, e.g. \"Big Crews.\""
+						},
+						{ "name": "subtitle", "label": "Subtitle", "widget": "text" },
+						{
+							"name": "image",
+							"label": "Background Image",
+							"widget": "image",
+							"required": true,
+							"hint": "Displayed as the hero background at 35% opacity."
+						},
+						{ "name": "imageAlt", "label": "Image Alt Text", "widget": "string", "required": true },
+						{
+							"name": "ctaLabel",
+							"label": "CTA Button Label",
+							"widget": "string",
+							"required": true
+						},
+						{
+							"name": "ctaPath",
+							"label": "CTA Button Path",
+							"widget": "string",
+							"required": true,
+							"hint": "e.g. \"/contact\"",
+							"pattern": ["^\\/", "Must be a relative path starting with /"]
+						}
+					]
+				},
+				{
+					"name": "scale",
+					"label": "Scale Section",
+					"widget": "object",
+					"fields": [
+						{ "name": "eyebrow", "label": "Eyebrow Text", "widget": "string" },
+						{ "name": "heading", "label": "Heading", "widget": "string", "required": true },
+						{ "name": "body", "label": "Body Text", "widget": "text" },
+						{
+							"name": "items",
+							"label": "Scale Points",
+							"label_singular": "Point",
+							"widget": "list",
+							"max": 4,
+							"hint": "Up to 4 capability highlights shown in the icon card grid.",
+							"fields": [
+								{
+									"name": "icon",
+									"label": "Icon",
+									"widget": "select",
+									"required": true,
+									"options": ["HardHat", "Waves", "Droplets", "ShieldCheck"],
+									"hint": "Lucide icon name. Adding new options requires a code change."
+								},
+								{ "name": "label", "label": "Label", "widget": "string", "required": true },
+								{ "name": "text", "label": "Description", "widget": "text", "required": true }
+							]
+						}
+					]
+				},
+				{
+					"name": "capabilities",
+					"label": "Capabilities Section",
+					"widget": "object",
+					"fields": [
+						{ "name": "eyebrow", "label": "Eyebrow Text", "widget": "string" },
+						{ "name": "heading", "label": "Heading", "widget": "string", "required": true },
+						{
+							"name": "items",
+							"label": "Capability Items",
+							"label_singular": "Item",
+							"widget": "list",
+							"field": { "name": "item", "label": "Item", "widget": "string" }
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "seo",
 			"label": "SEO",
 			"file": "src/cms/seo.json",
