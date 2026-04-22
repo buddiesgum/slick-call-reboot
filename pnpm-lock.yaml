@@ -92,6 +92,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.2.7
         version: 1.2.8(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@sveltia/cms':
+        specifier: 0.151.1
+        version: 0.151.1
       '@tanstack/react-query':
         specifier: ^5.83.0
         version: 5.99.0(react@18.3.1)
@@ -1473,6 +1476,9 @@ packages:
     resolution: {integrity: sha512-lWMnixq/QzxyhTV6NjQJ4SFo1J6PvOX8vUx5Wb4bBPsEb+8xZ89Bz6kOXpfXj9ak9AHTQVQzlgzBEc1SyM27xQ==}
     cpu: [x64]
     os: [win32]
+
+  '@sveltia/cms@0.151.1':
+    resolution: {integrity: sha512-mEvvwoOHYBrZQk5BlGqtaPtUZZ6H+qvgkjUPM6PulvDNsDXqVCd/HZOV/4haXFbSR1OeddBT0pccr1dGwx65UQ==}
 
   '@swc/core-darwin-arm64@1.15.26':
     resolution: {integrity: sha512-OmcP96CFsNOwa65tamQayRcfqhNlcQ3YCWOq+0Wb+CAM4uB7kOMrXY41Gj4atthxrGhLQ9pg7Vk26iApb88idA==}
@@ -4721,6 +4727,8 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.60.1':
     optional: true
+
+  '@sveltia/cms@0.151.1': {}
 
   '@swc/core-darwin-arm64@1.15.26':
     optional: true

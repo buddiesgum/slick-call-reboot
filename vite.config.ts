@@ -19,6 +19,13 @@ export default defineConfig({
 		},
 		dedupe: ["react", "react-dom", "@tanstack/react-query"]
 	},
+	build: {
+		rollupOptions: {
+			input: {
+				admin: path.resolve(__dirname, "admin/index.html")
+			}
+		}
+	},
 	ssgOptions: {
 		dirStyle: "nested"
 	}

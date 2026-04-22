@@ -40,15 +40,20 @@ site only — no backend, no env vars required.
   `components.json` aliases: `@/components`, `@/components/ui`, `@/lib/utils`,
   `@/hooks`. Base color `slate`, style `default`.
 - `src/data/services.ts` — shared service content referenced by pages.
-- `public/admin/index.html` — standalone Sveltia CMS admin page; not part of
-  SSG routing (see **Content** below).
+- `admin/` — Sveltia CMS admin entry; processed by Vite as a separate build
+  input (not part of SSG routing). Outputs to `dist/admin/` at build time.
 
 ## Content (Sveltia CMS)
 
-- Admin UI: `/admin` served from `public/admin/index.html`, which loads
-  `@sveltia/cms@0.151.1` from unpkg.
-- Config: `public/admin/config.json` — GitHub backend (`repo`, `base_url` for
-  auth worker), singletons/collections list, and media transformation settings.
+- Admin UI: `/admin` served from `admin/index.html` (Vite entry). The CMS is
+  installed as an npm package (`@sveltia/cms`) and manually initialised in
+  `admin/main.ts` via `init({ config })`.
+- Config: `admin/config.ts` — exported `CmsConfig` object (`satisfies CmsConfig`
+  from `@sveltia/cms`). Sets `load_config_file: false` so no separate JSON file
+  is loaded at runtime. Contains GitHub backend (`repo`, `base_url` for auth
+  worker), singletons, collections, and media transformation settings.
+- Version pin: `@sveltia/cms` in `package.json` (`dependencies`) is the single
+  source of truth. Bump it there only when upgrading.
 - CMS-managed content lives under `src/cms/` (currently just `seo.json`);
   import these files using `@/cms/<name>.json` — not relative paths.
 - `src/cms/seo.json` shape: a `default` block (siteName, title, description,
@@ -58,9 +63,7 @@ site only — no backend, no env vars required.
 - Media: stored under `public/media/`, referenced in content as `/media/...`
   (the `public_folder` prefix), not as `@/` aliases.
 - To add a managed content file: add a singleton or collection entry to
-  `config.json`, then import the resulting JSON from `src/cms/<name>.json`.
-- Version pin: the unpkg script URL in `index.html` and the `$schema` URL in
-  `config.json` both hardcode `0.151.1` — bump both together when upgrading.
+  `admin/config.ts`, then import the resulting JSON from `src/cms/<name>.json`.
 
 ## Conventions & gotchas
 
