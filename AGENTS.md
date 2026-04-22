@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Vite + React 18 + TS SPA (shadcn/ui, Tailwind) for Jones Plumbing. Marketing
+Vite + React 18 + TS SPA (shadcn/ui, Tailwind) for Hukill's Plumbing, Drain Cleaning, Restoration, Leak Detection, Renovation, Water Mitigation, Mold Remediation and Remodels company. Marketing
 site only — no backend, no env vars required.
 
 ## Commands (pnpm only; pinned via mise.toml)
