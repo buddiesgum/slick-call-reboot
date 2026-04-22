@@ -2,6 +2,7 @@ import { createContext, useContext } from "react"
 
 export interface Location {
 	id: string
+	order: number
 	label: string
 	short: string
 	address: string
@@ -9,24 +10,26 @@ export interface Location {
 	phoneDisplay: string
 }
 
-export const locations: Location[] = [
-	{
-		id: "fort-worth",
-		label: "Fort Worth, TX",
-		short: "Fort Worth",
-		address: "3310 Lackland Rd, Fort Worth, TX 76116",
-		phone: "tel:+18176727555",
-		phoneDisplay: "(817) 672-7555"
-	},
-	{
-		id: "medford",
-		label: "Medford, OR",
-		short: "Medford",
-		address: "3650 Crater Lake Ave, Medford, OR 97504",
-		phone: "tel:+15417349000",
-		phoneDisplay: "(541) 734-9000"
-	}
-]
+const locationModules = import.meta.glob<Location>("../cms/locations/*.json", {
+	eager: true,
+	import: "default",
+})
+
+const FALLBACK_LOCATION: Location = {
+	id: "unknown",
+	order: 0,
+	label: "Location unavailable",
+	short: "Location unavailable",
+	address: "",
+	phone: "",
+	phoneDisplay: "",
+}
+
+const sortedLocations = Object.values(locationModules).sort(
+	(a, b) => a.order - b.order || a.id.localeCompare(b.id),
+)
+
+export const locations: Location[] = sortedLocations.length > 0 ? sortedLocations : [FALLBACK_LOCATION]
 
 interface LocationContextType {
 	selected: Location
@@ -35,7 +38,7 @@ interface LocationContextType {
 
 export const LocationContext = createContext<LocationContextType>({
 	selected: locations[0],
-	setSelected: () => {}
+	setSelected: () => {},
 })
 
 export const useLocationContext = () => useContext(LocationContext)
