@@ -86,7 +86,7 @@
 					"label": "Video URL",
 					"widget": "string",
 					"required": false,
-					"hint": "Optional. Embed URL for a project video."
+					"hint": "Optional. Use the embed URL, not the share URL — e.g. 'https://www.youtube.com/embed/VIDEO_ID' or 'https://player.vimeo.com/video/VIDEO_ID'."
 				}
 			]
 		},
@@ -155,10 +155,80 @@
 			"file": "src/cms/projects-page.json",
 			"fields": [
 				{
-					"name": "heroImage",
-					"label": "Hero Background Image",
-					"widget": "image",
-					"hint": "Displayed as the background of the Projects page hero section at 20% opacity."
+					"name": "hero",
+					"label": "Hero Section",
+					"widget": "object",
+					"fields": [
+						{
+							"name": "eyebrow",
+							"label": "Eyebrow Text",
+							"widget": "string",
+							"hint": "Small word before the accented title, e.g. \"Our\""
+						},
+						{
+							"name": "titleAccent",
+							"label": "Title Accent Word",
+							"widget": "string",
+							"hint": "Accent word displayed in primary color, e.g. \"Projects\""
+						},
+						{
+							"name": "description",
+							"label": "Hero Description",
+							"widget": "text",
+							"hint": "Subheading paragraph shown below the hero title."
+						},
+						{
+							"name": "image",
+							"label": "Hero Background Image",
+							"widget": "image",
+							"hint": "Displayed as the hero background at 20% opacity."
+						}
+					]
+				},
+				{
+					"name": "filters",
+					"label": "Filter Pills",
+					"widget": "object",
+					"fields": [
+						{
+							"name": "marketAllLabel",
+							"label": "Market 'All' Label",
+							"widget": "string",
+							"hint": "Label for the 'All' pill in the market filter row, e.g. \"All Projects\""
+						},
+						{
+							"name": "categoryAllLabel",
+							"label": "Category 'All' Label",
+							"widget": "string",
+							"hint": "Label for the 'All' pill in the category filter row, e.g. \"All\""
+						}
+					]
+				},
+				{
+					"name": "card",
+					"label": "Project Card",
+					"widget": "object",
+					"fields": [
+						{
+							"name": "ctaLabel",
+							"label": "Card CTA Text",
+							"widget": "string",
+							"hint": "Link text shown on each project card, e.g. \"View Project\""
+						}
+					]
+				},
+				{
+					"name": "modal",
+					"label": "Project Modal",
+					"widget": "object",
+					"fields": [
+						{
+							"name": "galleryHeading",
+							"label": "Gallery Section Heading",
+							"widget": "string",
+							"hint": "Heading shown above the image gallery in the project detail modal, e.g. \"Gallery\""
+						}
+					]
 				}
 			]
 		},

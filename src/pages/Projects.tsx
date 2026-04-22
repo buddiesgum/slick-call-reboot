@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Play, X, ArrowRight } from "lucide-react"
+import { X, ArrowRight } from "lucide-react"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import { projects, type Project } from "@/cms/projects"
@@ -30,7 +30,7 @@ const Projects = () => {
 				<div className="absolute inset-0 bg-secondary" />
 				<div
 					className="absolute inset-0 opacity-20 bg-cover bg-center"
-					style={{ backgroundImage: `url('${projectsPage.heroImage}')` }}
+					style={{ backgroundImage: `url('${projectsPage.hero.image}')` }}
 				/>
 				<div className="container relative z-10">
 					<motion.div
@@ -39,11 +39,11 @@ const Projects = () => {
 						transition={{ duration: 0.6 }}
 					>
 						<h1 className="text-5xl md:text-7xl font-display uppercase tracking-tight text-primary-foreground leading-[0.9]">
-							Our <span className="text-primary">Projects</span>
+							{projectsPage.hero.eyebrow}{" "}
+							<span className="text-primary">{projectsPage.hero.titleAccent}</span>
 						</h1>
 						<p className="mt-4 text-lg text-primary-foreground/60 max-w-xl">
-							Browse our portfolio of completed work across plumbing, restoration, excavation,
-							remodels, and foundations.
+							{projectsPage.hero.description}
 						</p>
 					</motion.div>
 				</div>
@@ -63,7 +63,7 @@ const Projects = () => {
 									:	"bg-muted text-muted-foreground hover:text-foreground"
 								}`}
 							>
-								{market === "All" ? "All Projects" : market}
+								{market === "All" ? projectsPage.filters.marketAllLabel : market}
 							</button>
 						))}
 					</div>
@@ -79,7 +79,7 @@ const Projects = () => {
 									:	"bg-muted text-muted-foreground hover:text-foreground"
 								}`}
 							>
-								{cat}
+								{cat === "All" ? projectsPage.filters.categoryAllLabel : cat}
 							</button>
 						))}
 					</div>
@@ -120,7 +120,7 @@ const Projects = () => {
 											{project.description}
 										</p>
 										<div className="mt-4 flex items-center gap-1 text-xs text-primary font-display uppercase tracking-wider">
-											View Project <ArrowRight className="w-3 h-3" />
+											{projectsPage.card.ctaLabel} <ArrowRight className="w-3 h-3" />
 										</div>
 									</div>
 								</motion.div>
@@ -175,17 +175,24 @@ const Projects = () => {
 									{selectedProject.description}
 								</p>
 
-								{/* Video Placeholder */}
+								{/* Video */}
 								{selectedProject.videoUrl && (
-									<div className="mb-8 aspect-video bg-muted rounded-lg flex items-center justify-center">
-										<Play className="w-12 h-12 text-primary" />
+									<div className="mb-8 aspect-video rounded-lg overflow-hidden bg-muted">
+										<iframe
+											src={selectedProject.videoUrl}
+											title={`${selectedProject.title} video`}
+											className="w-full h-full"
+											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+											allowFullScreen
+											loading="lazy"
+										/>
 									</div>
 								)}
 
 								{/* Gallery */}
 								{selectedProject.gallery.length > 0 && (
 									<div>
-										<h4 className="font-display uppercase text-sm tracking-wider mb-4">Gallery</h4>
+										<h4 className="font-display uppercase text-sm tracking-wider mb-4">{projectsPage.modal.galleryHeading}</h4>
 										<div className="grid grid-cols-2 md:grid-cols-3 gap-3">
 											{selectedProject.gallery.map((img, i) => (
 												<button
