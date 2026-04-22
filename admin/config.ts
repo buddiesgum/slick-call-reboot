@@ -29,8 +29,6 @@ export const config = {
 			format: "json",
 			extension: "json",
 			identifier_field: "slug",
-			create: false,
-			delete: false,
 			slug: "{{fields.slug}}",
 			media_folder: "/public/media/service-pages/{{fields.slug}}",
 			public_folder: "/media/service-pages/{{fields.slug}}",
@@ -41,10 +39,7 @@ export const config = {
 					label: "Slug",
 					widget: "string",
 					hint: "Matches the route path (e.g. 'plumbing'). Do not change — requires a code update.",
-					pattern: [
-						"^[a-z0-9-]+$",
-						"Slug must be lowercase letters, numbers, and hyphens only"
-					] as [string, string]
+					pattern: ["^[a-z0-9-]+$", "Slug must be lowercase letters, numbers, and hyphens only"]
 				},
 				{ name: "title", label: "Page Title (admin label)", widget: "string" },
 				{
@@ -141,8 +136,6 @@ export const config = {
 			format: "json",
 			extension: "json",
 			identifier_field: "id",
-			create: true,
-			delete: true,
 			slug: "{{id}}",
 			media_folder: "/public/media/projects/{{fields.id}}",
 			public_folder: "/media/projects/{{fields.id}}",
@@ -155,7 +148,7 @@ export const config = {
 					pattern: [
 						"^[a-z0-9]+(?:-[a-z0-9]+)*$",
 						"Lowercase letters, digits, and single hyphens only (e.g. 'kitchen-remodel-fw')"
-					] as [string, string],
+					],
 					hint: "Used as the file slug and as a stable key in code. Cannot be changed without a code update."
 				},
 				{
@@ -212,8 +205,6 @@ export const config = {
 			format: "json",
 			extension: "json",
 			identifier_field: "id",
-			create: true,
-			delete: true,
 			slug: "{{id}}",
 			sortable_fields: ["order", "label"],
 			fields: [
@@ -224,7 +215,7 @@ export const config = {
 					pattern: [
 						"^[a-z0-9]+(?:-[a-z0-9]+)*$",
 						"Lowercase letters, digits, and single hyphens only (e.g. 'fort-worth')"
-					] as [string, string],
+					],
 					hint: "Used as the file slug and as a stable key in code. Cannot be changed without a code update."
 				},
 				{
@@ -251,7 +242,7 @@ export const config = {
 					pattern: [
 						"^tel:\\+?[0-9]+$",
 						"Must be a tel: URL like 'tel:+18176727555' (digits only, optional leading +)"
-					] as [string, string]
+					]
 				},
 				{
 					name: "phoneDisplay",
@@ -293,7 +284,7 @@ export const config = {
 					label: "Quote CTA Path",
 					widget: "string",
 					hint: 'e.g. "/contact"',
-					pattern: ["^\\/", "Must be a relative path starting with /"] as [string, string]
+					pattern: ["^\\/", "Must be a relative path starting with /"]
 				},
 				{
 					name: "locationPrefix",
@@ -412,7 +403,7 @@ export const config = {
 							name: "ctaPath",
 							label: "CTA Path",
 							widget: "string",
-							pattern: ["^\\/", "Must be a relative path starting with /"] as [string, string]
+							pattern: ["^\\/", "Must be a relative path starting with /"]
 						},
 						{
 							name: "posterImage",
@@ -588,7 +579,7 @@ export const config = {
 							label: "CTA Button Path",
 							widget: "string",
 							hint: 'e.g. "/careers"',
-							pattern: ["^\\/", "Must be a relative path starting with /"] as [string, string]
+							pattern: ["^\\/", "Must be a relative path starting with /"]
 						}
 					]
 				}
@@ -1070,7 +1061,7 @@ export const config = {
 									label: "Path",
 									widget: "string",
 									hint: 'e.g. "/plumbing"',
-									pattern: ["^\\/", "Must be a relative path starting with /"] as [string, string]
+									pattern: ["^\\/", "Must be a relative path starting with /"]
 								}
 							]
 						}
@@ -1105,7 +1096,7 @@ export const config = {
 									label: "Path",
 									widget: "string",
 									hint: 'e.g. "/all-services"',
-									pattern: ["^\\/", "Must be a relative path starting with /"] as [string, string]
+									pattern: ["^\\/", "Must be a relative path starting with /"]
 								}
 							]
 						}
@@ -1354,9 +1345,9 @@ export const config = {
 					widget: "markdown",
 					required: false,
 					hint: "Introductory paragraphs shown above the first section. Supports paragraphs, links, and lists.",
-					buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"] as string[],
-					editor_components: [] as string[],
-					modes: ["rich-text"] as string[]
+					buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"],
+					editor_components: [],
+					modes: ["rich-text"]
 				},
 				{
 					name: "sections",
@@ -1371,9 +1362,9 @@ export const config = {
 							widget: "markdown",
 							required: false,
 							hint: "Optional lead-in paragraphs (and/or bullet list) shown before the sub-sections.",
-							buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"] as string[],
-							editor_components: [] as string[],
-							modes: ["rich-text"] as string[]
+							buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"],
+							editor_components: [],
+							modes: ["rich-text"]
 						},
 						{
 							name: "subSections",
@@ -1387,9 +1378,9 @@ export const config = {
 									name: "body",
 									label: "Body",
 									widget: "markdown",
-									buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"] as string[],
-									editor_components: [] as string[],
-									modes: ["rich-text"] as string[]
+									buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"],
+									editor_components: [],
+									modes: ["rich-text"]
 								}
 							]
 						}
@@ -1625,7 +1616,7 @@ export const config = {
 							widget: "string",
 							required: true,
 							hint: 'e.g. "/contact"',
-							pattern: ["^\\/", "Must be a relative path starting with /"] as [string, string]
+							pattern: ["^\\/", "Must be a relative path starting with /"]
 						}
 					]
 				},
