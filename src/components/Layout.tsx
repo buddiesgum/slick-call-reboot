@@ -4,8 +4,8 @@ import { Phone, Menu, X, ChevronDown, ChevronRight, MapPin } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import LocationSelector from "./LocationSelector"
 import { useLocationContext } from "@/context/LocationContext"
-import hukillsLogo from "@/assets/hukills-logo.png"
 import headerData from "@/cms/header.json"
+import footerData from "@/cms/footer.json"
 
 // ---------------------------------------------------------------------------
 // Types derived from header.json shape
@@ -16,21 +16,6 @@ type NavItem = {
 	path: string
 	children?: NavItem[]
 }
-
-// ---------------------------------------------------------------------------
-// Footer-only service list (footer is left unchanged per spec)
-// ---------------------------------------------------------------------------
-
-const footerServiceLinks = [
-	{ label: "All Services", path: "/all-services" },
-	{ label: "Plumbing", path: "/plumbing" },
-	{ label: "Commercial Plumbing", path: "/commercial-plumbing" },
-	{ label: "New Build Plumbing", path: "/new-build-plumbing" },
-	{ label: "Excavation", path: "/excavation" },
-	{ label: "Restoration", path: "/restoration" },
-	{ label: "Remodels", path: "/remodels" },
-	{ label: "Foundations", path: "/foundations" }
-]
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -269,33 +254,33 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 							className="lg:hidden overflow-hidden bg-secondary"
 						>
 							<nav className="container flex flex-col py-4 gap-1">
-							{nav.map((item, i) => {
-								const id = String(i)
-								const hasChildren = !!item.children?.length
-								const active = isActive(item, location.pathname)
-								const expanded = mobileExpanded.has(id)
+								{nav.map((item, i) => {
+									const id = String(i)
+									const hasChildren = !!item.children?.length
+									const active = isActive(item, location.pathname)
+									const expanded = mobileExpanded.has(id)
 
-								if (!hasChildren) {
+									if (!hasChildren) {
+										return (
+											<Link
+												key={id}
+												to={item.path}
+												onClick={() => setMobileOpen(false)}
+												className={`px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
+													active ? "text-primary" : (
+														"text-secondary-foreground/80 hover:text-primary"
+													)
+												}`}
+											>
+												{item.label}
+											</Link>
+										)
+									}
+
 									return (
-										<Link
-											key={id}
-											to={item.path}
-											onClick={() => setMobileOpen(false)}
-											className={`px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
-												active ? "text-primary" : (
-													"text-secondary-foreground/80 hover:text-primary"
-												)
-											}`}
-										>
-											{item.label}
-										</Link>
-									)
-								}
-
-								return (
-									<div key={id}>
-										<button
-											onClick={() => toggleMobileExpanded(id)}
+										<div key={id}>
+											<button
+												onClick={() => toggleMobileExpanded(id)}
 												className={`w-full flex items-center justify-between px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
 													active ? "text-primary" : "text-secondary-foreground/80"
 												}`}
@@ -410,17 +395,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				<div className="container">
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 						<div>
-							<img src={hukillsLogo} alt="Hukill's" className="h-[67px] w-auto mb-4" />
-							<p className="text-sm opacity-70 leading-relaxed">
-								Family-owned company serving communities for over 40 years. One call does it all.
-							</p>
+							<img
+								src={footerData.logo.image}
+								alt={footerData.logo.alt}
+								className="h-[67px] w-auto mb-4"
+							/>
+							<p className="text-sm opacity-70 leading-relaxed">{footerData.tagline}</p>
 						</div>
 						<div>
 							<h4 className="font-display uppercase text-sm tracking-wider mb-4 text-primary">
-								Services
+								{footerData.services.heading}
 							</h4>
 							<div className="flex flex-col gap-2">
-								{footerServiceLinks.map((link) => (
+								{footerData.services.links.map((link) => (
 									<Link
 										key={link.path}
 										to={link.path}
@@ -433,44 +420,23 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 						</div>
 						<div>
 							<h4 className="font-display uppercase text-sm tracking-wider mb-4 text-primary">
-								Company
+								{footerData.company.heading}
 							</h4>
 							<div className="flex flex-col gap-2">
-								<Link
-									to="/about"
-									className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
-								>
-									About Us
-								</Link>
-								<Link
-									to="/projects"
-									className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
-								>
-									Projects
-								</Link>
-								<Link
-									to="/careers"
-									className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
-								>
-									Careers
-								</Link>
-								<Link
-									to="/contact"
-									className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
-								>
-									Contact
-								</Link>
-								<Link
-									to="/privacy-policy"
-									className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
-								>
-									Privacy Policy
-								</Link>
+								{footerData.company.links.map((link) => (
+									<Link
+										key={link.path}
+										to={link.path}
+										className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-all"
+									>
+										{link.label}
+									</Link>
+								))}
 							</div>
 						</div>
 						<div>
 							<h4 className="font-display uppercase text-sm tracking-wider mb-4 text-primary">
-								Contact — {currentLocation.label}
+								{footerData.contact.heading} — {currentLocation.label}
 							</h4>
 							<div className="flex flex-col gap-3">
 								<div className="flex items-start gap-2 text-sm opacity-70">
@@ -488,7 +454,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 						</div>
 					</div>
 					<div className="mt-10 pt-6 border-t border-muted-foreground/20 text-center text-xs opacity-50">
-						© {new Date().getFullYear()} Hukill's Inc. All rights reserved.
+						{footerData.copyrightPrefix} {new Date().getFullYear()} {footerData.copyrightSuffix}
 					</div>
 				</div>
 			</footer>

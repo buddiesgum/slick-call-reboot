@@ -1,0 +1,35 @@
+{
+	"logo": {
+		"image": "/media/hukills-logo.png",
+		"alt": "Hukill's"
+	},
+	"tagline": "Family-owned company serving communities for over 40 years. One call does it all.",
+	"services": {
+		"heading": "Services",
+		"links": [
+			{ "label": "All Services", "path": "/all-services" },
+			{ "label": "Plumbing", "path": "/plumbing" },
+			{ "label": "Commercial Plumbing", "path": "/commercial-plumbing" },
+			{ "label": "New Build Plumbing", "path": "/new-build-plumbing" },
+			{ "label": "Excavation", "path": "/excavation" },
+			{ "label": "Restoration", "path": "/restoration" },
+			{ "label": "Remodels", "path": "/remodels" },
+			{ "label": "Foundations", "path": "/foundations" }
+		]
+	},
+	"company": {
+		"heading": "Company",
+		"links": [
+			{ "label": "About Us", "path": "/about" },
+			{ "label": "Projects", "path": "/projects" },
+			{ "label": "Careers", "path": "/careers" },
+			{ "label": "Contact", "path": "/contact" },
+			{ "label": "Privacy Policy", "path": "/privacy-policy" }
+		]
+	},
+	"contact": {
+		"heading": "Contact"
+	},
+	"copyrightPrefix": "©",
+	"copyrightSuffix": "Hukill's Inc. All rights reserved."
+}
