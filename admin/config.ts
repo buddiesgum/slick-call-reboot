@@ -1063,6 +1063,24 @@ export const config = {
 							hint: 'Heading shown above the image gallery in the project detail modal, e.g. "Gallery"'
 						}
 					]
+				},
+				{
+					name: "majorTags",
+					label: "Major Project Tags",
+					label_singular: "Tag",
+					widget: "list",
+					required: false,
+					hint: "Top-level tags for the projects page. Currently unused in the UI; will be wired up in a later change.",
+					field: { name: "tag", label: "Tag", widget: "string" }
+				},
+				{
+					name: "minorTags",
+					label: "Minor Project Tags",
+					label_singular: "Tag",
+					widget: "list",
+					required: false,
+					hint: "Secondary tags for the projects page. Currently unused in the UI; will be wired up in a later change.",
+					field: { name: "tag", label: "Tag", widget: "string" }
 				}
 			]
 		},
