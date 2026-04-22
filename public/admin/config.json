@@ -334,9 +334,10 @@
 						{ "name": "description", "label": "Description", "widget": "text" },
 						{
 							"name": "image",
-							"label": "Background Image",
+							"label": "Hero Background Image",
 							"widget": "image",
-							"required": false
+							"required": false,
+							"hint": "Displayed as the full-bleed hero background."
 						},
 						{ "name": "imageAlt", "label": "Image Alt Text", "widget": "string" },
 						{ "name": "primaryCtaLabel", "label": "Call CTA Label", "widget": "string" },
@@ -429,6 +430,104 @@
 						},
 						{ "name": "callLabel", "label": "Call Button Label", "widget": "string" },
 						{ "name": "textLabel", "label": "Text Button Label", "widget": "string" }
+					]
+				}
+			]
+		},
+		{
+			"name": "contactPage",
+			"label": "Contact Page",
+			"file": "src/cms/contact-page.json",
+			"fields": [
+				{
+					"name": "hero",
+					"label": "Hero Section",
+					"widget": "object",
+					"fields": [
+						{
+							"name": "eyebrow",
+							"label": "Eyebrow Text",
+							"widget": "string",
+							"hint": "Small line above the heading, e.g. \"Get In Touch\""
+						},
+						{
+							"name": "title",
+							"label": "Title (before accent)",
+							"widget": "string",
+							"hint": "e.g. \"One Call\""
+						},
+						{
+							"name": "titleAccent",
+							"label": "Title Accent",
+							"widget": "string",
+							"hint": "Displayed in the primary color, e.g. \"Does It All.\""
+						},
+						{
+							"name": "image",
+							"label": "Hero Background Image",
+							"widget": "image",
+							"hint": "Displayed as the full-bleed hero background."
+						},
+						{ "name": "imageAlt", "label": "Image Alt Text", "widget": "string" }
+					]
+				},
+				{
+					"name": "locations",
+					"label": "Locations Section",
+					"widget": "object",
+					"fields": [
+						{
+							"name": "selectedBadge",
+							"label": "'Selected' Badge Label",
+							"widget": "string",
+							"hint": "e.g. \"Selected\""
+						},
+						{
+							"name": "hoursLabel",
+							"label": "Hours Label",
+							"widget": "string",
+							"hint": "e.g. \"24/7 Emergency Service Available\""
+						},
+						{
+							"name": "callLabelPrefix",
+							"label": "Call Button Prefix",
+							"widget": "string",
+							"hint": "Location short name is appended automatically, e.g. \"Call\" → \"Call Fort Worth\""
+						},
+						{
+							"name": "setLocationLabel",
+							"label": "'Set As My Location' Button Label",
+							"widget": "string",
+							"hint": "e.g. \"Set as My Location\""
+						}
+					]
+				},
+				{
+					"name": "careersCta",
+					"label": "Careers CTA Section",
+					"widget": "object",
+					"fields": [
+						{
+							"name": "heading",
+							"label": "Heading (before accent)",
+							"widget": "string",
+							"hint": "e.g. \"Looking to Join the\""
+						},
+						{
+							"name": "headingAccent",
+							"label": "Heading Accent",
+							"widget": "string",
+							"hint": "Displayed in the primary color, e.g. \"Team?\""
+						},
+						{ "name": "body", "label": "Body Text", "widget": "text" },
+						{ "name": "ctaLabel", "label": "CTA Button Label", "widget": "string" },
+						{
+							"name": "ctaPath",
+							"label": "CTA Button Path",
+							"widget": "string",
+							"hint": "e.g. \"/careers\"",
+							"pattern": ["^\\/", "Must be a relative path starting with /"]
+						}
 					]
 				}
 			]

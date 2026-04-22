@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Phone, MapPin, Clock, Mail } from "lucide-react"
 import { Link } from "react-router-dom"
 import { locations, useLocationContext } from "@/context/location-context"
+import contactData from "@/cms/contact-page.json"
 
 const Contact = () => {
 	const { selected, setSelected } = useLocationContext()
@@ -14,8 +15,8 @@ const Contact = () => {
 			{/* HERO */}
 			<section className="relative h-[40vh] min-h-[320px] flex items-center overflow-hidden">
 				<img
-					src="https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1752613454679-Q0DS5GYLU397B41SSC5X/unsplash-image-Q_N-etBvHNY.jpg"
-					alt="Hukill's contact"
+					src={contactData.hero.image}
+					alt={contactData.hero.imageAlt}
 					className="absolute inset-0 w-full h-full object-cover"
 				/>
 				<div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/85 to-secondary/40" />
@@ -26,7 +27,7 @@ const Contact = () => {
 						transition={{ duration: 0.5 }}
 						className="text-primary font-display uppercase tracking-[0.3em] text-sm mb-4"
 					>
-						Get In Touch
+						{contactData.hero.eyebrow}
 					</motion.p>
 					<motion.h1
 						initial={{ opacity: 0, y: 30 }}
@@ -34,7 +35,8 @@ const Contact = () => {
 						transition={{ duration: 0.6, delay: 0.1 }}
 						className="text-5xl md:text-7xl font-display uppercase tracking-tight text-primary-foreground max-w-3xl leading-[0.95]"
 					>
-						One Call <span className="text-primary">Does It All.</span>
+						{contactData.hero.title}{" "}
+						<span className="text-primary">{contactData.hero.titleAccent}</span>
 					</motion.h1>
 				</div>
 			</section>
@@ -60,7 +62,7 @@ const Contact = () => {
 								>
 									{isActive && (
 										<span className="absolute top-4 right-4 text-[10px] font-display uppercase tracking-widest bg-primary text-primary-foreground px-2 py-1 rounded-sm">
-											Selected
+											{contactData.locations.selectedBadge}
 										</span>
 									)}
 									<div className="flex items-center gap-3 mb-6">
@@ -88,7 +90,7 @@ const Contact = () => {
 										</a>
 										<div className="flex items-start gap-3 text-muted-foreground text-sm">
 											<Clock className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-											<span>24/7 Emergency Service Available</span>
+											<span>{contactData.locations.hoursLabel}</span>
 										</div>
 									</div>
 
@@ -98,14 +100,14 @@ const Contact = () => {
 											className="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 										>
 											<Phone className="w-4 h-4" />
-											Call {loc.short}
+											{contactData.locations.callLabelPrefix} {loc.short}
 										</a>
 										{!isActive && (
 											<button
 												onClick={() => setSelected(loc)}
 												className="flex-1 inline-flex items-center justify-center gap-2 border border-border px-5 py-3 font-display uppercase text-sm tracking-wider hover:border-primary hover:text-primary transition-colors rounded-sm"
 											>
-												Set as My Location
+												{contactData.locations.setLocationLabel}
 											</button>
 										)}
 									</div>
@@ -128,17 +130,15 @@ const Contact = () => {
 					>
 						<Mail className="w-10 h-10 text-primary mx-auto mb-4" />
 						<h3 className="text-3xl md:text-4xl font-display uppercase tracking-tight text-primary-foreground mb-4">
-							Looking to Join the <span className="text-primary">Team?</span>
+							{contactData.careersCta.heading}{" "}
+							<span className="text-primary">{contactData.careersCta.headingAccent}</span>
 						</h3>
-						<p className="text-primary-foreground/70 mb-8">
-							We're always looking for skilled tradespeople who share our values of integrity,
-							excellence, and faith.
-						</p>
+						<p className="text-primary-foreground/70 mb-8">{contactData.careersCta.body}</p>
 						<Link
-							to="/careers"
+							to={contactData.careersCta.ctaPath}
 							className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 						>
-							View Careers
+							{contactData.careersCta.ctaLabel}
 						</Link>
 					</motion.div>
 				</div>
