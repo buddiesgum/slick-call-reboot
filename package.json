@@ -7,7 +7,7 @@
 		"dev": "vite",
 		"build": "vite-react-ssg build",
 		"build:dev": "vite-react-ssg build --mode development",
-		"check": "tsc -b --noEmit",
+		"check": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit",
 		"lint": "eslint .",
 		"format": "prettier --write .",
 		"preview": "vite preview",
