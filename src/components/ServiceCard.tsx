@@ -5,10 +5,11 @@ interface ServiceCardProps {
 	description: string
 	items?: string[]
 	image: string
+	imageAlt?: string
 	reverse?: boolean
 }
 
-const ServiceCard = ({ title, description, items, image, reverse }: ServiceCardProps) => (
+const ServiceCard = ({ title, description, items, image, imageAlt, reverse }: ServiceCardProps) => (
 	<motion.div
 		initial={{ opacity: 0, y: 40 }}
 		whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +23,7 @@ const ServiceCard = ({ title, description, items, image, reverse }: ServiceCardP
 			<div className="aspect-[4/3] rounded-lg overflow-hidden">
 				<img
 					src={image}
-					alt={title}
+					alt={imageAlt ?? title}
 					className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
 					loading="lazy"
 				/>

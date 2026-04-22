@@ -20,6 +20,79 @@
 	},
 	"collections": [
 		{
+			"name": "servicePages",
+			"label": "Service Pages",
+			"label_singular": "Service Page",
+			"folder": "src/cms/service-pages",
+			"format": "json",
+			"extension": "json",
+			"identifier_field": "slug",
+			"create": false,
+			"delete": false,
+			"slug": "{{fields.slug}}",
+			"media_folder": "/public/media/service-pages/{{fields.slug}}",
+			"public_folder": "/media/service-pages/{{fields.slug}}",
+			"sortable_fields": ["title"],
+			"fields": [
+				{
+					"name": "slug",
+					"label": "Slug",
+					"widget": "string",
+					"hint": "Matches the route path (e.g. 'plumbing'). Do not change — requires a code update.",
+					"pattern": ["^[a-z0-9-]+$", "Slug must be lowercase letters, numbers, and hyphens only"]
+				},
+				{ "name": "title", "label": "Page Title (admin label)", "widget": "string" },
+				{
+					"name": "hero",
+					"label": "Hero Section",
+					"widget": "object",
+					"fields": [
+						{ "name": "title", "label": "Hero Title", "widget": "string" },
+						{ "name": "subtitle", "label": "Subtitle", "widget": "text" },
+						{
+							"name": "image",
+							"label": "Background Image",
+							"widget": "string",
+							"hint": "URL or upload path. Displayed as the hero background."
+						},
+						{ "name": "imageAlt", "label": "Image Alt Text", "widget": "string" }
+					]
+				},
+				{
+					"name": "cards",
+					"label": "Content Cards",
+					"label_singular": "Card",
+					"widget": "list",
+					"fields": [
+						{ "name": "title", "label": "Card Title", "widget": "string" },
+						{ "name": "description", "label": "Description", "widget": "text" },
+						{
+							"name": "items",
+							"label": "Bullet Items",
+							"label_singular": "Item",
+							"widget": "list",
+							"required": false,
+							"field": { "name": "item", "label": "Item", "widget": "string" }
+						},
+						{
+							"name": "image",
+							"label": "Card Image",
+							"widget": "string",
+							"hint": "URL or upload path."
+						},
+						{ "name": "imageAlt", "label": "Image Alt Text", "widget": "string" },
+						{
+							"name": "reverse",
+							"label": "Reverse Layout",
+							"widget": "boolean",
+							"default": false,
+							"hint": "When enabled, the image appears on the left and text on the right."
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "projects",
 			"label": "Projects",
 			"label_singular": "Project",
@@ -150,6 +223,166 @@
 	],
 	"singletons": [
 		{
+			"name": "serviceCta",
+			"label": "Service Pages — Emergency CTA",
+			"file": "src/cms/service-cta.json",
+			"fields": [
+				{
+					"name": "heading",
+					"label": "Heading (before accent)",
+					"widget": "string",
+					"hint": "e.g. \"Available 24/7 for\""
+				},
+				{
+					"name": "headingAccent",
+					"label": "Heading Accent",
+					"widget": "string",
+					"hint": "Displayed in the primary color, e.g. \"Emergencies\""
+				},
+				{ "name": "description", "label": "Body Text", "widget": "text" },
+				{
+					"name": "phoneCtaLabel",
+					"label": "Phone CTA Label",
+					"widget": "string",
+					"hint": "The location short name is appended automatically, e.g. \"Call\" → \"Call Fort Worth\""
+				},
+				{ "name": "quoteCtaLabel", "label": "Quote CTA Label", "widget": "string" },
+				{
+					"name": "quotePath",
+					"label": "Quote CTA Path",
+					"widget": "string",
+					"hint": "e.g. \"/contact\"",
+					"pattern": ["^\\/", "Must be a relative path starting with /"]
+				},
+				{
+					"name": "locationPrefix",
+					"label": "Location Prefix",
+					"widget": "string",
+					"hint": "Text before the location name, e.g. \"Serving\""
+				}
+			]
+		},
+		{
+			"name": "allServicesPage",
+			"label": "All Services Page",
+			"file": "src/cms/all-services-page.json",
+			"fields": [
+				{
+					"name": "hero",
+					"label": "Hero Section",
+					"widget": "object",
+					"fields": [
+						{ "name": "eyebrow", "label": "Eyebrow Text", "widget": "string" },
+						{ "name": "title", "label": "Title", "widget": "string" },
+						{
+							"name": "titleAccent",
+							"label": "Title Accent",
+							"widget": "string",
+							"hint": "Displayed in the primary color"
+						},
+						{ "name": "description", "label": "Description", "widget": "text" },
+						{
+							"name": "image",
+							"label": "Background Image",
+							"widget": "image",
+							"required": false
+						},
+						{ "name": "imageAlt", "label": "Image Alt Text", "widget": "string" },
+						{ "name": "primaryCtaLabel", "label": "Call CTA Label", "widget": "string" },
+						{ "name": "textCtaLabel", "label": "Text CTA Label", "widget": "string" }
+					]
+				},
+				{
+					"name": "locationPrompt",
+					"label": "Location Prompt Section",
+					"widget": "object",
+					"fields": [
+						{
+							"name": "eyebrowPrefix",
+							"label": "Eyebrow Prefix",
+							"widget": "string",
+							"hint": "Location name is appended automatically, e.g. \"Serving\""
+						},
+						{ "name": "body", "label": "Body Text", "widget": "text" }
+					]
+				},
+				{
+					"name": "servicesGrid",
+					"label": "Services Grid Section",
+					"widget": "object",
+					"fields": [
+						{ "name": "heading", "label": "Heading", "widget": "string" },
+						{
+							"name": "headingAccent",
+							"label": "Heading Accent",
+							"widget": "string",
+							"hint": "Displayed in the primary color"
+						},
+						{ "name": "description", "label": "Description", "widget": "text" }
+					]
+				},
+				{
+					"name": "video",
+					"label": "Video Section",
+					"widget": "object",
+					"fields": [
+						{ "name": "eyebrow", "label": "Eyebrow Text", "widget": "string" },
+						{ "name": "heading", "label": "Heading", "widget": "string" },
+						{ "name": "body", "label": "Body Text", "widget": "text" },
+						{ "name": "ctaLabel", "label": "CTA Label", "widget": "string" },
+						{
+							"name": "ctaPath",
+							"label": "CTA Path",
+							"widget": "string",
+							"pattern": ["^\\/", "Must be a relative path starting with /"]
+						},
+						{
+							"name": "posterImage",
+							"label": "Video Poster Image",
+							"widget": "image",
+							"required": false
+						},
+						{ "name": "posterAlt", "label": "Poster Image Alt Text", "widget": "string" }
+					]
+				},
+				{
+					"name": "reviews",
+					"label": "Reviews Section",
+					"widget": "object",
+					"fields": [
+						{ "name": "eyebrow", "label": "Eyebrow Text", "widget": "string" },
+						{ "name": "heading", "label": "Heading", "widget": "string" },
+						{
+							"name": "items",
+							"label": "Reviews",
+							"label_singular": "Review",
+							"widget": "list",
+							"fields": [
+								{ "name": "name", "label": "Reviewer Name / Source", "widget": "string" },
+								{ "name": "text", "label": "Review Text", "widget": "text" }
+							]
+						}
+					]
+				},
+				{
+					"name": "closingCta",
+					"label": "Closing CTA Section",
+					"widget": "object",
+					"fields": [
+						{ "name": "heading", "label": "Heading", "widget": "string" },
+						{
+							"name": "bodyPrefix",
+							"label": "Body Text Prefix",
+							"widget": "text",
+							"hint": "The selected location name is appended automatically at the end."
+						},
+						{ "name": "callLabel", "label": "Call Button Label", "widget": "string" },
+						{ "name": "textLabel", "label": "Text Button Label", "widget": "string" }
+					]
+				}
+			]
+		},
+		{
 			"name": "aboutPage",
 			"label": "About Page",
 			"file": "src/cms/about-page.json",
@@ -265,15 +498,7 @@
 									"name": "icon",
 									"label": "Icon",
 									"widget": "select",
-									"options": [
-										"Award",
-										"Heart",
-										"Users",
-										"HandHeart",
-										"Target",
-										"Eye",
-										"Scale"
-									],
+									"options": ["Award", "Heart", "Users", "HandHeart", "Target", "Eye", "Scale"],
 									"hint": "Lucide icon name. Adding new options requires a code change."
 								},
 								{ "name": "title", "label": "Title", "widget": "string" },

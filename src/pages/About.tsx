@@ -11,7 +11,7 @@ const iconMap: Record<string, LucideIcon> = {
 	HandHeart,
 	Target,
 	Eye,
-	Scale,
+	Scale
 }
 
 const About = () => (
@@ -92,7 +92,9 @@ const About = () => (
 						{aboutData.mission.heading}{" "}
 						<span className="text-primary">{aboutData.mission.headingAccent}</span>
 					</h2>
-					<p className="text-lg text-muted-foreground leading-relaxed mb-6">{aboutData.mission.body}</p>
+					<p className="text-lg text-muted-foreground leading-relaxed mb-6">
+						{aboutData.mission.body}
+					</p>
 					<div className="space-y-4 border-l-2 border-primary pl-6">
 						{aboutData.mission.points.map((point) => (
 							<div key={point.heading}>
@@ -198,7 +200,9 @@ const About = () => (
 						{aboutData.vision.heading}{" "}
 						<span className="text-primary">{aboutData.vision.headingAccent}</span>
 					</h2>
-					<p className="text-lg text-muted-foreground leading-relaxed mb-6">{aboutData.vision.body}</p>
+					<p className="text-lg text-muted-foreground leading-relaxed mb-6">
+						{aboutData.vision.body}
+					</p>
 					<p className="font-display uppercase tracking-wider text-sm text-foreground mb-4">
 						{aboutData.vision.bulletsLeadIn}
 					</p>

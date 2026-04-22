@@ -4,13 +4,16 @@ interface ServiceHeroProps {
 	title: string
 	subtitle?: string
 	image: string
+	imageAlt?: string
 }
 
-const ServiceHero = ({ title, subtitle, image }: ServiceHeroProps) => (
+const ServiceHero = ({ title, subtitle, image, imageAlt }: ServiceHeroProps) => (
 	<section className="relative h-[50vh] min-h-[350px] flex items-center overflow-hidden">
 		<div
 			className="absolute inset-0 bg-cover bg-center"
 			style={{ backgroundImage: `url(${image})` }}
+			role="img"
+			aria-label={imageAlt ?? title}
 		/>
 		<div className="absolute inset-0 bg-gradient-to-r from-secondary/90 to-secondary/50" />
 		<div className="container relative z-10">
