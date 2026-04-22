@@ -8,7 +8,7 @@
 		"textCtaLabel": "Text Us",
 		"secondaryCta": {
 			"label": "Our Services",
-			"path": "/plumbing"
+			"path": "/all-services"
 		}
 	},
 	"services": {
