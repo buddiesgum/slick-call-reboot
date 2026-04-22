@@ -5,24 +5,25 @@ import { motion, AnimatePresence } from "framer-motion"
 import LocationSelector from "./LocationSelector"
 import { useLocationContext } from "@/context/LocationContext"
 import hukillsLogo from "@/assets/hukills-logo.png"
+import headerData from "@/cms/header.json"
 
-const plumbingSubLinks = [
-	{ label: "Plumbing", path: "/plumbing" },
-	{ label: "Drain Cleaning", path: "/drain-cleaning" },
-	{ label: "Leak Detection", path: "/leak-detection" },
-	{ label: "Water Heaters", path: "/water-heaters" },
-	{ label: "Septic Services", path: "/septic-services" }
-]
+// ---------------------------------------------------------------------------
+// Types derived from header.json shape
+// ---------------------------------------------------------------------------
 
-type ServiceLink = {
+type NavItem = {
 	label: string
 	path: string
-	subLinks?: { label: string; path: string }[]
+	children?: NavItem[]
 }
 
-const serviceLinks: ServiceLink[] = [
+// ---------------------------------------------------------------------------
+// Footer-only service list (footer is left unchanged per spec)
+// ---------------------------------------------------------------------------
+
+const footerServiceLinks = [
 	{ label: "All Services", path: "/all-services" },
-	{ label: "Plumbing", path: "/plumbing", subLinks: plumbingSubLinks },
+	{ label: "Plumbing", path: "/plumbing" },
 	{ label: "Commercial Plumbing", path: "/commercial-plumbing" },
 	{ label: "New Build Plumbing", path: "/new-build-plumbing" },
 	{ label: "Excavation", path: "/excavation" },
@@ -31,50 +32,84 @@ const serviceLinks: ServiceLink[] = [
 	{ label: "Foundations", path: "/foundations" }
 ]
 
-const plumbingPaths = plumbingSubLinks.map((l) => l.path)
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+/** Recursively collect all descendant paths of a nav item (including its own). */
+function collectPaths(item: NavItem): string[] {
+	const paths = [item.path]
+	if (item.children) {
+		for (const child of item.children) {
+			paths.push(...collectPaths(child))
+		}
+	}
+	return paths
+}
+
+/** Return true if the current pathname lives anywhere inside this nav item's subtree. */
+function isActive(item: NavItem, pathname: string): boolean {
+	return collectPaths(item).includes(pathname)
+}
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
 	const [mobileOpen, setMobileOpen] = useState(false)
-	const [servicesOpen, setServicesOpen] = useState(false)
-	const [plumbingOpen, setPlumbingOpen] = useState(false)
-	const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
-	const [mobilePlumbingOpen, setMobilePlumbingOpen] = useState(false)
+	// Desktop: track which top-level dropdown path is open
+	const [desktopOpen, setDesktopOpen] = useState<string | null>(null)
+	// Desktop: track which nested submenu path is open
+	const [desktopSubOpen, setDesktopSubOpen] = useState<string | null>(null)
+	// Mobile: Set of item paths whose accordion is expanded
+	const [mobileExpanded, setMobileExpanded] = useState<Set<string>>(new Set())
 	const location = useLocation()
 	const { selected: currentLocation } = useLocationContext()
-	const servicesRef = useRef<HTMLDivElement>(null)
+	const dropdownRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
 		const handler = (e: MouseEvent) => {
-			if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
-				setServicesOpen(false)
-				setPlumbingOpen(false)
+			if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+				setDesktopOpen(null)
+				setDesktopSubOpen(null)
 			}
 		}
 		document.addEventListener("mousedown", handler)
 		return () => document.removeEventListener("mousedown", handler)
 	}, [])
 
-	const isPlumbingPage = plumbingPaths.includes(location.pathname)
-	const isServicePage = serviceLinks.some((l) => location.pathname === l.path) || isPlumbingPage
+	const toggleMobileExpanded = (id: string) => {
+		setMobileExpanded((prev) => {
+			const next = new Set(prev)
+			if (next.has(id)) {
+				next.delete(id)
+			} else {
+				next.add(id)
+			}
+			return next
+		})
+	}
+
+	const nav = headerData.nav as NavItem[]
+	const { banner, logo, cta } = headerData
 
 	return (
 		<div className="min-h-screen flex flex-col">
 			{/* Header */}
 			<header className="sticky top-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-secondary">
-				{/* Bible verse bar */}
-				<div>
-					<div className="container flex justify-center py-1">
-						<span className="text-[10px] sm:text-[11px] italic text-primary font-body tracking-wide">
-							"For God so loved the world, that he gave his only begotten Son…" — John 3:16
-						</span>
+				{/* Banner bar */}
+				{banner.enabled && (
+					<div>
+						<div className="container flex justify-center py-1">
+							<span className="text-[10px] sm:text-[11px] italic text-primary font-body tracking-wide">
+								{banner.text}
+							</span>
+						</div>
 					</div>
-				</div>
+				)}
 
 				<div className="container flex items-center justify-between h-14 md:h-18">
 					{/* Logo + Location */}
 					<div className="flex items-center gap-4">
 						<Link to="/" className="flex-shrink-0">
-							<img src={hukillsLogo} alt="Hukill's" className="h-[46px] md:h-16 w-auto" />
+							<img src={logo.image} alt={logo.alt} className="h-[46px] md:h-16 w-auto" />
 						</Link>
 						<div className="hidden sm:block h-6 w-px bg-secondary-foreground/20" />
 						<LocationSelector />
@@ -82,137 +117,132 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
 					{/* Desktop Nav */}
 					<nav className="hidden lg:flex items-center gap-6">
-						<Link
-							to="/"
-							className={`px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
-								location.pathname === "/" ?
-									"text-primary"
-								:	"text-secondary-foreground/80 hover:text-primary"
-							}`}
-						>
-							Home
-						</Link>
+						{nav.map((item) => {
+							const hasChildren = !!item.children?.length
+							const active = isActive(item, location.pathname)
 
-						{/* Services dropdown */}
-						<div
-							ref={servicesRef}
-							className="relative"
-							onMouseEnter={() => setServicesOpen(true)}
-							onMouseLeave={() => setServicesOpen(false)}
-						>
-							<button
-								onClick={() => setServicesOpen(!servicesOpen)}
-								className={`flex items-center gap-1 px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
-									isServicePage ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
-								}`}
-							>
-								Services
-								<ChevronDown
-									className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`}
-								/>
-							</button>
-
-							<AnimatePresence>
-								{servicesOpen && (
-									<motion.div
-										initial={{ opacity: 0, y: 4 }}
-										animate={{ opacity: 1, y: 0 }}
-										exit={{ opacity: 0, y: 4 }}
-										transition={{ duration: 0.15 }}
-										className="absolute top-full left-0 mt-1 w-52 bg-popover border border-border rounded-md shadow-xl z-50"
+							if (!hasChildren) {
+								return (
+									<Link
+										key={item.path}
+										to={item.path}
+										className={`px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
+											active ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
+										}`}
 									>
-										{serviceLinks.map((link) => {
-											const hasSub = !!link.subLinks
-											return (
-												<div
-													key={link.path}
-													className="relative"
-													onMouseEnter={() => hasSub && setPlumbingOpen(true)}
-													onMouseLeave={() => hasSub && setPlumbingOpen(false)}
-												>
-													<Link
-														to={link.path}
-														onClick={() => {
-															setServicesOpen(false)
-															setPlumbingOpen(false)
-														}}
-														className={`flex items-center justify-between px-4 py-2.5 text-sm font-display uppercase tracking-wider transition-colors hover:bg-accent hover:text-primary ${
-															location.pathname === link.path || (hasSub && isPlumbingPage) ?
-																"text-primary bg-accent/50"
-															:	"text-popover-foreground"
-														}`}
-													>
-														{link.label}
-														{hasSub && <ChevronRight className="w-3.5 h-3.5 ml-2" />}
-													</Link>
+										{item.label}
+									</Link>
+								)
+							}
 
-													{/* Nested submenu */}
-													{hasSub && (
-														<AnimatePresence>
-															{plumbingOpen && (
-																<motion.div
-																	initial={{ opacity: 0, x: -4 }}
-																	animate={{ opacity: 1, x: 0 }}
-																	exit={{ opacity: 0, x: -4 }}
-																	transition={{ duration: 0.15 }}
-																	className="absolute top-0 left-full w-56 bg-popover border border-border rounded-md shadow-xl overflow-hidden z-50"
-																>
-																	{link.subLinks!.map((sub) => (
-																		<Link
-																			key={sub.path}
-																			to={sub.path}
-																			onClick={() => {
-																				setServicesOpen(false)
-																				setPlumbingOpen(false)
-																			}}
-																			className={`block px-4 py-2.5 text-sm font-display uppercase tracking-wider transition-colors hover:bg-accent hover:text-primary ${
-																				location.pathname === sub.path ?
-																					"text-primary bg-accent/50"
-																				:	"text-popover-foreground"
-																			}`}
+							// Dropdown item
+							const isOpen = desktopOpen === item.path
+							return (
+								<div
+									key={item.path}
+									ref={dropdownRef}
+									className="relative"
+									onMouseEnter={() => setDesktopOpen(item.path)}
+									onMouseLeave={() => {
+										setDesktopOpen(null)
+										setDesktopSubOpen(null)
+									}}
+								>
+									<button
+										onClick={() => setDesktopOpen(isOpen ? null : item.path)}
+										className={`flex items-center gap-1 px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
+											active ? "text-primary" : "text-secondary-foreground/80 hover:text-primary"
+										}`}
+									>
+										{item.label}
+										<ChevronDown
+											className={`w-3.5 h-3.5 transition-transform ${isOpen ? "rotate-180" : ""}`}
+										/>
+									</button>
+
+									<AnimatePresence>
+										{isOpen && (
+											<motion.div
+												initial={{ opacity: 0, y: 4 }}
+												animate={{ opacity: 1, y: 0 }}
+												exit={{ opacity: 0, y: 4 }}
+												transition={{ duration: 0.15 }}
+												className="absolute top-full left-0 mt-1 w-52 bg-popover border border-border rounded-md shadow-xl z-50"
+											>
+												{item.children!.map((child) => {
+													const hasSub = !!child.children?.length
+													const childActive = isActive(child, location.pathname)
+													const subOpen = desktopSubOpen === child.path
+													return (
+														<div
+															key={child.path}
+															className="relative"
+															onMouseEnter={() => hasSub && setDesktopSubOpen(child.path)}
+															onMouseLeave={() => hasSub && setDesktopSubOpen(null)}
+														>
+															<Link
+																to={child.path}
+																onClick={() => {
+																	setDesktopOpen(null)
+																	setDesktopSubOpen(null)
+																}}
+																className={`flex items-center justify-between px-4 py-2.5 text-sm font-display uppercase tracking-wider transition-colors hover:bg-accent hover:text-primary ${
+																	childActive ?
+																		"text-primary bg-accent/50"
+																	:	"text-popover-foreground"
+																}`}
+															>
+																{child.label}
+																{hasSub && <ChevronRight className="w-3.5 h-3.5 ml-2" />}
+															</Link>
+
+															{/* Nested submenu */}
+															{hasSub && (
+																<AnimatePresence>
+																	{subOpen && (
+																		<motion.div
+																			initial={{ opacity: 0, x: -4 }}
+																			animate={{ opacity: 1, x: 0 }}
+																			exit={{ opacity: 0, x: -4 }}
+																			transition={{ duration: 0.15 }}
+																			className="absolute top-0 left-full w-56 bg-popover border border-border rounded-md shadow-xl overflow-hidden z-50"
 																		>
-																			{sub.label}
-																		</Link>
-																	))}
-																</motion.div>
+																			{child.children!.map((sub) => (
+																				<Link
+																					key={sub.path}
+																					to={sub.path}
+																					onClick={() => {
+																						setDesktopOpen(null)
+																						setDesktopSubOpen(null)
+																					}}
+																					className={`block px-4 py-2.5 text-sm font-display uppercase tracking-wider transition-colors hover:bg-accent hover:text-primary ${
+																						location.pathname === sub.path ?
+																							"text-primary bg-accent/50"
+																						:	"text-popover-foreground"
+																					}`}
+																				>
+																					{sub.label}
+																				</Link>
+																			))}
+																		</motion.div>
+																	)}
+																</AnimatePresence>
 															)}
-														</AnimatePresence>
-													)}
-												</div>
-											)
-										})}
-									</motion.div>
-								)}
-							</AnimatePresence>
-						</div>
-
-						<Link
-							to="/projects"
-							className={`px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
-								location.pathname === "/projects" ?
-									"text-primary"
-								:	"text-secondary-foreground/80 hover:text-primary"
-							}`}
-						>
-							Projects
-						</Link>
-
-						<Link
-							to="/about"
-							className={`px-3 py-2 font-display text-sm uppercase tracking-wider transition-colors ${
-								location.pathname === "/about" ?
-									"text-primary"
-								:	"text-secondary-foreground/80 hover:text-primary"
-							}`}
-						>
-							About Us
-						</Link>
+														</div>
+													)
+												})}
+											</motion.div>
+										)}
+									</AnimatePresence>
+								</div>
+							)
+						})}
 
 						<a
 							href={currentLocation.phone}
 							className="ml-2 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 						>
-							Contact Us
+							{cta.label}
 						</a>
 					</nav>
 
@@ -239,124 +269,132 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 							className="lg:hidden overflow-hidden bg-secondary"
 						>
 							<nav className="container flex flex-col py-4 gap-1">
-								{/* Services accordion */}
-								<button
-									onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-									className={`flex items-center justify-between px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
-										isServicePage ? "text-primary" : "text-secondary-foreground/80"
-									}`}
-								>
-									Services
-									<ChevronDown
-										className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
-									/>
-								</button>
+							{nav.map((item, i) => {
+								const id = String(i)
+								const hasChildren = !!item.children?.length
+								const active = isActive(item, location.pathname)
+								const expanded = mobileExpanded.has(id)
 
-								<AnimatePresence>
-									{mobileServicesOpen && (
-										<motion.div
-											initial={{ height: 0, opacity: 0 }}
-											animate={{ height: "auto", opacity: 1 }}
-											exit={{ height: 0, opacity: 0 }}
-											transition={{ duration: 0.2 }}
-											className="overflow-hidden"
-										>
-											{serviceLinks.map((link) => {
-												const hasSub = !!link.subLinks
-												if (!hasSub) {
-													return (
-														<Link
-															key={link.path}
-															to={link.path}
-															onClick={() => setMobileOpen(false)}
-															className={`block pl-8 pr-4 py-2.5 font-display text-sm uppercase tracking-wider transition-colors ${
-																location.pathname === link.path ?
-																	"text-primary"
-																:	"text-secondary-foreground/60 hover:text-primary"
-															}`}
-														>
-															{link.label}
-														</Link>
-													)
-												}
-												return (
-													<div key={link.path}>
-														<button
-															onClick={() => setMobilePlumbingOpen(!mobilePlumbingOpen)}
-															className={`w-full flex items-center justify-between pl-8 pr-4 py-2.5 font-display text-sm uppercase tracking-wider transition-colors ${
-																isPlumbingPage ? "text-primary" : (
-																	"text-secondary-foreground/60 hover:text-primary"
-																)
-															}`}
-														>
-															{link.label}
-															<ChevronDown
-																className={`w-4 h-4 transition-transform ${mobilePlumbingOpen ? "rotate-180" : ""}`}
-															/>
-														</button>
-														<AnimatePresence>
-															{mobilePlumbingOpen && (
-																<motion.div
-																	initial={{ height: 0, opacity: 0 }}
-																	animate={{ height: "auto", opacity: 1 }}
-																	exit={{ height: 0, opacity: 0 }}
-																	transition={{ duration: 0.2 }}
-																	className="overflow-hidden"
-																>
-																	{link.subLinks!.map((sub) => (
-																		<Link
-																			key={sub.path}
-																			to={sub.path}
-																			onClick={() => setMobileOpen(false)}
-																			className={`block pl-12 pr-4 py-2 font-display text-xs uppercase tracking-wider transition-colors ${
-																				location.pathname === sub.path ?
-																					"text-primary"
-																				:	"text-secondary-foreground/50 hover:text-primary"
-																			}`}
-																		>
-																			{sub.label}
-																		</Link>
-																	))}
-																</motion.div>
-															)}
-														</AnimatePresence>
-													</div>
+								if (!hasChildren) {
+									return (
+										<Link
+											key={id}
+											to={item.path}
+											onClick={() => setMobileOpen(false)}
+											className={`px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
+												active ? "text-primary" : (
+													"text-secondary-foreground/80 hover:text-primary"
 												)
-											})}
-										</motion.div>
-									)}
-								</AnimatePresence>
+											}`}
+										>
+											{item.label}
+										</Link>
+									)
+								}
 
-								<Link
-									to="/projects"
-									onClick={() => setMobileOpen(false)}
-									className={`px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
-										location.pathname === "/projects" ?
-											"text-primary"
-										:	"text-secondary-foreground/80 hover:text-primary"
-									}`}
-								>
-									Projects
-								</Link>
+								return (
+									<div key={id}>
+										<button
+											onClick={() => toggleMobileExpanded(id)}
+												className={`w-full flex items-center justify-between px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
+													active ? "text-primary" : "text-secondary-foreground/80"
+												}`}
+											>
+												{item.label}
+												<ChevronDown
+													className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+												/>
+											</button>
 
-								<Link
-									to="/about"
-									onClick={() => setMobileOpen(false)}
-									className={`px-4 py-3 font-display text-sm uppercase tracking-wider transition-colors ${
-										location.pathname === "/about" ?
-											"text-primary"
-										:	"text-secondary-foreground/80 hover:text-primary"
-									}`}
-								>
-									About Us
-								</Link>
+											<AnimatePresence>
+												{expanded && (
+													<motion.div
+														initial={{ height: 0, opacity: 0 }}
+														animate={{ height: "auto", opacity: 1 }}
+														exit={{ height: 0, opacity: 0 }}
+														transition={{ duration: 0.2 }}
+														className="overflow-hidden"
+													>
+														{item.children!.map((child, j) => {
+															const childId = `${id}.${j}`
+															const hasSub = !!child.children?.length
+															const childActive = isActive(child, location.pathname)
+															const childExpanded = mobileExpanded.has(childId)
+
+															if (!hasSub) {
+																return (
+																	<Link
+																		key={childId}
+																		to={child.path}
+																		onClick={() => setMobileOpen(false)}
+																		className={`block pl-8 pr-4 py-2.5 font-display text-sm uppercase tracking-wider transition-colors ${
+																			childActive ? "text-primary" : (
+																				"text-secondary-foreground/60 hover:text-primary"
+																			)
+																		}`}
+																	>
+																		{child.label}
+																	</Link>
+																)
+															}
+
+															return (
+																<div key={childId}>
+																	<button
+																		onClick={() => toggleMobileExpanded(childId)}
+																		className={`w-full flex items-center justify-between pl-8 pr-4 py-2.5 font-display text-sm uppercase tracking-wider transition-colors ${
+																			childActive ? "text-primary" : (
+																				"text-secondary-foreground/60 hover:text-primary"
+																			)
+																		}`}
+																	>
+																		{child.label}
+																		<ChevronDown
+																			className={`w-4 h-4 transition-transform ${childExpanded ? "rotate-180" : ""}`}
+																		/>
+																	</button>
+																	<AnimatePresence>
+																		{childExpanded && (
+																			<motion.div
+																				initial={{ height: 0, opacity: 0 }}
+																				animate={{ height: "auto", opacity: 1 }}
+																				exit={{ height: 0, opacity: 0 }}
+																				transition={{ duration: 0.2 }}
+																				className="overflow-hidden"
+																			>
+																				{child.children!.map((sub) => (
+																					<Link
+																						key={sub.path}
+																						to={sub.path}
+																						onClick={() => setMobileOpen(false)}
+																						className={`block pl-12 pr-4 py-2 font-display text-xs uppercase tracking-wider transition-colors ${
+																							location.pathname === sub.path ?
+																								"text-primary"
+																							:	"text-secondary-foreground/50 hover:text-primary"
+																						}`}
+																					>
+																						{sub.label}
+																					</Link>
+																				))}
+																			</motion.div>
+																		)}
+																	</AnimatePresence>
+																</div>
+															)
+														})}
+													</motion.div>
+												)}
+											</AnimatePresence>
+										</div>
+									)
+								})}
 
 								<a
 									href={currentLocation.phone}
 									className="mx-4 mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
 								>
 									<Phone className="w-4 h-4" />
-									Contact Us
+									{cta.label}
 								</a>
 							</nav>
 						</motion.div>
@@ -382,7 +420,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 								Services
 							</h4>
 							<div className="flex flex-col gap-2">
-								{serviceLinks.map((link) => (
+								{footerServiceLinks.map((link) => (
 									<Link
 										key={link.path}
 										to={link.path}
