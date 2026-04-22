@@ -1,6 +1,11 @@
 {
 	"slug": "leak-detection",
 	"title": "Leak Detection",
+	"seo": {
+		"title": "Leak Detection | Hukill's Inc.",
+		"description": "Professional leak detection using acoustic ground microphones, tracer gas, utility locating, and camera video inspection for water and gas lines.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782420474-OGQP7Q1FGWXDAM7QLXRS/leak-detection.jpg"
+	},
 	"hero": {
 		"title": "Leak Detection",
 		"subtitle": "Pinpoint accuracy with state-of-the-art equipment — find leaks before they find your foundation.",

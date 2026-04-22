@@ -1,6 +1,11 @@
 {
 	"slug": "septic-services",
 	"title": "Septic Services",
+	"seo": {
+		"title": "Septic Services | Hukill's Inc.",
+		"description": "Septic tank pumping, system installation, design, and repair for residential and commercial properties. Emergency septic response available 24/7.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1558ab56-4173-4f20-8067-eb28ac0ad8d3/P1660752.jpg"
+	},
 	"hero": {
 		"title": "Septic Services",
 		"subtitle": "Pumping, installation, and repair — keep your system running clean, safe, and trouble-free.",

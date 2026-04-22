@@ -43,6 +43,57 @@
 				},
 				{ "name": "title", "label": "Page Title (admin label)", "widget": "string" },
 				{
+					"name": "seo",
+					"label": "SEO",
+					"widget": "object",
+					"required": false,
+					"fields": [
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image in pixels. Only needed for non-Squarespace images with known dimensions."
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image in pixels. Only needed for non-Squarespace images with known dimensions."
+						}
+					]
+				},
+				{
 					"name": "hero",
 					"label": "Hero Section",
 					"widget": "object",
@@ -944,8 +995,22 @@
 						{ "name": "canonicalBase", "label": "Canonical Base URL", "widget": "string" },
 						{ "name": "ogImage", "label": "Default OG Image", "widget": "image" },
 						{ "name": "ogImageAlt", "label": "OG Image Alt Text", "widget": "string" },
-						{ "name": "ogImageWidth", "label": "OG Image Width", "widget": "number", "min": 0 },
-						{ "name": "ogImageHeight", "label": "OG Image Height", "widget": "number", "min": 0 }
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"hint": "Width of the default OG image in pixels, e.g. 1920"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"hint": "Height of the default OG image in pixels, e.g. 1024"
+						}
 					]
 				},
 				{
@@ -961,17 +1026,7 @@
 							"options": [
 								"/",
 								"/all-services",
-								"/plumbing",
-								"/drain-cleaning",
-								"/leak-detection",
-								"/water-heaters",
-								"/septic-services",
-								"/new-build-plumbing",
 								"/commercial-plumbing",
-								"/excavation",
-								"/restoration",
-								"/remodels",
-								"/foundations",
 								"/projects",
 								"/about",
 								"/careers",
@@ -998,6 +1053,30 @@
 							"label": "OG Image Override",
 							"widget": "image",
 							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image override in pixels"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image override in pixels"
 						}
 					]
 				}

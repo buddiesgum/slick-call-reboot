@@ -1,6 +1,11 @@
 {
 	"slug": "excavation",
 	"title": "Excavation",
+	"seo": {
+		"title": "Excavation Services | Hukill's Inc.",
+		"description": "Full excavation including trench digging, asphalt cutting, septic site prep, water and sewer line replacement, and complete project coordination.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422988-2BWY8ZI0XSMDN8KEJSIX/IMG_4911.jpg"
+	},
 	"hero": {
 		"title": "Excavation",
 		"subtitle": "Our fleet of excavators, backhoes, and dump trucks ensures swift and efficient completion of your projects.",

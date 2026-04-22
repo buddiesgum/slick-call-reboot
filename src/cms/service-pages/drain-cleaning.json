@@ -1,6 +1,11 @@
 {
 	"slug": "drain-cleaning",
 	"title": "Drain Cleaning",
+	"seo": {
+		"title": "Drain Cleaning | Hukill's Inc.",
+		"description": "Professional drain cleaning for every drain — from kitchen sinks to sewer lines. Hydrojetting, snaking, root removal, and camera-verified results. 24/7 service.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782424851-239UZ1AYR9TZR5MG8VW6/drains.jpg"
+	},
 	"hero": {
 		"title": "Drain Cleaning",
 		"subtitle": "From a clogged sink to a stubborn sewer line — we have the right tool for every drain.",
