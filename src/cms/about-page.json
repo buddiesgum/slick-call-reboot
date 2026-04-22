@@ -1,0 +1,72 @@
+{
+	"hero": {
+		"eyebrow": "Est. 1979 — Faith. Family. Craft.",
+		"title": "Built on a",
+		"titleAccent": "Higher",
+		"titleSuffix": "Standard",
+		"description": "We're a team of craftsmen, problem-solvers, and people of faith — committed to doing honest work that lasts.",
+		"image": "/media/about/hero.webp",
+		"imageAlt": "The Hukill's crew on a job site at golden hour"
+	},
+	"mission": {
+		"eyebrow": "Our Mission",
+		"heading": "Diligence, Integrity,",
+		"headingAccent": "Faith.",
+		"body": "Our mission is to create an environment where every individual has the opportunity to succeed through diligence, integrity, and faith. By putting Jesus Christ first, we trust that success and prosperity will follow.",
+		"image": "/media/about/mission.webp",
+		"imageAlt": "Craftsman's hands working on copper pipe",
+		"points": [
+			{
+				"heading": "Execution",
+				"body": "High-quality services and products. Strong relationships. Leading by example."
+			},
+			{
+				"heading": "Success",
+				"body": "True success is found in a life dedicated to faith, hard work, and unwavering principles."
+			}
+		]
+	},
+	"values": {
+		"eyebrow": "Our Values",
+		"heading": "What We Stand",
+		"headingAccent": "For",
+		"backgroundImage": "/media/about/values.webp",
+		"items": [
+			{
+				"icon": "Award",
+				"title": "Excellence",
+				"description": "We pursue the highest standards in all of our work. We believe excellence is a habit, not a destination."
+			},
+			{
+				"icon": "Scale",
+				"title": "Integrity",
+				"description": "We act with honesty and fairness in everything we do, ensuring our actions align with our words. We uphold the highest ethical standards and foster an environment of trust and respect."
+			},
+			{
+				"icon": "Users",
+				"title": "Teamwork",
+				"description": "We understand that success is built on collaboration. We value the unique strengths everyone brings to the table."
+			},
+			{
+				"icon": "HandHeart",
+				"title": "Servant-Hearted",
+				"description": "We lead by serving. We aim to ensure our work not only brings prosperity but also blesses the customers we serve."
+			}
+		]
+	},
+	"vision": {
+		"eyebrow": "Our Vision",
+		"heading": "Measured by",
+		"headingAccent": "Impact.",
+		"body": "Our vision is to build a company where success isn't measured only by achievements, but by the impact we have on others. We strive to be a reflection of Jesus Christ in all that we do — so that everyone we encounter, employees, customers, and partners alike, can witness His love and transforming power.",
+		"bulletsLeadIn": "Through faith, integrity, excellence, and hard work, we will:",
+		"bullets": ["Inspire change", "Foster growth", "Glorify God in every aspect of our business"],
+		"image": "/media/about/vision.webp",
+		"imageAlt": "Construction cranes silhouetted at sunrise"
+	},
+	"accountability": {
+		"eyebrow": "— Accountability Statement —",
+		"heading": "We Hold Each Other to a Higher Standard.",
+		"body": "As a company, we commit to holding one another accountable to these principles. If we, individually or as a team, fall short of these values, we will encourage and correct each other with honesty, grace, and humility. Together, we will strive to stay true to our faith, integrity, and mission — ensuring that our actions always reflect the love of Jesus Christ."
+	}
+}

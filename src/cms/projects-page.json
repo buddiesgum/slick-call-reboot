@@ -1,0 +1,18 @@
+{
+	"hero": {
+		"eyebrow": "Our",
+		"titleAccent": "Projects",
+		"description": "Browse our portfolio of completed work across plumbing, restoration, excavation, remodels, and foundations.",
+		"image": "/media/projects/foundation-repair-fw/hero.webp"
+	},
+	"filters": {
+		"marketAllLabel": "All Projects",
+		"categoryAllLabel": "All"
+	},
+	"card": {
+		"ctaLabel": "View Project"
+	},
+	"modal": {
+		"galleryHeading": "Gallery"
+	}
+}

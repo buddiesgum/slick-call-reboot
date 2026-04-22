@@ -1,285 +1,282 @@
-import Layout from "@/components/Layout";
-import { Shield } from "lucide-react";
+import Layout from "@/components/Layout"
+import Seo from "@/components/Seo"
+import { Shield } from "lucide-react"
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section className="mb-10">
-    <h2 className="font-display uppercase text-2xl md:text-3xl tracking-wider text-foreground mb-4 border-l-4 border-primary pl-4">
-      {title}
-    </h2>
-    <div className="space-y-4 text-foreground/80 leading-relaxed font-body">{children}</div>
-  </section>
-);
+	<section className="mb-10">
+		<h2 className="font-display uppercase text-2xl md:text-3xl tracking-wider text-foreground mb-4 border-l-4 border-primary pl-4">
+			{title}
+		</h2>
+		<div className="space-y-4 text-foreground/80 leading-relaxed font-body">{children}</div>
+	</section>
+)
 
 const SubSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="mb-6">
-    <h3 className="font-display uppercase text-base tracking-wider text-primary mb-2">{title}</h3>
-    <div className="space-y-3 text-foreground/80 leading-relaxed font-body">{children}</div>
-  </div>
-);
+	<div className="mb-6">
+		<h3 className="font-display uppercase text-base tracking-wider text-primary mb-2">{title}</h3>
+		<div className="space-y-3 text-foreground/80 leading-relaxed font-body">{children}</div>
+	</div>
+)
 
 const PrivacyPolicy = () => {
-  return (
-    <Layout>
-      {/* Hero */}
-      <section className="section-dark py-20 md:py-28">
-        <div className="container">
-          <div className="flex items-center gap-3 mb-4">
-            <Shield className="w-6 h-6 text-primary" />
-            <span className="font-display uppercase text-xs tracking-[0.2em] text-primary">
-              Legal
-            </span>
-          </div>
-          <h1 className="font-display uppercase text-4xl md:text-6xl tracking-wider text-background mb-4">
-            Privacy Policy
-          </h1>
-          <p className="text-background/70 font-body max-w-2xl">
-            Effective date: January 1, 2023
-          </p>
-        </div>
-      </section>
+	return (
+		<Layout>
+			<Seo route="/privacy-policy" />
+			{/* Hero */}
+			<section className="section-dark py-20 md:py-28">
+				<div className="container">
+					<div className="flex items-center gap-3 mb-4">
+						<Shield className="w-6 h-6 text-primary" />
+						<span className="font-display uppercase text-xs tracking-[0.2em] text-primary">
+							Legal
+						</span>
+					</div>
+					<h1 className="font-display uppercase text-4xl md:text-6xl tracking-wider text-background mb-4">
+						Privacy Policy
+					</h1>
+					<p className="text-background/70 font-body max-w-2xl">Effective date: January 1, 2023</p>
+				</div>
+			</section>
 
-      {/* Content */}
-      <section className="py-16 md:py-20 bg-background">
-        <div className="container max-w-4xl">
-          <p className="text-foreground/80 leading-relaxed font-body mb-6">
-            Hukill's inc. ("us", "we", or "our") operates the www.hukills.com website
-            (hereinafter referred to as the "Service").
-          </p>
-          <p className="text-foreground/80 leading-relaxed font-body mb-6">
-            This page informs you of our policies regarding the collection, use and disclosure
-            of personal data when you use our Service and the choices you have associated with
-            that data.
-          </p>
-          <p className="text-foreground/80 leading-relaxed font-body mb-10">
-            We use your data to provide and improve the Service. By using the Service, you agree
-            to the collection and use of information in accordance with this policy. Unless
-            otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have
-            the same meanings as in our Terms and Conditions.
-          </p>
+			{/* Content */}
+			<section className="py-16 md:py-20 bg-background">
+				<div className="container max-w-4xl">
+					<p className="text-foreground/80 leading-relaxed font-body mb-6">
+						Hukill's inc. ("us", "we", or "our") operates the www.hukills.com website (hereinafter
+						referred to as the "Service").
+					</p>
+					<p className="text-foreground/80 leading-relaxed font-body mb-6">
+						This page informs you of our policies regarding the collection, use and disclosure of
+						personal data when you use our Service and the choices you have associated with that
+						data.
+					</p>
+					<p className="text-foreground/80 leading-relaxed font-body mb-10">
+						We use your data to provide and improve the Service. By using the Service, you agree to
+						the collection and use of information in accordance with this policy. Unless otherwise
+						defined in this Privacy Policy, the terms used in this Privacy Policy have the same
+						meanings as in our Terms and Conditions.
+					</p>
 
-          <Section title="Definitions">
-            <SubSection title="Service">
-              <p>Service means the www.hukills.com website operated by Hukill's inc.</p>
-            </SubSection>
-            <SubSection title="Personal Data">
-              <p>
-                Personal Data means data about a living individual who can be identified from
-                those data (or from those and other information either in our possession or
-                likely to come into our possession).
-              </p>
-            </SubSection>
-            <SubSection title="Usage Data">
-              <p>
-                Usage Data is data collected automatically either generated by the use of the
-                Service or from the Service infrastructure itself (for example, the duration of
-                a page visit).
-              </p>
-            </SubSection>
-            <SubSection title="Cookies">
-              <p>Cookies are small files stored on your device (computer or mobile device).</p>
-            </SubSection>
-            <SubSection title="Data Controller">
-              <p>
-                Data Controller means the natural or legal person who (either alone or jointly
-                or in common with other persons) determines the purposes for which and the
-                manner in which any personal information are, or are to be, processed. For the
-                purpose of this Privacy Policy, we are a Data Controller of your Personal Data.
-              </p>
-            </SubSection>
-            <SubSection title="Data Processors (or Service Providers)">
-              <p>
-                Data Processor (or Service Provider) means any natural or legal person who
-                processes the data on behalf of the Data Controller. We may use the services of
-                various Service Providers in order to process your data more effectively.
-              </p>
-            </SubSection>
-            <SubSection title="Data Subject (or User)">
-              <p>
-                Data Subject is any living individual who is using our Service and is the
-                subject of Personal Data.
-              </p>
-            </SubSection>
-          </Section>
+					<Section title="Definitions">
+						<SubSection title="Service">
+							<p>Service means the www.hukills.com website operated by Hukill's inc.</p>
+						</SubSection>
+						<SubSection title="Personal Data">
+							<p>
+								Personal Data means data about a living individual who can be identified from those
+								data (or from those and other information either in our possession or likely to come
+								into our possession).
+							</p>
+						</SubSection>
+						<SubSection title="Usage Data">
+							<p>
+								Usage Data is data collected automatically either generated by the use of the
+								Service or from the Service infrastructure itself (for example, the duration of a
+								page visit).
+							</p>
+						</SubSection>
+						<SubSection title="Cookies">
+							<p>Cookies are small files stored on your device (computer or mobile device).</p>
+						</SubSection>
+						<SubSection title="Data Controller">
+							<p>
+								Data Controller means the natural or legal person who (either alone or jointly or in
+								common with other persons) determines the purposes for which and the manner in which
+								any personal information are, or are to be, processed. For the purpose of this
+								Privacy Policy, we are a Data Controller of your Personal Data.
+							</p>
+						</SubSection>
+						<SubSection title="Data Processors (or Service Providers)">
+							<p>
+								Data Processor (or Service Provider) means any natural or legal person who processes
+								the data on behalf of the Data Controller. We may use the services of various
+								Service Providers in order to process your data more effectively.
+							</p>
+						</SubSection>
+						<SubSection title="Data Subject (or User)">
+							<p>
+								Data Subject is any living individual who is using our Service and is the subject of
+								Personal Data.
+							</p>
+						</SubSection>
+					</Section>
 
-          <Section title="Information Collection and Use">
-            <p>
-              We collect several different types of information for various purposes to provide
-              and improve our Service to you.
-            </p>
-            <SubSection title="Personal Data">
-              <p>
-                While using our Service, we may ask you to provide us with certain personally
-                identifiable information that can be used to contact or identify you ("Personal
-                Data"). Personally identifiable information may include, but is not limited to:
-              </p>
-              <ul className="list-disc list-inside space-y-1 ml-2">
-                <li>Email address</li>
-                <li>First name and last name</li>
-                <li>Phone number</li>
-                <li>Address, State, Province, ZIP/Postal code, City</li>
-              </ul>
-            </SubSection>
-            <SubSection title="Cookies and Usage Data">
-              <p>
-                We may use your Personal Data to contact you with newsletters, marketing or
-                promotional materials and other information that may be of interest to you. You
-                may opt out of receiving any, or all, of these communications from us by
-                following the unsubscribe link or the instructions provided in any email we
-                send.
-              </p>
-            </SubSection>
-            <SubSection title="Usage Data">
-              <p>
-                We may also collect information that your browser sends whenever you visit our
-                Service or when you access the Service by or through a mobile device ("Usage
-                Data").
-              </p>
-              <p>
-                This Usage Data may include information such as your computer's Internet
-                Protocol address (e.g. IP address), browser type, browser version, the pages of
-                our Service that you visit, the time and date of your visit, the time spent on
-                those pages, unique device identifiers and other diagnostic data.
-              </p>
-              <p>
-                When you access the Service with a mobile device, this Usage Data may include
-                information such as the type of mobile device you use, your mobile device
-                unique ID, the IP address of your mobile device, your mobile operating system,
-                the type of mobile Internet browser you use, unique device identifiers and
-                other diagnostic data.
-              </p>
-            </SubSection>
-            <SubSection title="Location Data">
-              <p>
-                We may use and store information about your location if you give us permission
-                to do so ("Location Data"). We use this data to provide features of our
-                Service, to improve and customize our Service. You can enable or disable
-                location services when you use our Service at any time by way of your device
-                settings.
-              </p>
-            </SubSection>
-            <SubSection title="Tracking Cookies Data">
-              <p>
-                We use cookies and similar tracking technologies to track the activity on our
-                Service and we hold certain information.
-              </p>
-              <p>
-                Cookies are files with a small amount of data which may include an anonymous
-                unique identifier. Cookies are sent to your browser from a website and stored
-                on your device. Other tracking technologies are also used such as beacons, tags
-                and scripts to collect and track information and to improve and analyze our
-                Service.
-              </p>
-              <p>
-                You can instruct your browser to refuse all cookies or to indicate when a
-                cookie is being sent. However, if you do not accept cookies, you may not be
-                able to use some portions of our Service.
-              </p>
-              <p>Examples of Cookies we use:</p>
-              <ul className="list-disc list-inside space-y-1 ml-2">
-                <li>Session Cookies — used to operate our Service.</li>
-                <li>Preference Cookies — used to remember your preferences and settings.</li>
-                <li>Security Cookies — used for security purposes.</li>
-              </ul>
-            </SubSection>
-          </Section>
+					<Section title="Information Collection and Use">
+						<p>
+							We collect several different types of information for various purposes to provide and
+							improve our Service to you.
+						</p>
+						<SubSection title="Personal Data">
+							<p>
+								While using our Service, we may ask you to provide us with certain personally
+								identifiable information that can be used to contact or identify you ("Personal
+								Data"). Personally identifiable information may include, but is not limited to:
+							</p>
+							<ul className="list-disc list-inside space-y-1 ml-2">
+								<li>Email address</li>
+								<li>First name and last name</li>
+								<li>Phone number</li>
+								<li>Address, State, Province, ZIP/Postal code, City</li>
+							</ul>
+						</SubSection>
+						<SubSection title="Cookies and Usage Data">
+							<p>
+								We may use your Personal Data to contact you with newsletters, marketing or
+								promotional materials and other information that may be of interest to you. You may
+								opt out of receiving any, or all, of these communications from us by following the
+								unsubscribe link or the instructions provided in any email we send.
+							</p>
+						</SubSection>
+						<SubSection title="Usage Data">
+							<p>
+								We may also collect information that your browser sends whenever you visit our
+								Service or when you access the Service by or through a mobile device ("Usage Data").
+							</p>
+							<p>
+								This Usage Data may include information such as your computer's Internet Protocol
+								address (e.g. IP address), browser type, browser version, the pages of our Service
+								that you visit, the time and date of your visit, the time spent on those pages,
+								unique device identifiers and other diagnostic data.
+							</p>
+							<p>
+								When you access the Service with a mobile device, this Usage Data may include
+								information such as the type of mobile device you use, your mobile device unique ID,
+								the IP address of your mobile device, your mobile operating system, the type of
+								mobile Internet browser you use, unique device identifiers and other diagnostic
+								data.
+							</p>
+						</SubSection>
+						<SubSection title="Location Data">
+							<p>
+								We may use and store information about your location if you give us permission to do
+								so ("Location Data"). We use this data to provide features of our Service, to
+								improve and customize our Service. You can enable or disable location services when
+								you use our Service at any time by way of your device settings.
+							</p>
+						</SubSection>
+						<SubSection title="Tracking Cookies Data">
+							<p>
+								We use cookies and similar tracking technologies to track the activity on our
+								Service and we hold certain information.
+							</p>
+							<p>
+								Cookies are files with a small amount of data which may include an anonymous unique
+								identifier. Cookies are sent to your browser from a website and stored on your
+								device. Other tracking technologies are also used such as beacons, tags and scripts
+								to collect and track information and to improve and analyze our Service.
+							</p>
+							<p>
+								You can instruct your browser to refuse all cookies or to indicate when a cookie is
+								being sent. However, if you do not accept cookies, you may not be able to use some
+								portions of our Service.
+							</p>
+							<p>Examples of Cookies we use:</p>
+							<ul className="list-disc list-inside space-y-1 ml-2">
+								<li>Session Cookies — used to operate our Service.</li>
+								<li>Preference Cookies — used to remember your preferences and settings.</li>
+								<li>Security Cookies — used for security purposes.</li>
+							</ul>
+						</SubSection>
+					</Section>
 
-          <Section title="Use of Data">
-            <p>Hukill's inc. uses the collected data for various purposes:</p>
-            <ul className="list-disc list-inside space-y-1 ml-2">
-              <li>To provide and maintain our Service</li>
-              <li>To notify you about changes to our Service</li>
-              <li>To allow you to participate in interactive features of our Service when you choose to do so</li>
-              <li>To provide customer support</li>
-              <li>To gather analysis or valuable information so that we can improve our Service</li>
-              <li>To monitor the usage of our Service</li>
-              <li>To detect, prevent and address technical issues</li>
-            </ul>
-          </Section>
+					<Section title="Use of Data">
+						<p>Hukill's inc. uses the collected data for various purposes:</p>
+						<ul className="list-disc list-inside space-y-1 ml-2">
+							<li>To provide and maintain our Service</li>
+							<li>To notify you about changes to our Service</li>
+							<li>
+								To allow you to participate in interactive features of our Service when you choose
+								to do so
+							</li>
+							<li>To provide customer support</li>
+							<li>To gather analysis or valuable information so that we can improve our Service</li>
+							<li>To monitor the usage of our Service</li>
+							<li>To detect, prevent and address technical issues</li>
+						</ul>
+					</Section>
 
-          <Section title="Retention of Data">
-            <p>
-              Hukill's inc. will retain your Personal Data only for as long as is necessary for
-              the purposes set out in this Privacy Policy. We will retain and use your Personal
-              Data to the extent necessary to comply with our legal obligations (for example,
-              if we are required to retain your data to comply with applicable laws), resolve
-              disputes and enforce our legal agreements and policies.
-            </p>
-            <p>
-              Your consent to this Privacy Policy followed by your submission of such
-              information represents your agreement to that transfer.
-            </p>
-            <p>
-              Hukill's inc. will take all the steps necessary to ensure that your data is
-              treated securely and in accordance with this Privacy Policy and no transfer of
-              your Personal Data will take place to an organization or a country unless there
-              are adequate controls in place including the security of your data and other
-              personal information.
-            </p>
-          </Section>
+					<Section title="Retention of Data">
+						<p>
+							Hukill's inc. will retain your Personal Data only for as long as is necessary for the
+							purposes set out in this Privacy Policy. We will retain and use your Personal Data to
+							the extent necessary to comply with our legal obligations (for example, if we are
+							required to retain your data to comply with applicable laws), resolve disputes and
+							enforce our legal agreements and policies.
+						</p>
+						<p>
+							Your consent to this Privacy Policy followed by your submission of such information
+							represents your agreement to that transfer.
+						</p>
+						<p>
+							Hukill's inc. will take all the steps necessary to ensure that your data is treated
+							securely and in accordance with this Privacy Policy and no transfer of your Personal
+							Data will take place to an organization or a country unless there are adequate
+							controls in place including the security of your data and other personal information.
+						</p>
+					</Section>
 
-          <Section title="Disclosure of Data">
-            <SubSection title="Disclosure for Law Enforcement">
-              <p>
-                Under certain circumstances, Hukill's inc. may be required to disclose your
-                Personal Data if required to do so by law or in response to valid requests by
-                public authorities (e.g. a court or a government agency).
-              </p>
-            </SubSection>
-            <SubSection title="Security of Data">
-              <p>
-                The security of your data is important to us but remember that no method of
-                transmission over the Internet or method of electronic storage is 100% secure.
-                While we strive to use commercially acceptable means to protect your Personal
-                Data, we cannot guarantee its absolute security.
-              </p>
-              <p>
-                We may employ third party companies and individuals to facilitate our Service
-                ("Service Providers"), provide the Service on our behalf, perform
-                Service-related services or assist us in analyzing how our Service is used.
-                These third parties have access to your Personal Data only to perform these
-                tasks on our behalf and are obligated not to disclose or use it for any other
-                purpose.
-              </p>
-            </SubSection>
-          </Section>
+					<Section title="Disclosure of Data">
+						<SubSection title="Disclosure for Law Enforcement">
+							<p>
+								Under certain circumstances, Hukill's inc. may be required to disclose your Personal
+								Data if required to do so by law or in response to valid requests by public
+								authorities (e.g. a court or a government agency).
+							</p>
+						</SubSection>
+						<SubSection title="Security of Data">
+							<p>
+								The security of your data is important to us but remember that no method of
+								transmission over the Internet or method of electronic storage is 100% secure. While
+								we strive to use commercially acceptable means to protect your Personal Data, we
+								cannot guarantee its absolute security.
+							</p>
+							<p>
+								We may employ third party companies and individuals to facilitate our Service
+								("Service Providers"), provide the Service on our behalf, perform Service-related
+								services or assist us in analyzing how our Service is used. These third parties have
+								access to your Personal Data only to perform these tasks on our behalf and are
+								obligated not to disclose or use it for any other purpose.
+							</p>
+						</SubSection>
+					</Section>
 
-          <Section title="Analytics">
-            <SubSection title="Google Analytics">
-              <p>
-                Google Analytics is a web analytics service offered by Google that tracks and
-                reports website traffic. Google uses the data collected to track and monitor
-                the use of our Service. This data is shared with other Google services. Google
-                may use the collected data to contextualize and personalize the ads of its own
-                advertising network.
-              </p>
-              <p>
-                For more information on the privacy practices of Google, please visit:{" "}
-                <a
-                  href="https://policies.google.com/privacy?hl=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  https://policies.google.com/privacy
-                </a>
-              </p>
-            </SubSection>
-          </Section>
+					<Section title="Analytics">
+						<SubSection title="Google Analytics">
+							<p>
+								Google Analytics is a web analytics service offered by Google that tracks and
+								reports website traffic. Google uses the data collected to track and monitor the use
+								of our Service. This data is shared with other Google services. Google may use the
+								collected data to contextualize and personalize the ads of its own advertising
+								network.
+							</p>
+							<p>
+								For more information on the privacy practices of Google, please visit:{" "}
+								<a
+									href="https://policies.google.com/privacy?hl=en"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-primary hover:underline"
+								>
+									https://policies.google.com/privacy
+								</a>
+							</p>
+						</SubSection>
+					</Section>
 
-          <Section title="Changes to This Privacy Policy">
-            <p>
-              We may update our Privacy Policy from time to time. We will notify you of any
-              changes by posting the new Privacy Policy on this page.
-            </p>
-            <p>
-              You are advised to review this Privacy Policy periodically for any changes.
-              Changes to this Privacy Policy are effective when they are posted on this page.
-            </p>
-          </Section>
-        </div>
-      </section>
-    </Layout>
-  );
-};
+					<Section title="Changes to This Privacy Policy">
+						<p>
+							We may update our Privacy Policy from time to time. We will notify you of any changes
+							by posting the new Privacy Policy on this page.
+						</p>
+						<p>
+							You are advised to review this Privacy Policy periodically for any changes. Changes to
+							this Privacy Policy are effective when they are posted on this page.
+						</p>
+					</Section>
+				</div>
+			</section>
+		</Layout>
+	)
+}
 
-export default PrivacyPolicy;
+export default PrivacyPolicy

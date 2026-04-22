@@ -1,0 +1,59 @@
+{
+	"default": {
+		"siteName": "Hukill's Inc.",
+		"title": "Hukill's Inc. | Plumbing, Excavation, Foundations & Restoration",
+		"description": "Family-owned plumbing, excavation, foundation, septic, and restoration services — serving communities for over 40 years. Available 24/7.",
+		"canonicalBase": "https://www.hukills.com",
+		"ogImage": "/media/og.webp",
+		"ogImageAlt": "Hukill's Inc. — plumbing, excavation, foundations & restoration",
+		"ogImageWidth": 1920,
+		"ogImageHeight": 1024
+	},
+	"routes": [
+		{
+			"path": "/",
+			"title": "Hukill's Inc. | One Call Does It All",
+			"description": "Plumbing, restoration, excavation, remodels, and foundations — serving Fort Worth, TX and Medford, OR for over 40 years. Available 24/7."
+		},
+		{
+			"path": "/all-services",
+			"title": "All Services | Hukill's Inc.",
+			"description": "Browse every service Hukill's offers — plumbing, drain cleaning, septic, excavation, restoration, remodels, foundations, and commercial work. Available 24/7."
+		},
+		{
+			"path": "/commercial-plumbing",
+			"title": "Commercial Plumbing | Hukill's Inc.",
+			"description": "Commercial plumbing for excavation, sewer mains, water lines, underground utilities, and emergency failures. Built for property managers and contractors."
+		},
+		{
+			"path": "/projects",
+			"title": "Our Projects | Hukill's Inc.",
+			"description": "Browse Hukill's portfolio of completed foundation, restoration, remodel, plumbing, and excavation projects across Fort Worth, TX and Medford, OR."
+		},
+		{
+			"path": "/about",
+			"title": "About Hukill's Inc. | Est. 1979",
+			"description": "Family-owned since 1979, Hukill's is built on faith, integrity, and craftsmanship. Learn about our mission, values, and the team behind the work."
+		},
+		{
+			"path": "/careers",
+			"title": "Careers at Hukill's Inc.",
+			"description": "Join Hukill's team of skilled tradespeople in plumbing, restoration, excavation, and construction. Now hiring in Fort Worth, TX and Medford, OR."
+		},
+		{
+			"path": "/contact",
+			"title": "Contact Hukill's Inc. | Fort Worth & Medford",
+			"description": "Reach Hukill's in Fort Worth, TX at (817) 672-7555 or Medford, OR at (541) 734-9000. Available 24/7 for emergency service."
+		},
+		{
+			"path": "/call-us",
+			"title": "Contact Hukill's Inc. | Fort Worth & Medford",
+			"description": "Reach Hukill's in Fort Worth, TX at (817) 672-7555 or Medford, OR at (541) 734-9000. Available 24/7 for emergency service."
+		},
+		{
+			"path": "/privacy-policy",
+			"title": "Privacy Policy | Hukill's Inc.",
+			"description": "Read the Hukill's Inc. privacy policy for information about how we collect, use, and protect your personal data on hukills.com."
+		}
+	]
+}

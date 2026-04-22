@@ -1,0 +1,42 @@
+{
+	"banner": {
+		"enabled": true,
+		"text": "\"For God so loved the world, that he gave his only begotten Son…\" — John 3:16"
+	},
+	"logo": {
+		"image": "/media/hukills-logo.png",
+		"alt": "Hukill's"
+	},
+	"nav": [
+		{ "label": "Home", "path": "/" },
+		{
+			"label": "Services",
+			"path": "/all-services",
+			"children": [
+				{ "label": "All Services", "path": "/all-services" },
+				{
+					"label": "Plumbing",
+					"path": "/plumbing",
+					"children": [
+						{ "label": "Plumbing", "path": "/plumbing" },
+						{ "label": "Drain Cleaning", "path": "/drain-cleaning" },
+						{ "label": "Leak Detection", "path": "/leak-detection" },
+						{ "label": "Water Heaters", "path": "/water-heaters" },
+						{ "label": "Septic Services", "path": "/septic-services" }
+					]
+				},
+				{ "label": "Commercial Plumbing", "path": "/commercial-plumbing" },
+				{ "label": "New Build Plumbing", "path": "/new-build-plumbing" },
+				{ "label": "Excavation", "path": "/excavation" },
+				{ "label": "Restoration", "path": "/restoration" },
+				{ "label": "Remodels", "path": "/remodels" },
+				{ "label": "Foundations", "path": "/foundations" }
+			]
+		},
+		{ "label": "Projects", "path": "/projects" },
+		{ "label": "About Us", "path": "/about" }
+	],
+	"cta": {
+		"label": "Contact Us"
+	}
+}
