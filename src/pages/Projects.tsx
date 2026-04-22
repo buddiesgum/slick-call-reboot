@@ -4,6 +4,7 @@ import { Play, X, ArrowRight } from "lucide-react"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import { projects, type Project } from "@/cms/projects"
+import projectsPage from "@/cms/projects-page.json"
 
 const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))]
 const markets = ["All", "Residential", "Commercial"] as const
@@ -27,7 +28,10 @@ const Projects = () => {
 			{/* Hero */}
 			<section className="relative py-24 md:py-32 overflow-hidden">
 				<div className="absolute inset-0 bg-secondary" />
-				<div className="absolute inset-0 opacity-20 bg-[url('/media/projects/foundation-repair-fw/hero.webp')] bg-cover bg-center" />
+				<div
+					className="absolute inset-0 opacity-20 bg-cover bg-center"
+					style={{ backgroundImage: `url('${projectsPage.heroImage}')` }}
+				/>
 				<div className="container relative z-10">
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}

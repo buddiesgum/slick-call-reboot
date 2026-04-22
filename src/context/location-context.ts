@@ -12,7 +12,7 @@ export interface Location {
 
 const locationModules = import.meta.glob<Location>("../cms/locations/*.json", {
 	eager: true,
-	import: "default",
+	import: "default"
 })
 
 const FALLBACK_LOCATION: Location = {
@@ -22,14 +22,15 @@ const FALLBACK_LOCATION: Location = {
 	short: "Location unavailable",
 	address: "",
 	phone: "",
-	phoneDisplay: "",
+	phoneDisplay: ""
 }
 
 const sortedLocations = Object.values(locationModules).sort(
-	(a, b) => a.order - b.order || a.id.localeCompare(b.id),
+	(a, b) => a.order - b.order || a.id.localeCompare(b.id)
 )
 
-export const locations: Location[] = sortedLocations.length > 0 ? sortedLocations : [FALLBACK_LOCATION]
+export const locations: Location[] =
+	sortedLocations.length > 0 ? sortedLocations : [FALLBACK_LOCATION]
 
 interface LocationContextType {
 	selected: Location
@@ -38,7 +39,7 @@ interface LocationContextType {
 
 export const LocationContext = createContext<LocationContextType>({
 	selected: locations[0],
-	setSelected: () => {},
+	setSelected: () => {}
 })
 
 export const useLocationContext = () => useContext(LocationContext)

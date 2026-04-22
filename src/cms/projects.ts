@@ -6,16 +6,16 @@ export interface Project {
 	market: "Residential" | "Commercial"
 	heroImage: string
 	gallery: string[]
-	videoUrl?: string
+	videoUrl: string // "" when not set in CMS
 	description: string
 	location: string
 }
 
 const projectModules = import.meta.glob<Project>("./projects/*.json", {
 	eager: true,
-	import: "default",
+	import: "default"
 })
 
 export const projects: Project[] = Object.values(projectModules).sort(
-	(a, b) => a.order - b.order || a.id.localeCompare(b.id),
+	(a, b) => a.order - b.order || a.id.localeCompare(b.id)
 )

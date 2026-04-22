@@ -122,7 +122,12 @@
 					"value_type": "int",
 					"hint": "Lower numbers appear first. The first location (lowest order) is the default selected location."
 				},
-				{ "name": "label", "label": "Full Label", "widget": "string", "hint": "e.g. 'Fort Worth, TX'" },
+				{
+					"name": "label",
+					"label": "Full Label",
+					"widget": "string",
+					"hint": "e.g. 'Fort Worth, TX'"
+				},
 				{ "name": "short", "label": "Short Name", "widget": "string", "hint": "e.g. 'Fort Worth'" },
 				{ "name": "address", "label": "Street Address", "widget": "string" },
 				{
@@ -144,6 +149,19 @@
 		}
 	],
 	"singletons": [
+		{
+			"name": "projectsPage",
+			"label": "Projects Page",
+			"file": "src/cms/projects-page.json",
+			"fields": [
+				{
+					"name": "heroImage",
+					"label": "Hero Background Image",
+					"widget": "image",
+					"hint": "Displayed as the background of the Projects page hero section at 20% opacity."
+				}
+			]
+		},
 		{
 			"name": "footer",
 			"label": "Footer",

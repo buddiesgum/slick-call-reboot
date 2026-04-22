@@ -44,15 +44,15 @@ const Index = () => {
 							over 40 years.
 						</p>
 						<div className="mt-8 flex flex-wrap gap-4">
-						<a
-							href={selected.phone}
-							className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
-						>
-							<Phone className="w-5 h-5" />
-							Call Now
-						</a>
-						<a
-							href={`sms:${selected.phone.replace("tel:", "")}`}
+							<a
+								href={selected.phone}
+								className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
+							>
+								<Phone className="w-5 h-5" />
+								Call Now
+							</a>
+							<a
+								href={`sms:${selected.phone.replace("tel:", "")}`}
 								className="inline-flex items-center gap-2 bg-primary-foreground text-secondary px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground/90 transition-colors rounded-sm"
 							>
 								<MessageSquare className="w-5 h-5" />
@@ -129,13 +129,13 @@ const Index = () => {
 									</li>
 								))}
 							</ul>
-						<a
-							href={selected.phone}
-							className="mt-8 inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
-						>
-							<Phone className="w-5 h-5" />
-							Get In Touch
-						</a>
+							<a
+								href={selected.phone}
+								className="mt-8 inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
+							>
+								<Phone className="w-5 h-5" />
+								Get In Touch
+							</a>
 						</motion.div>
 						<motion.div
 							initial={{ opacity: 0, x: 30 }}
