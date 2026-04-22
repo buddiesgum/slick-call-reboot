@@ -5,8 +5,7 @@ import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import ServiceImageGrid from "@/components/ServiceImageGrid"
 import { featuredServices } from "@/data/services"
-
-const PHONE_NUMBER = "tel:+15555555555"
+import { useLocationContext } from "@/context/location-context"
 
 const fadeUp = {
 	initial: { opacity: 0, y: 30 },
@@ -14,6 +13,7 @@ const fadeUp = {
 }
 
 const Index = () => {
+	const { selected } = useLocationContext()
 	return (
 		<Layout>
 			<Seo route="/" />
@@ -44,15 +44,15 @@ const Index = () => {
 							over 40 years.
 						</p>
 						<div className="mt-8 flex flex-wrap gap-4">
-							<a
-								href={PHONE_NUMBER}
-								className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
-							>
-								<Phone className="w-5 h-5" />
-								Call Now
-							</a>
-							<a
-								href={`sms:${PHONE_NUMBER.replace("tel:", "")}`}
+						<a
+							href={selected.phone}
+							className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
+						>
+							<Phone className="w-5 h-5" />
+							Call Now
+						</a>
+						<a
+							href={`sms:${selected.phone.replace("tel:", "")}`}
 								className="inline-flex items-center gap-2 bg-primary-foreground text-secondary px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground/90 transition-colors rounded-sm"
 							>
 								<MessageSquare className="w-5 h-5" />
@@ -129,13 +129,13 @@ const Index = () => {
 									</li>
 								))}
 							</ul>
-							<a
-								href={PHONE_NUMBER}
-								className="mt-8 inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
-							>
-								<Phone className="w-5 h-5" />
-								Get In Touch
-							</a>
+						<a
+							href={selected.phone}
+							className="mt-8 inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
+						>
+							<Phone className="w-5 h-5" />
+							Get In Touch
+						</a>
 						</motion.div>
 						<motion.div
 							initial={{ opacity: 0, x: 30 }}
@@ -171,7 +171,7 @@ const Index = () => {
 							does it all.
 						</p>
 						<a
-							href={PHONE_NUMBER}
+							href={selected.phone}
 							className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-10 py-4 font-display uppercase text-sm tracking-wider hover:bg-secondary/90 transition-colors rounded-sm"
 						>
 							<Phone className="w-5 h-5" />
