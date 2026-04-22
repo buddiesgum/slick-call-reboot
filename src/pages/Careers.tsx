@@ -2,21 +2,21 @@ import { useState } from "react"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import { motion } from "framer-motion"
-import { Briefcase, Hammer, HardHat, Wrench, Upload, Check } from "lucide-react"
+import { Briefcase, Hammer, HardHat, Wrench, Upload, Check, type LucideIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
-import careersHero from "@/assets/about-hero.jpg"
+import careersData from "@/cms/careers-page.json"
 
-const trades = [
-	{ icon: Wrench, label: "Plumbing" },
-	{ icon: HardHat, label: "Restoration" },
-	{ icon: Hammer, label: "Excavation" },
-	{ icon: Briefcase, label: "Construction" }
-]
+const iconMap: Record<string, LucideIcon> = {
+	Wrench,
+	HardHat,
+	Hammer,
+	Briefcase
+}
 
 const Careers = () => {
 	const { toast } = useToast()
@@ -29,8 +29,8 @@ const Careers = () => {
 		setTimeout(() => {
 			setSubmitting(false)
 			toast({
-				title: "Application received",
-				description: "Thanks for applying — our team will be in touch shortly."
+				title: careersData.application.successTitle,
+				description: careersData.application.successBody
 			})
 			;(e.target as HTMLFormElement).reset()
 			setFileName("")
@@ -43,8 +43,8 @@ const Careers = () => {
 			{/* HERO */}
 			<section className="relative h-[50vh] min-h-[380px] flex items-center overflow-hidden">
 				<img
-					src={careersHero}
-					alt="The Hukill's crew on a job site"
+					src={careersData.hero.image}
+					alt={careersData.hero.imageAlt}
 					className="absolute inset-0 w-full h-full object-cover"
 				/>
 				<div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/85 to-secondary/40" />
@@ -55,7 +55,7 @@ const Careers = () => {
 						transition={{ duration: 0.5 }}
 						className="text-primary font-display uppercase tracking-[0.3em] text-sm mb-4"
 					>
-						Now Hiring
+						{careersData.hero.eyebrow}
 					</motion.p>
 					<motion.h1
 						initial={{ opacity: 0, y: 30 }}
@@ -63,7 +63,9 @@ const Careers = () => {
 						transition={{ duration: 0.6, delay: 0.1 }}
 						className="text-5xl md:text-7xl font-display uppercase tracking-tight text-primary-foreground max-w-3xl leading-[0.95]"
 					>
-						Build a <span className="text-primary">Career</span> with Purpose
+						{careersData.hero.title}{" "}
+						<span className="text-primary">{careersData.hero.titleAccent}</span>{" "}
+						{careersData.hero.titleSuffix}
 					</motion.h1>
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}
@@ -71,8 +73,7 @@ const Careers = () => {
 						transition={{ duration: 0.6, delay: 0.25 }}
 						className="mt-6 text-lg md:text-xl text-primary-foreground/80 max-w-2xl"
 					>
-						Looking to join a team of dedicated professionals? Whether your background is in
-						plumbing, restoration, excavation, or construction — we'd love to hear from you.
+						{careersData.hero.description}
 					</motion.p>
 				</div>
 			</section>
@@ -81,21 +82,24 @@ const Careers = () => {
 			<section className="py-16 md:py-20">
 				<div className="container">
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-						{trades.map((trade, i) => (
-							<motion.div
-								key={trade.label}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ duration: 0.4, delay: i * 0.08 }}
-								className="group flex flex-col items-center text-center p-6 border border-border hover:border-primary transition-colors"
-							>
-								<trade.icon className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
-								<span className="font-display uppercase tracking-wider text-sm text-foreground">
-									{trade.label}
-								</span>
-							</motion.div>
-						))}
+						{careersData.trades.items.map((trade, i) => {
+							const Icon = iconMap[trade.icon] ?? Briefcase
+							return (
+								<motion.div
+									key={trade.label}
+									initial={{ opacity: 0, y: 20 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									viewport={{ once: true }}
+									transition={{ duration: 0.4, delay: i * 0.08 }}
+									className="group flex flex-col items-center text-center p-6 border border-border hover:border-primary transition-colors"
+								>
+									<Icon className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
+									<span className="font-display uppercase tracking-wider text-sm text-foreground">
+										{trade.label}
+									</span>
+								</motion.div>
+							)
+						})}
 					</div>
 				</div>
 			</section>
@@ -111,10 +115,10 @@ const Careers = () => {
 						className="mb-10"
 					>
 						<span className="font-display uppercase tracking-[0.25em] text-sm text-primary">
-							Application
+							{careersData.application.eyebrow}
 						</span>
 						<h2 className="text-3xl md:text-4xl font-display uppercase tracking-tight text-primary-foreground mt-2">
-							Send Us Your Resume
+							{careersData.application.heading}
 						</h2>
 					</motion.div>
 
@@ -132,11 +136,16 @@ const Careers = () => {
 									htmlFor="firstName"
 									className="text-primary-foreground/80 uppercase text-xs tracking-wider"
 								>
-									First Name *
+									{careersData.application.firstName.label}
+									{careersData.application.firstName.required && (
+										<span className="text-primary ml-0.5" aria-hidden="true">
+											*
+										</span>
+									)}
 								</Label>
 								<Input
 									id="firstName"
-									required
+									required={careersData.application.firstName.required}
 									className="bg-background/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40"
 								/>
 							</div>
@@ -145,11 +154,16 @@ const Careers = () => {
 									htmlFor="lastName"
 									className="text-primary-foreground/80 uppercase text-xs tracking-wider"
 								>
-									Last Name *
+									{careersData.application.lastName.label}
+									{careersData.application.lastName.required && (
+										<span className="text-primary ml-0.5" aria-hidden="true">
+											*
+										</span>
+									)}
 								</Label>
 								<Input
 									id="lastName"
-									required
+									required={careersData.application.lastName.required}
 									className="bg-background/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40"
 								/>
 							</div>
@@ -160,12 +174,17 @@ const Careers = () => {
 								htmlFor="email"
 								className="text-primary-foreground/80 uppercase text-xs tracking-wider"
 							>
-								Email *
+								{careersData.application.email.label}
+								{careersData.application.email.required && (
+									<span className="text-primary ml-0.5" aria-hidden="true">
+										*
+									</span>
+								)}
 							</Label>
 							<Input
 								id="email"
 								type="email"
-								required
+								required={careersData.application.email.required}
 								className="bg-background/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40"
 							/>
 						</div>
@@ -175,20 +194,25 @@ const Careers = () => {
 								htmlFor="message"
 								className="text-primary-foreground/80 uppercase text-xs tracking-wider"
 							>
-								Message *
+								{careersData.application.message.label}
+								{careersData.application.message.required && (
+									<span className="text-primary ml-0.5" aria-hidden="true">
+										*
+									</span>
+								)}
 							</Label>
 							<Textarea
 								id="message"
 								rows={5}
-								required
-								placeholder="Tell us about your experience..."
+								required={careersData.application.message.required}
+								placeholder={careersData.application.messagePlaceholder}
 								className="bg-background/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40 resize-none"
 							/>
 						</div>
 
 						<div className="space-y-2">
 							<Label className="text-primary-foreground/80 uppercase text-xs tracking-wider">
-								Resume
+								{careersData.application.resumeLabel}
 							</Label>
 							<label className="flex items-center justify-center gap-3 px-4 py-6 border-2 border-dashed border-primary-foreground/20 hover:border-primary cursor-pointer transition-colors">
 								{fileName ?
@@ -199,7 +223,7 @@ const Careers = () => {
 								:	<>
 										<Upload className="w-5 h-5 text-primary-foreground/60" />
 										<span className="text-sm text-primary-foreground/60">
-											Click to upload (PDF, DOC, DOCX)
+											{careersData.application.resumeUploadHint}
 										</span>
 									</>
 								}
@@ -218,7 +242,7 @@ const Careers = () => {
 								htmlFor="updates"
 								className="text-sm text-primary-foreground/70 cursor-pointer leading-relaxed"
 							>
-								Sign me up for news and updates from Hukill's
+								{careersData.application.updatesLabel}
 							</Label>
 						</div>
 
@@ -227,7 +251,9 @@ const Careers = () => {
 							disabled={submitting}
 							className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-display uppercase tracking-wider py-6"
 						>
-							{submitting ? "Submitting..." : "Submit Application"}
+							{submitting ?
+								careersData.application.submittingLabel
+							:	careersData.application.submitLabel}
 						</Button>
 					</motion.form>
 				</div>
