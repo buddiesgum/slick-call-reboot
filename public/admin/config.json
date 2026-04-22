@@ -20,6 +20,77 @@
 	},
 	"collections": [
 		{
+			"name": "projects",
+			"label": "Projects",
+			"label_singular": "Project",
+			"folder": "src/cms/projects",
+			"format": "json",
+			"extension": "json",
+			"identifier_field": "id",
+			"create": true,
+			"delete": true,
+			"slug": "{{id}}",
+			"media_folder": "/public/media/projects/{{fields.id}}",
+			"public_folder": "/media/projects/{{fields.id}}",
+			"sortable_fields": ["order", "title", "category"],
+			"fields": [
+				{
+					"name": "id",
+					"label": "ID (slug)",
+					"widget": "string",
+					"pattern": [
+						"^[a-z0-9]+(?:-[a-z0-9]+)*$",
+						"Lowercase letters, digits, and single hyphens only (e.g. 'kitchen-remodel-fw')"
+					],
+					"hint": "Used as the file slug and as a stable key in code. Cannot be changed without a code update."
+				},
+				{
+					"name": "order",
+					"label": "Display Order",
+					"widget": "number",
+					"min": 0,
+					"step": 1,
+					"value_type": "int",
+					"hint": "Lower numbers appear first."
+				},
+				{ "name": "title", "label": "Title", "widget": "string" },
+				{
+					"name": "category",
+					"label": "Category",
+					"widget": "select",
+					"options": ["Foundations", "Restoration", "Remodels", "Plumbing", "Excavation"]
+				},
+				{
+					"name": "market",
+					"label": "Market",
+					"widget": "select",
+					"options": ["Residential", "Commercial"]
+				},
+				{
+					"name": "location",
+					"label": "Location",
+					"widget": "string",
+					"hint": "e.g. 'Fort Worth, TX'"
+				},
+				{ "name": "description", "label": "Description", "widget": "text" },
+				{ "name": "heroImage", "label": "Hero Image", "widget": "image" },
+				{
+					"name": "gallery",
+					"label": "Gallery",
+					"label_singular": "Image",
+					"widget": "list",
+					"field": { "name": "image", "label": "Image", "widget": "image" }
+				},
+				{
+					"name": "videoUrl",
+					"label": "Video URL",
+					"widget": "string",
+					"required": false,
+					"hint": "Optional. Embed URL for a project video."
+				}
+			]
+		},
+		{
 			"name": "locations",
 			"label": "Locations",
 			"label_singular": "Location",

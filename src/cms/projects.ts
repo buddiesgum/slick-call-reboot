@@ -1,0 +1,21 @@
+export interface Project {
+	id: string
+	order: number
+	title: string
+	category: "Foundations" | "Restoration" | "Remodels" | "Plumbing" | "Excavation"
+	market: "Residential" | "Commercial"
+	heroImage: string
+	gallery: string[]
+	videoUrl?: string
+	description: string
+	location: string
+}
+
+const projectModules = import.meta.glob<Project>("./projects/*.json", {
+	eager: true,
+	import: "default",
+})
+
+export const projects: Project[] = Object.values(projectModules).sort(
+	(a, b) => a.order - b.order || a.id.localeCompare(b.id),
+)

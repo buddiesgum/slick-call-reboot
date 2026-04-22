@@ -3,64 +3,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Play, X, ArrowRight } from "lucide-react"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
-
-interface Project {
-	id: string
-	title: string
-	category: string
-	market: "Residential" | "Commercial"
-	heroImage: string
-	gallery: string[]
-	videoUrl?: string
-	description: string
-	location: string
-}
-
-const projects: Project[] = [
-	{
-		id: "foundation-repair-fw",
-		title: "Foundation Repair — Fort Worth Residence",
-		category: "Foundations",
-		market: "Residential",
-		heroImage:
-			"https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/da9697e4-24db-4628-b0f3-72f5b525cdb3/Screenshot+2025-08-04+at+2.32.46%E2%80%AFPM.png",
-		gallery: [
-			"https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/da9697e4-24db-4628-b0f3-72f5b525cdb3/Screenshot+2025-08-04+at+2.32.46%E2%80%AFPM.png",
-			"https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png"
-		],
-		description:
-			"Complete push-pier installation on a 2,400 sq ft residential property experiencing severe settling. Our team stabilized the foundation using 14 steel push piers, restoring the home to near-original elevation. The project was completed in just 5 days with minimal disruption to the homeowner.",
-		location: "Fort Worth, TX"
-	},
-	{
-		id: "water-restoration-medford",
-		title: "Water Damage Restoration — Medford Office",
-		category: "Restoration",
-		market: "Commercial",
-		heroImage:
-			"https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png",
-		gallery: [
-			"https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png"
-		],
-		description:
-			"Emergency response to a burst pipe that flooded a 5,000 sq ft commercial office. We deployed industrial dehumidifiers and performed full drywall, flooring, and paint restoration within 2 weeks. Zero mold growth reported at the 90-day follow-up.",
-		location: "Medford, OR"
-	},
-	{
-		id: "kitchen-remodel-fw",
-		title: "Full Kitchen Remodel — Historic Fort Worth Home",
-		category: "Remodels",
-		market: "Residential",
-		heroImage:
-			"https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/da9697e4-24db-4628-b0f3-72f5b525cdb3/Screenshot+2025-08-04+at+2.32.46%E2%80%AFPM.png",
-		gallery: [
-			"https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/da9697e4-24db-4628-b0f3-72f5b525cdb3/Screenshot+2025-08-04+at+2.32.46%E2%80%AFPM.png"
-		],
-		description:
-			"A top-to-bottom kitchen transformation including custom cabinetry, quartz countertops, new plumbing fixtures, and modern lighting. We preserved the original character of this 1940s bungalow while delivering a fully contemporary kitchen.",
-		location: "Fort Worth, TX"
-	}
-]
+import { projects, type Project } from "@/cms/projects"
 
 const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))]
 const markets = ["All", "Residential", "Commercial"] as const
@@ -84,7 +27,7 @@ const Projects = () => {
 			{/* Hero */}
 			<section className="relative py-24 md:py-32 overflow-hidden">
 				<div className="absolute inset-0 bg-secondary" />
-				<div className="absolute inset-0 opacity-20 bg-[url('https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/da9697e4-24db-4628-b0f3-72f5b525cdb3/Screenshot+2025-08-04+at+2.32.46%E2%80%AFPM.png')] bg-cover bg-center" />
+				<div className="absolute inset-0 opacity-20 bg-[url('/media/projects/foundation-repair-fw/hero.webp')] bg-cover bg-center" />
 				<div className="container relative z-10">
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}

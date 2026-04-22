@@ -28,15 +28,15 @@ and static-site tooling.
 
 ## Default profile
 
-| Setting  | Value       | Rationale                                                  |
-|----------|-------------|------------------------------------------------------------|
-| Quality  | 85          | Sweet spot: below 80 photos show blocking artifacts;       |
-|          |             | above 90, file-size gains are poor.                        |
-| Max dim  | 2048px      | Covers retina desktop (1024pt × 2) without wasting bytes.  |
-|          |             | Applied to the longer axis only.                           |
-| Resize   | Conditional | Only when a dimension exceeds max. Never upscales.         |
-| Threads  | -mt         | Multi-core encode, faster on modern hardware.              |
-| Alpha    | default     | cwebp preserves transparency automatically; no flag needed.|
+| Setting | Value       | Rationale                                                   |
+| ------- | ----------- | ----------------------------------------------------------- |
+| Quality | 85          | Sweet spot: below 80 photos show blocking artifacts;        |
+|         |             | above 90, file-size gains are poor.                         |
+| Max dim | 2048px      | Covers retina desktop (1024pt × 2) without wasting bytes.   |
+|         |             | Applied to the longer axis only.                            |
+| Resize  | Conditional | Only when a dimension exceeds max. Never upscales.          |
+| Threads | -mt         | Multi-core encode, faster on modern hardware.               |
+| Alpha   | default     | cwebp preserves transparency automatically; no flag needed. |
 
 ## Why cwebp, not Squoosh or Sharp
 
@@ -72,8 +72,9 @@ Use the bundled script:
 ```
 
 Defaults: quality 85, max-dim 2048. The script:
+
 - Detects dimensions via `sips` (macOS) — only resizes when a dimension
-  exceeds the max, and resizes the *longer* axis so both landscape and
+  exceeds the max, and resizes the _longer_ axis so both landscape and
   portrait are handled correctly
 - Writes sibling `.webp` files alongside the originals (does NOT delete them)
 - Validates each output is non-empty before reporting success
@@ -129,7 +130,7 @@ and UI mocks.
 When the user asks for a different target:
 
 | Use case             | Quality | Max dim |
-|----------------------|---------|---------|
+| -------------------- | ------- | ------- |
 | Hero banners / print | 90      | 4096    |
 | Standard web content | 85      | 2048    |
 | Mobile-first assets  | 82      | 1024    |
