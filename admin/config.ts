@@ -1,4 +1,37 @@
-import type { CmsConfig } from "@sveltia/cms"
+import type { CmsConfig, ObjectFieldWithSubFields } from "@sveltia/cms"
+
+const createSeoField = () =>
+	({
+		name: "seo",
+		label: "SEO",
+		widget: "object",
+		required: false,
+		fields: [
+			{ name: "title", label: "Page Title", widget: "string", required: false },
+			{ name: "description", label: "Meta Description", widget: "text", required: false },
+			{ name: "canonical", label: "Canonical URL Override", widget: "string", required: false },
+			{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
+			{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
+			{
+				name: "ogImageWidth",
+				label: "OG Image Width (px)",
+				widget: "number",
+				value_type: "int",
+				min: 1,
+				required: false,
+				hint: "Width of the OG image override in pixels"
+			},
+			{
+				name: "ogImageHeight",
+				label: "OG Image Height (px)",
+				widget: "number",
+				value_type: "int",
+				min: 1,
+				required: false,
+				hint: "Height of the OG image override in pixels"
+			}
+		]
+	}) satisfies ObjectFieldWithSubFields
 
 export const config = {
 	load_config_file: false,
@@ -42,42 +75,7 @@ export const config = {
 					pattern: ["^[a-z0-9-]+$", "Slug must be lowercase letters, numbers, and hyphens only"]
 				},
 				{ name: "title", label: "Page Title (admin label)", widget: "string" },
-				{
-					name: "seo",
-					label: "SEO",
-					widget: "object",
-					required: false,
-					fields: [
-						{ name: "title", label: "Page Title", widget: "string", required: false },
-						{ name: "description", label: "Meta Description", widget: "text", required: false },
-						{
-							name: "canonical",
-							label: "Canonical URL Override",
-							widget: "string",
-							required: false
-						},
-						{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
-						{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
-						{
-							name: "ogImageWidth",
-							label: "OG Image Width (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Width of the OG image in pixels. Only needed for non-Squarespace images with known dimensions."
-						},
-						{
-							name: "ogImageHeight",
-							label: "OG Image Height (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Height of the OG image in pixels. Only needed for non-Squarespace images with known dimensions."
-						}
-					]
-				},
+				createSeoField(),
 				{
 					name: "hero",
 					label: "Hero Section",
@@ -299,42 +297,7 @@ export const config = {
 			label: "All Services Page",
 			file: "src/cms/all-services-page.json",
 			fields: [
-				{
-					name: "seo",
-					label: "SEO",
-					widget: "object",
-					required: false,
-					fields: [
-						{ name: "title", label: "Page Title", widget: "string", required: false },
-						{ name: "description", label: "Meta Description", widget: "text", required: false },
-						{
-							name: "canonical",
-							label: "Canonical URL Override",
-							widget: "string",
-							required: false
-						},
-						{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
-						{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
-						{
-							name: "ogImageWidth",
-							label: "OG Image Width (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Width of the OG image override in pixels"
-						},
-						{
-							name: "ogImageHeight",
-							label: "OG Image Height (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Height of the OG image override in pixels"
-						}
-					]
-				},
+				createSeoField(),
 				{
 					name: "hero",
 					label: "Hero Section",
@@ -456,42 +419,7 @@ export const config = {
 			label: "Contact Page",
 			file: "src/cms/contact-page.json",
 			fields: [
-				{
-					name: "seo",
-					label: "SEO",
-					widget: "object",
-					required: false,
-					fields: [
-						{ name: "title", label: "Page Title", widget: "string", required: false },
-						{ name: "description", label: "Meta Description", widget: "text", required: false },
-						{
-							name: "canonical",
-							label: "Canonical URL Override",
-							widget: "string",
-							required: false
-						},
-						{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
-						{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
-						{
-							name: "ogImageWidth",
-							label: "OG Image Width (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Width of the OG image override in pixels"
-						},
-						{
-							name: "ogImageHeight",
-							label: "OG Image Height (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Height of the OG image override in pixels"
-						}
-					]
-				},
+				createSeoField(),
 				{
 					name: "hero",
 					label: "Hero Section",
@@ -590,42 +518,7 @@ export const config = {
 			label: "Careers Page",
 			file: "src/cms/careers-page.json",
 			fields: [
-				{
-					name: "seo",
-					label: "SEO",
-					widget: "object",
-					required: false,
-					fields: [
-						{ name: "title", label: "Page Title", widget: "string", required: false },
-						{ name: "description", label: "Meta Description", widget: "text", required: false },
-						{
-							name: "canonical",
-							label: "Canonical URL Override",
-							widget: "string",
-							required: false
-						},
-						{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
-						{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
-						{
-							name: "ogImageWidth",
-							label: "OG Image Width (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Width of the OG image override in pixels"
-						},
-						{
-							name: "ogImageHeight",
-							label: "OG Image Height (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Height of the OG image override in pixels"
-						}
-					]
-				},
+				createSeoField(),
 				{
 					name: "hero",
 					label: "Hero Section",
@@ -764,42 +657,7 @@ export const config = {
 			label: "About Page",
 			file: "src/cms/about-page.json",
 			fields: [
-				{
-					name: "seo",
-					label: "SEO",
-					widget: "object",
-					required: false,
-					fields: [
-						{ name: "title", label: "Page Title", widget: "string", required: false },
-						{ name: "description", label: "Meta Description", widget: "text", required: false },
-						{
-							name: "canonical",
-							label: "Canonical URL Override",
-							widget: "string",
-							required: false
-						},
-						{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
-						{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
-						{
-							name: "ogImageWidth",
-							label: "OG Image Width (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Width of the OG image override in pixels"
-						},
-						{
-							name: "ogImageHeight",
-							label: "OG Image Height (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Height of the OG image override in pixels"
-						}
-					]
-				},
+				createSeoField(),
 				{
 					name: "hero",
 					label: "Hero Section",
@@ -978,42 +836,7 @@ export const config = {
 			label: "Home Page",
 			file: "src/cms/home-page.json",
 			fields: [
-				{
-					name: "seo",
-					label: "SEO",
-					widget: "object",
-					required: false,
-					fields: [
-						{ name: "title", label: "Page Title", widget: "string", required: false },
-						{ name: "description", label: "Meta Description", widget: "text", required: false },
-						{
-							name: "canonical",
-							label: "Canonical URL Override",
-							widget: "string",
-							required: false
-						},
-						{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
-						{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
-						{
-							name: "ogImageWidth",
-							label: "OG Image Width (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Width of the OG image override in pixels"
-						},
-						{
-							name: "ogImageHeight",
-							label: "OG Image Height (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Height of the OG image override in pixels"
-						}
-					]
-				},
+				createSeoField(),
 				{
 					name: "hero",
 					label: "Hero Section",
@@ -1164,42 +987,7 @@ export const config = {
 			label: "Projects Page",
 			file: "src/cms/projects-page.json",
 			fields: [
-				{
-					name: "seo",
-					label: "SEO",
-					widget: "object",
-					required: false,
-					fields: [
-						{ name: "title", label: "Page Title", widget: "string", required: false },
-						{ name: "description", label: "Meta Description", widget: "text", required: false },
-						{
-							name: "canonical",
-							label: "Canonical URL Override",
-							widget: "string",
-							required: false
-						},
-						{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
-						{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
-						{
-							name: "ogImageWidth",
-							label: "OG Image Width (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Width of the OG image override in pixels"
-						},
-						{
-							name: "ogImageHeight",
-							label: "OG Image Height (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Height of the OG image override in pixels"
-						}
-					]
-				},
+				createSeoField(),
 				{
 					name: "hero",
 					label: "Hero Section",
@@ -1283,42 +1071,7 @@ export const config = {
 			label: "Privacy Policy Page",
 			file: "src/cms/privacy-policy-page.json",
 			fields: [
-				{
-					name: "seo",
-					label: "SEO",
-					widget: "object",
-					required: false,
-					fields: [
-						{ name: "title", label: "Page Title", widget: "string", required: false },
-						{ name: "description", label: "Meta Description", widget: "text", required: false },
-						{
-							name: "canonical",
-							label: "Canonical URL Override",
-							widget: "string",
-							required: false
-						},
-						{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
-						{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
-						{
-							name: "ogImageWidth",
-							label: "OG Image Width (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Width of the OG image override in pixels"
-						},
-						{
-							name: "ogImageHeight",
-							label: "OG Image Height (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Height of the OG image override in pixels"
-						}
-					]
-				},
+				createSeoField(),
 				{
 					name: "hero",
 					label: "Hero Section",
@@ -1528,42 +1281,7 @@ export const config = {
 			label: "Commercial Plumbing Page",
 			file: "src/cms/commercial-plumbing-page.json",
 			fields: [
-				{
-					name: "seo",
-					label: "SEO",
-					widget: "object",
-					required: false,
-					fields: [
-						{ name: "title", label: "Page Title", widget: "string", required: false },
-						{ name: "description", label: "Meta Description", widget: "text", required: false },
-						{
-							name: "canonical",
-							label: "Canonical URL Override",
-							widget: "string",
-							required: false
-						},
-						{ name: "ogImage", label: "OG Image Override", widget: "image", required: false },
-						{ name: "ogImageAlt", label: "OG Image Alt Text", widget: "string", required: false },
-						{
-							name: "ogImageWidth",
-							label: "OG Image Width (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Width of the OG image override in pixels"
-						},
-						{
-							name: "ogImageHeight",
-							label: "OG Image Height (px)",
-							widget: "number",
-							value_type: "int",
-							min: 1,
-							required: false,
-							hint: "Height of the OG image override in pixels"
-						}
-					]
-				},
+				createSeoField(),
 				{
 					name: "hero",
 					label: "Hero Section",
