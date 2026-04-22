@@ -93,5 +93,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate"), require("prettier-plugin-tailwindcss")]
+	plugins: [require("tailwindcss-animate")]
 } satisfies Config
