@@ -27,9 +27,15 @@ site only — no backend, no env vars required.
 - `src/components/Seo.tsx` — renders `<Head>` tags (vite-react-ssg). Pages use
   `<Seo route="/path" />` to inject per-page title/description/OG tags; values
   are resolved from `src/cms/seo.json` with a global `default` fallback.
-- `src/context/LocationContext.tsx` — two-location state (Fort Worth TX,
-  Medford OR); consume via `useLocationContext()`. Phone numbers and addresses
-  live here, not scattered across pages.
+- `src/context/location-context.ts` — exports the `Location` type, `locations`
+  data (Fort Worth TX, Medford OR — phones and addresses live here, not
+  scattered across pages), `LocationContext`, and the `useLocationContext()`
+  hook. Consumers import from this file.
+- `src/context/LocationContext.tsx` — exports only `LocationProvider`. Imports
+  `LocationContext` and `locations` from `./location-context`. `RootLayout.tsx`
+  imports `LocationProvider` from here. The split keeps Vite fast-refresh happy
+  (`react-refresh/only-export-components` requires `.tsx` files to export only
+  components).
 - `src/components/ui/*` — shadcn/ui primitives; add via shadcn CLI.
   `components.json` aliases: `@/components`, `@/components/ui`, `@/lib/utils`,
   `@/hooks`. Base color `slate`, style `default`.
@@ -62,8 +68,11 @@ site only — no backend, no env vars required.
   agree — use `@/` everywhere, never relative paths across directories).
 - TS is **loose**: `strict`, `strictNullChecks`, `noImplicitAny`,
   `noUnusedLocals/Params` all disabled. Don't rely on strict-mode diagnostics.
-- ESLint has `@typescript-eslint/no-unused-vars` **off** and
-  `react-refresh/only-export-components` as a warning — don't try to fix these.
+- ESLint has `@typescript-eslint/no-unused-vars` **off**. The
+  `react-refresh/only-export-components` rule is active as a warning — if it
+  fires on a `.tsx` file, fix it by moving non-component exports (types,
+  constants, hooks) into a sibling `.ts` file and updating consumer imports.
+  See `src/context/` for the established pattern.
 - Fonts: `font-display` = Oswald, `font-body` = Inter (Tailwind theme extends).
 - Provider order in `RootLayout.tsx`: `QueryClientProvider > TooltipProvider >
 LocationProvider > Toaster/Sonner > ScrollToTop > Outlet`. No `<BrowserRouter>`

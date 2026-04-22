@@ -3,7 +3,7 @@ import Seo from "@/components/Seo"
 import { motion } from "framer-motion"
 import { Phone, MapPin, Clock, Mail } from "lucide-react"
 import { Link } from "react-router-dom"
-import { locations, useLocationContext } from "@/context/LocationContext"
+import { locations, useLocationContext } from "@/context/location-context"
 
 const Contact = () => {
 	const { selected, setSelected } = useLocationContext()

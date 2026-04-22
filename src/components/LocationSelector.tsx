@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { MapPin, ChevronDown } from "lucide-react"
-import { locations, useLocationContext } from "@/context/LocationContext"
+import { locations, useLocationContext } from "@/context/location-context"
 
 const LocationSelector = () => {
 	const { selected, setSelected } = useLocationContext()

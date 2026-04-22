@@ -5,7 +5,7 @@ import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import LocationSelector from "@/components/LocationSelector"
 import ServiceImageGrid from "@/components/ServiceImageGrid"
-import { useLocationContext } from "@/context/LocationContext"
+import { useLocationContext } from "@/context/location-context"
 import { allServices } from "@/data/services"
 import aboutHero from "@/assets/about-hero.jpg"
 

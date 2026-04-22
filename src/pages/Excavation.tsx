@@ -5,7 +5,7 @@ import ServiceCard from "@/components/ServiceCard"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { Phone, ArrowRight, Clock, MapPin } from "lucide-react"
-import { useLocationContext } from "@/context/LocationContext"
+import { useLocationContext } from "@/context/location-context"
 
 const Excavation = () => {
 	const { selected } = useLocationContext()

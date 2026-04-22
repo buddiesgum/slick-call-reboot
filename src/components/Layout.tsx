@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom"
 import { Phone, Menu, X, ChevronDown, ChevronRight, MapPin } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import LocationSelector from "./LocationSelector"
-import { useLocationContext } from "@/context/LocationContext"
+import { useLocationContext } from "@/context/location-context"
 import headerData from "@/cms/header.json"
 import footerData from "@/cms/footer.json"
 
