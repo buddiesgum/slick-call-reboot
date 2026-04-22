@@ -319,6 +319,57 @@
 			"file": "src/cms/all-services-page.json",
 			"fields": [
 				{
+					"name": "seo",
+					"label": "SEO",
+					"widget": "object",
+					"required": false,
+					"fields": [
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image override in pixels"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image override in pixels"
+						}
+					]
+				},
+				{
 					"name": "hero",
 					"label": "Hero Section",
 					"widget": "object",
@@ -440,6 +491,57 @@
 			"file": "src/cms/contact-page.json",
 			"fields": [
 				{
+					"name": "seo",
+					"label": "SEO",
+					"widget": "object",
+					"required": false,
+					"fields": [
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image override in pixels"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image override in pixels"
+						}
+					]
+				},
+				{
 					"name": "hero",
 					"label": "Hero Section",
 					"widget": "object",
@@ -537,6 +639,57 @@
 			"label": "Careers Page",
 			"file": "src/cms/careers-page.json",
 			"fields": [
+				{
+					"name": "seo",
+					"label": "SEO",
+					"widget": "object",
+					"required": false,
+					"fields": [
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image override in pixels"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image override in pixels"
+						}
+					]
+				},
 				{
 					"name": "hero",
 					"label": "Hero Section",
@@ -687,6 +840,57 @@
 			"label": "About Page",
 			"file": "src/cms/about-page.json",
 			"fields": [
+				{
+					"name": "seo",
+					"label": "SEO",
+					"widget": "object",
+					"required": false,
+					"fields": [
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image override in pixels"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image override in pixels"
+						}
+					]
+				},
 				{
 					"name": "hero",
 					"label": "Hero Section",
@@ -866,6 +1070,57 @@
 			"file": "src/cms/home-page.json",
 			"fields": [
 				{
+					"name": "seo",
+					"label": "SEO",
+					"widget": "object",
+					"required": false,
+					"fields": [
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image override in pixels"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image override in pixels"
+						}
+					]
+				},
+				{
 					"name": "hero",
 					"label": "Hero Section",
 					"widget": "object",
@@ -1016,6 +1271,57 @@
 			"file": "src/cms/projects-page.json",
 			"fields": [
 				{
+					"name": "seo",
+					"label": "SEO",
+					"widget": "object",
+					"required": false,
+					"fields": [
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image override in pixels"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image override in pixels"
+						}
+					]
+				},
+				{
 					"name": "hero",
 					"label": "Hero Section",
 					"widget": "object",
@@ -1098,6 +1404,57 @@
 			"label": "Privacy Policy Page",
 			"file": "src/cms/privacy-policy-page.json",
 			"fields": [
+				{
+					"name": "seo",
+					"label": "SEO",
+					"widget": "object",
+					"required": false,
+					"fields": [
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image override in pixels"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image override in pixels"
+						}
+					]
+				},
 				{
 					"name": "hero",
 					"label": "Hero Section",
@@ -1308,6 +1665,57 @@
 			"file": "src/cms/commercial-plumbing-page.json",
 			"fields": [
 				{
+					"name": "seo",
+					"label": "SEO",
+					"widget": "object",
+					"required": false,
+					"fields": [
+						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
+						{
+							"name": "description",
+							"label": "Meta Description",
+							"widget": "text",
+							"required": false
+						},
+						{
+							"name": "canonical",
+							"label": "Canonical URL Override",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImage",
+							"label": "OG Image Override",
+							"widget": "image",
+							"required": false
+						},
+						{
+							"name": "ogImageAlt",
+							"label": "OG Image Alt Text",
+							"widget": "string",
+							"required": false
+						},
+						{
+							"name": "ogImageWidth",
+							"label": "OG Image Width (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Width of the OG image override in pixels"
+						},
+						{
+							"name": "ogImageHeight",
+							"label": "OG Image Height (px)",
+							"widget": "number",
+							"value_type": "int",
+							"min": 1,
+							"required": false,
+							"hint": "Height of the OG image override in pixels"
+						}
+					]
+				},
+				{
 					"name": "hero",
 					"label": "Hero Section",
 					"widget": "object",
@@ -1437,73 +1845,6 @@
 							"value_type": "int",
 							"min": 1,
 							"hint": "Height of the default OG image in pixels, e.g. 1024"
-						}
-					]
-				},
-				{
-					"name": "routes",
-					"label": "Per-Route SEO",
-					"label_singular": "Route",
-					"widget": "list",
-					"fields": [
-						{
-							"name": "path",
-							"label": "Route Path",
-							"widget": "select",
-							"options": [
-								"/",
-								"/all-services",
-								"/commercial-plumbing",
-								"/projects",
-								"/about",
-								"/careers",
-								"/contact",
-								"/call-us",
-								"/privacy-policy"
-							]
-						},
-						{ "name": "title", "label": "Page Title", "widget": "string", "required": false },
-						{
-							"name": "description",
-							"label": "Meta Description",
-							"widget": "text",
-							"required": false
-						},
-						{
-							"name": "canonical",
-							"label": "Canonical URL Override",
-							"widget": "string",
-							"required": false
-						},
-						{
-							"name": "ogImage",
-							"label": "OG Image Override",
-							"widget": "image",
-							"required": false
-						},
-						{
-							"name": "ogImageAlt",
-							"label": "OG Image Alt Text",
-							"widget": "string",
-							"required": false
-						},
-						{
-							"name": "ogImageWidth",
-							"label": "OG Image Width (px)",
-							"widget": "number",
-							"value_type": "int",
-							"min": 1,
-							"required": false,
-							"hint": "Width of the OG image override in pixels"
-						},
-						{
-							"name": "ogImageHeight",
-							"label": "OG Image Height (px)",
-							"widget": "number",
-							"value_type": "int",
-							"min": 1,
-							"required": false,
-							"hint": "Height of the OG image override in pixels"
 						}
 					]
 				}

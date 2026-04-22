@@ -11,7 +11,7 @@ const Contact = () => {
 
 	return (
 		<Layout>
-			<Seo route="/contact" />
+			<Seo route="/contact" seoBlock={contactData.seo} />
 			{/* HERO */}
 			<section className="relative h-[40vh] min-h-[320px] flex items-center overflow-hidden">
 				<img

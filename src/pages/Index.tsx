@@ -17,7 +17,7 @@ const Index = () => {
 	const { selected } = useLocationContext()
 	return (
 		<Layout>
-			<Seo route="/" />
+			<Seo route="/" seoBlock={homeData.seo} />
 			{/* Hero */}
 			<section className="relative min-h-[85vh] flex items-center overflow-hidden">
 				<div

@@ -1,8 +1,10 @@
 import { Head } from "vite-react-ssg"
 import seoData from "@/cms/seo.json"
+import type { PageSeoData } from "./seo-types"
 
 interface SeoProps {
 	route: string
+	seoBlock?: PageSeoData
 	title?: string
 	description?: string
 	canonical?: string
@@ -12,10 +14,11 @@ interface SeoProps {
 	ogImageHeight?: number
 }
 
-const { default: defaults, routes } = seoData
+const { default: defaults } = seoData
 
 const Seo = ({
 	route,
+	seoBlock,
 	title,
 	description,
 	canonical,
@@ -24,26 +27,14 @@ const Seo = ({
 	ogImageWidth,
 	ogImageHeight
 }: SeoProps) => {
-	const routeEntry = routes.find((r) => r.path === route) as
-		| {
-				path: string
-				title?: string
-				description?: string
-				canonical?: string
-				ogImage?: string
-				ogImageAlt?: string
-				ogImageWidth?: number
-				ogImageHeight?: number
-		  }
-		| undefined
-
-	const resolvedTitle = title ?? routeEntry?.title ?? defaults.title
-	const resolvedDescription = description ?? routeEntry?.description ?? defaults.description
+	const resolvedTitle = title ?? seoBlock?.title ?? defaults.title
+	const resolvedDescription = description ?? seoBlock?.description ?? defaults.description
 	const resolvedCanonical =
-		canonical ?? routeEntry?.canonical ?? `${defaults.canonicalBase}${route === "/" ? "" : route}`
+		canonical ?? seoBlock?.canonical ?? `${defaults.canonicalBase}${route === "/" ? "" : route}`
 
-	// Resolve ogImage, ogImageAlt, ogImageWidth, ogImageHeight from the same tier so
-	// dimensions are never mismatched with a different image.
+	// Resolve ogImage, ogImageWidth, ogImageHeight from the same tier so dimensions
+	// are never mismatched with a different image. ogImageAlt falls back to the
+	// default when the chosen tier omits it (generic alt is preferable to none).
 	let resolvedOgImage: string
 	let resolvedOgImageAlt: string
 	let resolvedOgImageWidth: number | undefined
@@ -54,14 +45,14 @@ const Seo = ({
 		resolvedOgImageAlt = ogImageAlt ?? defaults.ogImageAlt
 		resolvedOgImageWidth = ogImageWidth
 		resolvedOgImageHeight = ogImageHeight
-	} else if (routeEntry?.ogImage !== undefined) {
-		resolvedOgImage = routeEntry.ogImage
-		resolvedOgImageAlt = routeEntry.ogImageAlt ?? defaults.ogImageAlt
-		resolvedOgImageWidth = routeEntry.ogImageWidth
-		resolvedOgImageHeight = routeEntry.ogImageHeight
+	} else if (seoBlock?.ogImage !== undefined) {
+		resolvedOgImage = seoBlock.ogImage
+		resolvedOgImageAlt = seoBlock.ogImageAlt ?? defaults.ogImageAlt
+		resolvedOgImageWidth = seoBlock.ogImageWidth
+		resolvedOgImageHeight = seoBlock.ogImageHeight
 	} else {
 		resolvedOgImage = defaults.ogImage
-		resolvedOgImageAlt = ogImageAlt ?? routeEntry?.ogImageAlt ?? defaults.ogImageAlt
+		resolvedOgImageAlt = defaults.ogImageAlt
 		resolvedOgImageWidth = defaults.ogImageWidth
 		resolvedOgImageHeight = defaults.ogImageHeight
 	}

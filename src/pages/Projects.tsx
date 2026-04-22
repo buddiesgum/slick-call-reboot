@@ -24,7 +24,7 @@ const Projects = () => {
 
 	return (
 		<Layout>
-			<Seo route="/projects" />
+			<Seo route="/projects" seoBlock={projectsPage.seo} />
 			{/* Hero */}
 			<section className="relative py-24 md:py-32 overflow-hidden">
 				<div className="absolute inset-0 bg-secondary" />

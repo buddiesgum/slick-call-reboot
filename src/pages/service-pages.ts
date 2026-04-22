@@ -1,15 +1,11 @@
+import type { PageSeoData } from "@/components/seo-types"
+
+export type { PageSeoData }
+
 export type ServicePageContent = {
 	slug: string
 	title: string
-	seo?: {
-		title?: string
-		description?: string
-		canonical?: string
-		ogImage?: string
-		ogImageAlt?: string
-		ogImageWidth?: number
-		ogImageHeight?: number
-	}
+	seo?: PageSeoData
 	hero: {
 		title: string
 		subtitle?: string

@@ -52,7 +52,7 @@ const SubSection = ({ title, children }: { title: string; children: React.ReactN
 const PrivacyPolicy = () => {
 	return (
 		<Layout>
-			<Seo route="/privacy-policy" />
+			<Seo route="/privacy-policy" seoBlock={data.seo} />
 			{/* Hero */}
 			<section className="section-dark py-20 md:py-28">
 				<div className="container">

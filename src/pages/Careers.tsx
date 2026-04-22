@@ -39,7 +39,7 @@ const Careers = () => {
 
 	return (
 		<Layout>
-			<Seo route="/careers" />
+			<Seo route="/careers" seoBlock={careersData.seo} />
 			{/* HERO */}
 			<section className="relative h-[50vh] min-h-[380px] flex items-center overflow-hidden">
 				<img

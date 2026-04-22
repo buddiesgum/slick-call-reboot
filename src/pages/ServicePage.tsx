@@ -18,16 +18,8 @@ const ServicePage = () => {
 
 	return (
 		<Layout>
-			<Seo
-				route={`/${slug}`}
-				title={content.seo?.title ?? content.title}
-				description={content.seo?.description}
-				canonical={content.seo?.canonical}
-				ogImage={content.seo?.ogImage}
-				ogImageAlt={content.seo?.ogImageAlt}
-				ogImageWidth={content.seo?.ogImageWidth}
-				ogImageHeight={content.seo?.ogImageHeight}
-			/>
+			{/* Explicit `title` prop applies the `content.title` fallback when `content.seo.title` is unset. */}
+			<Seo route={`/${slug}`} title={content.seo?.title ?? content.title} seoBlock={content.seo} />
 			<ServiceHero
 				title={content.hero.title}
 				subtitle={content.hero.subtitle}

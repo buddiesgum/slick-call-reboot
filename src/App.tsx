@@ -25,7 +25,6 @@ export const routes: RouteRecord[] = [
 			{ path: "about", Component: About },
 			{ path: "careers", Component: Careers },
 			{ path: "contact", Component: Contact },
-			{ path: "call-us", Component: Contact },
 			{ path: "privacy-policy", Component: PrivacyPolicy },
 			{ path: "404", Component: NotFound },
 			// Dynamic service-page route. React Router ranks siblings by specificity so order

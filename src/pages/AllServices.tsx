@@ -18,7 +18,7 @@ const AllServices = () => {
 
 	return (
 		<Layout>
-			<Seo route="/all-services" />
+			<Seo route="/all-services" seoBlock={content.seo} />
 			<section className="relative min-h-[560px] flex items-center overflow-hidden section-dark">
 				<img
 					src={heroBg}
