@@ -16,10 +16,15 @@ const mdComponents: Components = {
 		</ul>
 	),
 	a: ({ href, children }) => (
-		<a href={href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+		<a
+			href={href}
+			target="_blank"
+			rel="noopener noreferrer"
+			className="text-primary hover:underline"
+		>
 			{children}
 		</a>
-	),
+	)
 }
 
 const Md = ({ children }: { children: string }) => (
