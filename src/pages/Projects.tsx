@@ -192,7 +192,9 @@ const Projects = () => {
 								{/* Gallery */}
 								{selectedProject.gallery.length > 0 && (
 									<div>
-										<h4 className="font-display uppercase text-sm tracking-wider mb-4">{projectsPage.modal.galleryHeading}</h4>
+										<h4 className="font-display uppercase text-sm tracking-wider mb-4">
+											{projectsPage.modal.galleryHeading}
+										</h4>
 										<div className="grid grid-cols-2 md:grid-cols-3 gap-3">
 											{selectedProject.gallery.map((img, i) => (
 												<button

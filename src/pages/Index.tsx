@@ -6,6 +6,7 @@ import Seo from "@/components/Seo"
 import ServiceImageGrid from "@/components/ServiceImageGrid"
 import { featuredServices } from "@/data/services"
 import { useLocationContext } from "@/context/location-context"
+import homeData from "@/cms/home-page.json"
 
 const fadeUp = {
 	initial: { opacity: 0, y: 30 },
@@ -21,10 +22,7 @@ const Index = () => {
 			<section className="relative min-h-[85vh] flex items-center overflow-hidden">
 				<div
 					className="absolute inset-0 bg-cover bg-center"
-					style={{
-						backgroundImage:
-							"url(https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png)"
-					}}
+					style={{ backgroundImage: `url(${homeData.hero.image})` }}
 				/>
 				<div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-secondary/40" />
 				<div className="container relative z-10 py-20">
@@ -35,13 +33,12 @@ const Index = () => {
 						className="max-w-2xl"
 					>
 						<h1 className="text-5xl md:text-7xl lg:text-8xl font-display uppercase tracking-tight text-primary-foreground leading-[0.9]">
-							One Call
+							{homeData.hero.title}
 							<br />
-							<span className="text-primary">Does It All</span>
+							<span className="text-primary">{homeData.hero.titleAccent}</span>
 						</h1>
 						<p className="mt-6 text-lg md:text-xl text-primary-foreground/70 max-w-lg">
-							Plumbing · Restoration · Excavation · Remodels · Foundations — serving communities for
-							over 40 years.
+							{homeData.hero.description}
 						</p>
 						<div className="mt-8 flex flex-wrap gap-4">
 							<a
@@ -49,20 +46,20 @@ const Index = () => {
 								className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 							>
 								<Phone className="w-5 h-5" />
-								Call Now
+								{homeData.hero.primaryCtaLabel}
 							</a>
 							<a
 								href={`sms:${selected.phone.replace("tel:", "")}`}
 								className="inline-flex items-center gap-2 bg-primary-foreground text-secondary px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground/90 transition-colors rounded-sm"
 							>
 								<MessageSquare className="w-5 h-5" />
-								Text Us
+								{homeData.hero.textCtaLabel}
 							</a>
 							<Link
-								to="/plumbing"
+								to={homeData.hero.secondaryCta.path}
 								className="inline-flex items-center gap-2 border border-primary-foreground/30 text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground/10 transition-colors rounded-sm"
 							>
-								Our Services
+								{homeData.hero.secondaryCta.label}
 							</Link>
 						</div>
 					</motion.div>
@@ -81,16 +78,17 @@ const Index = () => {
 						className="text-center mb-14"
 					>
 						<h2 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-foreground">
-							What We <span className="text-primary">Do</span>
+							{homeData.services.heading}{" "}
+							<span className="text-primary">{homeData.services.headingAccent}</span>
 						</h2>
 						<p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-							From emergency repairs to complete renovations, our experienced team handles it all.
+							{homeData.services.description}
 						</p>
 						<Link
-							to="/all-services"
+							to={homeData.services.cta.path}
 							className="mt-7 inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 						>
-							All Services <ArrowRight className="w-4 h-4" />
+							{homeData.services.cta.label} <ArrowRight className="w-4 h-4" />
 						</Link>
 					</motion.div>
 
@@ -109,23 +107,17 @@ const Index = () => {
 							transition={{ duration: 0.6 }}
 						>
 							<h2 className="text-3xl md:text-5xl font-display uppercase tracking-tight mb-6">
-								Our Amazing <span className="text-primary">Team</span>
+								{homeData.team.heading}{" "}
+								<span className="text-primary">{homeData.team.headingAccent}</span>
 							</h2>
 							<p className="text-primary-foreground/70 leading-relaxed mb-6">
-								Hukill's is a family-owned company that has been serving communities for over 40
-								years. Over the years we have grown and transformed into a multi-faceted company
-								covering Plumbing, Drain Cleaning, Restoration, Leak Detection, Renovation, Water
-								Mitigation, Mold Remediation and Remodels.
+								{homeData.team.body}
 							</p>
 							<ul className="space-y-3">
-								{[
-									"Knowledgeable and Dependable Crew Members",
-									"Friendly and Professional Office Staff",
-									"Unprecedented Customer Service"
-								].map((item) => (
-									<li key={item} className="flex items-center gap-3 text-primary-foreground/80">
+								{homeData.team.bullets.map((b) => (
+									<li key={b} className="flex items-center gap-3 text-primary-foreground/80">
 										<span className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
-										{item}
+										{b}
 									</li>
 								))}
 							</ul>
@@ -134,7 +126,7 @@ const Index = () => {
 								className="mt-8 inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 							>
 								<Phone className="w-5 h-5" />
-								Get In Touch
+								{homeData.team.ctaLabel}
 							</a>
 						</motion.div>
 						<motion.div
@@ -145,8 +137,8 @@ const Index = () => {
 							className="aspect-[4/3] rounded-lg overflow-hidden"
 						>
 							<img
-								src="https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/da9697e4-24db-4628-b0f3-72f5b525cdb3/Screenshot+2025-08-04+at+2.32.46%E2%80%AFPM.png"
-								alt="Hukill's team fleet at sunset"
+								src={homeData.team.image}
+								alt={homeData.team.imageAlt}
 								className="w-full h-full object-cover"
 							/>
 						</motion.div>
@@ -164,18 +156,17 @@ const Index = () => {
 						transition={{ duration: 0.5 }}
 					>
 						<h2 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-primary-foreground mb-4">
-							Ready to Get Started?
+							{homeData.closingCta.heading}
 						</h2>
 						<p className="text-primary-foreground/80 max-w-xl mx-auto mb-8">
-							Whether it's an emergency or a planned project, our team is here to help. One call
-							does it all.
+							{homeData.closingCta.description}
 						</p>
 						<a
 							href={selected.phone}
 							className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-10 py-4 font-display uppercase text-sm tracking-wider hover:bg-secondary/90 transition-colors rounded-sm"
 						>
 							<Phone className="w-5 h-5" />
-							Call Hukill's Now
+							{homeData.closingCta.buttonLabel}
 						</a>
 					</motion.div>
 				</div>
