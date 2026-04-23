@@ -55,9 +55,9 @@ export const config = {
 	},
 	collections: [
 		{
-			name: "servicePages",
-			label: "Service Pages",
-			label_singular: "Service Page",
+			name: "services",
+			label: "Services",
+			label_singular: "Service",
 			folder: "src/cms/service-pages",
 			format: "json",
 			extension: "json",
@@ -163,7 +163,7 @@ export const config = {
 					name: "majorTags",
 					label: "Major Tags",
 					widget: "relation",
-					collection: "projectsPage",
+					collection: "pages",
 					file: "projectsPage",
 					dropdown_threshold: 0,
 					multiple: true,
@@ -171,13 +171,13 @@ export const config = {
 					value_field: "majorTags.*",
 					display_fields: ["majorTags.*"],
 					search_fields: ["majorTags.*"],
-					hint: "Edit the available options under Projects Page → Major Project Tags."
+					hint: "Edit the available options under Pages → Projects Page → Major Project Tags."
 				},
 				{
 					name: "minorTags",
 					label: "Minor Tags",
 					widget: "relation",
-					collection: "projectsPage",
+					collection: "pages",
 					file: "projectsPage",
 					dropdown_threshold: 0,
 					multiple: true,
@@ -185,7 +185,7 @@ export const config = {
 					value_field: "minorTags.*",
 					display_fields: ["minorTags.*"],
 					search_fields: ["minorTags.*"],
-					hint: "Edit the available options under Projects Page → Minor Project Tags."
+					hint: "Edit the available options under Pages → Projects Page → Minor Project Tags."
 				},
 				{
 					name: "location",
@@ -267,8 +267,8 @@ export const config = {
 			]
 		},
 		{
-			name: "projectsPage",
-			label: "Projects Page",
+			name: "pages",
+			label: "Pages",
 			files: [
 				{
 					name: "projectsPage",
