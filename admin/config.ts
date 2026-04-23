@@ -270,6 +270,573 @@ export const config = {
 			name: "pages",
 			label: "Pages",
 			files: [
+				// ── 1. Home ──────────────────────────────────────────────────────────
+				{
+					name: "homePage",
+					label: "Home Page",
+					file: "src/cms/home-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{
+									name: "title",
+									label: "Title",
+									widget: "string",
+									hint: 'First line of the large hero heading, e.g. "One Call"'
+								},
+								{
+									name: "titleAccent",
+									label: "Title Accent",
+									widget: "string",
+									hint: 'Second line displayed in the primary color, e.g. "Does It All"'
+								},
+								{ name: "description", label: "Hero Description", widget: "text" },
+								{
+									name: "image",
+									label: "Hero Background Image",
+									widget: "image",
+									hint: "Displayed as the full-bleed hero background."
+								},
+								{
+									name: "primaryCtaLabel",
+									label: "Primary CTA Label",
+									widget: "string",
+									hint: 'Label for the phone call button, e.g. "Call Now"'
+								},
+								{
+									name: "textCtaLabel",
+									label: "Text CTA Label",
+									widget: "string",
+									hint: 'Label for the SMS text button, e.g. "Text Us"'
+								},
+								{
+									name: "secondaryCta",
+									label: "Secondary CTA",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Label", widget: "string" },
+										{
+											name: "path",
+											label: "Path",
+											widget: "string",
+											hint: 'e.g. "/plumbing"',
+											pattern: ["^\\/", "Must be a relative path starting with /"]
+										}
+									]
+								}
+							]
+						},
+						{
+							name: "services",
+							label: "Services Grid Section",
+							widget: "object",
+							fields: [
+								{
+									name: "heading",
+									label: "Heading",
+									widget: "string",
+									hint: 'First part of the section heading, e.g. "What We"'
+								},
+								{
+									name: "headingAccent",
+									label: "Heading Accent",
+									widget: "string",
+									hint: 'Accent word displayed in the primary color, e.g. "Do"'
+								},
+								{ name: "description", label: "Description", widget: "text" },
+								{
+									name: "cta",
+									label: "CTA Button",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Label", widget: "string" },
+										{
+											name: "path",
+											label: "Path",
+											widget: "string",
+											hint: 'e.g. "/all-services"',
+											pattern: ["^\\/", "Must be a relative path starting with /"]
+										}
+									]
+								}
+							]
+						},
+						{
+							name: "team",
+							label: "Team Section",
+							widget: "object",
+							fields: [
+								{
+									name: "heading",
+									label: "Heading",
+									widget: "string",
+									hint: 'First part of the section heading, e.g. "Our Amazing"'
+								},
+								{
+									name: "headingAccent",
+									label: "Heading Accent",
+									widget: "string",
+									hint: 'Accent word displayed in the primary color, e.g. "Team"'
+								},
+								{ name: "body", label: "Body Text", widget: "text" },
+								{
+									name: "bullets",
+									label: "Bullet Points",
+									label_singular: "Bullet",
+									widget: "list",
+									field: { name: "item", label: "Item", widget: "string" }
+								},
+								{
+									name: "ctaLabel",
+									label: "CTA Label",
+									widget: "string",
+									hint: 'Label for the phone call button, e.g. "Get In Touch"'
+								},
+								{
+									name: "image",
+									label: "Team Photo",
+									widget: "image",
+									hint: "Photo displayed on the right side of the team section."
+								},
+								{ name: "imageAlt", label: "Team Photo Alt Text", widget: "string" }
+							]
+						},
+						{
+							name: "closingCta",
+							label: "Closing CTA Section",
+							widget: "object",
+							fields: [
+								{ name: "heading", label: "Heading", widget: "string" },
+								{ name: "description", label: "Description", widget: "text" },
+								{
+									name: "buttonLabel",
+									label: "Button Label",
+									widget: "string",
+									hint: 'Label for the phone call button, e.g. "Call Hukill\'s Now"'
+								}
+							]
+						}
+					]
+				},
+				// ── 2. About ─────────────────────────────────────────────────────────
+				{
+					name: "aboutPage",
+					label: "About Page",
+					file: "src/cms/about-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{
+									name: "eyebrow",
+									label: "Eyebrow Text",
+									widget: "string",
+									hint: 'Small line above the heading, e.g. "Est. 1979 — Faith. Family. Craft."'
+								},
+								{
+									name: "title",
+									label: "Title (before accent)",
+									widget: "string",
+									hint: 'e.g. "Built on a"'
+								},
+								{
+									name: "titleAccent",
+									label: "Title Accent Word",
+									widget: "string",
+									hint: 'Displayed in the primary color, e.g. "Higher"'
+								},
+								{
+									name: "titleSuffix",
+									label: "Title Suffix (after accent)",
+									widget: "string",
+									hint: 'e.g. "Standard"'
+								},
+								{ name: "description", label: "Hero Description", widget: "text" },
+								{
+									name: "image",
+									label: "Hero Background Image",
+									widget: "image",
+									hint: "Displayed as the full-bleed hero background."
+								},
+								{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
+							]
+						},
+						{
+							name: "mission",
+							label: "Mission Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{
+									name: "heading",
+									label: "Heading (before accent)",
+									widget: "string",
+									hint: 'e.g. "Diligence, Integrity,"'
+								},
+								{
+									name: "headingAccent",
+									label: "Heading Accent",
+									widget: "string",
+									hint: 'Displayed in the primary color, e.g. "Faith."'
+								},
+								{ name: "body", label: "Body Text", widget: "text" },
+								{
+									name: "image",
+									label: "Mission Image",
+									widget: "image",
+									hint: "Displayed on the left side of the mission section."
+								},
+								{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
+								{
+									name: "points",
+									label: "Sub-Points",
+									label_singular: "Point",
+									widget: "list",
+									fields: [
+										{ name: "heading", label: "Point Heading", widget: "string" },
+										{ name: "body", label: "Point Body", widget: "text" }
+									]
+								}
+							]
+						},
+						{
+							name: "values",
+							label: "Values Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{
+									name: "heading",
+									label: "Heading (before accent)",
+									widget: "string",
+									hint: 'e.g. "What We Stand"'
+								},
+								{
+									name: "headingAccent",
+									label: "Heading Accent",
+									widget: "string",
+									hint: 'e.g. "For"'
+								},
+								{
+									name: "backgroundImage",
+									label: "Background Image",
+									widget: "image",
+									hint: "Displayed at low opacity behind the values cards."
+								},
+								{
+									name: "items",
+									label: "Values",
+									label_singular: "Value",
+									widget: "list",
+									fields: [
+										{
+											name: "icon",
+											label: "Icon",
+											widget: "select",
+											options: ["Award", "Heart", "Users", "HandHeart", "Target", "Eye", "Scale"],
+											hint: "Lucide icon name. Adding new options requires a code change."
+										},
+										{ name: "title", label: "Title", widget: "string" },
+										{ name: "description", label: "Description", widget: "text" }
+									]
+								}
+							]
+						},
+						{
+							name: "vision",
+							label: "Vision Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{
+									name: "heading",
+									label: "Heading (before accent)",
+									widget: "string",
+									hint: 'e.g. "Measured by"'
+								},
+								{
+									name: "headingAccent",
+									label: "Heading Accent",
+									widget: "string",
+									hint: 'e.g. "Impact."'
+								},
+								{ name: "body", label: "Body Text", widget: "text" },
+								{
+									name: "bulletsLeadIn",
+									label: "Bullets Lead-In",
+									widget: "string",
+									hint: "Sentence introducing the bullet list."
+								},
+								{
+									name: "bullets",
+									label: "Bullet Points",
+									label_singular: "Bullet",
+									widget: "list",
+									field: { name: "item", label: "Item", widget: "string" }
+								},
+								{
+									name: "image",
+									label: "Vision Image",
+									widget: "image",
+									hint: "Displayed on the right side of the vision section."
+								},
+								{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
+							]
+						},
+						{
+							name: "accountability",
+							label: "Accountability Statement Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "heading", label: "Heading", widget: "string" },
+								{ name: "body", label: "Body Text", widget: "text" }
+							]
+						}
+					]
+				},
+				// ── 3. All Services ──────────────────────────────────────────────────
+				{
+					name: "allServicesPage",
+					label: "All Services Page",
+					file: "src/cms/all-services-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "title", label: "Title", widget: "string" },
+								{
+									name: "titleAccent",
+									label: "Title Accent",
+									widget: "string",
+									hint: "Displayed in the primary color"
+								},
+								{ name: "description", label: "Description", widget: "text" },
+								{
+									name: "image",
+									label: "Hero Background Image",
+									widget: "image",
+									required: false,
+									hint: "Displayed as the full-bleed hero background."
+								},
+								{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
+								{ name: "primaryCtaLabel", label: "Call CTA Label", widget: "string" },
+								{ name: "textCtaLabel", label: "Text CTA Label", widget: "string" }
+							]
+						},
+						{
+							name: "locationPrompt",
+							label: "Location Prompt Section",
+							widget: "object",
+							fields: [
+								{
+									name: "eyebrowPrefix",
+									label: "Eyebrow Prefix",
+									widget: "string",
+									hint: 'Location name is appended automatically, e.g. "Serving"'
+								},
+								{ name: "body", label: "Body Text", widget: "text" }
+							]
+						},
+						{
+							name: "servicesGrid",
+							label: "Services Grid Section",
+							widget: "object",
+							fields: [
+								{ name: "heading", label: "Heading", widget: "string" },
+								{
+									name: "headingAccent",
+									label: "Heading Accent",
+									widget: "string",
+									hint: "Displayed in the primary color"
+								},
+								{ name: "description", label: "Description", widget: "text" }
+							]
+						},
+						{
+							name: "video",
+							label: "Video Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "heading", label: "Heading", widget: "string" },
+								{ name: "body", label: "Body Text", widget: "text" },
+								{ name: "ctaLabel", label: "CTA Label", widget: "string" },
+								{
+									name: "ctaPath",
+									label: "CTA Path",
+									widget: "string",
+									pattern: ["^\\/", "Must be a relative path starting with /"]
+								},
+								{
+									name: "posterImage",
+									label: "Video Poster Image",
+									widget: "image",
+									required: false
+								},
+								{ name: "posterAlt", label: "Poster Image Alt Text", widget: "string" }
+							]
+						},
+						{
+							name: "reviews",
+							label: "Reviews Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "heading", label: "Heading", widget: "string" },
+								{
+									name: "items",
+									label: "Reviews",
+									label_singular: "Review",
+									widget: "list",
+									fields: [
+										{ name: "name", label: "Reviewer Name / Source", widget: "string" },
+										{ name: "text", label: "Review Text", widget: "text" }
+									]
+								}
+							]
+						},
+						{
+							name: "closingCta",
+							label: "Closing CTA Section",
+							widget: "object",
+							fields: [
+								{ name: "heading", label: "Heading", widget: "string" },
+								{
+									name: "bodyPrefix",
+									label: "Body Text Prefix",
+									widget: "text",
+									hint: "The selected location name is appended automatically at the end."
+								},
+								{ name: "callLabel", label: "Call Button Label", widget: "string" },
+								{ name: "textLabel", label: "Text Button Label", widget: "string" }
+							]
+						}
+					]
+				},
+				// ── 4. Commercial Plumbing ───────────────────────────────────────────
+				{
+					name: "commercialPlumbingPage",
+					label: "Commercial Plumbing Page",
+					file: "src/cms/commercial-plumbing-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{
+									name: "eyebrow",
+									label: "Eyebrow Text",
+									widget: "string",
+									required: true,
+									hint: 'Small label above the heading, e.g. "Commercial Plumbing"'
+								},
+								{
+									name: "title",
+									label: "Title (before accent)",
+									widget: "string",
+									required: true,
+									hint: 'e.g. "Big Problems Need"'
+								},
+								{
+									name: "titleAccent",
+									label: "Title Accent",
+									widget: "string",
+									required: true,
+									hint: 'Displayed in the primary color, e.g. "Big Crews."'
+								},
+								{ name: "subtitle", label: "Subtitle", widget: "text" },
+								{
+									name: "image",
+									label: "Background Image",
+									widget: "image",
+									required: true,
+									hint: "Displayed as the hero background at 35% opacity."
+								},
+								{
+									name: "imageAlt",
+									label: "Image Alt Text",
+									widget: "string",
+									required: true
+								},
+								{
+									name: "ctaLabel",
+									label: "CTA Button Label",
+									widget: "string",
+									required: true
+								},
+								{
+									name: "ctaPath",
+									label: "CTA Button Path",
+									widget: "string",
+									required: true,
+									hint: 'e.g. "/contact"',
+									pattern: ["^\\/", "Must be a relative path starting with /"]
+								}
+							]
+						},
+						{
+							name: "scale",
+							label: "Scale Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "heading", label: "Heading", widget: "string", required: true },
+								{ name: "body", label: "Body Text", widget: "text" },
+								{
+									name: "items",
+									label: "Scale Points",
+									label_singular: "Point",
+									widget: "list",
+									max: 4,
+									hint: "Up to 4 capability highlights shown in the icon card grid.",
+									fields: [
+										{
+											name: "icon",
+											label: "Icon",
+											widget: "select",
+											required: true,
+											options: ["HardHat", "Waves", "Droplets", "ShieldCheck"],
+											hint: "Lucide icon name. Adding new options requires a code change."
+										},
+										{ name: "label", label: "Label", widget: "string", required: true },
+										{ name: "text", label: "Description", widget: "text", required: true }
+									]
+								}
+							]
+						},
+						{
+							name: "capabilities",
+							label: "Capabilities Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "heading", label: "Heading", widget: "string", required: true },
+								{
+									name: "items",
+									label: "Capability Items",
+									label_singular: "Item",
+									widget: "list",
+									field: { name: "item", label: "Item", widget: "string" }
+								}
+							]
+						}
+					]
+				},
+				// ── 5. Projects ──────────────────────────────────────────────────────
 				{
 					name: "projectsPage",
 					label: "Projects Page",
@@ -371,6 +938,322 @@ export const config = {
 							field: { name: "tag", label: "Tag", widget: "string" }
 						}
 					]
+				},
+				// ── 6. Careers ───────────────────────────────────────────────────────
+				{
+					name: "careersPage",
+					label: "Careers Page",
+					file: "src/cms/careers-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{
+									name: "eyebrow",
+									label: "Eyebrow Text",
+									widget: "string",
+									hint: 'Small line above the heading, e.g. "Now Hiring"'
+								},
+								{
+									name: "title",
+									label: "Title (before accent)",
+									widget: "string",
+									hint: 'e.g. "Build a"'
+								},
+								{
+									name: "titleAccent",
+									label: "Title Accent Word",
+									widget: "string",
+									hint: 'Displayed in the primary color, e.g. "Career"'
+								},
+								{
+									name: "titleSuffix",
+									label: "Title Suffix (after accent)",
+									widget: "string",
+									hint: 'e.g. "with Purpose"'
+								},
+								{ name: "description", label: "Hero Description", widget: "text" },
+								{
+									name: "image",
+									label: "Hero Background Image",
+									widget: "image",
+									hint: "Displayed as the full-bleed hero background."
+								},
+								{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
+							]
+						},
+						{
+							name: "trades",
+							label: "Trades Section",
+							widget: "object",
+							fields: [
+								{
+									name: "items",
+									label: "Trades",
+									label_singular: "Trade",
+									widget: "list",
+									max: 4,
+									hint: "Up to 4 trade specialties shown in the icon grid.",
+									fields: [
+										{
+											name: "icon",
+											label: "Icon",
+											widget: "select",
+											options: ["Wrench", "HardHat", "Hammer", "Briefcase"],
+											hint: "Lucide icon name. Adding new options requires a code change."
+										},
+										{ name: "label", label: "Label", widget: "string" }
+									]
+								}
+							]
+						},
+						{
+							name: "application",
+							label: "Application Form Section",
+							widget: "object",
+							fields: [
+								{
+									name: "eyebrow",
+									label: "Eyebrow Text",
+									widget: "string",
+									hint: 'e.g. "Application"'
+								},
+								{ name: "heading", label: "Section Heading", widget: "string" },
+								{
+									name: "firstName",
+									label: "First Name Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Label", widget: "string" },
+										{ name: "required", label: "Required", widget: "boolean", default: true }
+									]
+								},
+								{
+									name: "lastName",
+									label: "Last Name Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Label", widget: "string" },
+										{ name: "required", label: "Required", widget: "boolean", default: true }
+									]
+								},
+								{
+									name: "email",
+									label: "Email Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Label", widget: "string" },
+										{ name: "required", label: "Required", widget: "boolean", default: true }
+									]
+								},
+								{
+									name: "message",
+									label: "Message Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Label", widget: "string" },
+										{ name: "required", label: "Required", widget: "boolean", default: true }
+									]
+								},
+								{ name: "messagePlaceholder", label: "Message Placeholder", widget: "string" },
+								{ name: "resumeLabel", label: "Resume Field Label", widget: "string" },
+								{
+									name: "resumeUploadHint",
+									label: "Resume Upload Hint",
+									widget: "string",
+									hint: 'Displayed inside the file upload area, e.g. "Click to upload (PDF, DOC, DOCX)"'
+								},
+								{ name: "updatesLabel", label: "Updates Checkbox Label", widget: "string" },
+								{ name: "submitLabel", label: "Submit Button Label", widget: "string" },
+								{
+									name: "submittingLabel",
+									label: "Submit Button (submitting state)",
+									widget: "string"
+								},
+								{ name: "successTitle", label: "Success Toast Title", widget: "string" },
+								{ name: "successBody", label: "Success Toast Body", widget: "string" }
+							]
+						}
+					]
+				},
+				// ── 7. Contact ───────────────────────────────────────────────────────
+				{
+					name: "contactPage",
+					label: "Contact Page",
+					file: "src/cms/contact-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{
+									name: "eyebrow",
+									label: "Eyebrow Text",
+									widget: "string",
+									hint: 'Small line above the heading, e.g. "Get In Touch"'
+								},
+								{
+									name: "title",
+									label: "Title (before accent)",
+									widget: "string",
+									hint: 'e.g. "One Call"'
+								},
+								{
+									name: "titleAccent",
+									label: "Title Accent",
+									widget: "string",
+									hint: 'Displayed in the primary color, e.g. "Does It All."'
+								},
+								{
+									name: "image",
+									label: "Hero Background Image",
+									widget: "image",
+									hint: "Displayed as the full-bleed hero background."
+								},
+								{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
+							]
+						},
+						{
+							name: "locations",
+							label: "Locations Section",
+							widget: "object",
+							fields: [
+								{
+									name: "selectedBadge",
+									label: "'Selected' Badge Label",
+									widget: "string",
+									hint: 'e.g. "Selected"'
+								},
+								{
+									name: "hoursLabel",
+									label: "Hours Label",
+									widget: "string",
+									hint: 'e.g. "24/7 Emergency Service Available"'
+								},
+								{
+									name: "callLabelPrefix",
+									label: "Call Button Prefix",
+									widget: "string",
+									hint: 'Location short name is appended automatically, e.g. "Call" → "Call Fort Worth"'
+								},
+								{
+									name: "setLocationLabel",
+									label: "'Set As My Location' Button Label",
+									widget: "string",
+									hint: 'e.g. "Set as My Location"'
+								}
+							]
+						},
+						{
+							name: "careersCta",
+							label: "Careers CTA Section",
+							widget: "object",
+							fields: [
+								{
+									name: "heading",
+									label: "Heading (before accent)",
+									widget: "string",
+									hint: 'e.g. "Looking to Join the"'
+								},
+								{
+									name: "headingAccent",
+									label: "Heading Accent",
+									widget: "string",
+									hint: 'Displayed in the primary color, e.g. "Team?"'
+								},
+								{ name: "body", label: "Body Text", widget: "text" },
+								{ name: "ctaLabel", label: "CTA Button Label", widget: "string" },
+								{
+									name: "ctaPath",
+									label: "CTA Button Path",
+									widget: "string",
+									hint: 'e.g. "/careers"',
+									pattern: ["^\\/", "Must be a relative path starting with /"]
+								}
+							]
+						}
+					]
+				},
+				// ── 8. Privacy Policy ────────────────────────────────────────────────
+				{
+					name: "privacyPolicyPage",
+					label: "Privacy Policy Page",
+					file: "src/cms/privacy-policy-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{
+									name: "eyebrow",
+									label: "Eyebrow",
+									widget: "string",
+									hint: 'Small label above the title, e.g. "Legal"'
+								},
+								{ name: "title", label: "Page Title", widget: "string" },
+								{
+									name: "effectiveDate",
+									label: "Effective Date Line",
+									widget: "string",
+									hint: 'e.g. "Effective date: January 1, 2023"'
+								}
+							]
+						},
+						{
+							name: "intro",
+							label: "Intro (before first section)",
+							widget: "markdown",
+							required: false,
+							hint: "Introductory paragraphs shown above the first section. Supports paragraphs, links, and lists.",
+							buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"],
+							editor_components: [],
+							modes: ["rich-text"]
+						},
+						{
+							name: "sections",
+							label: "Sections",
+							label_singular: "Section",
+							widget: "list",
+							fields: [
+								{ name: "title", label: "Section Title", widget: "string" },
+								{
+									name: "intro",
+									label: "Intro Text",
+									widget: "markdown",
+									required: false,
+									hint: "Optional lead-in paragraphs (and/or bullet list) shown before the sub-sections.",
+									buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"],
+									editor_components: [],
+									modes: ["rich-text"]
+								},
+								{
+									name: "subSections",
+									label: "Sub-Sections",
+									label_singular: "Sub-Section",
+									widget: "list",
+									required: false,
+									fields: [
+										{ name: "title", label: "Sub-Section Title", widget: "string" },
+										{
+											name: "body",
+											label: "Body",
+											widget: "markdown",
+											buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"],
+											editor_components: [],
+											modes: ["rich-text"]
+										}
+									]
+								}
+							]
+						}
+					]
 				}
 			]
 		}
@@ -413,771 +1296,6 @@ export const config = {
 					label: "Location Prefix",
 					widget: "string",
 					hint: 'Text before the location name, e.g. "Serving"'
-				}
-			]
-		},
-		{
-			name: "allServicesPage",
-			label: "All Services Page",
-			file: "src/cms/all-services-page.json",
-			fields: [
-				createSeoField(),
-				{
-					name: "hero",
-					label: "Hero Section",
-					widget: "object",
-					fields: [
-						{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-						{ name: "title", label: "Title", widget: "string" },
-						{
-							name: "titleAccent",
-							label: "Title Accent",
-							widget: "string",
-							hint: "Displayed in the primary color"
-						},
-						{ name: "description", label: "Description", widget: "text" },
-						{
-							name: "image",
-							label: "Hero Background Image",
-							widget: "image",
-							required: false,
-							hint: "Displayed as the full-bleed hero background."
-						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
-						{ name: "primaryCtaLabel", label: "Call CTA Label", widget: "string" },
-						{ name: "textCtaLabel", label: "Text CTA Label", widget: "string" }
-					]
-				},
-				{
-					name: "locationPrompt",
-					label: "Location Prompt Section",
-					widget: "object",
-					fields: [
-						{
-							name: "eyebrowPrefix",
-							label: "Eyebrow Prefix",
-							widget: "string",
-							hint: 'Location name is appended automatically, e.g. "Serving"'
-						},
-						{ name: "body", label: "Body Text", widget: "text" }
-					]
-				},
-				{
-					name: "servicesGrid",
-					label: "Services Grid Section",
-					widget: "object",
-					fields: [
-						{ name: "heading", label: "Heading", widget: "string" },
-						{
-							name: "headingAccent",
-							label: "Heading Accent",
-							widget: "string",
-							hint: "Displayed in the primary color"
-						},
-						{ name: "description", label: "Description", widget: "text" }
-					]
-				},
-				{
-					name: "video",
-					label: "Video Section",
-					widget: "object",
-					fields: [
-						{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-						{ name: "heading", label: "Heading", widget: "string" },
-						{ name: "body", label: "Body Text", widget: "text" },
-						{ name: "ctaLabel", label: "CTA Label", widget: "string" },
-						{
-							name: "ctaPath",
-							label: "CTA Path",
-							widget: "string",
-							pattern: ["^\\/", "Must be a relative path starting with /"]
-						},
-						{
-							name: "posterImage",
-							label: "Video Poster Image",
-							widget: "image",
-							required: false
-						},
-						{ name: "posterAlt", label: "Poster Image Alt Text", widget: "string" }
-					]
-				},
-				{
-					name: "reviews",
-					label: "Reviews Section",
-					widget: "object",
-					fields: [
-						{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-						{ name: "heading", label: "Heading", widget: "string" },
-						{
-							name: "items",
-							label: "Reviews",
-							label_singular: "Review",
-							widget: "list",
-							fields: [
-								{ name: "name", label: "Reviewer Name / Source", widget: "string" },
-								{ name: "text", label: "Review Text", widget: "text" }
-							]
-						}
-					]
-				},
-				{
-					name: "closingCta",
-					label: "Closing CTA Section",
-					widget: "object",
-					fields: [
-						{ name: "heading", label: "Heading", widget: "string" },
-						{
-							name: "bodyPrefix",
-							label: "Body Text Prefix",
-							widget: "text",
-							hint: "The selected location name is appended automatically at the end."
-						},
-						{ name: "callLabel", label: "Call Button Label", widget: "string" },
-						{ name: "textLabel", label: "Text Button Label", widget: "string" }
-					]
-				}
-			]
-		},
-		{
-			name: "contactPage",
-			label: "Contact Page",
-			file: "src/cms/contact-page.json",
-			fields: [
-				createSeoField(),
-				{
-					name: "hero",
-					label: "Hero Section",
-					widget: "object",
-					fields: [
-						{
-							name: "eyebrow",
-							label: "Eyebrow Text",
-							widget: "string",
-							hint: 'Small line above the heading, e.g. "Get In Touch"'
-						},
-						{
-							name: "title",
-							label: "Title (before accent)",
-							widget: "string",
-							hint: 'e.g. "One Call"'
-						},
-						{
-							name: "titleAccent",
-							label: "Title Accent",
-							widget: "string",
-							hint: 'Displayed in the primary color, e.g. "Does It All."'
-						},
-						{
-							name: "image",
-							label: "Hero Background Image",
-							widget: "image",
-							hint: "Displayed as the full-bleed hero background."
-						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
-					]
-				},
-				{
-					name: "locations",
-					label: "Locations Section",
-					widget: "object",
-					fields: [
-						{
-							name: "selectedBadge",
-							label: "'Selected' Badge Label",
-							widget: "string",
-							hint: 'e.g. "Selected"'
-						},
-						{
-							name: "hoursLabel",
-							label: "Hours Label",
-							widget: "string",
-							hint: 'e.g. "24/7 Emergency Service Available"'
-						},
-						{
-							name: "callLabelPrefix",
-							label: "Call Button Prefix",
-							widget: "string",
-							hint: 'Location short name is appended automatically, e.g. "Call" → "Call Fort Worth"'
-						},
-						{
-							name: "setLocationLabel",
-							label: "'Set As My Location' Button Label",
-							widget: "string",
-							hint: 'e.g. "Set as My Location"'
-						}
-					]
-				},
-				{
-					name: "careersCta",
-					label: "Careers CTA Section",
-					widget: "object",
-					fields: [
-						{
-							name: "heading",
-							label: "Heading (before accent)",
-							widget: "string",
-							hint: 'e.g. "Looking to Join the"'
-						},
-						{
-							name: "headingAccent",
-							label: "Heading Accent",
-							widget: "string",
-							hint: 'Displayed in the primary color, e.g. "Team?"'
-						},
-						{ name: "body", label: "Body Text", widget: "text" },
-						{ name: "ctaLabel", label: "CTA Button Label", widget: "string" },
-						{
-							name: "ctaPath",
-							label: "CTA Button Path",
-							widget: "string",
-							hint: 'e.g. "/careers"',
-							pattern: ["^\\/", "Must be a relative path starting with /"]
-						}
-					]
-				}
-			]
-		},
-		{
-			name: "careersPage",
-			label: "Careers Page",
-			file: "src/cms/careers-page.json",
-			fields: [
-				createSeoField(),
-				{
-					name: "hero",
-					label: "Hero Section",
-					widget: "object",
-					fields: [
-						{
-							name: "eyebrow",
-							label: "Eyebrow Text",
-							widget: "string",
-							hint: 'Small line above the heading, e.g. "Now Hiring"'
-						},
-						{
-							name: "title",
-							label: "Title (before accent)",
-							widget: "string",
-							hint: 'e.g. "Build a"'
-						},
-						{
-							name: "titleAccent",
-							label: "Title Accent Word",
-							widget: "string",
-							hint: 'Displayed in the primary color, e.g. "Career"'
-						},
-						{
-							name: "titleSuffix",
-							label: "Title Suffix (after accent)",
-							widget: "string",
-							hint: 'e.g. "with Purpose"'
-						},
-						{ name: "description", label: "Hero Description", widget: "text" },
-						{
-							name: "image",
-							label: "Hero Background Image",
-							widget: "image",
-							hint: "Displayed as the full-bleed hero background."
-						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
-					]
-				},
-				{
-					name: "trades",
-					label: "Trades Section",
-					widget: "object",
-					fields: [
-						{
-							name: "items",
-							label: "Trades",
-							label_singular: "Trade",
-							widget: "list",
-							max: 4,
-							hint: "Up to 4 trade specialties shown in the icon grid.",
-							fields: [
-								{
-									name: "icon",
-									label: "Icon",
-									widget: "select",
-									options: ["Wrench", "HardHat", "Hammer", "Briefcase"],
-									hint: "Lucide icon name. Adding new options requires a code change."
-								},
-								{ name: "label", label: "Label", widget: "string" }
-							]
-						}
-					]
-				},
-				{
-					name: "application",
-					label: "Application Form Section",
-					widget: "object",
-					fields: [
-						{
-							name: "eyebrow",
-							label: "Eyebrow Text",
-							widget: "string",
-							hint: 'e.g. "Application"'
-						},
-						{ name: "heading", label: "Section Heading", widget: "string" },
-						{
-							name: "firstName",
-							label: "First Name Field",
-							widget: "object",
-							fields: [
-								{ name: "label", label: "Label", widget: "string" },
-								{ name: "required", label: "Required", widget: "boolean", default: true }
-							]
-						},
-						{
-							name: "lastName",
-							label: "Last Name Field",
-							widget: "object",
-							fields: [
-								{ name: "label", label: "Label", widget: "string" },
-								{ name: "required", label: "Required", widget: "boolean", default: true }
-							]
-						},
-						{
-							name: "email",
-							label: "Email Field",
-							widget: "object",
-							fields: [
-								{ name: "label", label: "Label", widget: "string" },
-								{ name: "required", label: "Required", widget: "boolean", default: true }
-							]
-						},
-						{
-							name: "message",
-							label: "Message Field",
-							widget: "object",
-							fields: [
-								{ name: "label", label: "Label", widget: "string" },
-								{ name: "required", label: "Required", widget: "boolean", default: true }
-							]
-						},
-						{ name: "messagePlaceholder", label: "Message Placeholder", widget: "string" },
-						{ name: "resumeLabel", label: "Resume Field Label", widget: "string" },
-						{
-							name: "resumeUploadHint",
-							label: "Resume Upload Hint",
-							widget: "string",
-							hint: 'Displayed inside the file upload area, e.g. "Click to upload (PDF, DOC, DOCX)"'
-						},
-						{ name: "updatesLabel", label: "Updates Checkbox Label", widget: "string" },
-						{ name: "submitLabel", label: "Submit Button Label", widget: "string" },
-						{
-							name: "submittingLabel",
-							label: "Submit Button (submitting state)",
-							widget: "string"
-						},
-						{ name: "successTitle", label: "Success Toast Title", widget: "string" },
-						{ name: "successBody", label: "Success Toast Body", widget: "string" }
-					]
-				}
-			]
-		},
-		{
-			name: "aboutPage",
-			label: "About Page",
-			file: "src/cms/about-page.json",
-			fields: [
-				createSeoField(),
-				{
-					name: "hero",
-					label: "Hero Section",
-					widget: "object",
-					fields: [
-						{
-							name: "eyebrow",
-							label: "Eyebrow Text",
-							widget: "string",
-							hint: 'Small line above the heading, e.g. "Est. 1979 — Faith. Family. Craft."'
-						},
-						{
-							name: "title",
-							label: "Title (before accent)",
-							widget: "string",
-							hint: 'e.g. "Built on a"'
-						},
-						{
-							name: "titleAccent",
-							label: "Title Accent Word",
-							widget: "string",
-							hint: 'Displayed in the primary color, e.g. "Higher"'
-						},
-						{
-							name: "titleSuffix",
-							label: "Title Suffix (after accent)",
-							widget: "string",
-							hint: 'e.g. "Standard"'
-						},
-						{ name: "description", label: "Hero Description", widget: "text" },
-						{
-							name: "image",
-							label: "Hero Background Image",
-							widget: "image",
-							hint: "Displayed as the full-bleed hero background."
-						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
-					]
-				},
-				{
-					name: "mission",
-					label: "Mission Section",
-					widget: "object",
-					fields: [
-						{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-						{
-							name: "heading",
-							label: "Heading (before accent)",
-							widget: "string",
-							hint: 'e.g. "Diligence, Integrity,"'
-						},
-						{
-							name: "headingAccent",
-							label: "Heading Accent",
-							widget: "string",
-							hint: 'Displayed in the primary color, e.g. "Faith."'
-						},
-						{ name: "body", label: "Body Text", widget: "text" },
-						{
-							name: "image",
-							label: "Mission Image",
-							widget: "image",
-							hint: "Displayed on the left side of the mission section."
-						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
-						{
-							name: "points",
-							label: "Sub-Points",
-							label_singular: "Point",
-							widget: "list",
-							fields: [
-								{ name: "heading", label: "Point Heading", widget: "string" },
-								{ name: "body", label: "Point Body", widget: "text" }
-							]
-						}
-					]
-				},
-				{
-					name: "values",
-					label: "Values Section",
-					widget: "object",
-					fields: [
-						{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-						{
-							name: "heading",
-							label: "Heading (before accent)",
-							widget: "string",
-							hint: 'e.g. "What We Stand"'
-						},
-						{
-							name: "headingAccent",
-							label: "Heading Accent",
-							widget: "string",
-							hint: 'e.g. "For"'
-						},
-						{
-							name: "backgroundImage",
-							label: "Background Image",
-							widget: "image",
-							hint: "Displayed at low opacity behind the values cards."
-						},
-						{
-							name: "items",
-							label: "Values",
-							label_singular: "Value",
-							widget: "list",
-							fields: [
-								{
-									name: "icon",
-									label: "Icon",
-									widget: "select",
-									options: ["Award", "Heart", "Users", "HandHeart", "Target", "Eye", "Scale"],
-									hint: "Lucide icon name. Adding new options requires a code change."
-								},
-								{ name: "title", label: "Title", widget: "string" },
-								{ name: "description", label: "Description", widget: "text" }
-							]
-						}
-					]
-				},
-				{
-					name: "vision",
-					label: "Vision Section",
-					widget: "object",
-					fields: [
-						{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-						{
-							name: "heading",
-							label: "Heading (before accent)",
-							widget: "string",
-							hint: 'e.g. "Measured by"'
-						},
-						{
-							name: "headingAccent",
-							label: "Heading Accent",
-							widget: "string",
-							hint: 'e.g. "Impact."'
-						},
-						{ name: "body", label: "Body Text", widget: "text" },
-						{
-							name: "bulletsLeadIn",
-							label: "Bullets Lead-In",
-							widget: "string",
-							hint: "Sentence introducing the bullet list."
-						},
-						{
-							name: "bullets",
-							label: "Bullet Points",
-							label_singular: "Bullet",
-							widget: "list",
-							field: { name: "item", label: "Item", widget: "string" }
-						},
-						{
-							name: "image",
-							label: "Vision Image",
-							widget: "image",
-							hint: "Displayed on the right side of the vision section."
-						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
-					]
-				},
-				{
-					name: "accountability",
-					label: "Accountability Statement Section",
-					widget: "object",
-					fields: [
-						{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-						{ name: "heading", label: "Heading", widget: "string" },
-						{ name: "body", label: "Body Text", widget: "text" }
-					]
-				}
-			]
-		},
-		{
-			name: "homePage",
-			label: "Home Page",
-			file: "src/cms/home-page.json",
-			fields: [
-				createSeoField(),
-				{
-					name: "hero",
-					label: "Hero Section",
-					widget: "object",
-					fields: [
-						{
-							name: "title",
-							label: "Title",
-							widget: "string",
-							hint: 'First line of the large hero heading, e.g. "One Call"'
-						},
-						{
-							name: "titleAccent",
-							label: "Title Accent",
-							widget: "string",
-							hint: 'Second line displayed in the primary color, e.g. "Does It All"'
-						},
-						{ name: "description", label: "Hero Description", widget: "text" },
-						{
-							name: "image",
-							label: "Hero Background Image",
-							widget: "image",
-							hint: "Displayed as the full-bleed hero background."
-						},
-						{
-							name: "primaryCtaLabel",
-							label: "Primary CTA Label",
-							widget: "string",
-							hint: 'Label for the phone call button, e.g. "Call Now"'
-						},
-						{
-							name: "textCtaLabel",
-							label: "Text CTA Label",
-							widget: "string",
-							hint: 'Label for the SMS text button, e.g. "Text Us"'
-						},
-						{
-							name: "secondaryCta",
-							label: "Secondary CTA",
-							widget: "object",
-							fields: [
-								{ name: "label", label: "Label", widget: "string" },
-								{
-									name: "path",
-									label: "Path",
-									widget: "string",
-									hint: 'e.g. "/plumbing"',
-									pattern: ["^\\/", "Must be a relative path starting with /"]
-								}
-							]
-						}
-					]
-				},
-				{
-					name: "services",
-					label: "Services Grid Section",
-					widget: "object",
-					fields: [
-						{
-							name: "heading",
-							label: "Heading",
-							widget: "string",
-							hint: 'First part of the section heading, e.g. "What We"'
-						},
-						{
-							name: "headingAccent",
-							label: "Heading Accent",
-							widget: "string",
-							hint: 'Accent word displayed in the primary color, e.g. "Do"'
-						},
-						{ name: "description", label: "Description", widget: "text" },
-						{
-							name: "cta",
-							label: "CTA Button",
-							widget: "object",
-							fields: [
-								{ name: "label", label: "Label", widget: "string" },
-								{
-									name: "path",
-									label: "Path",
-									widget: "string",
-									hint: 'e.g. "/all-services"',
-									pattern: ["^\\/", "Must be a relative path starting with /"]
-								}
-							]
-						}
-					]
-				},
-				{
-					name: "team",
-					label: "Team Section",
-					widget: "object",
-					fields: [
-						{
-							name: "heading",
-							label: "Heading",
-							widget: "string",
-							hint: 'First part of the section heading, e.g. "Our Amazing"'
-						},
-						{
-							name: "headingAccent",
-							label: "Heading Accent",
-							widget: "string",
-							hint: 'Accent word displayed in the primary color, e.g. "Team"'
-						},
-						{ name: "body", label: "Body Text", widget: "text" },
-						{
-							name: "bullets",
-							label: "Bullet Points",
-							label_singular: "Bullet",
-							widget: "list",
-							field: { name: "item", label: "Item", widget: "string" }
-						},
-						{
-							name: "ctaLabel",
-							label: "CTA Label",
-							widget: "string",
-							hint: 'Label for the phone call button, e.g. "Get In Touch"'
-						},
-						{
-							name: "image",
-							label: "Team Photo",
-							widget: "image",
-							hint: "Photo displayed on the right side of the team section."
-						},
-						{ name: "imageAlt", label: "Team Photo Alt Text", widget: "string" }
-					]
-				},
-				{
-					name: "closingCta",
-					label: "Closing CTA Section",
-					widget: "object",
-					fields: [
-						{ name: "heading", label: "Heading", widget: "string" },
-						{ name: "description", label: "Description", widget: "text" },
-						{
-							name: "buttonLabel",
-							label: "Button Label",
-							widget: "string",
-							hint: 'Label for the phone call button, e.g. "Call Hukill\'s Now"'
-						}
-					]
-				}
-			]
-		},
-		{
-			name: "privacyPolicyPage",
-			label: "Privacy Policy Page",
-			file: "src/cms/privacy-policy-page.json",
-			fields: [
-				createSeoField(),
-				{
-					name: "hero",
-					label: "Hero Section",
-					widget: "object",
-					fields: [
-						{
-							name: "eyebrow",
-							label: "Eyebrow",
-							widget: "string",
-							hint: 'Small label above the title, e.g. "Legal"'
-						},
-						{ name: "title", label: "Page Title", widget: "string" },
-						{
-							name: "effectiveDate",
-							label: "Effective Date Line",
-							widget: "string",
-							hint: 'e.g. "Effective date: January 1, 2023"'
-						}
-					]
-				},
-				{
-					name: "intro",
-					label: "Intro (before first section)",
-					widget: "markdown",
-					required: false,
-					hint: "Introductory paragraphs shown above the first section. Supports paragraphs, links, and lists.",
-					buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"],
-					editor_components: [],
-					modes: ["rich-text"]
-				},
-				{
-					name: "sections",
-					label: "Sections",
-					label_singular: "Section",
-					widget: "list",
-					fields: [
-						{ name: "title", label: "Section Title", widget: "string" },
-						{
-							name: "intro",
-							label: "Intro Text",
-							widget: "markdown",
-							required: false,
-							hint: "Optional lead-in paragraphs (and/or bullet list) shown before the sub-sections.",
-							buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"],
-							editor_components: [],
-							modes: ["rich-text"]
-						},
-						{
-							name: "subSections",
-							label: "Sub-Sections",
-							label_singular: "Sub-Section",
-							widget: "list",
-							required: false,
-							fields: [
-								{ name: "title", label: "Sub-Section Title", widget: "string" },
-								{
-									name: "body",
-									label: "Body",
-									widget: "markdown",
-									buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"],
-									editor_components: [],
-									modes: ["rich-text"]
-								}
-							]
-						}
-					]
 				}
 			]
 		},
@@ -1313,116 +1431,6 @@ export const config = {
 					label: "Header CTA Button",
 					widget: "object",
 					fields: [{ name: "label", label: "Button Label", widget: "string" }]
-				}
-			]
-		},
-		{
-			name: "commercialPlumbingPage",
-			label: "Commercial Plumbing Page",
-			file: "src/cms/commercial-plumbing-page.json",
-			fields: [
-				createSeoField(),
-				{
-					name: "hero",
-					label: "Hero Section",
-					widget: "object",
-					fields: [
-						{
-							name: "eyebrow",
-							label: "Eyebrow Text",
-							widget: "string",
-							required: true,
-							hint: 'Small label above the heading, e.g. "Commercial Plumbing"'
-						},
-						{
-							name: "title",
-							label: "Title (before accent)",
-							widget: "string",
-							required: true,
-							hint: 'e.g. "Big Problems Need"'
-						},
-						{
-							name: "titleAccent",
-							label: "Title Accent",
-							widget: "string",
-							required: true,
-							hint: 'Displayed in the primary color, e.g. "Big Crews."'
-						},
-						{ name: "subtitle", label: "Subtitle", widget: "text" },
-						{
-							name: "image",
-							label: "Background Image",
-							widget: "image",
-							required: true,
-							hint: "Displayed as the hero background at 35% opacity."
-						},
-						{
-							name: "imageAlt",
-							label: "Image Alt Text",
-							widget: "string",
-							required: true
-						},
-						{
-							name: "ctaLabel",
-							label: "CTA Button Label",
-							widget: "string",
-							required: true
-						},
-						{
-							name: "ctaPath",
-							label: "CTA Button Path",
-							widget: "string",
-							required: true,
-							hint: 'e.g. "/contact"',
-							pattern: ["^\\/", "Must be a relative path starting with /"]
-						}
-					]
-				},
-				{
-					name: "scale",
-					label: "Scale Section",
-					widget: "object",
-					fields: [
-						{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-						{ name: "heading", label: "Heading", widget: "string", required: true },
-						{ name: "body", label: "Body Text", widget: "text" },
-						{
-							name: "items",
-							label: "Scale Points",
-							label_singular: "Point",
-							widget: "list",
-							max: 4,
-							hint: "Up to 4 capability highlights shown in the icon card grid.",
-							fields: [
-								{
-									name: "icon",
-									label: "Icon",
-									widget: "select",
-									required: true,
-									options: ["HardHat", "Waves", "Droplets", "ShieldCheck"],
-									hint: "Lucide icon name. Adding new options requires a code change."
-								},
-								{ name: "label", label: "Label", widget: "string", required: true },
-								{ name: "text", label: "Description", widget: "text", required: true }
-							]
-						}
-					]
-				},
-				{
-					name: "capabilities",
-					label: "Capabilities Section",
-					widget: "object",
-					fields: [
-						{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-						{ name: "heading", label: "Heading", widget: "string", required: true },
-						{
-							name: "items",
-							label: "Capability Items",
-							label_singular: "Item",
-							widget: "list",
-							field: { name: "item", label: "Item", widget: "string" }
-						}
-					]
 				}
 			]
 		},
