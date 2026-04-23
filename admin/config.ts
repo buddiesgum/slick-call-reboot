@@ -137,7 +137,7 @@ export const config = {
 			slug: "{{id}}",
 			media_folder: "/public/media/projects/{{fields.id}}",
 			public_folder: "/media/projects/{{fields.id}}",
-			sortable_fields: ["order", "title", "category"],
+			sortable_fields: ["order", "title"],
 			fields: [
 				{
 					name: "id",
@@ -160,16 +160,32 @@ export const config = {
 				},
 				{ name: "title", label: "Title", widget: "string" },
 				{
-					name: "category",
-					label: "Category",
-					widget: "select",
-					options: ["Foundations", "Restoration", "Remodels", "Plumbing", "Excavation"]
+					name: "majorTags",
+					label: "Major Tags",
+					widget: "relation",
+					collection: "projectsPage",
+					file: "projectsPage",
+					dropdown_threshold: 0,
+					multiple: true,
+					required: false,
+					value_field: "majorTags.*",
+					display_fields: ["majorTags.*"],
+					search_fields: ["majorTags.*"],
+					hint: "Edit the available options under Projects Page → Major Project Tags."
 				},
 				{
-					name: "market",
-					label: "Market",
-					widget: "select",
-					options: ["Residential", "Commercial"]
+					name: "minorTags",
+					label: "Minor Tags",
+					widget: "relation",
+					collection: "projectsPage",
+					file: "projectsPage",
+					dropdown_threshold: 0,
+					multiple: true,
+					required: false,
+					value_field: "minorTags.*",
+					display_fields: ["minorTags.*"],
+					search_fields: ["minorTags.*"],
+					hint: "Edit the available options under Projects Page → Minor Project Tags."
 				},
 				{
 					name: "location",
@@ -247,6 +263,114 @@ export const config = {
 					label: "Phone (display format)",
 					widget: "string",
 					hint: "e.g. '(817) 672-7555'"
+				}
+			]
+		},
+		{
+			name: "projectsPage",
+			label: "Projects Page",
+			files: [
+				{
+					name: "projectsPage",
+					label: "Projects Page",
+					file: "src/cms/projects-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{
+									name: "eyebrow",
+									label: "Eyebrow Text",
+									widget: "string",
+									hint: 'Small word before the accented title, e.g. "Our"'
+								},
+								{
+									name: "titleAccent",
+									label: "Title Accent Word",
+									widget: "string",
+									hint: 'Accent word displayed in primary color, e.g. "Projects"'
+								},
+								{
+									name: "description",
+									label: "Hero Description",
+									widget: "text",
+									hint: "Subheading paragraph shown below the hero title."
+								},
+								{
+									name: "image",
+									label: "Hero Background Image",
+									widget: "image",
+									hint: "Displayed as the hero background at 20% opacity."
+								}
+							]
+						},
+						{
+							name: "filters",
+							label: "Filter Pills",
+							widget: "object",
+							fields: [
+								{
+									name: "majorTagAllLabel",
+									label: "Major Tag 'All' Label",
+									widget: "string",
+									hint: "Label for the 'All' pill in the major tag filter row, e.g. \"All Projects\""
+								},
+								{
+									name: "minorTagAllLabel",
+									label: "Minor Tag 'All' Label",
+									widget: "string",
+									hint: "Label for the 'All' pill in the minor tag filter row, e.g. \"All\""
+								}
+							]
+						},
+						{
+							name: "card",
+							label: "Project Card",
+							widget: "object",
+							fields: [
+								{
+									name: "ctaLabel",
+									label: "Card CTA Text",
+									widget: "string",
+									hint: 'Link text shown on each project card, e.g. "View Project"'
+								}
+							]
+						},
+						{
+							name: "modal",
+							label: "Project Modal",
+							widget: "object",
+							fields: [
+								{
+									name: "galleryHeading",
+									label: "Gallery Section Heading",
+									widget: "string",
+									hint: 'Heading shown above the image gallery in the project detail modal, e.g. "Gallery"'
+								}
+							]
+						},
+						{
+							name: "majorTags",
+							label: "Major Project Tags",
+							label_singular: "Tag",
+							widget: "list",
+							required: false,
+							hint: "Top-level filter tags. Add or rename entries here; the available options in each project's Major Tags field update automatically.",
+							field: { name: "tag", label: "Tag", widget: "string" }
+						},
+						{
+							name: "minorTags",
+							label: "Minor Project Tags",
+							label_singular: "Tag",
+							widget: "list",
+							required: false,
+							hint: "Secondary filter tags. Add or rename entries here; the available options in each project's Minor Tags field update automatically.",
+							field: { name: "tag", label: "Tag", widget: "string" }
+						}
+					]
 				}
 			]
 		}
@@ -979,108 +1103,6 @@ export const config = {
 							hint: 'Label for the phone call button, e.g. "Call Hukill\'s Now"'
 						}
 					]
-				}
-			]
-		},
-		{
-			name: "projectsPage",
-			label: "Projects Page",
-			file: "src/cms/projects-page.json",
-			fields: [
-				createSeoField(),
-				{
-					name: "hero",
-					label: "Hero Section",
-					widget: "object",
-					fields: [
-						{
-							name: "eyebrow",
-							label: "Eyebrow Text",
-							widget: "string",
-							hint: 'Small word before the accented title, e.g. "Our"'
-						},
-						{
-							name: "titleAccent",
-							label: "Title Accent Word",
-							widget: "string",
-							hint: 'Accent word displayed in primary color, e.g. "Projects"'
-						},
-						{
-							name: "description",
-							label: "Hero Description",
-							widget: "text",
-							hint: "Subheading paragraph shown below the hero title."
-						},
-						{
-							name: "image",
-							label: "Hero Background Image",
-							widget: "image",
-							hint: "Displayed as the hero background at 20% opacity."
-						}
-					]
-				},
-				{
-					name: "filters",
-					label: "Filter Pills",
-					widget: "object",
-					fields: [
-						{
-							name: "marketAllLabel",
-							label: "Market 'All' Label",
-							widget: "string",
-							hint: "Label for the 'All' pill in the market filter row, e.g. \"All Projects\""
-						},
-						{
-							name: "categoryAllLabel",
-							label: "Category 'All' Label",
-							widget: "string",
-							hint: "Label for the 'All' pill in the category filter row, e.g. \"All\""
-						}
-					]
-				},
-				{
-					name: "card",
-					label: "Project Card",
-					widget: "object",
-					fields: [
-						{
-							name: "ctaLabel",
-							label: "Card CTA Text",
-							widget: "string",
-							hint: 'Link text shown on each project card, e.g. "View Project"'
-						}
-					]
-				},
-				{
-					name: "modal",
-					label: "Project Modal",
-					widget: "object",
-					fields: [
-						{
-							name: "galleryHeading",
-							label: "Gallery Section Heading",
-							widget: "string",
-							hint: 'Heading shown above the image gallery in the project detail modal, e.g. "Gallery"'
-						}
-					]
-				},
-				{
-					name: "majorTags",
-					label: "Major Project Tags",
-					label_singular: "Tag",
-					widget: "list",
-					required: false,
-					hint: "Top-level tags for the projects page. Currently unused in the UI; will be wired up in a later change.",
-					field: { name: "tag", label: "Tag", widget: "string" }
-				},
-				{
-					name: "minorTags",
-					label: "Minor Project Tags",
-					label_singular: "Tag",
-					widget: "list",
-					required: false,
-					hint: "Secondary tags for the projects page. Currently unused in the UI; will be wired up in a later change.",
-					field: { name: "tag", label: "Tag", widget: "string" }
 				}
 			]
 		},

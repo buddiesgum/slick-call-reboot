@@ -2,8 +2,8 @@ export interface Project {
 	id: string
 	order: number
 	title: string
-	category: "Foundations" | "Restoration" | "Remodels" | "Plumbing" | "Excavation"
-	market: "Residential" | "Commercial"
+	majorTags: string[]
+	minorTags: string[]
 	heroImage: string
 	gallery: string[]
 	videoUrl: string // "" when not set in CMS

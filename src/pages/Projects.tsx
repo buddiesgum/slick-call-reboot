@@ -6,20 +6,20 @@ import Seo from "@/components/Seo"
 import { projects, type Project } from "@/cms/projects"
 import projectsPage from "@/cms/projects-page.json"
 
-const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))]
-const markets = ["All", "Residential", "Commercial"] as const
+const majorTagOptions = ["All", ...new Set(projects.flatMap((p) => p.majorTags))]
+const minorTagOptions = ["All", ...new Set(projects.flatMap((p) => p.minorTags))]
 
 const Projects = () => {
-	const [activeCategory, setActiveCategory] = useState("All")
-	const [activeMarket, setActiveMarket] = useState<(typeof markets)[number]>("All")
+	const [activeMajor, setActiveMajor] = useState("All")
+	const [activeMinor, setActiveMinor] = useState("All")
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 	const [lightboxImg, setLightboxImg] = useState<string | null>(null)
 
 	const filtered = projects.filter((project) => {
-		const matchesCategory = activeCategory === "All" || project.category === activeCategory
-		const matchesMarket = activeMarket === "All" || project.market === activeMarket
+		const matchesMajor = activeMajor === "All" || project.majorTags.includes(activeMajor)
+		const matchesMinor = activeMinor === "All" || project.minorTags.includes(activeMinor)
 
-		return matchesCategory && matchesMarket
+		return matchesMajor && matchesMinor
 	})
 
 	return (
@@ -53,33 +53,33 @@ const Projects = () => {
 			<section className="sticky top-16 md:top-20 z-30 bg-background/95 backdrop-blur-md border-b border-border">
 				<div className="container flex flex-wrap items-center gap-2 py-3">
 					<div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-						{markets.map((market) => (
+						{majorTagOptions.map((tag) => (
 							<button
-								key={market}
-								onClick={() => setActiveMarket(market)}
+								key={tag}
+								onClick={() => setActiveMajor(tag)}
 								className={`px-4 py-1.5 rounded-full text-xs font-display uppercase tracking-wider whitespace-nowrap transition-colors ${
-									activeMarket === market ?
+									activeMajor === tag ?
 										"bg-primary text-primary-foreground"
 									:	"bg-muted text-muted-foreground hover:text-foreground"
 								}`}
 							>
-								{market === "All" ? projectsPage.filters.marketAllLabel : market}
+								{tag === "All" ? projectsPage.filters.majorTagAllLabel : tag}
 							</button>
 						))}
 					</div>
 					<div className="h-6 w-px bg-border hidden sm:block" />
 					<div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-						{categories.map((cat) => (
+						{minorTagOptions.map((tag) => (
 							<button
-								key={cat}
-								onClick={() => setActiveCategory(cat)}
+								key={tag}
+								onClick={() => setActiveMinor(tag)}
 								className={`px-4 py-1.5 rounded-full text-xs font-display uppercase tracking-wider whitespace-nowrap transition-colors ${
-									activeCategory === cat ?
+									activeMinor === tag ?
 										"bg-primary text-primary-foreground"
 									:	"bg-muted text-muted-foreground hover:text-foreground"
 								}`}
 							>
-								{cat === "All" ? projectsPage.filters.categoryAllLabel : cat}
+								{tag === "All" ? projectsPage.filters.minorTagAllLabel : tag}
 							</button>
 						))}
 					</div>
@@ -111,7 +111,7 @@ const Projects = () => {
 									</div>
 									<div className="p-5">
 										<span className="text-[10px] font-display uppercase tracking-widest text-primary">
-											{project.category}
+											{project.minorTags[0]}
 										</span>
 										<h3 className="text-lg font-display uppercase tracking-tight mt-1 mb-2 group-hover:text-primary transition-colors">
 											{project.title}
@@ -166,7 +166,9 @@ const Projects = () => {
 
 							<div className="p-6 md:p-10">
 								<span className="text-[10px] font-display uppercase tracking-widest text-primary">
-									{selectedProject.category} · {selectedProject.location}
+									{[selectedProject.minorTags[0], selectedProject.location]
+										.filter(Boolean)
+										.join(" · ")}
 								</span>
 								<h2 className="text-2xl md:text-4xl font-display uppercase tracking-tight mt-2 mb-6">
 									{selectedProject.title}

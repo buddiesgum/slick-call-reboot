@@ -16,6 +16,9 @@ interface SeoProps {
 
 const { default: defaults } = seoData
 
+const emptyToUndefined = (value: string | undefined): string | undefined =>
+	value === "" ? undefined : value
+
 const Seo = ({
 	route,
 	seoBlock,
@@ -27,10 +30,14 @@ const Seo = ({
 	ogImageWidth,
 	ogImageHeight
 }: SeoProps) => {
-	const resolvedTitle = title ?? seoBlock?.title ?? defaults.title
-	const resolvedDescription = description ?? seoBlock?.description ?? defaults.description
+	const resolvedTitle =
+		emptyToUndefined(title) ?? emptyToUndefined(seoBlock?.title) ?? defaults.title
+	const resolvedDescription =
+		emptyToUndefined(description) ?? emptyToUndefined(seoBlock?.description) ?? defaults.description
 	const resolvedCanonical =
-		canonical ?? seoBlock?.canonical ?? `${defaults.canonicalBase}${route === "/" ? "" : route}`
+		emptyToUndefined(canonical) ??
+		emptyToUndefined(seoBlock?.canonical) ??
+		`${defaults.canonicalBase}${route === "/" ? "" : route}`
 
 	// Resolve ogImage, ogImageWidth, ogImageHeight from the same tier so dimensions
 	// are never mismatched with a different image. ogImageAlt falls back to the
@@ -40,16 +47,19 @@ const Seo = ({
 	let resolvedOgImageWidth: number | undefined
 	let resolvedOgImageHeight: number | undefined
 
-	if (ogImage !== undefined) {
-		resolvedOgImage = ogImage
-		resolvedOgImageAlt = ogImageAlt ?? defaults.ogImageAlt
+	const normOgImage = emptyToUndefined(ogImage)
+	const normSeoOgImage = emptyToUndefined(seoBlock?.ogImage)
+
+	if (normOgImage !== undefined) {
+		resolvedOgImage = normOgImage
+		resolvedOgImageAlt = emptyToUndefined(ogImageAlt) ?? defaults.ogImageAlt
 		resolvedOgImageWidth = ogImageWidth
 		resolvedOgImageHeight = ogImageHeight
-	} else if (seoBlock?.ogImage !== undefined) {
-		resolvedOgImage = seoBlock.ogImage
-		resolvedOgImageAlt = seoBlock.ogImageAlt ?? defaults.ogImageAlt
-		resolvedOgImageWidth = seoBlock.ogImageWidth
-		resolvedOgImageHeight = seoBlock.ogImageHeight
+	} else if (normSeoOgImage !== undefined) {
+		resolvedOgImage = normSeoOgImage
+		resolvedOgImageAlt = emptyToUndefined(seoBlock?.ogImageAlt) ?? defaults.ogImageAlt
+		resolvedOgImageWidth = seoBlock?.ogImageWidth
+		resolvedOgImageHeight = seoBlock?.ogImageHeight
 	} else {
 		resolvedOgImage = defaults.ogImage
 		resolvedOgImageAlt = defaults.ogImageAlt

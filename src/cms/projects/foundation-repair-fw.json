@@ -2,13 +2,14 @@
 	"id": "foundation-repair-fw",
 	"order": 0,
 	"title": "Foundation Repair — Fort Worth Residence",
-	"category": "Foundations",
-	"market": "Residential",
+	"majorTags": ["Residential", "Test"],
+	"minorTags": ["Foundations"],
+	"location": "Fort Worth, TX",
+	"description": "Complete push-pier installation on a 2,400 sq ft residential property experiencing severe settling. Our team stabilized the foundation using 14 steel push piers, restoring the home to near-original elevation. The project was completed in just 5 days with minimal disruption to the homeowner.",
 	"heroImage": "/media/projects/foundation-repair-fw/hero.webp",
 	"gallery": [
 		"/media/projects/foundation-repair-fw/gallery-1.webp",
 		"/media/projects/foundation-repair-fw/gallery-2.webp"
 	],
-	"description": "Complete push-pier installation on a 2,400 sq ft residential property experiencing severe settling. Our team stabilized the foundation using 14 steel push piers, restoring the home to near-original elevation. The project was completed in just 5 days with minimal disruption to the homeowner.",
-	"location": "Fort Worth, TX"
+	"videoUrl": ""
 }
