@@ -6,7 +6,7 @@ site only — no backend, no env vars required.
 ## Commands (pnpm only; pinned via mise.toml)
 
 - `pnpm dev` — Vite dev server on **:8080** (host `::`); HMR overlay disabled.
-- `pnpm build` / `pnpm build:dev` — static-site build via `vite-react-ssg build`; outputs per-route nested HTML into `dist/`.
+- `pnpm build` / `pnpm build:dev` — static-site build via `vite-react-ssg build`; outputs per-route nested HTML into `dist/`. Also runs `scripts/copy-404.mjs` to copy `dist/404/index.html` → `dist/404.html` (required by Cloudflare's `404-page` handler — see Deploy section below).
 - `pnpm preview` — Vite preview of the built `dist/` output.
 - `pnpm check` — `tsc -b --noEmit` across both project references (`tsconfig.app.json` for `src/`, `tsconfig.node.json` for `vite.config.ts`). `vite-react-ssg build` also does an implicit type check, but this is the dedicated standalone command.
 - `pnpm format` — Prettier across the repo (tabs, no semis, `printWidth: 100`, `experimentalTernaries`; ignores `node_modules/`, `pnpm-lock.yaml`, `dist/`). Run before committing.
@@ -92,6 +92,41 @@ LocationProvider > Toaster/Sonner > ScrollToTop > Outlet`. No `<BrowserRouter>`
 - Vitest + Testing Library + jsdom; globals enabled (`vitest/globals` in
   `tsconfig.app.json` types). Setup: `src/test/setup.ts` (mocks `matchMedia`).
 - Test glob: `src/**/*.{test,spec}.{ts,tsx}`.
+
+## Deploy (Cloudflare Workers Static Assets)
+
+Config: `wrangler.jsonc` at repo root. Worker name: `hukills`. Asset-only deploy
+— no `main` Worker script, so no billable invocations for static asset serving.
+
+- `not_found_handling: "404-page"` — unknown paths get `dist/404.html` with a
+  404 status. This file is created by `scripts/copy-404.mjs` at build time (see
+  Commands above). **Do not delete that script.**
+- `html_handling: "auto-trailing-slash"` — resolves folder-index files
+  (`dist/about/index.html` → `/about/`) automatically.
+
+### First-time setup
+
+```sh
+pnpm dlx wrangler login   # opens browser OAuth; stores token in ~/.wrangler/
+```
+
+### Deploy
+
+```sh
+pnpm build && pnpm deploy
+# dry-run (no upload) to validate config:
+pnpm deploy:dryrun
+```
+
+First deploy URL: `https://hukills.<your-subdomain>.workers.dev`
+
+### Custom domains
+
+Managed in the Cloudflare dashboard (not in `wrangler.jsonc`):
+Workers & Pages → hukills → Settings → Domains → Add Custom Domain.
+Add both `hukills.com` and `www.hukills.com`; CF provisions TLS automatically
+if the zone is in your account. Apex → www redirect can be handled with a
+Cloudflare Redirect Rule.
 
 ## Misc
 
