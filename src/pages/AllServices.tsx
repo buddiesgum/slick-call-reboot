@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, MessageSquare, Phone, Play, Star } from "lucide-react";
+import { ArrowRight, MapPin, MessageSquare, Phone, Play, Star } from "lucide-react";
 import Layout from "@/components/Layout";
 import LocationSelector from "@/components/LocationSelector";
 import ServiceImageGrid from "@/components/ServiceImageGrid";
@@ -39,6 +39,9 @@ const AllServices = () => {
               <a href={smsHref} className="inline-flex items-center gap-2 bg-primary-foreground text-secondary px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground/90 transition-colors rounded-sm">
                 <MessageSquare className="w-5 h-5" /> Text Us
               </a>
+              <Link to="/projects" className="inline-flex items-center gap-2 border-2 border-primary-foreground/40 text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground hover:text-secondary transition-colors rounded-sm">
+                View Past Projects <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
           </motion.div>
         </div>
