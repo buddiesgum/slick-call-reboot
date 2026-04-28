@@ -22,6 +22,7 @@ import Projects from "./pages/Projects.tsx";
 import About from "./pages/About.tsx";
 import Careers from "./pages/Careers.tsx";
 import Contact from "./pages/Contact.tsx";
+import Financing from "./pages/Financing.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -64,6 +65,7 @@ const App = () => (
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/call-us" element={<Contact />} />
+          <Route path="/financing" element={<Financing />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
