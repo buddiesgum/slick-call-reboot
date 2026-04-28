@@ -44,12 +44,20 @@ const CommercialPlumbing = () => (
             Hukill's takes on the commercial plumbing work that stops business cold — excavation,
             sewer and septic, water lines, underground utilities, and job-site coordination at scale.
           </p>
-          <a
-            href="/contact"
-            className="mt-10 inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary/90 transition-colors"
-          >
-            Start the Conversation <ArrowRight className="w-4 h-4" />
-          </a>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary/90 transition-colors"
+            >
+              Start the Conversation <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="/projects"
+              className="inline-flex items-center gap-3 border-2 border-primary-foreground/30 text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary-foreground hover:text-secondary transition-colors"
+            >
+              View Past Projects <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

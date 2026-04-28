@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 interface ServiceHeroProps {
   title: string;
@@ -32,6 +34,19 @@ const ServiceHero = ({ title, subtitle, image }: ServiceHeroProps) => (
           {subtitle}
         </motion.p>
       )}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="mt-8"
+      >
+        <Link
+          to="/projects"
+          className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary/90 transition-colors"
+        >
+          View Past Projects <ArrowRight className="w-4 h-4" />
+        </Link>
+      </motion.div>
     </div>
   </section>
 );
