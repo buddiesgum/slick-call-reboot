@@ -223,6 +223,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 >
                   Contact Us
                 </Link>
+                <Link
+                  to="/financing"
+                  className={`ml-1 inline-flex items-center gap-2 border-2 px-5 py-2 font-display uppercase text-sm tracking-wider transition-colors rounded-sm ${
+                    location.pathname === "/financing"
+                      ? "border-primary text-primary"
+                      : "border-primary/60 text-secondary-foreground/90 hover:border-primary hover:text-primary"
+                  }`}
+                >
+                  Financing
+                </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -366,6 +376,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   className="mx-4 mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
                 >
                   Contact Us
+                </Link>
+                <Link
+                  to="/financing"
+                  onClick={() => setMobileOpen(false)}
+                  className="mx-4 mt-2 inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
+                >
+                  Financing
                 </Link>
               </nav>
             </motion.div>
