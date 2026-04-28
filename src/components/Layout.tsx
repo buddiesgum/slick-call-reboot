@@ -217,12 +217,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               About Us
             </Link>
 
-                <a
-                  href={currentLocation.phone}
+                <Link
+                  to="/contact"
                   className="ml-2 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
                 >
                   Contact Us
-                </a>
+                </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -361,13 +361,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   About Us
                 </Link>
 
-                <a
-                  href={currentLocation.phone}
+                <Link
+                  to="/contact"
                   className="mx-4 mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
                 >
-                  <Phone className="w-4 h-4" />
                   Contact Us
-                </a>
+                </Link>
               </nav>
             </motion.div>
           )}
