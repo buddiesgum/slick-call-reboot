@@ -35,11 +35,7 @@
 		{
 			"title": "Full Project Coordination",
 			"description": "From utility locating to excavation and backfilling, we coordinate every aspect of your project seamlessly. Our team handles everything so you don't have to.",
-			"items": [
-				"Utility Locating",
-				"Excavation & Backfilling",
-				"Project Coordination"
-			],
+			"items": ["Utility Locating", "Excavation & Backfilling", "Project Coordination"],
 			"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422991-3YLCP5O2VSWUQX6EUX5D/P1690284.jpg",
 			"imageAlt": "Full project coordination",
 			"reverse": true

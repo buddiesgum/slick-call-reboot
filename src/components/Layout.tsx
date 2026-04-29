@@ -223,23 +223,23 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 							)
 						})}
 
-					<Link
-						to={cta.path}
-						className="ml-2 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
-					>
-						{cta.label}
-					</Link>
-					<Link
-						to={secondaryCta.path}
-						className={`ml-1 inline-flex items-center gap-2 border-2 px-5 py-2 font-display uppercase text-sm tracking-wider transition-colors rounded-sm ${
-							location.pathname === secondaryCta.path ?
-								"border-primary text-primary"
-							:	"border-primary/60 text-secondary-foreground/90 hover:border-primary hover:text-primary"
-						}`}
-					>
-						{secondaryCta.label}
-					</Link>
-				</nav>
+						<Link
+							to={cta.path}
+							className="ml-2 inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
+						>
+							{cta.label}
+						</Link>
+						<Link
+							to={secondaryCta.path}
+							className={`ml-1 inline-flex items-center gap-2 border-2 px-5 py-2 font-display uppercase text-sm tracking-wider transition-colors rounded-sm ${
+								location.pathname === secondaryCta.path ?
+									"border-primary text-primary"
+								:	"border-primary/60 text-secondary-foreground/90 hover:border-primary hover:text-primary"
+							}`}
+						>
+							{secondaryCta.label}
+						</Link>
+					</nav>
 
 					{/* Mobile menu button */}
 					<button
@@ -384,21 +384,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 									)
 								})}
 
-							<Link
-								to={cta.path}
-								onClick={() => setMobileOpen(false)}
-								className="mx-4 mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
-							>
-								{cta.label}
-							</Link>
-							<Link
-								to={secondaryCta.path}
-								onClick={() => setMobileOpen(false)}
-								className="mx-4 mt-2 inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
-							>
-								{secondaryCta.label}
-							</Link>
-						</nav>
+								<Link
+									to={cta.path}
+									onClick={() => setMobileOpen(false)}
+									className="mx-4 mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
+								>
+									{cta.label}
+								</Link>
+								<Link
+									to={secondaryCta.path}
+									onClick={() => setMobileOpen(false)}
+									className="mx-4 mt-2 inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-5 py-3 font-display uppercase text-sm tracking-wider rounded-sm"
+								>
+									{secondaryCta.label}
+								</Link>
+							</nav>
 						</motion.div>
 					)}
 				</AnimatePresence>

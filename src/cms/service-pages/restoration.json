@@ -35,11 +35,7 @@
 		{
 			"title": "Fire Damage",
 			"description": "Hukill's Restoration is equipped to restore your home to its pre-fire state. Our restoration process involves mitigating damage and providing thorough smoke damage cleanup.",
-			"items": [
-				"Emergency Board-Up and Site Containment",
-				"Demolition",
-				"Reconstruction"
-			],
+			"items": ["Emergency Board-Up and Site Containment", "Demolition", "Reconstruction"],
 			"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426758-IVFF9QEPCDHQYB3O3FYU/fire-damage.jpg",
 			"imageAlt": "Fire damage restoration",
 			"reverse": true
@@ -47,12 +43,7 @@
 		{
 			"title": "Storm Damage",
 			"description": "Hukill's Restoration team can help with storm damage, ensuring your property is restored to its former glory. Contact us today to discover how we can assist.",
-			"items": [
-				"Roof Repair & Tarping",
-				"Demolition",
-				"Board-Ups & Clean-Ups",
-				"Reconstruction"
-			],
+			"items": ["Roof Repair & Tarping", "Demolition", "Board-Ups & Clean-Ups", "Reconstruction"],
 			"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426761-VG5P84BUKBR53FS3GFZ4/restoration1.jpg",
 			"imageAlt": "Storm damage restoration",
 			"reverse": false

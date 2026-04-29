@@ -11,7 +11,7 @@ import data from "@/cms/financing-page.json"
 const iconMap: Record<string, React.ElementType> = {
 	Wallet,
 	Clock,
-	ShieldCheck,
+	ShieldCheck
 }
 
 const Financing = () => {
@@ -29,9 +29,11 @@ const Financing = () => {
 			script.async = true
 			document.body.appendChild(script)
 		}
+		// Capture the DOM node at effect time so the cleanup has a stable reference.
+		const widgetEl = widgetRef.current
 		return () => {
 			// Clear widget contents on unmount so it re-renders on revisit
-			if (widgetRef.current) widgetRef.current.innerHTML = ""
+			if (widgetEl) widgetEl.innerHTML = ""
 		}
 	}, [])
 
@@ -123,13 +125,13 @@ const Financing = () => {
 						<div
 							ref={widgetRef}
 							id="paymentcalculatorwidget"
-							data-defaultScheme="false"
+							data-defaultscheme="false"
 							data-color1={calculator.color1}
 							data-color2={calculator.color2}
-							data-coBrandedColor={calculator.coBrandedColor}
+							data-cobrandedcolor={calculator.coBrandedColor}
 							data-border={String(calculator.border)}
 							data-page={calculator.page}
-							data-hideLink={calculator.hideLink}
+							data-hidelink={calculator.hideLink}
 						/>
 					</div>
 				</div>

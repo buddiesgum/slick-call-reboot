@@ -81,40 +81,40 @@ export const config = {
 					label: "Hero Section",
 					widget: "object",
 					fields: [
-					{ name: "title", label: "Hero Title", widget: "string" },
-					{ name: "subtitle", label: "Subtitle", widget: "text" },
-					{
-						name: "image",
-						label: "Background Image",
-						widget: "string",
-						hint: "URL or upload path. Displayed as the hero background."
-					},
-					{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
-					{
-						name: "cta",
-						label: "Hero CTA Button (optional)",
-						widget: "object",
-						required: false,
-						fields: [
-							{
-								name: "label",
-								label: "Button Label",
-								widget: "string",
-								hint: 'e.g. "View Past Projects"'
-							},
-							{
-								name: "path",
-								label: "Link Path",
-								widget: "string",
-								hint: 'e.g. "/projects"',
-								pattern: ["^\\/", "Must be a relative path starting with /"]
-							}
-						]
-					}
-				]
-			},
-			{
-				name: "cards",
+						{ name: "title", label: "Hero Title", widget: "string" },
+						{ name: "subtitle", label: "Subtitle", widget: "text" },
+						{
+							name: "image",
+							label: "Background Image",
+							widget: "string",
+							hint: "URL or upload path. Displayed as the hero background."
+						},
+						{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
+						{
+							name: "cta",
+							label: "Hero CTA Button (optional)",
+							widget: "object",
+							required: false,
+							fields: [
+								{
+									name: "label",
+									label: "Button Label",
+									widget: "string",
+									hint: 'e.g. "View Past Projects"'
+								},
+								{
+									name: "path",
+									label: "Link Path",
+									widget: "string",
+									hint: 'e.g. "/projects"',
+									pattern: ["^\\/", "Must be a relative path starting with /"]
+								}
+							]
+						}
+					]
+				},
+				{
+					name: "cards",
 					label: "Content Cards",
 					label_singular: "Card",
 					widget: "list",
@@ -812,31 +812,31 @@ export const config = {
 									widget: "string",
 									required: true
 								},
-							{
-								name: "ctaPath",
-								label: "CTA Button Path",
-								widget: "string",
-								required: true,
-								hint: 'e.g. "/contact"',
-								pattern: ["^\\/", "Must be a relative path starting with /"]
-							},
-							{
-								name: "secondaryCtaLabel",
-								label: "Secondary CTA Label",
-								widget: "string",
-								hint: 'e.g. "View Past Projects"'
-							},
-							{
-								name: "secondaryCtaPath",
-								label: "Secondary CTA Path",
-								widget: "string",
-								hint: 'e.g. "/projects"',
-								pattern: ["^\\/", "Must be a relative path starting with /"]
-							}
-						]
-					},
-					{
-						name: "scale",
+								{
+									name: "ctaPath",
+									label: "CTA Button Path",
+									widget: "string",
+									required: true,
+									hint: 'e.g. "/contact"',
+									pattern: ["^\\/", "Must be a relative path starting with /"]
+								},
+								{
+									name: "secondaryCtaLabel",
+									label: "Secondary CTA Label",
+									widget: "string",
+									hint: 'e.g. "View Past Projects"'
+								},
+								{
+									name: "secondaryCtaPath",
+									label: "Secondary CTA Path",
+									widget: "string",
+									hint: 'e.g. "/projects"',
+									pattern: ["^\\/", "Must be a relative path starting with /"]
+								}
+							]
+						},
+						{
+							name: "scale",
 							label: "Scale Section",
 							widget: "object",
 							fields: [
@@ -1196,127 +1196,127 @@ export const config = {
 								}
 							]
 						},
-					{
-						name: "careersCta",
-						label: "Careers CTA Section",
-						widget: "object",
-						fields: [
-							{
-								name: "heading",
-								label: "Heading (before accent)",
-								widget: "string",
-								hint: 'e.g. "Looking to Join the"'
-							},
-							{
-								name: "headingAccent",
-								label: "Heading Accent",
-								widget: "string",
-								hint: 'Displayed in the primary color, e.g. "Team?"'
-							},
-							{ name: "body", label: "Body Text", widget: "text" },
-							{ name: "ctaLabel", label: "CTA Button Label", widget: "string" },
-							{
-								name: "ctaPath",
-								label: "CTA Button Path",
-								widget: "string",
-								hint: 'e.g. "/careers"',
-								pattern: ["^\\/", "Must be a relative path starting with /"]
-							}
-						]
-					},
-					{
-						name: "form",
-						label: "Inquiry Form",
-						widget: "object",
-						fields: [
-							{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-							{ name: "heading", label: "Heading (before accent)", widget: "string" },
-							{ name: "headingAccent", label: "Heading Accent", widget: "string" },
-							{ name: "description", label: "Description", widget: "text" },
-							{
-								name: "firstName",
-								label: "First Name Field",
-								widget: "object",
-								fields: [{ name: "label", label: "Label", widget: "string" }]
-							},
-							{
-								name: "lastName",
-								label: "Last Name Field",
-								widget: "object",
-								fields: [{ name: "label", label: "Label", widget: "string" }]
-							},
-							{
-								name: "phone",
-								label: "Phone Field",
-								widget: "object",
-								fields: [{ name: "label", label: "Label", widget: "string" }]
-							},
-							{
-								name: "email",
-								label: "Email Field",
-								widget: "object",
-								fields: [{ name: "label", label: "Label", widget: "string" }]
-							},
-							{
-								name: "propertyType",
-								label: "Property Type Field",
-								widget: "object",
-								fields: [
-									{ name: "label", label: "Field Label", widget: "string" },
-									{
-										name: "options",
-										label: "Options",
-										widget: "list",
-										fields: [
-											{ name: "value", label: "Value", widget: "string" },
-											{ name: "label", label: "Display Label", widget: "string" }
-										]
-									}
-								]
-							},
-							{
-								name: "service",
-								label: "Service Field",
-								widget: "object",
-								fields: [
-									{ name: "label", label: "Field Label", widget: "string" },
-									{ name: "placeholder", label: "Placeholder", widget: "string" },
-									{ name: "fallbackLabel", label: "Other / Not Sure Label", widget: "string" }
-								]
-							},
-							{
-								name: "message",
-								label: "Message Field",
-								widget: "object",
-								fields: [
-									{ name: "label", label: "Field Label", widget: "string" },
-									{ name: "placeholder", label: "Placeholder", widget: "string" }
-								]
-							},
-							{
-								name: "financing",
-								label: "Financing Opt-in",
-								widget: "object",
-								fields: [
-									{ name: "heading", label: "Checkbox Heading", widget: "string" },
-									{ name: "label", label: "Checkbox Label", widget: "string" }
-								]
-							},
-							{ name: "submitLabel", label: "Submit Button Label", widget: "string" },
-							{
-								name: "submittingLabel",
-								label: "Submit Button Loading Label",
-								widget: "string"
-							},
-							{ name: "successTitle", label: "Success Toast Title", widget: "string" },
-							{ name: "successBody", label: "Success Toast Body", widget: "text" },
-							{ name: "errorTitle", label: "Error Toast Title", widget: "string" },
-							{ name: "errorBody", label: "Error Toast Body", widget: "text" }
-						]
-					}
-				]
-			},
-			// ── 8. Financing Page ────────────────────────────────────────────────
+						{
+							name: "careersCta",
+							label: "Careers CTA Section",
+							widget: "object",
+							fields: [
+								{
+									name: "heading",
+									label: "Heading (before accent)",
+									widget: "string",
+									hint: 'e.g. "Looking to Join the"'
+								},
+								{
+									name: "headingAccent",
+									label: "Heading Accent",
+									widget: "string",
+									hint: 'Displayed in the primary color, e.g. "Team?"'
+								},
+								{ name: "body", label: "Body Text", widget: "text" },
+								{ name: "ctaLabel", label: "CTA Button Label", widget: "string" },
+								{
+									name: "ctaPath",
+									label: "CTA Button Path",
+									widget: "string",
+									hint: 'e.g. "/careers"',
+									pattern: ["^\\/", "Must be a relative path starting with /"]
+								}
+							]
+						},
+						{
+							name: "form",
+							label: "Inquiry Form",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "heading", label: "Heading (before accent)", widget: "string" },
+								{ name: "headingAccent", label: "Heading Accent", widget: "string" },
+								{ name: "description", label: "Description", widget: "text" },
+								{
+									name: "firstName",
+									label: "First Name Field",
+									widget: "object",
+									fields: [{ name: "label", label: "Label", widget: "string" }]
+								},
+								{
+									name: "lastName",
+									label: "Last Name Field",
+									widget: "object",
+									fields: [{ name: "label", label: "Label", widget: "string" }]
+								},
+								{
+									name: "phone",
+									label: "Phone Field",
+									widget: "object",
+									fields: [{ name: "label", label: "Label", widget: "string" }]
+								},
+								{
+									name: "email",
+									label: "Email Field",
+									widget: "object",
+									fields: [{ name: "label", label: "Label", widget: "string" }]
+								},
+								{
+									name: "propertyType",
+									label: "Property Type Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Field Label", widget: "string" },
+										{
+											name: "options",
+											label: "Options",
+											widget: "list",
+											fields: [
+												{ name: "value", label: "Value", widget: "string" },
+												{ name: "label", label: "Display Label", widget: "string" }
+											]
+										}
+									]
+								},
+								{
+									name: "service",
+									label: "Service Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Field Label", widget: "string" },
+										{ name: "placeholder", label: "Placeholder", widget: "string" },
+										{ name: "fallbackLabel", label: "Other / Not Sure Label", widget: "string" }
+									]
+								},
+								{
+									name: "message",
+									label: "Message Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Field Label", widget: "string" },
+										{ name: "placeholder", label: "Placeholder", widget: "string" }
+									]
+								},
+								{
+									name: "financing",
+									label: "Financing Opt-in",
+									widget: "object",
+									fields: [
+										{ name: "heading", label: "Checkbox Heading", widget: "string" },
+										{ name: "label", label: "Checkbox Label", widget: "string" }
+									]
+								},
+								{ name: "submitLabel", label: "Submit Button Label", widget: "string" },
+								{
+									name: "submittingLabel",
+									label: "Submit Button Loading Label",
+									widget: "string"
+								},
+								{ name: "successTitle", label: "Success Toast Title", widget: "string" },
+								{ name: "successBody", label: "Success Toast Body", widget: "text" },
+								{ name: "errorTitle", label: "Error Toast Title", widget: "string" },
+								{ name: "errorBody", label: "Error Toast Body", widget: "text" }
+							]
+						}
+					]
+				},
+				// ── 8. Financing Page ────────────────────────────────────────────────
 				{
 					name: "financingPage",
 					label: "Financing Page",
@@ -1416,7 +1416,7 @@ export const config = {
 						}
 					]
 				},
-			// ── 9. Privacy Policy ────────────────────────────────────────────────
+				// ── 9. Privacy Policy ────────────────────────────────────────────────
 				{
 					name: "privacyPolicyPage",
 					label: "Privacy Policy Page",

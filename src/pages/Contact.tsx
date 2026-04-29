@@ -23,11 +23,11 @@ const contactSchema = z.object({
 	phone: z.string().trim().min(7, "Valid phone required").max(20),
 	email: z.string().trim().email("Invalid email").max(160),
 	propertyType: z.enum(["residential", "commercial"], {
-		errorMap: () => ({ message: "Select property type" }),
+		errorMap: () => ({ message: "Select property type" })
 	}),
 	service: z.string().trim().min(1, "Select a service"),
 	message: z.string().trim().min(1, "Message is required").max(1000),
-	financing: z.boolean().optional(),
+	financing: z.boolean().optional()
 })
 
 type ContactFormState = {
@@ -49,7 +49,7 @@ const initialForm: ContactFormState = {
 	propertyType: "",
 	service: "",
 	message: "",
-	financing: false,
+	financing: false
 }
 
 // ---------------------------------------------------------------------------
@@ -72,7 +72,7 @@ const Contact = () => {
 			toast({
 				title: contactData.form.errorTitle,
 				description: result.error.errors[0]?.message ?? contactData.form.errorBody,
-				variant: "destructive",
+				variant: "destructive"
 			})
 			return
 		}
@@ -83,7 +83,7 @@ const Contact = () => {
 			setForm(initialForm)
 			toast({
 				title: contactData.form.successTitle,
-				description: contactData.form.successBody,
+				description: contactData.form.successBody
 			})
 		}, 600)
 	}
