@@ -1682,12 +1682,14 @@ export const config = {
 					name: "secondaryCta",
 					label: "Header CTA Button (secondary / outline)",
 					widget: "object",
+					required: true,
 					fields: [
-						{ name: "label", label: "Button Label", widget: "string" },
+						{ name: "label", label: "Button Label", widget: "string", required: true },
 						{
 							name: "path",
 							label: "Link Path",
 							widget: "string",
+							required: true,
 							hint: 'e.g. "/financing"',
 							pattern: ["^\\/", "Must be a relative path starting with /"]
 						}

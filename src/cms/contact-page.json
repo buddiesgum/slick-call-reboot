@@ -28,10 +28,10 @@
 		"heading": "Tell Us About",
 		"headingAccent": "Your Project.",
 		"description": "Fill out the form below and our team will follow up. Need help right now? Call us — we're available 24/7.",
-		"firstName": { "label": "First Name", "required": true },
-		"lastName": { "label": "Last Name", "required": true },
-		"phone": { "label": "Phone", "required": true },
-		"email": { "label": "Email", "required": true },
+		"firstName": { "label": "First Name" },
+		"lastName": { "label": "Last Name" },
+		"phone": { "label": "Phone" },
+		"email": { "label": "Email" },
 		"propertyType": {
 			"label": "Property Type",
 			"options": [
@@ -46,8 +46,7 @@
 		},
 		"message": {
 			"label": "Describe the Service Needed",
-			"placeholder": "Tell us a bit about the project, the issue, or the timeline…",
-			"required": true
+			"placeholder": "Tell us a bit about the project, the issue, or the timeline…"
 		},
 		"financing": {
 			"heading": "Financing (Optional)",
