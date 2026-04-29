@@ -10,7 +10,11 @@
 		"title": "Drain Cleaning",
 		"subtitle": "From a clogged sink to a stubborn sewer line — we have the right tool for every drain.",
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782424851-239UZ1AYR9TZR5MG8VW6/drains.jpg",
-		"imageAlt": "Drain cleaning services"
+		"imageAlt": "Drain cleaning services",
+		"cta": {
+			"label": "View Past Projects",
+			"path": "/projects"
+		}
 	},
 	"cards": [
 		{

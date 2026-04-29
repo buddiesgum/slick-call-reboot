@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { MapPin, MessageSquare, Phone, Play, Star } from "lucide-react"
+import { ArrowRight, MapPin, MessageSquare, Phone, Play, Star } from "lucide-react"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import LocationSelector from "@/components/LocationSelector"
@@ -55,6 +55,12 @@ const AllServices = () => {
 							>
 								<MessageSquare className="w-5 h-5" /> {content.hero.textCtaLabel}
 							</a>
+							<Link
+								to={content.hero.projectsCtaPath}
+								className="inline-flex items-center gap-2 border-2 border-primary-foreground/40 text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground hover:text-secondary transition-colors rounded-sm"
+							>
+								{content.hero.projectsCtaLabel} <ArrowRight className="w-5 h-5" />
+							</Link>
 						</div>
 					</motion.div>
 				</div>

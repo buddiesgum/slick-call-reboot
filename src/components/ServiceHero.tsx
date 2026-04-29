@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
 
 interface ServiceHeroProps {
 	title: string
 	subtitle?: string
 	image: string
 	imageAlt?: string
+	cta?: { label: string; path: string }
 }
 
-const ServiceHero = ({ title, subtitle, image, imageAlt }: ServiceHeroProps) => (
+const ServiceHero = ({ title, subtitle, image, imageAlt, cta }: ServiceHeroProps) => (
 	<section className="relative h-[50vh] min-h-[350px] flex items-center overflow-hidden">
 		<div
 			className="absolute inset-0 bg-cover bg-center"
@@ -34,6 +37,21 @@ const ServiceHero = ({ title, subtitle, image, imageAlt }: ServiceHeroProps) => 
 				>
 					{subtitle}
 				</motion.p>
+			)}
+			{cta && (
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 0.35 }}
+					className="mt-8"
+				>
+					<Link
+						to={cta.path}
+						className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary/90 transition-colors"
+					>
+						{cta.label} <ArrowRight className="w-4 h-4" />
+					</Link>
+				</motion.div>
 			)}
 		</div>
 	</section>

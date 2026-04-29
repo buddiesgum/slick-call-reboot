@@ -10,7 +10,11 @@
 		"title": "Plumbing",
 		"subtitle": "No matter how big or how small — our experienced team handles all your plumbing needs.",
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422119-FY52WQS4PPKSN6X0HGZ5/P1670180.jpg",
-		"imageAlt": "Plumbing services"
+		"imageAlt": "Plumbing services",
+		"cta": {
+			"label": "View Past Projects",
+			"path": "/projects"
+		}
 	},
 	"cards": [
 		{

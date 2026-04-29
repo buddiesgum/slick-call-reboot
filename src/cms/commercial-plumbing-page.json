@@ -11,7 +11,9 @@
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422119-FY52WQS4PPKSN6X0HGZ5/P1670180.jpg",
 		"imageAlt": "Commercial plumbing crew working on a large utility project",
 		"ctaLabel": "Start the Conversation",
-		"ctaPath": "/contact"
+		"ctaPath": "/contact",
+		"secondaryCtaLabel": "View Past Projects",
+		"secondaryCtaPath": "/projects"
 	},
 	"scale": {
 		"eyebrow": "Built for Scale",

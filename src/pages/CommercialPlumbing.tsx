@@ -39,12 +39,20 @@ const CommercialPlumbing = () => {
 						<p className="mt-8 text-lg md:text-2xl text-primary-foreground/80 max-w-3xl leading-relaxed">
 							{content.hero.subtitle}
 						</p>
+					<div className="mt-10 flex flex-wrap gap-4">
 						<a
 							href={content.hero.ctaPath}
-							className="mt-10 inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary/90 transition-colors"
+							className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary/90 transition-colors"
 						>
 							{content.hero.ctaLabel} <ArrowRight className="w-4 h-4" />
 						</a>
+						<a
+							href={content.hero.secondaryCtaPath}
+							className="inline-flex items-center gap-3 border-2 border-primary-foreground/30 text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary-foreground hover:text-secondary transition-colors"
+						>
+							{content.hero.secondaryCtaLabel} <ArrowRight className="w-4 h-4" />
+						</a>
+					</div>
 					</motion.div>
 				</div>
 			</section>

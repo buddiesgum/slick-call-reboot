@@ -81,19 +81,40 @@ export const config = {
 					label: "Hero Section",
 					widget: "object",
 					fields: [
-						{ name: "title", label: "Hero Title", widget: "string" },
-						{ name: "subtitle", label: "Subtitle", widget: "text" },
-						{
-							name: "image",
-							label: "Background Image",
-							widget: "string",
-							hint: "URL or upload path. Displayed as the hero background."
-						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
-					]
-				},
-				{
-					name: "cards",
+					{ name: "title", label: "Hero Title", widget: "string" },
+					{ name: "subtitle", label: "Subtitle", widget: "text" },
+					{
+						name: "image",
+						label: "Background Image",
+						widget: "string",
+						hint: "URL or upload path. Displayed as the hero background."
+					},
+					{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
+					{
+						name: "cta",
+						label: "Hero CTA Button (optional)",
+						widget: "object",
+						required: false,
+						fields: [
+							{
+								name: "label",
+								label: "Button Label",
+								widget: "string",
+								hint: 'e.g. "View Past Projects"'
+							},
+							{
+								name: "path",
+								label: "Link Path",
+								widget: "string",
+								hint: 'e.g. "/projects"',
+								pattern: ["^\\/", "Must be a relative path starting with /"]
+							}
+						]
+					}
+				]
+			},
+			{
+				name: "cards",
 					label: "Content Cards",
 					label_singular: "Card",
 					widget: "list",
@@ -632,7 +653,20 @@ export const config = {
 								},
 								{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
 								{ name: "primaryCtaLabel", label: "Call CTA Label", widget: "string" },
-								{ name: "textCtaLabel", label: "Text CTA Label", widget: "string" }
+								{ name: "textCtaLabel", label: "Text CTA Label", widget: "string" },
+								{
+									name: "projectsCtaLabel",
+									label: "Projects CTA Label",
+									widget: "string",
+									hint: 'e.g. "View Past Projects"'
+								},
+								{
+									name: "projectsCtaPath",
+									label: "Projects CTA Path",
+									widget: "string",
+									hint: 'e.g. "/projects"',
+									pattern: ["^\\/", "Must be a relative path starting with /"]
+								}
 							]
 						},
 						{
@@ -778,18 +812,31 @@ export const config = {
 									widget: "string",
 									required: true
 								},
-								{
-									name: "ctaPath",
-									label: "CTA Button Path",
-									widget: "string",
-									required: true,
-									hint: 'e.g. "/contact"',
-									pattern: ["^\\/", "Must be a relative path starting with /"]
-								}
-							]
-						},
-						{
-							name: "scale",
+							{
+								name: "ctaPath",
+								label: "CTA Button Path",
+								widget: "string",
+								required: true,
+								hint: 'e.g. "/contact"',
+								pattern: ["^\\/", "Must be a relative path starting with /"]
+							},
+							{
+								name: "secondaryCtaLabel",
+								label: "Secondary CTA Label",
+								widget: "string",
+								hint: 'e.g. "View Past Projects"'
+							},
+							{
+								name: "secondaryCtaPath",
+								label: "Secondary CTA Path",
+								widget: "string",
+								hint: 'e.g. "/projects"',
+								pattern: ["^\\/", "Must be a relative path starting with /"]
+							}
+						]
+					},
+					{
+						name: "scale",
 							label: "Scale Section",
 							widget: "object",
 							fields: [

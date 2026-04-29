@@ -11,7 +11,9 @@
 		"image": "",
 		"imageAlt": "Hukill's service fleet and crew",
 		"primaryCtaLabel": "Call",
-		"textCtaLabel": "Text Us"
+		"textCtaLabel": "Text Us",
+		"projectsCtaLabel": "View Past Projects",
+		"projectsCtaPath": "/projects"
 	},
 	"locationPrompt": {
 		"eyebrowPrefix": "Serving",
