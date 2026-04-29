@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import content from "@/cms/commercial-plumbing-page.json"
@@ -40,18 +41,18 @@ const CommercialPlumbing = () => {
 							{content.hero.subtitle}
 						</p>
 						<div className="mt-10 flex flex-wrap gap-4">
-							<a
-								href={content.hero.ctaPath}
+							<Link
+								to={content.hero.primaryCta.path}
 								className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary/90 transition-colors"
 							>
-								{content.hero.ctaLabel} <ArrowRight className="w-4 h-4" />
-							</a>
-							<a
-								href={content.hero.secondaryCtaPath}
+								{content.hero.primaryCta.label} <ArrowRight className="w-4 h-4" />
+							</Link>
+							<Link
+								to={content.hero.secondaryCta.path}
 								className="inline-flex items-center gap-3 border-2 border-primary-foreground/30 text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary-foreground hover:text-secondary transition-colors"
 							>
-								{content.hero.secondaryCtaLabel} <ArrowRight className="w-4 h-4" />
-							</a>
+								{content.hero.secondaryCta.label} <ArrowRight className="w-4 h-4" />
+							</Link>
 						</div>
 					</motion.div>
 				</div>

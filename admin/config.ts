@@ -655,17 +655,24 @@ export const config = {
 								{ name: "primaryCtaLabel", label: "Call CTA Label", widget: "string" },
 								{ name: "textCtaLabel", label: "Text CTA Label", widget: "string" },
 								{
-									name: "projectsCtaLabel",
-									label: "Projects CTA Label",
-									widget: "string",
-									hint: 'e.g. "View Past Projects"'
-								},
-								{
-									name: "projectsCtaPath",
-									label: "Projects CTA Path",
-									widget: "string",
-									hint: 'e.g. "/projects"',
-									pattern: ["^\\/", "Must be a relative path starting with /"]
+									name: "projectsCta",
+									label: "Projects CTA Button",
+									widget: "object",
+									fields: [
+										{
+											name: "label",
+											label: "Button Label",
+											widget: "string",
+											hint: 'e.g. "View Past Projects"'
+										},
+										{
+											name: "path",
+											label: "Link Path",
+											widget: "string",
+											hint: 'e.g. "/projects"',
+											pattern: ["^\\/", "Must be a relative path starting with /"]
+										}
+									]
 								}
 							]
 						},
@@ -775,21 +782,18 @@ export const config = {
 									name: "eyebrow",
 									label: "Eyebrow Text",
 									widget: "string",
-									required: true,
 									hint: 'Small label above the heading, e.g. "Commercial Plumbing"'
 								},
 								{
 									name: "title",
 									label: "Title (before accent)",
 									widget: "string",
-									required: true,
 									hint: 'e.g. "Big Problems Need"'
 								},
 								{
 									name: "titleAccent",
 									label: "Title Accent",
 									widget: "string",
-									required: true,
 									hint: 'Displayed in the primary color, e.g. "Big Crews."'
 								},
 								{ name: "subtitle", label: "Subtitle", widget: "text" },
@@ -797,7 +801,6 @@ export const config = {
 									name: "image",
 									label: "Background Image",
 									widget: "image",
-									required: true,
 									hint: "Displayed as the hero background at 35% opacity."
 								},
 								{
@@ -807,31 +810,39 @@ export const config = {
 									required: true
 								},
 								{
-									name: "ctaLabel",
-									label: "CTA Button Label",
-									widget: "string",
-									required: true
+									name: "primaryCta",
+									label: "Primary CTA Button",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Button Label", widget: "string", required: true },
+										{
+											name: "path",
+											label: "Link Path",
+											widget: "string",
+											hint: 'e.g. "/contact"',
+											pattern: ["^\\/", "Must be a relative path starting with /"]
+										}
+									]
 								},
 								{
-									name: "ctaPath",
-									label: "CTA Button Path",
-									widget: "string",
-									required: true,
-									hint: 'e.g. "/contact"',
-									pattern: ["^\\/", "Must be a relative path starting with /"]
-								},
-								{
-									name: "secondaryCtaLabel",
-									label: "Secondary CTA Label",
-									widget: "string",
-									hint: 'e.g. "View Past Projects"'
-								},
-								{
-									name: "secondaryCtaPath",
-									label: "Secondary CTA Path",
-									widget: "string",
-									hint: 'e.g. "/projects"',
-									pattern: ["^\\/", "Must be a relative path starting with /"]
+									name: "secondaryCta",
+									label: "Secondary CTA Button",
+									widget: "object",
+									fields: [
+										{
+											name: "label",
+											label: "Button Label",
+											widget: "string",
+											hint: 'e.g. "View Past Projects"'
+										},
+										{
+											name: "path",
+											label: "Link Path",
+											widget: "string",
+											hint: 'e.g. "/projects"',
+											pattern: ["^\\/", "Must be a relative path starting with /"]
+										}
+									]
 								}
 							]
 						},
@@ -855,7 +866,6 @@ export const config = {
 											name: "icon",
 											label: "Icon",
 											widget: "select",
-											required: true,
 											options: ["HardHat", "Waves", "Droplets", "ShieldCheck"],
 											hint: "Lucide icon name. Adding new options requires a code change."
 										},
@@ -1682,14 +1692,12 @@ export const config = {
 					name: "secondaryCta",
 					label: "Header CTA Button (secondary / outline)",
 					widget: "object",
-					required: true,
 					fields: [
 						{ name: "label", label: "Button Label", widget: "string", required: true },
 						{
 							name: "path",
 							label: "Link Path",
 							widget: "string",
-							required: true,
 							hint: 'e.g. "/financing"',
 							pattern: ["^\\/", "Must be a relative path starting with /"]
 						}
