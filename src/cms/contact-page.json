@@ -22,5 +22,41 @@
 		"body": "We're always looking for skilled tradespeople who share our values of integrity, excellence, and faith.",
 		"ctaLabel": "View Careers",
 		"ctaPath": "/careers"
+	},
+	"form": {
+		"eyebrow": "Send Us a Message",
+		"heading": "Tell Us About",
+		"headingAccent": "Your Project.",
+		"description": "Fill out the form below and our team will follow up. Need help right now? Call us — we're available 24/7.",
+		"firstName": { "label": "First Name" },
+		"lastName": { "label": "Last Name" },
+		"phone": { "label": "Phone" },
+		"email": { "label": "Email" },
+		"propertyType": {
+			"label": "Property Type",
+			"options": [
+				{ "value": "residential", "label": "Residential" },
+				{ "value": "commercial", "label": "Commercial" }
+			]
+		},
+		"service": {
+			"label": "Service of Interest",
+			"placeholder": "Select a service…",
+			"fallbackLabel": "Other / Not Sure"
+		},
+		"message": {
+			"label": "Describe the Service Needed",
+			"placeholder": "Tell us a bit about the project, the issue, or the timeline…"
+		},
+		"financing": {
+			"heading": "Financing (Optional)",
+			"label": "I'd like to learn about financing options for this project."
+		},
+		"submitLabel": "Send Request",
+		"submittingLabel": "Sending…",
+		"successTitle": "Request sent",
+		"successBody": "We'll be in touch shortly. For urgent service, give us a call — we're available 24/7.",
+		"errorTitle": "Please complete the form",
+		"errorBody": "Check the fields and try again."
 	}
 }

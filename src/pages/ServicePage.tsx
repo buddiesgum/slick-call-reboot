@@ -25,6 +25,7 @@ const ServicePage = () => {
 				subtitle={content.hero.subtitle}
 				image={content.hero.image}
 				imageAlt={content.hero.imageAlt}
+				cta={content.hero.cta}
 			/>
 			<section className="py-16 md:py-24">
 				<div className="container space-y-20">

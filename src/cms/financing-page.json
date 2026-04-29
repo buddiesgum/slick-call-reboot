@@ -1,0 +1,57 @@
+{
+	"seo": {
+		"title": "Financing | Hukill's Inc.",
+		"description": "Flexible project financing through Enhancify. Estimate your monthly payment in seconds and get your plumbing, restoration, or remodel project started today."
+	},
+	"hero": {
+		"eyebrow": "Project Financing",
+		"title": "Flexible",
+		"titleAccent": "Financing",
+		"description": "Don't let budget hold your project back. Estimate your monthly payment in seconds and get the work started today.",
+		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png",
+		"imageAlt": "Hukill's crew",
+		"primaryCta": {
+			"label": "Contact Us",
+			"path": "/contact"
+		},
+		"secondaryCta": {
+			"label": "Finance Calculator"
+		}
+	},
+	"benefits": {
+		"items": [
+			{
+				"icon": "Wallet",
+				"title": "Affordable Payments",
+				"copy": "Pick a plan that fits your monthly budget instead of paying everything upfront."
+			},
+			{
+				"icon": "Clock",
+				"title": "Quick Decisions",
+				"copy": "Pre-qualify in minutes with no impact to your credit score."
+			},
+			{
+				"icon": "ShieldCheck",
+				"title": "Trusted Partners",
+				"copy": "Backed by Enhancify's network of reputable home improvement lenders."
+			}
+		]
+	},
+	"calculator": {
+		"heading": "Estimate Your",
+		"headingAccent": "Payment",
+		"description": "Use the calculator below to see what your monthly payment could look like.",
+		"page": "9933370",
+		"color1": "#68BA62",
+		"color2": "#1C418C",
+		"coBrandedColor": "#FFFFFF",
+		"border": true,
+		"hideLink": "0"
+	},
+	"cta": {
+		"heading": "Ready To Move Forward?",
+		"description": "Reach out and let's scope your project — we'll help you pick the right financing path.",
+		"label": "Contact Us",
+		"path": "/contact"
+	}
+}

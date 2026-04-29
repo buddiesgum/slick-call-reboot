@@ -10,7 +10,11 @@
 		"title": "Septic Services",
 		"subtitle": "Pumping, installation, and repair — keep your system running clean, safe, and trouble-free.",
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1558ab56-4173-4f20-8067-eb28ac0ad8d3/P1660752.jpg",
-		"imageAlt": "Septic services"
+		"imageAlt": "Septic services",
+		"cta": {
+			"label": "View Past Projects",
+			"path": "/projects"
+		}
 	},
 	"cards": [
 		{

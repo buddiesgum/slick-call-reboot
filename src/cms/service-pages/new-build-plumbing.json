@@ -10,7 +10,11 @@
 		"title": "New Build Plumbing",
 		"subtitle": "Licensed, experienced, and built into your project from day one — seamless plumbing for new construction.",
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782431360-3F7L70UFZPZ50H7RW04P/Untitled+design+%288%29.png",
-		"imageAlt": "New build plumbing"
+		"imageAlt": "New build plumbing",
+		"cta": {
+			"label": "View Past Projects",
+			"path": "/projects"
+		}
 	},
 	"cards": [
 		{

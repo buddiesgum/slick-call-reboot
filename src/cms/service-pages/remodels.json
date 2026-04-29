@@ -10,7 +10,11 @@
 		"title": "Remodels",
 		"subtitle": "We make the remodeling process easy and seamless with attention to detail.",
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782425808-3XP2I6BBVXWPG5NSJBUR/remodel-kitchen.jpg",
-		"imageAlt": "Remodeling services"
+		"imageAlt": "Remodeling services",
+		"cta": {
+			"label": "View Past Projects",
+			"path": "/projects"
+		}
 	},
 	"cards": [
 		{

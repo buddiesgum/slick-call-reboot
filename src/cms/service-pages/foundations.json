@@ -10,7 +10,11 @@
 		"title": "Foundations",
 		"subtitle": "Foundation issues can affect the safety, appearance and value of your home.",
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/d9fa939c-c14f-4244-8f3d-8815ffcdffef/foundations-page.jpg",
-		"imageAlt": "Foundation repair services"
+		"imageAlt": "Foundation repair services",
+		"cta": {
+			"label": "View Past Projects",
+			"path": "/projects"
+		}
 	},
 	"cards": [
 		{

@@ -11,6 +11,7 @@ export type ServicePageContent = {
 		subtitle?: string
 		image: string
 		imageAlt?: string
+		cta?: { label: string; path: string }
 	}
 	cards: Array<{
 		title: string

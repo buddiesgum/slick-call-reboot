@@ -10,7 +10,11 @@
 		"title": "Water Heaters",
 		"subtitle": "Service, install, and repair — tank and tankless. Our team helps you choose what's right for your home.",
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782430522-GO0ZSN821GXI1DS95FNQ/P1660312+2.jpg",
-		"imageAlt": "Water heater installation and repair"
+		"imageAlt": "Water heater installation and repair",
+		"cta": {
+			"label": "View Past Projects",
+			"path": "/projects"
+		}
 	},
 	"cards": [
 		{

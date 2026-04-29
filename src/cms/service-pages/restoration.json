@@ -10,7 +10,11 @@
 		"title": "Restoration",
 		"subtitle": "Available 24/7 — equipped with the tools and techniques to restore your home.",
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426754-0GULUB1GKSIM0MB3PRE0/F47915FA-2B55-4DC0-973B-2C093BB344A9.jpg",
-		"imageAlt": "Restoration services"
+		"imageAlt": "Restoration services",
+		"cta": {
+			"label": "View Past Projects",
+			"path": "/projects"
+		}
 	},
 	"cards": [
 		{

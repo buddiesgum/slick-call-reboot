@@ -85,19 +85,26 @@ const Careers = () => {
 						{careersData.trades.items.map((trade, i) => {
 							const Icon = iconMap[trade.icon] ?? Briefcase
 							return (
-								<motion.div
+								<motion.button
+									type="button"
 									key={trade.label}
+									onClick={() => {
+										document
+											.getElementById("application")
+											?.scrollIntoView({ behavior: "smooth", block: "start" })
+									}}
 									initial={{ opacity: 0, y: 20 }}
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true }}
 									transition={{ duration: 0.4, delay: i * 0.08 }}
-									className="group flex flex-col items-center text-center p-6 border border-border hover:border-primary transition-colors"
+									className="group flex flex-col items-center text-center p-6 border border-border hover:border-primary hover:bg-primary/5 transition-colors cursor-pointer"
+									aria-label={`Apply for ${trade.label} — jump to application form`}
 								>
 									<Icon className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
 									<span className="font-display uppercase tracking-wider text-sm text-foreground">
 										{trade.label}
 									</span>
-								</motion.div>
+								</motion.button>
 							)
 						})}
 					</div>
@@ -105,7 +112,7 @@ const Careers = () => {
 			</section>
 
 			{/* APPLICATION FORM */}
-			<section className="section-dark py-20 md:py-28">
+			<section id="application" className="section-dark py-20 md:py-28 scroll-mt-24">
 				<div className="container max-w-3xl">
 					<motion.div
 						initial={{ opacity: 0, y: 30 }}

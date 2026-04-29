@@ -89,7 +89,28 @@ export const config = {
 							widget: "string",
 							hint: "URL or upload path. Displayed as the hero background."
 						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" }
+						{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
+						{
+							name: "cta",
+							label: "Hero CTA Button (optional)",
+							widget: "object",
+							required: false,
+							fields: [
+								{
+									name: "label",
+									label: "Button Label",
+									widget: "string",
+									hint: 'e.g. "View Past Projects"'
+								},
+								{
+									name: "path",
+									label: "Link Path",
+									widget: "string",
+									hint: 'e.g. "/projects"',
+									pattern: ["^\\/", "Must be a relative path starting with /"]
+								}
+							]
+						}
 					]
 				},
 				{
@@ -632,7 +653,27 @@ export const config = {
 								},
 								{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
 								{ name: "primaryCtaLabel", label: "Call CTA Label", widget: "string" },
-								{ name: "textCtaLabel", label: "Text CTA Label", widget: "string" }
+								{ name: "textCtaLabel", label: "Text CTA Label", widget: "string" },
+								{
+									name: "projectsCta",
+									label: "Projects CTA Button",
+									widget: "object",
+									fields: [
+										{
+											name: "label",
+											label: "Button Label",
+											widget: "string",
+											hint: 'e.g. "View Past Projects"'
+										},
+										{
+											name: "path",
+											label: "Link Path",
+											widget: "string",
+											hint: 'e.g. "/projects"',
+											pattern: ["^\\/", "Must be a relative path starting with /"]
+										}
+									]
+								}
 							]
 						},
 						{
@@ -741,21 +782,18 @@ export const config = {
 									name: "eyebrow",
 									label: "Eyebrow Text",
 									widget: "string",
-									required: true,
 									hint: 'Small label above the heading, e.g. "Commercial Plumbing"'
 								},
 								{
 									name: "title",
 									label: "Title (before accent)",
 									widget: "string",
-									required: true,
 									hint: 'e.g. "Big Problems Need"'
 								},
 								{
 									name: "titleAccent",
 									label: "Title Accent",
 									widget: "string",
-									required: true,
 									hint: 'Displayed in the primary color, e.g. "Big Crews."'
 								},
 								{ name: "subtitle", label: "Subtitle", widget: "text" },
@@ -763,7 +801,6 @@ export const config = {
 									name: "image",
 									label: "Background Image",
 									widget: "image",
-									required: true,
 									hint: "Displayed as the hero background at 35% opacity."
 								},
 								{
@@ -773,18 +810,39 @@ export const config = {
 									required: true
 								},
 								{
-									name: "ctaLabel",
-									label: "CTA Button Label",
-									widget: "string",
-									required: true
+									name: "primaryCta",
+									label: "Primary CTA Button",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Button Label", widget: "string", required: true },
+										{
+											name: "path",
+											label: "Link Path",
+											widget: "string",
+											hint: 'e.g. "/contact"',
+											pattern: ["^\\/", "Must be a relative path starting with /"]
+										}
+									]
 								},
 								{
-									name: "ctaPath",
-									label: "CTA Button Path",
-									widget: "string",
-									required: true,
-									hint: 'e.g. "/contact"',
-									pattern: ["^\\/", "Must be a relative path starting with /"]
+									name: "secondaryCta",
+									label: "Secondary CTA Button",
+									widget: "object",
+									fields: [
+										{
+											name: "label",
+											label: "Button Label",
+											widget: "string",
+											hint: 'e.g. "View Past Projects"'
+										},
+										{
+											name: "path",
+											label: "Link Path",
+											widget: "string",
+											hint: 'e.g. "/projects"',
+											pattern: ["^\\/", "Must be a relative path starting with /"]
+										}
+									]
 								}
 							]
 						},
@@ -808,7 +866,6 @@ export const config = {
 											name: "icon",
 											label: "Icon",
 											widget: "select",
-											required: true,
 											options: ["HardHat", "Waves", "Droplets", "ShieldCheck"],
 											hint: "Lucide icon name. Adding new options requires a code change."
 										},
@@ -1176,10 +1233,200 @@ export const config = {
 									pattern: ["^\\/", "Must be a relative path starting with /"]
 								}
 							]
+						},
+						{
+							name: "form",
+							label: "Inquiry Form",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "heading", label: "Heading (before accent)", widget: "string" },
+								{ name: "headingAccent", label: "Heading Accent", widget: "string" },
+								{ name: "description", label: "Description", widget: "text" },
+								{
+									name: "firstName",
+									label: "First Name Field",
+									widget: "object",
+									fields: [{ name: "label", label: "Label", widget: "string" }]
+								},
+								{
+									name: "lastName",
+									label: "Last Name Field",
+									widget: "object",
+									fields: [{ name: "label", label: "Label", widget: "string" }]
+								},
+								{
+									name: "phone",
+									label: "Phone Field",
+									widget: "object",
+									fields: [{ name: "label", label: "Label", widget: "string" }]
+								},
+								{
+									name: "email",
+									label: "Email Field",
+									widget: "object",
+									fields: [{ name: "label", label: "Label", widget: "string" }]
+								},
+								{
+									name: "propertyType",
+									label: "Property Type Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Field Label", widget: "string" },
+										{
+											name: "options",
+											label: "Options",
+											widget: "list",
+											fields: [
+												{ name: "value", label: "Value", widget: "string" },
+												{ name: "label", label: "Display Label", widget: "string" }
+											]
+										}
+									]
+								},
+								{
+									name: "service",
+									label: "Service Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Field Label", widget: "string" },
+										{ name: "placeholder", label: "Placeholder", widget: "string" },
+										{ name: "fallbackLabel", label: "Other / Not Sure Label", widget: "string" }
+									]
+								},
+								{
+									name: "message",
+									label: "Message Field",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Field Label", widget: "string" },
+										{ name: "placeholder", label: "Placeholder", widget: "string" }
+									]
+								},
+								{
+									name: "financing",
+									label: "Financing Opt-in",
+									widget: "object",
+									fields: [
+										{ name: "heading", label: "Checkbox Heading", widget: "string" },
+										{ name: "label", label: "Checkbox Label", widget: "string" }
+									]
+								},
+								{ name: "submitLabel", label: "Submit Button Label", widget: "string" },
+								{
+									name: "submittingLabel",
+									label: "Submit Button Loading Label",
+									widget: "string"
+								},
+								{ name: "successTitle", label: "Success Toast Title", widget: "string" },
+								{ name: "successBody", label: "Success Toast Body", widget: "text" },
+								{ name: "errorTitle", label: "Error Toast Title", widget: "string" },
+								{ name: "errorBody", label: "Error Toast Body", widget: "text" }
+							]
 						}
 					]
 				},
-				// ── 8. Privacy Policy ────────────────────────────────────────────────
+				// ── 8. Financing Page ────────────────────────────────────────────────
+				{
+					name: "financingPage",
+					label: "Financing Page",
+					file: "src/cms/financing-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "title", label: "Title (before accent)", widget: "string" },
+								{ name: "titleAccent", label: "Title Accent", widget: "string" },
+								{ name: "description", label: "Description", widget: "text" },
+								{ name: "image", label: "Hero Background Image", widget: "image" },
+								{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
+								{
+									name: "primaryCta",
+									label: "Primary CTA",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Button Label", widget: "string" },
+										{ name: "path", label: "Link Path", widget: "string" }
+									]
+								},
+								{
+									name: "secondaryCta",
+									label: "Secondary CTA (scrolls to calculator section)",
+									widget: "object",
+									fields: [{ name: "label", label: "Button Label", widget: "string" }]
+								}
+							]
+						},
+						{
+							name: "benefits",
+							label: "Benefits Section",
+							widget: "object",
+							fields: [
+								{
+									name: "items",
+									label: "Benefit Cards",
+									widget: "list",
+									fields: [
+										{
+											name: "icon",
+											label: "Icon",
+											widget: "select",
+											options: ["Wallet", "Clock", "ShieldCheck"]
+										},
+										{ name: "title", label: "Title", widget: "string" },
+										{ name: "copy", label: "Body Text", widget: "text" }
+									]
+								}
+							]
+						},
+						{
+							name: "calculator",
+							label: "Calculator Widget",
+							widget: "object",
+							fields: [
+								{ name: "heading", label: "Heading (before accent)", widget: "string" },
+								{ name: "headingAccent", label: "Heading Accent", widget: "string" },
+								{ name: "description", label: "Description", widget: "text" },
+								{
+									name: "page",
+									label: "Enhancify Page ID",
+									widget: "string",
+									hint: "The data-page attribute value provided by Enhancify"
+								},
+								{ name: "color1", label: "Brand Color 1 (hex)", widget: "string" },
+								{ name: "color2", label: "Brand Color 2 (hex)", widget: "string" },
+								{
+									name: "coBrandedColor",
+									label: "Co-branded Color (hex)",
+									widget: "string"
+								},
+								{
+									name: "border",
+									label: "Show Border",
+									widget: "boolean",
+									default: true
+								},
+								{ name: "hideLink", label: "Hide Link (0 = show)", widget: "string" }
+							]
+						},
+						{
+							name: "cta",
+							label: "Bottom CTA Section",
+							widget: "object",
+							fields: [
+								{ name: "heading", label: "Heading", widget: "string" },
+								{ name: "description", label: "Description", widget: "text" },
+								{ name: "label", label: "Button Label", widget: "string" },
+								{ name: "path", label: "Button Path", widget: "string" }
+							]
+						}
+					]
+				},
+				// ── 9. Privacy Policy ────────────────────────────────────────────────
 				{
 					name: "privacyPolicyPage",
 					label: "Privacy Policy Page",
@@ -1428,9 +1675,33 @@ export const config = {
 				},
 				{
 					name: "cta",
-					label: "Header CTA Button",
+					label: "Header CTA Button (primary)",
 					widget: "object",
-					fields: [{ name: "label", label: "Button Label", widget: "string" }]
+					fields: [
+						{ name: "label", label: "Button Label", widget: "string" },
+						{
+							name: "path",
+							label: "Link Path",
+							widget: "string",
+							hint: 'e.g. "/contact"',
+							pattern: ["^\\/", "Must be a relative path starting with /"]
+						}
+					]
+				},
+				{
+					name: "secondaryCta",
+					label: "Header CTA Button (secondary / outline)",
+					widget: "object",
+					fields: [
+						{ name: "label", label: "Button Label", widget: "string", required: true },
+						{
+							name: "path",
+							label: "Link Path",
+							widget: "string",
+							hint: 'e.g. "/financing"',
+							pattern: ["^\\/", "Must be a relative path starting with /"]
+						}
+					]
 				}
 			]
 		},

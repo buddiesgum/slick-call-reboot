@@ -10,7 +10,11 @@
 		"title": "Excavation",
 		"subtitle": "Our fleet of excavators, backhoes, and dump trucks ensures swift and efficient completion of your projects.",
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422988-2BWY8ZI0XSMDN8KEJSIX/IMG_4911.jpg",
-		"imageAlt": "Excavation services"
+		"imageAlt": "Excavation services",
+		"cta": {
+			"label": "View Past Projects",
+			"path": "/projects"
+		}
 	},
 	"cards": [
 		{
