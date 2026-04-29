@@ -1179,7 +1179,107 @@ export const config = {
 						}
 					]
 				},
-				// ── 8. Privacy Policy ────────────────────────────────────────────────
+				// ── 8. Financing Page ────────────────────────────────────────────────
+				{
+					name: "financingPage",
+					label: "Financing Page",
+					file: "src/cms/financing-page.json",
+					fields: [
+						createSeoField(),
+						{
+							name: "hero",
+							label: "Hero Section",
+							widget: "object",
+							fields: [
+								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+								{ name: "title", label: "Title (before accent)", widget: "string" },
+								{ name: "titleAccent", label: "Title Accent", widget: "string" },
+								{ name: "description", label: "Description", widget: "text" },
+								{ name: "image", label: "Hero Background Image", widget: "image" },
+								{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
+								{
+									name: "primaryCta",
+									label: "Primary CTA (calls current location phone)",
+									widget: "object",
+									fields: [{ name: "label", label: "Button Label", widget: "string" }]
+								},
+								{
+									name: "secondaryCta",
+									label: "Secondary CTA",
+									widget: "object",
+									fields: [
+										{ name: "label", label: "Button Label", widget: "string" },
+										{ name: "path", label: "Link Path", widget: "string" }
+									]
+								}
+							]
+						},
+						{
+							name: "benefits",
+							label: "Benefits Section",
+							widget: "object",
+							fields: [
+								{
+									name: "items",
+									label: "Benefit Cards",
+									widget: "list",
+									fields: [
+										{
+											name: "icon",
+											label: "Icon",
+											widget: "select",
+											options: ["Wallet", "Clock", "ShieldCheck"]
+										},
+										{ name: "title", label: "Title", widget: "string" },
+										{ name: "copy", label: "Body Text", widget: "text" }
+									]
+								}
+							]
+						},
+						{
+							name: "calculator",
+							label: "Calculator Widget",
+							widget: "object",
+							fields: [
+								{ name: "heading", label: "Heading (before accent)", widget: "string" },
+								{ name: "headingAccent", label: "Heading Accent", widget: "string" },
+								{ name: "description", label: "Description", widget: "text" },
+								{
+									name: "page",
+									label: "Enhancify Page ID",
+									widget: "string",
+									hint: "The data-page attribute value provided by Enhancify"
+								},
+								{ name: "color1", label: "Brand Color 1 (hex)", widget: "string" },
+								{ name: "color2", label: "Brand Color 2 (hex)", widget: "string" },
+								{
+									name: "coBrandedColor",
+									label: "Co-branded Color (hex)",
+									widget: "string"
+								},
+								{
+									name: "border",
+									label: "Show Border",
+									widget: "boolean",
+									default: true
+								},
+								{ name: "hideLink", label: "Hide Link (0 = show)", widget: "string" }
+							]
+						},
+						{
+							name: "cta",
+							label: "Bottom CTA Section",
+							widget: "object",
+							fields: [
+								{ name: "heading", label: "Heading", widget: "string" },
+								{ name: "description", label: "Description", widget: "text" },
+								{ name: "label", label: "Button Label", widget: "string" },
+								{ name: "path", label: "Button Path", widget: "string" }
+							]
+						}
+					]
+				},
+			// ── 9. Privacy Policy ────────────────────────────────────────────────
 				{
 					name: "privacyPolicyPage",
 					label: "Privacy Policy Page",
@@ -1428,9 +1528,33 @@ export const config = {
 				},
 				{
 					name: "cta",
-					label: "Header CTA Button",
+					label: "Header CTA Button (primary)",
 					widget: "object",
-					fields: [{ name: "label", label: "Button Label", widget: "string" }]
+					fields: [
+						{ name: "label", label: "Button Label", widget: "string" },
+						{
+							name: "path",
+							label: "Link Path",
+							widget: "string",
+							hint: 'e.g. "/contact"',
+							pattern: ["^\\/", "Must be a relative path starting with /"]
+						}
+					]
+				},
+				{
+					name: "secondaryCta",
+					label: "Header CTA Button (secondary / outline)",
+					widget: "object",
+					fields: [
+						{ name: "label", label: "Button Label", widget: "string" },
+						{
+							name: "path",
+							label: "Link Path",
+							widget: "string",
+							hint: 'e.g. "/financing"',
+							pattern: ["^\\/", "Must be a relative path starting with /"]
+						}
+					]
 				}
 			]
 		},
