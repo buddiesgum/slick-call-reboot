@@ -24,6 +24,7 @@
 			{ "label": "Projects", "path": "/projects" },
 			{ "label": "Careers", "path": "/careers" },
 			{ "label": "Contact", "path": "/contact" },
+			{ "label": "Financing", "path": "/financing" },
 			{ "label": "Privacy Policy", "path": "/privacy-policy" }
 		]
 	},

@@ -37,6 +37,11 @@
 		{ "label": "About Us", "path": "/about" }
 	],
 	"cta": {
-		"label": "Contact Us"
+		"label": "Contact Us",
+		"path": "/contact"
+	},
+	"secondaryCta": {
+		"label": "Financing",
+		"path": "/financing"
 	}
 }
