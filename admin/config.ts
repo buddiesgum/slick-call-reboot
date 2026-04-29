@@ -1149,37 +1149,127 @@ export const config = {
 								}
 							]
 						},
-						{
-							name: "careersCta",
-							label: "Careers CTA Section",
-							widget: "object",
-							fields: [
-								{
-									name: "heading",
-									label: "Heading (before accent)",
-									widget: "string",
-									hint: 'e.g. "Looking to Join the"'
-								},
-								{
-									name: "headingAccent",
-									label: "Heading Accent",
-									widget: "string",
-									hint: 'Displayed in the primary color, e.g. "Team?"'
-								},
-								{ name: "body", label: "Body Text", widget: "text" },
-								{ name: "ctaLabel", label: "CTA Button Label", widget: "string" },
-								{
-									name: "ctaPath",
-									label: "CTA Button Path",
-									widget: "string",
-									hint: 'e.g. "/careers"',
-									pattern: ["^\\/", "Must be a relative path starting with /"]
-								}
-							]
-						}
-					]
-				},
-				// ── 8. Financing Page ────────────────────────────────────────────────
+					{
+						name: "careersCta",
+						label: "Careers CTA Section",
+						widget: "object",
+						fields: [
+							{
+								name: "heading",
+								label: "Heading (before accent)",
+								widget: "string",
+								hint: 'e.g. "Looking to Join the"'
+							},
+							{
+								name: "headingAccent",
+								label: "Heading Accent",
+								widget: "string",
+								hint: 'Displayed in the primary color, e.g. "Team?"'
+							},
+							{ name: "body", label: "Body Text", widget: "text" },
+							{ name: "ctaLabel", label: "CTA Button Label", widget: "string" },
+							{
+								name: "ctaPath",
+								label: "CTA Button Path",
+								widget: "string",
+								hint: 'e.g. "/careers"',
+								pattern: ["^\\/", "Must be a relative path starting with /"]
+							}
+						]
+					},
+					{
+						name: "form",
+						label: "Inquiry Form",
+						widget: "object",
+						fields: [
+							{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
+							{ name: "heading", label: "Heading (before accent)", widget: "string" },
+							{ name: "headingAccent", label: "Heading Accent", widget: "string" },
+							{ name: "description", label: "Description", widget: "text" },
+							{
+								name: "firstName",
+								label: "First Name Field",
+								widget: "object",
+								fields: [{ name: "label", label: "Label", widget: "string" }]
+							},
+							{
+								name: "lastName",
+								label: "Last Name Field",
+								widget: "object",
+								fields: [{ name: "label", label: "Label", widget: "string" }]
+							},
+							{
+								name: "phone",
+								label: "Phone Field",
+								widget: "object",
+								fields: [{ name: "label", label: "Label", widget: "string" }]
+							},
+							{
+								name: "email",
+								label: "Email Field",
+								widget: "object",
+								fields: [{ name: "label", label: "Label", widget: "string" }]
+							},
+							{
+								name: "propertyType",
+								label: "Property Type Field",
+								widget: "object",
+								fields: [
+									{ name: "label", label: "Field Label", widget: "string" },
+									{
+										name: "options",
+										label: "Options",
+										widget: "list",
+										fields: [
+											{ name: "value", label: "Value", widget: "string" },
+											{ name: "label", label: "Display Label", widget: "string" }
+										]
+									}
+								]
+							},
+							{
+								name: "service",
+								label: "Service Field",
+								widget: "object",
+								fields: [
+									{ name: "label", label: "Field Label", widget: "string" },
+									{ name: "placeholder", label: "Placeholder", widget: "string" },
+									{ name: "fallbackLabel", label: "Other / Not Sure Label", widget: "string" }
+								]
+							},
+							{
+								name: "message",
+								label: "Message Field",
+								widget: "object",
+								fields: [
+									{ name: "label", label: "Field Label", widget: "string" },
+									{ name: "placeholder", label: "Placeholder", widget: "string" }
+								]
+							},
+							{
+								name: "financing",
+								label: "Financing Opt-in",
+								widget: "object",
+								fields: [
+									{ name: "heading", label: "Checkbox Heading", widget: "string" },
+									{ name: "label", label: "Checkbox Label", widget: "string" }
+								]
+							},
+							{ name: "submitLabel", label: "Submit Button Label", widget: "string" },
+							{
+								name: "submittingLabel",
+								label: "Submit Button Loading Label",
+								widget: "string"
+							},
+							{ name: "successTitle", label: "Success Toast Title", widget: "string" },
+							{ name: "successBody", label: "Success Toast Body", widget: "text" },
+							{ name: "errorTitle", label: "Error Toast Title", widget: "string" },
+							{ name: "errorBody", label: "Error Toast Body", widget: "text" }
+						]
+					}
+				]
+			},
+			// ── 8. Financing Page ────────────────────────────────────────────────
 				{
 					name: "financingPage",
 					label: "Financing Page",
