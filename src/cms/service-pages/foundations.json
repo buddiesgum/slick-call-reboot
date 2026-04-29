@@ -13,7 +13,8 @@
 		"imageAlt": "Foundation repair services",
 		"cta": {
 			"label": "View Past Projects",
-			"path": "/projects"
+
+			"projectFilters": { "minor": "Foundations" }
 		}
 	},
 	"cards": [

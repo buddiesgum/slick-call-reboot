@@ -13,7 +13,8 @@
 		"imageAlt": "Septic services",
 		"cta": {
 			"label": "View Past Projects",
-			"path": "/projects"
+
+			"projectFilters": { "minor": "Septic" }
 		}
 	},
 	"cards": [

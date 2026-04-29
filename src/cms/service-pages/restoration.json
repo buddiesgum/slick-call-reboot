@@ -13,7 +13,8 @@
 		"imageAlt": "Restoration services",
 		"cta": {
 			"label": "View Past Projects",
-			"path": "/projects"
+
+			"projectFilters": { "minor": "Restoration" }
 		}
 	},
 	"cards": [

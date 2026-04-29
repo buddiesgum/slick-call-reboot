@@ -16,7 +16,7 @@
 		},
 		"secondaryCta": {
 			"label": "View Past Projects",
-			"path": "/projects"
+			"projectFilters": { "major": "Commercial", "minor": "Plumbing" }
 		}
 	},
 	"scale": {

@@ -23,6 +23,10 @@
 	"modal": {
 		"galleryHeading": "Gallery"
 	},
+	"emptyState": {
+		"heading": "No projects yet in this category",
+		"body": "We don't have any projects to show under that filter yet. Here's our full portfolio instead."
+	},
 	"majorTags": ["Residential", "Commercial"],
-	"minorTags": ["Foundations", "Restoration", "Remodels", "Plumbing", "Excavation"]
+	"minorTags": ["Foundations", "Restoration", "Remodels", "Plumbing", "Excavation", "Septic"]
 }

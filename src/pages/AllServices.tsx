@@ -56,7 +56,7 @@ const AllServices = () => {
 								<MessageSquare className="w-5 h-5" /> {content.hero.textCtaLabel}
 							</a>
 							<Link
-								to={content.hero.projectsCta.path}
+								to="/projects"
 								className="inline-flex items-center gap-2 border-2 border-primary-foreground/40 text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground hover:text-secondary transition-colors rounded-sm"
 							>
 								{content.hero.projectsCta.label} <ArrowRight className="w-5 h-5" />

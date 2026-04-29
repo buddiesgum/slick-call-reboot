@@ -13,8 +13,7 @@
 		"primaryCtaLabel": "Call",
 		"textCtaLabel": "Text Us",
 		"projectsCta": {
-			"label": "View Past Projects",
-			"path": "/projects"
+			"label": "View Past Projects"
 		}
 	},
 	"locationPrompt": {

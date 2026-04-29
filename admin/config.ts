@@ -1,5 +1,44 @@
 import type { CmsConfig, ObjectFieldWithSubFields } from "@sveltia/cms"
 
+const createProjectFiltersField = () =>
+	({
+		name: "projectFilters",
+		label: "Project Filters (optional)",
+		widget: "object",
+		required: false,
+		hint: "When set, the 'View Past Projects' button will open the projects page with these filters pre-selected.",
+		fields: [
+			{
+				name: "major",
+				label: "Major Tag",
+				widget: "relation",
+				collection: "pages",
+				file: "projectsPage",
+				dropdown_threshold: 0,
+				multiple: false,
+				required: false,
+				value_field: "majorTags.*",
+				display_fields: ["majorTags.*"],
+				search_fields: ["majorTags.*"],
+				hint: "Pre-select a major filter (e.g. Commercial, Residential). Leave blank for no pre-selection."
+			},
+			{
+				name: "minor",
+				label: "Minor Tag",
+				widget: "relation",
+				collection: "pages",
+				file: "projectsPage",
+				dropdown_threshold: 0,
+				multiple: false,
+				required: false,
+				value_field: "minorTags.*",
+				display_fields: ["minorTags.*"],
+				search_fields: ["minorTags.*"],
+				hint: "Pre-select a minor filter (e.g. Plumbing, Restoration). Leave blank for no pre-selection."
+			}
+		]
+	}) satisfies ObjectFieldWithSubFields
+
 const createSeoField = () =>
 	({
 		name: "seo",
@@ -100,15 +139,9 @@ export const config = {
 									name: "label",
 									label: "Button Label",
 									widget: "string",
-									hint: 'e.g. "View Past Projects"'
+									hint: 'Button label, e.g. "View Past Projects" — links to /projects'
 								},
-								{
-									name: "path",
-									label: "Link Path",
-									widget: "string",
-									hint: 'e.g. "/projects"',
-									pattern: ["^\\/", "Must be a relative path starting with /"]
-								}
+								createProjectFiltersField()
 							]
 						}
 					]
@@ -679,15 +712,9 @@ export const config = {
 											name: "label",
 											label: "Button Label",
 											widget: "string",
-											hint: 'e.g. "View Past Projects"'
+											hint: 'Button label, e.g. "View Past Projects" — links to /projects'
 										},
-										{
-											name: "path",
-											label: "Link Path",
-											widget: "string",
-											hint: 'e.g. "/projects"',
-											pattern: ["^\\/", "Must be a relative path starting with /"]
-										}
+										createProjectFiltersField()
 									]
 								}
 							]
@@ -849,15 +876,9 @@ export const config = {
 											name: "label",
 											label: "Button Label",
 											widget: "string",
-											hint: 'e.g. "View Past Projects"'
+											hint: 'Button label, e.g. "View Past Projects" — links to /projects'
 										},
-										{
-											name: "path",
-											label: "Link Path",
-											widget: "string",
-											hint: 'e.g. "/projects"',
-											pattern: ["^\\/", "Must be a relative path starting with /"]
-										}
+										createProjectFiltersField()
 									]
 								}
 							]
@@ -989,6 +1010,25 @@ export const config = {
 									label: "Gallery Section Heading",
 									widget: "string",
 									hint: 'Heading shown above the image gallery in the project detail modal, e.g. "Gallery"'
+								}
+							]
+						},
+						{
+							name: "emptyState",
+							label: "Empty State (when filter has no matches)",
+							widget: "object",
+							fields: [
+								{
+									name: "heading",
+									label: "Heading",
+									widget: "string",
+									hint: 'e.g. "No projects yet in this category"'
+								},
+								{
+									name: "body",
+									label: "Body Text",
+									widget: "text",
+									hint: "Shown when a filter matches no projects. The full portfolio is displayed below this message."
 								}
 							]
 						},

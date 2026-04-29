@@ -5,6 +5,7 @@ import content from "@/cms/commercial-plumbing-page.json"
 import { motion } from "framer-motion"
 import { ArrowRight, Building2, Droplets, HardHat, ShieldCheck, Waves } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
+import { buildProjectsPath } from "@/lib/projects-link"
 
 const iconMap: Record<string, LucideIcon> = {
 	HardHat,
@@ -48,7 +49,7 @@ const CommercialPlumbing = () => {
 								{content.hero.primaryCta.label} <ArrowRight className="w-4 h-4" />
 							</Link>
 							<Link
-								to={content.hero.secondaryCta.path}
+								to={buildProjectsPath(content.hero.secondaryCta.projectFilters)}
 								className="inline-flex items-center gap-3 border-2 border-primary-foreground/30 text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary-foreground hover:text-secondary transition-colors"
 							>
 								{content.hero.secondaryCta.label} <ArrowRight className="w-4 h-4" />

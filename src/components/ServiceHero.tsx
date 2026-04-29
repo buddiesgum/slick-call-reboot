@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { buildProjectsPath } from "@/lib/projects-link"
 
 interface ServiceHeroProps {
 	title: string
 	subtitle?: string
 	image: string
 	imageAlt?: string
-	cta?: { label: string; path: string }
+	cta?: {
+		label: string
+		projectFilters?: { major?: string; minor?: string }
+	}
 }
 
 const ServiceHero = ({ title, subtitle, image, imageAlt, cta }: ServiceHeroProps) => (
@@ -46,7 +50,7 @@ const ServiceHero = ({ title, subtitle, image, imageAlt, cta }: ServiceHeroProps
 					className="mt-8"
 				>
 					<Link
-						to={cta.path}
+						to={buildProjectsPath(cta.projectFilters)}
 						className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-7 py-4 font-display uppercase text-sm tracking-wider rounded-sm hover:bg-primary/90 transition-colors"
 					>
 						{cta.label} <ArrowRight className="w-4 h-4" />

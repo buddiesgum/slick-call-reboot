@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useSearchParams } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ArrowRight } from "lucide-react"
 import Layout from "@/components/Layout"
@@ -6,14 +7,33 @@ import Seo from "@/components/Seo"
 import { projects, type Project } from "@/cms/projects"
 import projectsPage from "@/cms/projects-page.json"
 
-const majorTagOptions = ["All", ...new Set(projects.flatMap((p) => p.majorTags))]
-const minorTagOptions = ["All", ...new Set(projects.flatMap((p) => p.minorTags))]
+// Derive tag options from the CMS config so new tags (e.g. Septic) appear as
+// pills immediately, even before any project carries that tag.
+const majorTagOptions = ["All", ...projectsPage.majorTags]
+const minorTagOptions = ["All", ...projectsPage.minorTags]
 
 const Projects = () => {
-	const [activeMajor, setActiveMajor] = useState("All")
-	const [activeMinor, setActiveMinor] = useState("All")
+	const [searchParams, setSearchParams] = useSearchParams()
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 	const [lightboxImg, setLightboxImg] = useState<string | null>(null)
+
+	// Derive active filters from URL; silently fall back to "All" for unknown values.
+	const rawMajor = searchParams.get("major")
+	const rawMinor = searchParams.get("minor")
+	const activeMajor = rawMajor && majorTagOptions.includes(rawMajor) ? rawMajor : "All"
+	const activeMinor = rawMinor && minorTagOptions.includes(rawMinor) ? rawMinor : "All"
+
+	const setFilter = (key: "major" | "minor", value: string) => {
+		setSearchParams(
+			(prev) => {
+				const next = new URLSearchParams(prev)
+				if (value === "All") next.delete(key)
+				else next.set(key, value)
+				return next
+			},
+			{ replace: true }
+		)
+	}
 
 	const filtered = projects.filter((project) => {
 		const matchesMajor = activeMajor === "All" || project.majorTags.includes(activeMajor)
@@ -21,6 +41,10 @@ const Projects = () => {
 
 		return matchesMajor && matchesMinor
 	})
+
+	const isFiltered = activeMajor !== "All" || activeMinor !== "All"
+	const showFallback = isFiltered && filtered.length === 0
+	const visibleProjects = showFallback ? projects : filtered
 
 	return (
 		<Layout>
@@ -56,7 +80,7 @@ const Projects = () => {
 						{majorTagOptions.map((tag) => (
 							<button
 								key={tag}
-								onClick={() => setActiveMajor(tag)}
+								onClick={() => setFilter("major", tag)}
 								className={`px-4 py-1.5 rounded-full text-xs font-display uppercase tracking-wider whitespace-nowrap transition-colors ${
 									activeMajor === tag ?
 										"bg-primary text-primary-foreground"
@@ -72,7 +96,7 @@ const Projects = () => {
 						{minorTagOptions.map((tag) => (
 							<button
 								key={tag}
-								onClick={() => setActiveMinor(tag)}
+								onClick={() => setFilter("minor", tag)}
 								className={`px-4 py-1.5 rounded-full text-xs font-display uppercase tracking-wider whitespace-nowrap transition-colors ${
 									activeMinor === tag ?
 										"bg-primary text-primary-foreground"
@@ -86,12 +110,24 @@ const Projects = () => {
 				</div>
 			</section>
 
+			{/* Empty-state notice */}
+			{showFallback && (
+				<section className="container pt-12 pb-0 text-center">
+					<h2 className="font-display uppercase tracking-tight text-2xl">
+						{projectsPage.emptyState.heading}
+					</h2>
+					<p className="text-muted-foreground mt-2 max-w-xl mx-auto">
+						{projectsPage.emptyState.body}
+					</p>
+				</section>
+			)}
+
 			{/* Project Grid */}
 			<section className="py-16 md:py-24">
 				<div className="container">
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 						<AnimatePresence mode="popLayout">
-							{filtered.map((project) => (
+							{visibleProjects.map((project) => (
 								<motion.div
 									key={project.id}
 									layout
