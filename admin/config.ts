@@ -284,6 +284,22 @@ export const config = {
 					label: "Phone (display format)",
 					widget: "string",
 					hint: "e.g. '(817) 672-7555'"
+				},
+				{
+					name: "lat",
+					label: "Latitude",
+					widget: "number",
+					value_type: "float",
+					step: 0.0001,
+					hint: "Decimal degrees, e.g. 32.7555 (positive = north). Used to auto-select this location based on visitor geolocation."
+				},
+				{
+					name: "lng",
+					label: "Longitude",
+					widget: "number",
+					value_type: "float",
+					step: 0.0001,
+					hint: "Decimal degrees, e.g. -97.3308 (negative = west). Used to auto-select this location based on visitor geolocation."
 				}
 			]
 		},
