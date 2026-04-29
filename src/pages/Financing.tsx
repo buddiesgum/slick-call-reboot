@@ -10,9 +10,9 @@ import data from "@/cms/financing-page.json"
  * pulled almost directly from https://www.enhancify.com/paymentcalculatorwidget/
  */
 function loadPaymentCalculatorWidget(container: HTMLElement, signal: AbortSignal): void {
-	let xhr = new XMLHttpRequest()
+	const xhr = new XMLHttpRequest()
 	signal.addEventListener("abort", () => xhr.abort())
-	let params =
+	const params =
 		"&defaultScheme=" +
 		encodeURIComponent(container.dataset.defaultscheme) +
 		"&color1=" +
@@ -27,11 +27,11 @@ function loadPaymentCalculatorWidget(container: HTMLElement, signal: AbortSignal
 		encodeURIComponent(container.dataset.border) +
 		"&hideLink=" +
 		encodeURIComponent(container.dataset.hidelink)
-	let s = document.createElement("script")
+	const s = document.createElement("script")
 	s.type = "text/javascript"
 	s.src = "https://www.enhancify.com/build/js/paymentcalculatorwidget.js"
 	container.append(s)
-	let style = document.createElement("style")
+	const style = document.createElement("style")
 	style.innerText =
 		"@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700;900&display=swap');"
 	container.append(style)
@@ -42,7 +42,7 @@ function loadPaymentCalculatorWidget(container: HTMLElement, signal: AbortSignal
 		xhr.onload = function () {
 			if (signal.aborted) return
 			if (xhr.status == 200) {
-				let script_tag = document.createElement("script")
+				const script_tag = document.createElement("script")
 				script_tag.type = "text/javascript"
 				script_tag.text = xhr.response
 				container.append(script_tag)
