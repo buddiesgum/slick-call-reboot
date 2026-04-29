@@ -11,11 +11,11 @@
 		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/536b13a7-fe1e-4895-8c56-787d7e5594c7/Hukills-Group_2.png",
 		"imageAlt": "Hukill's crew",
 		"primaryCta": {
-			"label": "Talk To Us"
+			"label": "Contact Us",
+			"path": "/contact"
 		},
 		"secondaryCta": {
-			"label": "Start A Project",
-			"path": "/contact"
+			"label": "Finance Calculator"
 		}
 	},
 	"benefits": {

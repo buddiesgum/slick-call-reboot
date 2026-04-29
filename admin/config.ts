@@ -1346,18 +1346,18 @@ export const config = {
 								{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
 								{
 									name: "primaryCta",
-									label: "Primary CTA (calls current location phone)",
-									widget: "object",
-									fields: [{ name: "label", label: "Button Label", widget: "string" }]
-								},
-								{
-									name: "secondaryCta",
-									label: "Secondary CTA",
+									label: "Primary CTA",
 									widget: "object",
 									fields: [
 										{ name: "label", label: "Button Label", widget: "string" },
 										{ name: "path", label: "Link Path", widget: "string" }
 									]
+								},
+								{
+									name: "secondaryCta",
+									label: "Secondary CTA (scrolls to calculator section)",
+									widget: "object",
+									fields: [{ name: "label", label: "Button Label", widget: "string" }]
 								}
 							]
 						},

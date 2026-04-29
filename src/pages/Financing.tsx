@@ -1,10 +1,9 @@
 import { useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { Phone, ArrowRight, ShieldCheck, Clock, Wallet } from "lucide-react"
+import { ArrowRight, Calculator, ShieldCheck, Clock, Wallet } from "lucide-react"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
-import { useLocationContext } from "@/context/location-context"
 import data from "@/cms/financing-page.json"
 
 /*
@@ -60,7 +59,6 @@ const iconMap: Record<string, React.ElementType> = {
 }
 
 const Financing = () => {
-	const { selected: currentLocation } = useLocationContext()
 	const widgetRef = useRef<HTMLDivElement>(null)
 	const loadedRef = useRef(false)
 	const { hero, benefits, calculator, cta } = data
@@ -108,19 +106,26 @@ const Financing = () => {
 							{hero.description}
 						</p>
 						<div className="mt-8 flex flex-wrap gap-4">
-							<a
-								href={currentLocation.phone}
+							<Link
+								to={hero.primaryCta.path}
 								className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 							>
-								<Phone className="w-5 h-5" />
-								{hero.primaryCta.label}
-							</a>
-							<Link
-								to={hero.secondaryCta.path}
+								{hero.primaryCta.label} <ArrowRight className="w-4 h-4" />
+							</Link>
+							<a
+								href="#calculator"
+								onClick={(e) => {
+									if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
+									e.preventDefault()
+									document
+										.getElementById("calculator")
+										?.scrollIntoView({ behavior: "smooth", block: "start" })
+									history.replaceState(null, "", "#calculator")
+								}}
 								className="inline-flex items-center gap-2 border border-primary-foreground/30 text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground/10 transition-colors rounded-sm"
 							>
-								{hero.secondaryCta.label} <ArrowRight className="w-4 h-4" />
-							</Link>
+								{hero.secondaryCta.label} <Calculator className="w-4 h-4" />
+							</a>
 						</div>
 					</motion.div>
 				</div>
@@ -154,7 +159,7 @@ const Financing = () => {
 			</section>
 
 			{/* CALCULATOR WIDGET */}
-			<section className="py-16 md:py-24 section-dark">
+			<section id="calculator" className="py-16 md:py-24 section-dark">
 				<div className="container">
 					<div className="max-w-3xl mx-auto text-center mb-10">
 						<h2 className="text-3xl md:text-5xl font-display uppercase tracking-tight">
