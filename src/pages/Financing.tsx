@@ -7,6 +7,51 @@ import Seo from "@/components/Seo"
 import { useLocationContext } from "@/context/location-context"
 import data from "@/cms/financing-page.json"
 
+/*
+ * pulled almost directly from https://www.enhancify.com/paymentcalculatorwidget/
+ */
+function loadPaymentCalculatorWidget(container: HTMLElement, signal: AbortSignal): void {
+	let xhr = new XMLHttpRequest()
+	signal.addEventListener("abort", () => xhr.abort())
+	let params =
+		"&defaultScheme=" +
+		encodeURIComponent(container.dataset.defaultscheme) +
+		"&color1=" +
+		encodeURIComponent(container.dataset.color1) +
+		"&color2=" +
+		encodeURIComponent(container.dataset.color2) +
+		"&coBrandedColor=" +
+		encodeURIComponent(container.dataset.cobrandedcolor) +
+		"&page=" +
+		encodeURIComponent(container.dataset.page) +
+		"&border=" +
+		encodeURIComponent(container.dataset.border) +
+		"&hideLink=" +
+		encodeURIComponent(container.dataset.hidelink)
+	let s = document.createElement("script")
+	s.type = "text/javascript"
+	s.src = "https://www.enhancify.com/build/js/paymentcalculatorwidget.js"
+	container.append(s)
+	let style = document.createElement("style")
+	style.innerText =
+		"@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700;900&display=swap');"
+	container.append(style)
+	s.onload = function () {
+		if (signal.aborted) return
+		xhr.open("GET", "https://www.enhancify.com?siteaction=paymentcalculatorwidget" + params)
+		xhr.send()
+		xhr.onload = function () {
+			if (signal.aborted) return
+			if (xhr.status == 200) {
+				let script_tag = document.createElement("script")
+				script_tag.type = "text/javascript"
+				script_tag.text = xhr.response
+				container.append(script_tag)
+			}
+		}
+	}
+}
+
 // Map icon name strings from CMS to Lucide components
 const iconMap: Record<string, React.ElementType> = {
 	Wallet,
@@ -17,23 +62,19 @@ const iconMap: Record<string, React.ElementType> = {
 const Financing = () => {
 	const { selected: currentLocation } = useLocationContext()
 	const widgetRef = useRef<HTMLDivElement>(null)
+	const loadedRef = useRef(false)
 	const { hero, benefits, calculator, cta } = data
 
 	useEffect(() => {
-		const SRC = "https://www.enhancify.com/paymentcalculatorwidget/"
-		// Idempotently inject the Enhancify widget script
-		let script = document.querySelector(`script[src="${SRC}"]`) as HTMLScriptElement | null
-		if (!script) {
-			script = document.createElement("script")
-			script.src = SRC
-			script.async = true
-			document.body.appendChild(script)
-		}
-		// Capture the DOM node at effect time so the cleanup has a stable reference.
+		if (loadedRef.current) return
 		const widgetEl = widgetRef.current
+		if (!widgetEl) return
+		loadedRef.current = true
+		const controller = new AbortController()
+		loadPaymentCalculatorWidget(widgetEl, controller.signal)
 		return () => {
-			// Clear widget contents on unmount so it re-renders on revisit
-			if (widgetEl) widgetEl.innerHTML = ""
+			controller.abort()
+			// intentionally do not reset loadedRef.current — keeps StrictMode safe
 		}
 	}, [])
 
