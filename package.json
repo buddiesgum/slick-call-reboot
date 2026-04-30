@@ -7,7 +7,9 @@
 		"dev": "vite",
 		"build": "vite-react-ssg build && node scripts/copy-404.mjs",
 		"build:dev": "vite-react-ssg build --mode development && node scripts/copy-404.mjs",
-		"check": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit",
+		"check": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit && tsc -p worker/tsconfig.json --noEmit",
+		"worker:dev": "wrangler dev --live-reload",
+		"worker:types": "wrangler types",
 		"lint": "eslint .",
 		"format": "prettier --write .",
 		"deploy": "wrangler deploy",
@@ -81,6 +83,7 @@
 		]
 	},
 	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20260429.1",
 		"@eslint/js": "^9.32.0",
 		"@prettier/plugin-oxc": "^0.1.4",
 		"@tailwindcss/typography": "^0.5.16",

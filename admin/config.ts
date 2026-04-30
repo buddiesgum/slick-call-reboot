@@ -1187,7 +1187,9 @@ export const config = {
 									widget: "string"
 								},
 								{ name: "successTitle", label: "Success Toast Title", widget: "string" },
-								{ name: "successBody", label: "Success Toast Body", widget: "string" }
+								{ name: "successBody", label: "Success Toast Body", widget: "string" },
+								{ name: "errorTitle", label: "Error Toast Title", widget: "string" },
+								{ name: "errorBody", label: "Error Toast Body", widget: "text" }
 							]
 						}
 					]

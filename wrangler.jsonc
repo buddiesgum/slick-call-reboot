@@ -3,18 +3,20 @@
 	"name": "hukills",
 	// Set to today's date; update when raising compatibility flags.
 	"compatibility_date": "2026-04-23",
+	// Worker entry — handles /api/* routes; all other requests fall through to
+	// the asset binding below. See worker/index.ts for the dispatch table.
+	"main": "worker/index.ts",
 	"assets": {
 		// vite-react-ssg builds to dist/ with dirStyle "nested":
 		//   dist/about/index.html, dist/contact/index.html, etc.
 		// auto-trailing-slash resolves folder-index files automatically.
 		"directory": "./dist",
+		// Binding name used in worker/index.ts (env.ASSETS.fetch) so the Worker
+		// can delegate non-API requests back to the static asset router.
+		"binding": "ASSETS",
 		"not_found_handling": "404-page",
 		"html_handling": "auto-trailing-slash"
 	}
-	// No "main" — this is an asset-only Worker. Cloudflare serves static files
-	// directly; no Worker script is invoked, so no billable invocations for
-	// asset requests.
-	//
 	// Custom domains (hukills.com, www.hukills.com) are managed in the
 	// Cloudflare dashboard under Workers & Pages > hukills > Settings > Domains.
 }

@@ -34,6 +34,8 @@
 		"submitLabel": "Submit Application",
 		"submittingLabel": "Submitting...",
 		"successTitle": "Application received",
-		"successBody": "Thanks for applying — our team will be in touch shortly."
+		"successBody": "Thanks for applying — our team will be in touch shortly.",
+		"errorTitle": "Please check your submission",
+		"errorBody": "Please try again or call us directly."
 	}
 }

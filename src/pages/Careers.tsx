@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
+import { careerSchema, type CareerFormState, initialCareerForm } from "@/lib/schemas/career"
 import careersData from "@/cms/careers-page.json"
 
 const iconMap: Record<string, LucideIcon> = {
@@ -22,19 +23,45 @@ const Careers = () => {
 	const { toast } = useToast()
 	const [submitting, setSubmitting] = useState(false)
 	const [fileName, setFileName] = useState<string>("")
+	const [form, setForm] = useState<CareerFormState>(initialCareerForm)
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const update = <K extends keyof CareerFormState>(key: K, value: CareerFormState[K]) =>
+		setForm((f) => ({ ...f, [key]: value }))
+
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
+		const result = careerSchema.safeParse({ ...form, hasResume: !!fileName })
+		if (!result.success) {
+			toast({
+				title: careersData.application.errorTitle,
+				description: result.error.errors[0]?.message ?? careersData.application.errorBody,
+				variant: "destructive"
+			})
+			return
+		}
 		setSubmitting(true)
-		setTimeout(() => {
-			setSubmitting(false)
+		try {
+			const res = await fetch("/api/career", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(result.data)
+			})
+			if (!res.ok) throw new Error(`HTTP ${res.status}`)
+			setForm(initialCareerForm)
+			setFileName("")
 			toast({
 				title: careersData.application.successTitle,
 				description: careersData.application.successBody
 			})
-			;(e.target as HTMLFormElement).reset()
-			setFileName("")
-		}, 800)
+		} catch {
+			toast({
+				title: careersData.application.errorTitle,
+				description: careersData.application.errorBody,
+				variant: "destructive"
+			})
+		} finally {
+			setSubmitting(false)
+		}
 	}
 
 	return (
@@ -135,6 +162,7 @@ const Careers = () => {
 						viewport={{ once: true }}
 						transition={{ duration: 0.5, delay: 0.1 }}
 						onSubmit={handleSubmit}
+						noValidate
 						className="space-y-6 bg-background/5 backdrop-blur-sm border border-primary-foreground/10 p-6 md:p-10"
 					>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -153,6 +181,8 @@ const Careers = () => {
 								<Input
 									id="firstName"
 									required={careersData.application.firstName.required}
+									value={form.firstName}
+									onChange={(e) => update("firstName", e.target.value)}
 									className="bg-background/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40"
 								/>
 							</div>
@@ -171,6 +201,8 @@ const Careers = () => {
 								<Input
 									id="lastName"
 									required={careersData.application.lastName.required}
+									value={form.lastName}
+									onChange={(e) => update("lastName", e.target.value)}
 									className="bg-background/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40"
 								/>
 							</div>
@@ -192,6 +224,8 @@ const Careers = () => {
 								id="email"
 								type="email"
 								required={careersData.application.email.required}
+								value={form.email}
+								onChange={(e) => update("email", e.target.value)}
 								className="bg-background/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40"
 							/>
 						</div>
@@ -213,6 +247,8 @@ const Careers = () => {
 								rows={5}
 								required={careersData.application.message.required}
 								placeholder={careersData.application.messagePlaceholder}
+								value={form.message}
+								onChange={(e) => update("message", e.target.value)}
 								className="bg-background/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40 resize-none"
 							/>
 						</div>
@@ -244,7 +280,12 @@ const Careers = () => {
 						</div>
 
 						<div className="flex items-start gap-2">
-							<Checkbox id="updates" className="mt-0.5 border-primary-foreground/40" />
+							<Checkbox
+								id="updates"
+								checked={form.updates}
+								onCheckedChange={(v) => update("updates", v === true)}
+								className="mt-0.5 border-primary-foreground/40"
+							/>
 							<Label
 								htmlFor="updates"
 								className="text-sm text-primary-foreground/70 cursor-pointer leading-relaxed"

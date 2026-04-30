@@ -9,48 +9,9 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
-import { z } from "zod"
+import { contactSchema, type ContactFormState, initialContactForm } from "@/lib/schemas/contact"
 import { allServices } from "@/data/services"
 import contactData from "@/cms/contact-page.json"
-
-// ---------------------------------------------------------------------------
-// Form schema + state
-// ---------------------------------------------------------------------------
-
-const contactSchema = z.object({
-	firstName: z.string().trim().min(1, "First name is required").max(60),
-	lastName: z.string().trim().min(1, "Last name is required").max(60),
-	phone: z.string().trim().min(7, "Valid phone required").max(20),
-	email: z.string().trim().email("Invalid email").max(160),
-	propertyType: z.enum(["residential", "commercial"], {
-		errorMap: () => ({ message: "Select property type" })
-	}),
-	service: z.string().trim().min(1, "Select a service"),
-	message: z.string().trim().min(1, "Message is required").max(1000),
-	financing: z.boolean().optional()
-})
-
-type ContactFormState = {
-	firstName: string
-	lastName: string
-	phone: string
-	email: string
-	propertyType: "residential" | "commercial" | ""
-	service: string
-	message: string
-	financing: boolean
-}
-
-const initialForm: ContactFormState = {
-	firstName: "",
-	lastName: "",
-	phone: "",
-	email: "",
-	propertyType: "",
-	service: "",
-	message: "",
-	financing: false
-}
 
 // ---------------------------------------------------------------------------
 // Page component
@@ -59,13 +20,13 @@ const initialForm: ContactFormState = {
 const Contact = () => {
 	const { selected, setSelected } = useLocationContext()
 	const { toast } = useToast()
-	const [form, setForm] = useState<ContactFormState>(initialForm)
+	const [form, setForm] = useState<ContactFormState>(initialContactForm)
 	const [submitting, setSubmitting] = useState(false)
 
 	const update = <K extends keyof ContactFormState>(key: K, value: ContactFormState[K]) =>
 		setForm((f) => ({ ...f, [key]: value }))
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 		const result = contactSchema.safeParse(form)
 		if (!result.success) {
@@ -77,15 +38,27 @@ const Contact = () => {
 			return
 		}
 		setSubmitting(true)
-		// Placeholder submit — replace with backend wiring later.
-		setTimeout(() => {
-			setSubmitting(false)
-			setForm(initialForm)
+		try {
+			const res = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(result.data)
+			})
+			if (!res.ok) throw new Error(`HTTP ${res.status}`)
+			setForm(initialContactForm)
 			toast({
 				title: contactData.form.successTitle,
 				description: contactData.form.successBody
 			})
-		}, 600)
+		} catch {
+			toast({
+				title: contactData.form.errorTitle,
+				description: contactData.form.errorBody,
+				variant: "destructive"
+			})
+		} finally {
+			setSubmitting(false)
+		}
 	}
 
 	const { form: f } = contactData
@@ -222,6 +195,7 @@ const Contact = () => {
 
 						<motion.form
 							onSubmit={handleSubmit}
+							noValidate
 							initial={{ opacity: 0, y: 30 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
