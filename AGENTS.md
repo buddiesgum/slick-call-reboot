@@ -138,6 +138,31 @@ pnpm worker:dev     # wrangler dev serves dist/ + Worker on localhost
 
 `pnpm dev` (Vite) still works for pure SPA work — `/api/*` calls will 404 there.
 
+**Live SSG rebuild (`pnpm build:watch`):**
+
+Run in a second terminal alongside `pnpm worker:dev` to auto-rebuild `dist/` on
+source changes:
+
+```sh
+pnpm worker:dev     # terminal 1 — wrangler dev serves dist/ + Worker
+pnpm build:watch    # terminal 2 — chokidar runs an initial build, then re-runs
+                    #              `pnpm build:dev` on save (500 ms debounce)
+```
+
+Watcher scope: `src/**`, `admin/**`, `public/**`, `index.html`. Edits to
+`worker/`, root configs (`vite.config.ts`, `tailwind.config.ts`, `tsconfig*.json`,
+`wrangler.jsonc`), or doc/lockfile churn do **not** trigger an SSG rebuild —
+restart `build:watch` if you change one of those.
+
+- Each rebuild prerenders every route → expect ~5–10 s feedback latency per save
+  (vs sub-second HMR with `pnpm dev`).
+- `wrangler dev --live-reload` reloads the browser when `dist/*.html` is rewritten,
+  so the two terminals coordinate via the filesystem — no orchestrator needed.
+- Use this mode to validate prerendered HTML, the `404-page` handler, or
+  `auto-trailing-slash` resolution. For day-to-day SPA work, prefer `pnpm dev`.
+- `worker/**` is intentionally excluded — wrangler hot-reloads the Worker itself;
+  rebuilding the SPA on Worker edits would be wasted work.
+
 ## Deploy (Cloudflare Workers Static Assets)
 
 Config: `wrangler.jsonc` at repo root. Worker name: `hukills`. The `main` field
