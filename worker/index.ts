@@ -14,7 +14,7 @@ export default {
 							{ status: 405, headers: { Allow: "POST" } }
 						)
 					}
-					return await handleContact(request)
+					return await handleContact(request, env)
 
 				case "/api/career":
 					if (request.method !== "POST") {
@@ -23,7 +23,7 @@ export default {
 							{ status: 405, headers: { Allow: "POST" } }
 						)
 					}
-					return await handleCareer(request)
+					return await handleCareer(request, env)
 
 				default:
 					return env.ASSETS.fetch(request)

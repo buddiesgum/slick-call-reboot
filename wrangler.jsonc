@@ -16,7 +16,13 @@
 		"binding": "ASSETS",
 		"not_found_handling": "404-page",
 		"html_handling": "auto-trailing-slash"
-	}
+	},
+	// Cloudflare Email Sending binding (env.EMAIL.send).
+	// PRODUCTION PREREQUISITE: hukills.com must be added as a verified sender in
+	// Cloudflare dashboard → Email → Email Sending with SPF/DKIM/DMARC records
+	// published before production sends will succeed. `wrangler dev` mocks the
+	// binding locally — sends are logged, not actually delivered.
+	"send_email": [{ "name": "EMAIL" }]
 	// Custom domains (hukills.com, www.hukills.com) are managed in the
 	// Cloudflare dashboard under Workers & Pages > hukills > Settings > Domains.
 }
