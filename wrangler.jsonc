@@ -22,7 +22,13 @@
 	// Cloudflare dashboard → Email → Email Sending with SPF/DKIM/DMARC records
 	// published before production sends will succeed. `wrangler dev` mocks the
 	// binding locally — sends are logged, not actually delivered.
-	"send_email": [{ "name": "EMAIL" }]
+	"send_email": [{ "name": "EMAIL" }],
 	// Custom domains (hukills.com, www.hukills.com) are managed in the
-	// Cloudflare dashboard under Workers & Pages > hukills > Settings > Domains.
+	// Cloudflare dashboard under Workers & Pages > hukills > Settings > Domains.,
+	"observability": {
+		"logs": {
+			"enabled": false,
+			"invocation_logs": true
+		}
+	}
 }
