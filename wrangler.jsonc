@@ -26,9 +26,18 @@
 	// Custom domains (hukills.com, www.hukills.com) are managed in the
 	// Cloudflare dashboard under Workers & Pages > hukills > Settings > Domains.,
 	"observability": {
+		"enabled": true,
+		"head_sampling_rate": 1,
 		"logs": {
-			"enabled": false,
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"persist": true,
 			"invocation_logs": true
+		},
+		"traces": {
+			"enabled": true,
+			"persist": true,
+			"head_sampling_rate": 1
 		}
 	}
 }
