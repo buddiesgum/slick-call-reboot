@@ -1,5 +1,5 @@
 {
-	"fromAddress": "hello@ajcaldwell.dev",
+	"fromAddress": "hello@hukill.ajcaldwell.dev",
 	"leadEmail": "hello@ajcaldwell.dev",
 	"autoReplySubject": "We received your request — Hukill's Inc.",
 	"autoReplyBody": "<h1>Thanks, {{firstName}}!</h1>\n<p>We received your <strong>{{service}}</strong> request and a member of the {{companyName}} team will be in touch shortly.</p>\n<p>If this is an emergency, please call us directly — we're available 24/7.</p>",
