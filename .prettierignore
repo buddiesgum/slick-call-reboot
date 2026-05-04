@@ -3,3 +3,4 @@
 /dist
 /.agents
 /worker-configuration.d.ts
+/skills-lock.json
