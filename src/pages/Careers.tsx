@@ -16,6 +16,7 @@ import {
 	validateResumeFile
 } from "@/lib/schemas/career"
 import careersData from "@/cms/careers-page.json"
+import { usePostHog } from "@posthog/react"
 
 const iconMap: Record<string, LucideIcon> = {
 	Wrench,
@@ -26,6 +27,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 const Careers = () => {
 	const { toast } = useToast()
+	const posthog = usePostHog()
 	const [submitting, setSubmitting] = useState(false)
 	const [file, setFile] = useState<File | null>(null)
 	const [form, setForm] = useState<CareerFormState>(initialCareerForm)
@@ -72,17 +74,27 @@ const Careers = () => {
 			if (file) fd.append("resume", file)
 
 			// No Content-Type header — browser sets multipart boundary automatically
-			const res = await fetch("/api/career", { method: "POST", body: fd })
+			const res = await fetch("/api/career", {
+				method: "POST",
+				headers: {
+					"X-POSTHOG-DISTINCT-ID": posthog?.get_distinct_id() ?? "",
+					"X-POSTHOG-SESSION-ID": posthog?.get_session_id() ?? ""
+				},
+				body: fd
+			})
 			if (!res.ok) throw new Error(`HTTP ${res.status}`)
 
 			setForm(initialCareerForm)
 			setFile(null)
 			if (fileInputRef.current) fileInputRef.current.value = ""
+			posthog?.capture("career_application_submitted", { resume_attached: !!file })
 			toast({
 				title: careersData.application.successTitle,
 				description: careersData.application.successBody
 			})
-		} catch {
+		} catch (err) {
+			posthog?.captureException(err)
+			posthog?.capture("career_application_error")
 			toast({
 				title: careersData.application.errorTitle,
 				description: careersData.application.errorBody,
@@ -147,6 +159,7 @@ const Careers = () => {
 									type="button"
 									key={trade.label}
 									onClick={() => {
+										posthog?.capture("career_trade_clicked", { trade: trade.label })
 										document
 											.getElementById("application")
 											?.scrollIntoView({ behavior: "smooth", block: "start" })
@@ -301,14 +314,14 @@ const Careers = () => {
 										</span>
 									</>
 								}
-							<input
-								ref={fileInputRef}
-								type="file"
-								accept=".pdf,.doc,.docx"
-								className="hidden"
-								disabled={submitting}
-								onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-							/>
+								<input
+									ref={fileInputRef}
+									type="file"
+									accept=".pdf,.doc,.docx"
+									className="hidden"
+									disabled={submitting}
+									onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+								/>
 							</label>
 						</div>
 

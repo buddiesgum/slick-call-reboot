@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast"
 import { contactSchema, type ContactFormState, initialContactForm } from "@/lib/schemas/contact"
 import { allServices } from "@/data/services"
 import contactData from "@/cms/contact-page.json"
+import { usePostHog } from "@posthog/react"
 
 // ---------------------------------------------------------------------------
 // Page component
@@ -20,6 +21,7 @@ import contactData from "@/cms/contact-page.json"
 const Contact = () => {
 	const { selected, setSelected } = useLocationContext()
 	const { toast } = useToast()
+	const posthog = usePostHog()
 	const [form, setForm] = useState<ContactFormState>(initialContactForm)
 	const [submitting, setSubmitting] = useState(false)
 
@@ -41,16 +43,23 @@ const Contact = () => {
 		try {
 			const res = await fetch("/api/contact", {
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
+				headers: {
+					"Content-Type": "application/json",
+					"X-POSTHOG-DISTINCT-ID": posthog?.get_distinct_id() ?? "",
+					"X-POSTHOG-SESSION-ID": posthog?.get_session_id() ?? ""
+				},
 				body: JSON.stringify(result.data)
 			})
 			if (!res.ok) throw new Error(`HTTP ${res.status}`)
 			setForm(initialContactForm)
+			posthog?.capture("contact_form_submitted")
 			toast({
 				title: contactData.form.successTitle,
 				description: contactData.form.successBody
 			})
-		} catch {
+		} catch (err) {
+			posthog?.captureException(err)
+			posthog?.capture("contact_form_error")
 			toast({
 				title: contactData.form.errorTitle,
 				description: contactData.form.errorBody,
@@ -136,6 +145,12 @@ const Contact = () => {
 										</div>
 										<a
 											href={loc.phone}
+											onClick={() =>
+												posthog?.capture("contact_phone_clicked", {
+													location: loc.label,
+													source: "info_link"
+												})
+											}
 											className="flex items-center gap-3 text-foreground hover:text-primary transition-colors"
 										>
 											<Phone className="w-4 h-4 text-primary flex-shrink-0" />
@@ -152,6 +167,12 @@ const Contact = () => {
 									<div className="flex flex-col sm:flex-row gap-3">
 										<a
 											href={loc.phone}
+											onClick={() =>
+												posthog?.capture("contact_phone_clicked", {
+													location: loc.label,
+													source: "call_button"
+												})
+											}
 											className="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 										>
 											<Phone className="w-4 h-4" />
@@ -159,7 +180,12 @@ const Contact = () => {
 										</a>
 										{!isActive && (
 											<button
-												onClick={() => setSelected(loc)}
+												onClick={() => {
+													setSelected(loc)
+													posthog?.capture("contact_location_selected", {
+														location: loc.label
+													})
+												}}
 												className="flex-1 inline-flex items-center justify-center gap-2 border border-border px-5 py-3 font-display uppercase text-sm tracking-wider hover:border-primary hover:text-primary transition-colors rounded-sm"
 											>
 												{contactData.locations.setLocationLabel}

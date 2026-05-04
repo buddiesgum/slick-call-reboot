@@ -25,3 +25,4 @@ dist-ssr
 
 # Wrangler local state (credentials pointers, build cache)
 .wrangler/
+.env

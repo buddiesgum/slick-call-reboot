@@ -6,6 +6,7 @@ import LocationSelector from "./LocationSelector"
 import { useLocationContext } from "@/context/location-context"
 import headerData from "@/cms/header.json"
 import footerData from "@/cms/footer.json"
+import { usePostHog } from "@posthog/react"
 
 // ---------------------------------------------------------------------------
 // Types derived from header.json shape
@@ -47,6 +48,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 	const [mobileExpanded, setMobileExpanded] = useState<Set<string>>(new Set())
 	const location = useLocation()
 	const { selected: currentLocation } = useLocationContext()
+	const posthog = usePostHog()
 	const dropdownRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
@@ -479,6 +481,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 			{/* Sticky Call Button */}
 			<a
 				href={currentLocation.phone}
+				onClick={() => posthog?.capture("floating_call_clicked")}
 				className="fixed bottom-6 right-6 z-50 bg-primary text-primary-foreground w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
 				aria-label="Call Hukill's"
 			>

@@ -3,6 +3,7 @@ import emailSettings from "@/cms/email-settings.json"
 import seo from "@/cms/seo.json"
 import { escapeHtml } from "../lib/html"
 import { safeSend } from "../lib/email"
+import { captureServerEvent } from "../lib/posthog"
 
 export async function handleCareer(request: Request, env: Env): Promise<Response> {
 	const contentType = request.headers.get("content-type") ?? ""
@@ -105,6 +106,13 @@ export async function handleCareer(request: Request, env: Env): Promise<Response
 		},
 		"applicant-auto-reply"
 	)
+
+	const distinctId = request.headers.get("x-posthog-distinct-id") ?? "server"
+	const sessionId = request.headers.get("x-posthog-session-id")
+	await captureServerEvent(env.POSTHOG_PROJECT_TOKEN, "career_application_received", distinctId, {
+		resume_attached: resumeAttachment !== null,
+		...(sessionId ? { $session_id: sessionId } : {})
+	})
 
 	return Response.json({ ok: true })
 }

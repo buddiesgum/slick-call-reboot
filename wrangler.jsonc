@@ -25,6 +25,12 @@
 	"send_email": [{ "name": "EMAIL" }],
 	// Custom domains (hukills.com, www.hukills.com) are managed in the
 	// Cloudflare dashboard under Workers & Pages > hukills > Settings > Domains.,
+	// PostHog public project token — used by the Worker to capture server-side events.
+	// This is a public identifier (safe to commit). Set POSTHOG_PROJECT_TOKEN as a
+	// wrangler secret for production if you prefer: `wrangler secret put POSTHOG_PROJECT_TOKEN`
+	"vars": {
+		"POSTHOG_PROJECT_TOKEN": "phc_xfpFZvD3wpieBtegLPJxdgAQQYmCq5mQ6G7VasJgDufu"
+	},
 	"observability": {
 		"enabled": true,
 		"head_sampling_rate": 1,

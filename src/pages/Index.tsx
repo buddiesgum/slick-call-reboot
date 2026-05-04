@@ -7,6 +7,7 @@ import ServiceImageGrid from "@/components/ServiceImageGrid"
 import { featuredServices } from "@/data/services"
 import { useLocationContext } from "@/context/location-context"
 import homeData from "@/cms/home-page.json"
+import { usePostHog } from "@posthog/react"
 
 const fadeUp = {
 	initial: { opacity: 0, y: 30 },
@@ -15,6 +16,7 @@ const fadeUp = {
 
 const Index = () => {
 	const { selected } = useLocationContext()
+	const posthog = usePostHog()
 	return (
 		<Layout>
 			<Seo route="/" seoBlock={homeData.seo} />
@@ -43,6 +45,7 @@ const Index = () => {
 						<div className="mt-8 flex flex-wrap gap-4">
 							<a
 								href={selected.phone}
+								onClick={() => posthog?.capture("hero_phone_clicked")}
 								className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 							>
 								<Phone className="w-5 h-5" />
@@ -50,6 +53,7 @@ const Index = () => {
 							</a>
 							<a
 								href={`sms:${selected.phone.replace("tel:", "")}`}
+								onClick={() => posthog?.capture("hero_sms_clicked")}
 								className="inline-flex items-center gap-2 bg-primary-foreground text-secondary px-8 py-4 font-display uppercase text-sm tracking-wider hover:bg-primary-foreground/90 transition-colors rounded-sm"
 							>
 								<MessageSquare className="w-5 h-5" />

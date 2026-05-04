@@ -3,9 +3,11 @@ import { motion } from "framer-motion"
 import { Phone, ArrowRight, Clock, MapPin } from "lucide-react"
 import { useLocationContext } from "@/context/location-context"
 import ctaData from "@/cms/service-cta.json"
+import { usePostHog } from "@posthog/react"
 
 const ServiceEmergencyCta = () => {
 	const { selected } = useLocationContext()
+	const posthog = usePostHog()
 
 	return (
 		<section className="section-dark py-20 md:py-28 relative overflow-hidden">
@@ -28,6 +30,7 @@ const ServiceEmergencyCta = () => {
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
 							<a
 								href={selected.phone}
+								onClick={() => posthog?.capture("emergency_phone_clicked")}
 								className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-display uppercase text-sm tracking-wider hover:bg-primary/90 transition-colors rounded-sm"
 							>
 								<Phone className="w-4 h-4" />
@@ -35,6 +38,7 @@ const ServiceEmergencyCta = () => {
 							</a>
 							<Link
 								to={ctaData.quotePath}
+								onClick={() => posthog?.capture("emergency_quote_clicked")}
 								className="inline-flex items-center justify-center gap-2 border border-primary-foreground/30 text-primary-foreground px-6 py-3 font-display uppercase text-sm tracking-wider hover:border-primary hover:text-primary transition-colors rounded-sm"
 							>
 								{ctaData.quoteCtaLabel} <ArrowRight className="w-4 h-4" />

@@ -3,6 +3,7 @@ import emailSettings from "@/cms/email-settings.json"
 import seo from "@/cms/seo.json"
 import { escapeHtml } from "../lib/html"
 import { safeSend } from "../lib/email"
+import { captureServerEvent } from "../lib/posthog"
 
 export async function handleContact(request: Request, env: Env): Promise<Response> {
 	if (!request.headers.get("content-type")?.includes("application/json")) {
@@ -74,6 +75,12 @@ export async function handleContact(request: Request, env: Env): Promise<Respons
 		},
 		"customer-auto-reply"
 	)
+
+	const distinctId = request.headers.get("x-posthog-distinct-id") ?? "server"
+	const sessionId = request.headers.get("x-posthog-session-id")
+	await captureServerEvent(env.POSTHOG_PROJECT_TOKEN, "contact_lead_received", distinctId, {
+		...(sessionId ? { $session_id: sessionId } : {})
+	})
 
 	return Response.json({ ok: true })
 }

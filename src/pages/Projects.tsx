@@ -6,6 +6,7 @@ import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import { projects, type Project } from "@/cms/projects"
 import projectsPage from "@/cms/projects-page.json"
+import { usePostHog } from "@posthog/react"
 
 // Derive tag options from the CMS config so new tags (e.g. Septic) appear as
 // pills immediately, even before any project carries that tag.
@@ -16,6 +17,7 @@ const Projects = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 	const [lightboxImg, setLightboxImg] = useState<string | null>(null)
+	const posthog = usePostHog()
 
 	// Derive active filters from URL; silently fall back to "All" for unknown values.
 	const rawMajor = searchParams.get("major")
@@ -24,6 +26,8 @@ const Projects = () => {
 	const activeMinor = rawMinor && minorTagOptions.includes(rawMinor) ? rawMinor : "All"
 
 	const setFilter = (key: "major" | "minor", value: string) => {
+		if (value !== "All")
+			posthog?.capture("project_filter_applied", { filter_type: key, filter_value: value })
 		setSearchParams(
 			(prev) => {
 				const next = new URLSearchParams(prev)
@@ -135,7 +139,13 @@ const Projects = () => {
 									animate={{ opacity: 1, scale: 1 }}
 									exit={{ opacity: 0, scale: 0.95 }}
 									transition={{ duration: 0.3 }}
-									onClick={() => setSelectedProject(project)}
+									onClick={() => {
+										posthog?.capture("project_opened", {
+											project_id: project.id,
+											project_title: project.title
+										})
+										setSelectedProject(project)
+									}}
 									className="group cursor-pointer bg-card border border-border rounded-lg overflow-hidden hover:border-primary/40 hover:shadow-lg transition-all"
 								>
 									<div className="aspect-[16/10] overflow-hidden">
