@@ -10,7 +10,7 @@ type SendResult = { ok: true } | { ok: false; error: unknown }
 export async function safeSend(
 	email: SendEmail,
 	message: Parameters<SendEmail["send"]>[0],
-	label: string,
+	label: string
 ): Promise<SendResult> {
 	try {
 		await email.send(message)

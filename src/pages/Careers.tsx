@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import { motion } from "framer-motion"
@@ -9,7 +9,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
-import { careerSchema, type CareerFormState, initialCareerForm } from "@/lib/schemas/career"
+import {
+	careerSchema,
+	type CareerFormState,
+	initialCareerForm,
+	validateResumeFile
+} from "@/lib/schemas/career"
 import careersData from "@/cms/careers-page.json"
 
 const iconMap: Record<string, LucideIcon> = {
@@ -22,15 +27,18 @@ const iconMap: Record<string, LucideIcon> = {
 const Careers = () => {
 	const { toast } = useToast()
 	const [submitting, setSubmitting] = useState(false)
-	const [fileName, setFileName] = useState<string>("")
+	const [file, setFile] = useState<File | null>(null)
 	const [form, setForm] = useState<CareerFormState>(initialCareerForm)
+	const fileInputRef = useRef<HTMLInputElement>(null)
 
 	const update = <K extends keyof CareerFormState>(key: K, value: CareerFormState[K]) =>
 		setForm((f) => ({ ...f, [key]: value }))
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
-		const result = careerSchema.safeParse({ ...form, hasResume: !!fileName })
+
+		// Validate text fields
+		const result = careerSchema.safeParse(form)
 		if (!result.success) {
 			toast({
 				title: careersData.application.errorTitle,
@@ -39,16 +47,37 @@ const Careers = () => {
 			})
 			return
 		}
+
+		// Validate the file if one was selected
+		if (file) {
+			const fileError = validateResumeFile(file)
+			if (fileError) {
+				const description =
+					fileError === "size" ?
+						careersData.application.fileTooLargeError
+					:	careersData.application.fileTypeError
+				toast({ title: careersData.application.errorTitle, description, variant: "destructive" })
+				return
+			}
+		}
+
 		setSubmitting(true)
 		try {
-			const res = await fetch("/api/career", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(result.data)
-			})
+			const fd = new FormData()
+			fd.append("firstName", result.data.firstName)
+			fd.append("lastName", result.data.lastName)
+			fd.append("email", result.data.email)
+			fd.append("message", result.data.message)
+			fd.append("updates", result.data.updates ? "true" : "false")
+			if (file) fd.append("resume", file)
+
+			// No Content-Type header — browser sets multipart boundary automatically
+			const res = await fetch("/api/career", { method: "POST", body: fd })
 			if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
 			setForm(initialCareerForm)
-			setFileName("")
+			setFile(null)
+			if (fileInputRef.current) fileInputRef.current.value = ""
 			toast({
 				title: careersData.application.successTitle,
 				description: careersData.application.successBody
@@ -63,6 +92,8 @@ const Careers = () => {
 			setSubmitting(false)
 		}
 	}
+
+	const fileName = file?.name ?? ""
 
 	return (
 		<Layout>
@@ -270,12 +301,14 @@ const Careers = () => {
 										</span>
 									</>
 								}
-								<input
-									type="file"
-									accept=".pdf,.doc,.docx"
-									className="hidden"
-									onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
-								/>
+							<input
+								ref={fileInputRef}
+								type="file"
+								accept=".pdf,.doc,.docx"
+								className="hidden"
+								disabled={submitting}
+								onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+							/>
 							</label>
 						</div>
 
