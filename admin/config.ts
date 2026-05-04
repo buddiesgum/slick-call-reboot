@@ -1,4 +1,5 @@
 import type { CmsConfig, ObjectFieldWithSubFields } from "@sveltia/cms"
+import { COMPLEX_ICON_NAMES } from "@/components/complex-service-icons"
 
 const createProjectFiltersField = () =>
 	({
@@ -116,65 +117,219 @@ export const config = {
 				{ name: "title", label: "Page Title (admin label)", widget: "string" },
 				createSeoField(),
 				{
-					name: "hero",
-					label: "Hero Section",
+					name: "layout",
+					label: "Page Layout",
 					widget: "object",
-					fields: [
-						{ name: "title", label: "Hero Title", widget: "string" },
-						{ name: "subtitle", label: "Subtitle", widget: "text" },
+					types: [
 						{
-							name: "image",
-							label: "Background Image",
-							widget: "string",
-							hint: "URL or upload path. Displayed as the hero background."
-						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
-						{
-							name: "cta",
-							label: "Hero CTA Button (optional)",
+							name: "simple",
+							label: "Simple (Cards)",
 							widget: "object",
-							required: false,
 							fields: [
 								{
-									name: "label",
-									label: "Button Label",
-									widget: "string",
-									hint: 'Button label, e.g. "View Past Projects" — links to /projects'
+									name: "hero",
+									label: "Hero Section",
+									widget: "object",
+									fields: [
+										{ name: "title", label: "Hero Title", widget: "string" },
+										{ name: "subtitle", label: "Subtitle", widget: "text", required: false },
+										{
+											name: "image",
+											label: "Background Image",
+											widget: "string",
+											hint: "URL or upload path. Displayed as the hero background."
+										},
+										{
+											name: "imageAlt",
+											label: "Image Alt Text",
+											widget: "string",
+											required: false
+										},
+										{
+											name: "cta",
+											label: "Hero CTA Button (optional)",
+											widget: "object",
+											required: false,
+											fields: [
+												{
+													name: "label",
+													label: "Button Label",
+													widget: "string",
+													hint: 'Button label, e.g. "View Past Projects" — links to /projects'
+												},
+												createProjectFiltersField()
+											]
+										}
+									]
 								},
-								createProjectFiltersField()
+								{
+									name: "cards",
+									label: "Content Cards",
+									label_singular: "Card",
+									widget: "list",
+									fields: [
+										{ name: "title", label: "Card Title", widget: "string" },
+										{ name: "description", label: "Description", widget: "text" },
+										{
+											name: "items",
+											label: "Bullet Items",
+											label_singular: "Item",
+											widget: "list",
+											required: false,
+											field: { name: "item", label: "Item", widget: "string" }
+										},
+										{
+											name: "image",
+											label: "Card Image",
+											widget: "string",
+											hint: "URL or upload path."
+										},
+										{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
+										{
+											name: "reverse",
+											label: "Reverse Layout",
+											widget: "boolean",
+											default: false,
+											hint: "When enabled, the image appears on the left and text on the right."
+										}
+									]
+								}
 							]
-						}
-					]
-				},
-				{
-					name: "cards",
-					label: "Content Cards",
-					label_singular: "Card",
-					widget: "list",
-					fields: [
-						{ name: "title", label: "Card Title", widget: "string" },
-						{ name: "description", label: "Description", widget: "text" },
-						{
-							name: "items",
-							label: "Bullet Items",
-							label_singular: "Item",
-							widget: "list",
-							required: false,
-							field: { name: "item", label: "Item", widget: "string" }
 						},
 						{
-							name: "image",
-							label: "Card Image",
-							widget: "string",
-							hint: "URL or upload path."
-						},
-						{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
-						{
-							name: "reverse",
-							label: "Reverse Layout",
-							widget: "boolean",
-							default: false,
-							hint: "When enabled, the image appears on the left and text on the right."
+							name: "complex",
+							label: "Complex (Featured)",
+							widget: "object",
+							fields: [
+								{
+									name: "hero",
+									label: "Hero Section",
+									widget: "object",
+									fields: [
+										{
+											name: "eyebrow",
+											label: "Eyebrow Text",
+											widget: "string",
+											required: false,
+											hint: 'Small label above the heading, e.g. "Commercial Plumbing"'
+										},
+										{
+											name: "title",
+											label: "Title (before accent)",
+											widget: "string",
+											hint: 'e.g. "Big Problems Need"'
+										},
+										{
+											name: "titleAccent",
+											label: "Title Accent",
+											widget: "string",
+											required: false,
+											hint: 'Displayed in the primary color, e.g. "Big Crews."'
+										},
+										{ name: "subtitle", label: "Subtitle", widget: "text", required: false },
+										{
+											name: "image",
+											label: "Background Image",
+											widget: "string",
+											hint: "URL or upload path. Displayed as the hero background at 35% opacity."
+										},
+										{
+											name: "imageAlt",
+											label: "Image Alt Text",
+											widget: "string",
+											required: false
+										},
+										{
+											name: "primaryCta",
+											label: "Primary CTA Button (optional)",
+											widget: "object",
+											required: false,
+											fields: [
+												{ name: "label", label: "Button Label", widget: "string" },
+												{
+													name: "path",
+													label: "Link Path",
+													widget: "string",
+													hint: 'e.g. "/contact"',
+													pattern: ["^\\/", "Must be a relative path starting with /"]
+												}
+											]
+										},
+										{
+											name: "secondaryCta",
+											label: "Secondary CTA Button (optional)",
+											widget: "object",
+											required: false,
+											fields: [
+												{
+													name: "label",
+													label: "Button Label",
+													widget: "string",
+													hint: 'Button label, e.g. "View Past Projects" — links to /projects'
+												},
+												createProjectFiltersField()
+											]
+										}
+									]
+								},
+								{
+									name: "scale",
+									label: "Scale Section (optional)",
+									widget: "object",
+									required: false,
+									fields: [
+										{
+											name: "eyebrow",
+											label: "Eyebrow Text",
+											widget: "string",
+											required: false
+										},
+										{ name: "heading", label: "Heading", widget: "string" },
+										{ name: "body", label: "Body Text", widget: "text", required: false },
+										{
+											name: "items",
+											label: "Scale Points",
+											label_singular: "Point",
+											widget: "list",
+											max: 4,
+											hint: "Up to 4 capability highlights shown in the icon card grid.",
+											fields: [
+												{
+													name: "icon",
+													label: "Icon",
+													widget: "select",
+													options: [...COMPLEX_ICON_NAMES],
+													hint: "Lucide icon name. Adding new options requires a code change in ComplexServiceLayout.tsx."
+												},
+												{ name: "label", label: "Label", widget: "string" },
+												{ name: "text", label: "Description", widget: "text" }
+											]
+										}
+									]
+								},
+								{
+									name: "capabilities",
+									label: "Capabilities Section (optional)",
+									widget: "object",
+									required: false,
+									fields: [
+										{
+											name: "eyebrow",
+											label: "Eyebrow Text",
+											widget: "string",
+											required: false
+										},
+										{ name: "heading", label: "Heading", widget: "string" },
+										{
+											name: "items",
+											label: "Capability Items",
+											label_singular: "Item",
+											widget: "list",
+											field: { name: "item", label: "Item", widget: "string" }
+										}
+									]
+								}
+							]
 						}
 					]
 				}
@@ -809,128 +964,7 @@ export const config = {
 						}
 					]
 				},
-				// ── 4. Commercial Plumbing ───────────────────────────────────────────
-				{
-					name: "commercialPlumbingPage",
-					label: "Commercial Plumbing Page",
-					file: "src/cms/commercial-plumbing-page.json",
-					fields: [
-						createSeoField(),
-						{
-							name: "hero",
-							label: "Hero Section",
-							widget: "object",
-							fields: [
-								{
-									name: "eyebrow",
-									label: "Eyebrow Text",
-									widget: "string",
-									hint: 'Small label above the heading, e.g. "Commercial Plumbing"'
-								},
-								{
-									name: "title",
-									label: "Title (before accent)",
-									widget: "string",
-									hint: 'e.g. "Big Problems Need"'
-								},
-								{
-									name: "titleAccent",
-									label: "Title Accent",
-									widget: "string",
-									hint: 'Displayed in the primary color, e.g. "Big Crews."'
-								},
-								{ name: "subtitle", label: "Subtitle", widget: "text" },
-								{
-									name: "image",
-									label: "Background Image",
-									widget: "image",
-									hint: "Displayed as the hero background at 35% opacity."
-								},
-								{
-									name: "imageAlt",
-									label: "Image Alt Text",
-									widget: "string",
-									required: true
-								},
-								{
-									name: "primaryCta",
-									label: "Primary CTA Button",
-									widget: "object",
-									fields: [
-										{ name: "label", label: "Button Label", widget: "string", required: true },
-										{
-											name: "path",
-											label: "Link Path",
-											widget: "string",
-											hint: 'e.g. "/contact"',
-											pattern: ["^\\/", "Must be a relative path starting with /"]
-										}
-									]
-								},
-								{
-									name: "secondaryCta",
-									label: "Secondary CTA Button",
-									widget: "object",
-									fields: [
-										{
-											name: "label",
-											label: "Button Label",
-											widget: "string",
-											hint: 'Button label, e.g. "View Past Projects" — links to /projects'
-										},
-										createProjectFiltersField()
-									]
-								}
-							]
-						},
-						{
-							name: "scale",
-							label: "Scale Section",
-							widget: "object",
-							fields: [
-								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-								{ name: "heading", label: "Heading", widget: "string", required: true },
-								{ name: "body", label: "Body Text", widget: "text" },
-								{
-									name: "items",
-									label: "Scale Points",
-									label_singular: "Point",
-									widget: "list",
-									max: 4,
-									hint: "Up to 4 capability highlights shown in the icon card grid.",
-									fields: [
-										{
-											name: "icon",
-											label: "Icon",
-											widget: "select",
-											options: ["HardHat", "Waves", "Droplets", "ShieldCheck"],
-											hint: "Lucide icon name. Adding new options requires a code change."
-										},
-										{ name: "label", label: "Label", widget: "string", required: true },
-										{ name: "text", label: "Description", widget: "text", required: true }
-									]
-								}
-							]
-						},
-						{
-							name: "capabilities",
-							label: "Capabilities Section",
-							widget: "object",
-							fields: [
-								{ name: "eyebrow", label: "Eyebrow Text", widget: "string" },
-								{ name: "heading", label: "Heading", widget: "string", required: true },
-								{
-									name: "items",
-									label: "Capability Items",
-									label_singular: "Item",
-									widget: "list",
-									field: { name: "item", label: "Item", widget: "string" }
-								}
-							]
-						}
-					]
-				},
-				// ── 5. Projects ──────────────────────────────────────────────────────
+				// ── 4. Projects ──────────────────────────────────────────────────────
 				{
 					name: "projectsPage",
 					label: "Projects Page",

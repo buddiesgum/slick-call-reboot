@@ -4,7 +4,6 @@ import Index from "./pages/Index.tsx"
 import AllServices from "./pages/AllServices.tsx"
 import ServicePage from "./pages/ServicePage.tsx"
 import { servicePageSlugs } from "./pages/service-pages"
-import CommercialPlumbing from "./pages/CommercialPlumbing.tsx"
 import Projects from "./pages/Projects.tsx"
 import About from "./pages/About.tsx"
 import Careers from "./pages/Careers.tsx"
@@ -21,7 +20,6 @@ export const routes: RouteRecord[] = [
 		children: [
 			{ index: true, Component: Index },
 			{ path: "all-services", Component: AllServices },
-			{ path: "commercial-plumbing", Component: CommercialPlumbing },
 			{ path: "projects", Component: Projects },
 			{ path: "about", Component: About },
 			{ path: "careers", Component: Careers },

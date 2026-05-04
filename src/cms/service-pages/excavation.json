@@ -6,40 +6,42 @@
 		"description": "Full excavation including trench digging, asphalt cutting, septic site prep, water and sewer line replacement, and complete project coordination.",
 		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422988-2BWY8ZI0XSMDN8KEJSIX/IMG_4911.jpg"
 	},
-	"hero": {
-		"title": "Excavation",
-		"subtitle": "Our fleet of excavators, backhoes, and dump trucks ensures swift and efficient completion of your projects.",
-		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422988-2BWY8ZI0XSMDN8KEJSIX/IMG_4911.jpg",
-		"imageAlt": "Excavation services",
-		"cta": {
-			"label": "View Past Projects",
-
-			"projectFilters": { "minor": "Excavation" }
-		}
-	},
-	"cards": [
-		{
-			"title": "Excavation & Underground",
-			"description": "Our comprehensive excavation services encompass trench digging, asphalt cutting and removal, septic site preparation, tank replacement and system installation, water and sewer line replacement, and general demolition.",
-			"items": [
-				"Trench Digging",
-				"Asphalt Cutting & Removal",
-				"Septic Site Preparation",
-				"Tank Replacement & Installation",
-				"Water & Sewer Line Replacement",
-				"General Demolition"
-			],
+	"layout": {
+		"type": "simple",
+		"hero": {
+			"title": "Excavation",
+			"subtitle": "Our fleet of excavators, backhoes, and dump trucks ensures swift and efficient completion of your projects.",
 			"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422988-2BWY8ZI0XSMDN8KEJSIX/IMG_4911.jpg",
-			"imageAlt": "Excavation and underground work",
-			"reverse": false
+			"imageAlt": "Excavation services",
+			"cta": {
+				"label": "View Past Projects",
+				"projectFilters": { "minor": "Excavation" }
+			}
 		},
-		{
-			"title": "Full Project Coordination",
-			"description": "From utility locating to excavation and backfilling, we coordinate every aspect of your project seamlessly. Our team handles everything so you don't have to.",
-			"items": ["Utility Locating", "Excavation & Backfilling", "Project Coordination"],
-			"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422991-3YLCP5O2VSWUQX6EUX5D/P1690284.jpg",
-			"imageAlt": "Full project coordination",
-			"reverse": true
-		}
-	]
+		"cards": [
+			{
+				"title": "Excavation & Underground",
+				"description": "Our comprehensive excavation services encompass trench digging, asphalt cutting and removal, septic site preparation, tank replacement and system installation, water and sewer line replacement, and general demolition.",
+				"items": [
+					"Trench Digging",
+					"Asphalt Cutting & Removal",
+					"Septic Site Preparation",
+					"Tank Replacement & Installation",
+					"Water & Sewer Line Replacement",
+					"General Demolition"
+				],
+				"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422988-2BWY8ZI0XSMDN8KEJSIX/IMG_4911.jpg",
+				"imageAlt": "Excavation and underground work",
+				"reverse": false
+			},
+			{
+				"title": "Full Project Coordination",
+				"description": "From utility locating to excavation and backfilling, we coordinate every aspect of your project seamlessly. Our team handles everything so you don't have to.",
+				"items": ["Utility Locating", "Excavation & Backfilling", "Project Coordination"],
+				"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422991-3YLCP5O2VSWUQX6EUX5D/P1690284.jpg",
+				"imageAlt": "Full project coordination",
+				"reverse": true
+			}
+		]
+	}
 }

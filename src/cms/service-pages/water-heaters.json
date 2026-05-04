@@ -6,43 +6,45 @@
 		"description": "Tank and tankless water heater repair, replacement, and new installation. Honest repair-or-replace guidance and 24/7 emergency water heater service.",
 		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782430522-GO0ZSN821GXI1DS95FNQ/P1660312+2.jpg"
 	},
-	"hero": {
-		"title": "Water Heaters",
-		"subtitle": "Service, install, and repair — tank and tankless. Our team helps you choose what's right for your home.",
-		"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782430522-GO0ZSN821GXI1DS95FNQ/P1660312+2.jpg",
-		"imageAlt": "Water heater installation and repair",
-		"cta": {
-			"label": "View Past Projects",
-
-			"projectFilters": { "minor": "Plumbing" }
-		}
-	},
-	"cards": [
-		{
-			"title": "Tank-Style Water Heaters",
-			"description": "Cold water enters through a dip tube to the bottom of the tank, while hot water is drawn off the top — so you get full-temperature water until most of the tank is used. We can also install a mixing valve on your existing unit to deliver up to 50% more hot water by mixing it with cold downstream of the tank, reducing strain on the heater.",
-			"items": [
-				"Repair & replacement",
-				"New installs",
-				"Mixing valve upgrades for 50% more hot water",
-				"Honest repair-or-replace guidance"
-			],
+	"layout": {
+		"type": "simple",
+		"hero": {
+			"title": "Water Heaters",
+			"subtitle": "Service, install, and repair — tank and tankless. Our team helps you choose what's right for your home.",
 			"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782430522-GO0ZSN821GXI1DS95FNQ/P1660312+2.jpg",
-			"imageAlt": "Tank-style water heater",
-			"reverse": false
+			"imageAlt": "Water heater installation and repair",
+			"cta": {
+				"label": "View Past Projects",
+				"projectFilters": { "minor": "Plumbing" }
+			}
 		},
-		{
-			"title": "Tankless Water Heaters",
-			"description": "Tankless systems heat water on demand instead of constantly heating a stored tank. The right candidate can save substantially on monthly bills, conserve natural gas, and enjoy unlimited hot water. Tankless units also last 5–10 years longer than tank heaters and take up far less space.",
-			"items": [
-				"On-demand hot water",
-				"Lower monthly utility bills",
-				"5–10 years longer lifespan",
-				"Compact, space-saving install"
-			],
-			"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782430519-0OWQJL4UQDU8HBXDU52O/tankless.jpg",
-			"imageAlt": "Tankless water heater",
-			"reverse": true
-		}
-	]
+		"cards": [
+			{
+				"title": "Tank-Style Water Heaters",
+				"description": "Cold water enters through a dip tube to the bottom of the tank, while hot water is drawn off the top — so you get full-temperature water until most of the tank is used. We can also install a mixing valve on your existing unit to deliver up to 50% more hot water by mixing it with cold downstream of the tank, reducing strain on the heater.",
+				"items": [
+					"Repair & replacement",
+					"New installs",
+					"Mixing valve upgrades for 50% more hot water",
+					"Honest repair-or-replace guidance"
+				],
+				"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782430522-GO0ZSN821GXI1DS95FNQ/P1660312+2.jpg",
+				"imageAlt": "Tank-style water heater",
+				"reverse": false
+			},
+			{
+				"title": "Tankless Water Heaters",
+				"description": "Tankless systems heat water on demand instead of constantly heating a stored tank. The right candidate can save substantially on monthly bills, conserve natural gas, and enjoy unlimited hot water. Tankless units also last 5–10 years longer than tank heaters and take up far less space.",
+				"items": [
+					"On-demand hot water",
+					"Lower monthly utility bills",
+					"5–10 years longer lifespan",
+					"Compact, space-saving install"
+				],
+				"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782430519-0OWQJL4UQDU8HBXDU52O/tankless.jpg",
+				"imageAlt": "Tankless water heater",
+				"reverse": true
+			}
+		]
+	}
 }

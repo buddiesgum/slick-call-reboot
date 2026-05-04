@@ -1,17 +1,21 @@
 import type { PageSeoData } from "@/components/seo-types"
+import type { ComplexIconName } from "@/components/complex-service-icons"
 
 export type { PageSeoData }
 
-export type ServicePageContent = {
-	slug: string
-	title: string
-	seo?: PageSeoData
+// ── Layout variants ───────────────────────────────────────────────────────────
+
+export type SimpleLayout = {
+	type: "simple"
 	hero: {
 		title: string
 		subtitle?: string
 		image: string
 		imageAlt?: string
-		cta?: { label: string; path: string }
+		cta?: {
+			label: string
+			projectFilters?: { major?: string; minor?: string }
+		}
 	}
 	cards: Array<{
 		title: string
@@ -21,6 +25,49 @@ export type ServicePageContent = {
 		imageAlt?: string
 		reverse?: boolean
 	}>
+}
+
+export type ComplexLayout = {
+	type: "complex"
+	hero: {
+		eyebrow?: string
+		title: string
+		titleAccent?: string
+		subtitle?: string
+		image: string
+		imageAlt?: string
+		primaryCta?: { label: string; path: string }
+		secondaryCta?: {
+			label: string
+			projectFilters?: { major?: string; minor?: string }
+		}
+	}
+	scale?: {
+		eyebrow?: string
+		heading: string
+		body?: string
+		items: Array<{
+			icon: ComplexIconName
+			label: string
+			text: string
+		}>
+	}
+	capabilities?: {
+		eyebrow?: string
+		heading: string
+		items: string[]
+	}
+}
+
+export type ServiceLayout = SimpleLayout | ComplexLayout
+
+// ── Top-level record (slug/title/seo are layout-agnostic) ────────────────────
+
+export type ServicePageContent = {
+	slug: string
+	title: string
+	seo?: PageSeoData
+	layout: ServiceLayout
 }
 
 const modules = import.meta.glob<ServicePageContent>("@/cms/service-pages/*.json", {
