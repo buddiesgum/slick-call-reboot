@@ -111,7 +111,7 @@ export const config = {
 					name: "slug",
 					label: "Slug",
 					widget: "string",
-					hint: "Matches the route path (e.g. 'plumbing'). Do not change — requires a code update.",
+					hint: "Matches the route path (e.g. 'plumbing'). Renaming changes the live URL on the next deploy. The old URL will 404 — any external links and Google search results pointing to it will break. After renaming, manually update: Header → Navigation, Footer → Services Column, and any service tiles / CTAs in the home. Existing uploaded images keep working from their original folder; new uploads go under the new slug.",
 					pattern: ["^[a-z0-9-]+$", "Slug must be lowercase letters, numbers, and hyphens only"]
 				},
 				{ name: "title", label: "Page Title (admin label)", widget: "string" },
