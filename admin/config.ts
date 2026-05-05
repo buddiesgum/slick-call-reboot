@@ -35,11 +35,18 @@ export const config = {
 			}
 		}
 	},
-	collections: [servicesCollection, projectsCollection, locationsCollection, pagesCollection],
+	collections: [
+		locationsCollection,
+		pagesCollection,
+		{ divider: true },
+		servicesCollection,
+		projectsCollection
+	],
 	singletons: [
-		serviceCtaSingleton,
-		footerSingleton,
 		headerSingleton,
+		footerSingleton,
+		{ divider: true },
+		serviceCtaSingleton,
 		emailSettingsSingleton,
 		seoSingleton
 	]
