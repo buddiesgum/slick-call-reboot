@@ -82,6 +82,12 @@ export const config = {
 	},
 	media_folder: "public/media",
 	public_folder: "/media",
+	output: {
+		json: {
+			indent_style: "tab",
+			indent_size: 1
+		}
+	},
 	media_libraries: {
 		stock_assets: { providers: [] },
 		default: {
