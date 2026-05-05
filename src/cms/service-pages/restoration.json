@@ -1,5 +1,13 @@
 {
 	"slug": "restoration",
+	"tile": {
+		"icon": "Shield",
+		"description": "Water, fire, and storm damage restoration — 24/7.",
+		"image": "/media/service-tiles/about-values.jpg",
+		"imageAlt": "Restoration services",
+		"featured": true,
+		"order": 4
+	},
 	"title": "Restoration",
 	"seo": {
 		"title": "Restoration Services | Hukill's Inc.",

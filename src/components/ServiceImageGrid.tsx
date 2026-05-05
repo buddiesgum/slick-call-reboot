@@ -18,7 +18,7 @@ const ServiceImageGrid = ({ services }: { services: ServiceTile[] }) => (
 				>
 					<img
 						src={service.image}
-						alt={`${service.title} services`}
+						alt={service.imageAlt}
 						className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
 						loading="lazy"
 					/>

@@ -1,5 +1,13 @@
 {
 	"slug": "leak-detection",
+	"tile": {
+		"icon": "Search",
+		"description": "Targeted leak locating before small failures become expensive damage.",
+		"image": "/media/service-tiles/about-values.jpg",
+		"imageAlt": "Leak detection services",
+		"featured": false,
+		"order": 8
+	},
 	"title": "Leak Detection",
 	"seo": {
 		"title": "Leak Detection | Hukill's Inc.",

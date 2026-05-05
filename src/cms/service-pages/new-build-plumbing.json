@@ -1,5 +1,13 @@
 {
 	"slug": "new-build-plumbing",
+	"tile": {
+		"icon": "HardHat",
+		"description": "Ground-up plumbing systems for residential and commercial construction.",
+		"image": "/media/service-tiles/about-mission.jpg",
+		"imageAlt": "New build plumbing services",
+		"featured": false,
+		"order": 11
+	},
 	"title": "New Build Plumbing",
 	"seo": {
 		"title": "New Build Plumbing | Hukill's Inc.",

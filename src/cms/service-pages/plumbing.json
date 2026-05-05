@@ -1,5 +1,13 @@
 {
 	"slug": "plumbing",
+	"tile": {
+		"icon": "Wrench",
+		"description": "Repairs, replacements, trenchless technology and more.",
+		"image": "/media/service-tiles/about-mission.jpg",
+		"imageAlt": "Plumbing services",
+		"featured": true,
+		"order": 1
+	},
 	"title": "Plumbing",
 	"seo": {
 		"title": "Plumbing Services | Hukill's Inc.",

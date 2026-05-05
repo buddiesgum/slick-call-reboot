@@ -1,5 +1,13 @@
 {
 	"slug": "drain-cleaning",
+	"tile": {
+		"icon": "ShowerHead",
+		"description": "Clog removal, sewer cleaning, and dependable drain flow restoration.",
+		"image": "/media/service-tiles/about-mission.jpg",
+		"imageAlt": "Drain cleaning services",
+		"featured": false,
+		"order": 7
+	},
 	"title": "Drain Cleaning",
 	"seo": {
 		"title": "Drain Cleaning | Hukill's Inc.",

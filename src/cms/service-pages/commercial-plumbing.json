@@ -1,5 +1,13 @@
 {
 	"slug": "commercial-plumbing",
+	"tile": {
+		"icon": "Building2",
+		"description": "Large-scale water, sewer, septic, excavation, and utility work.",
+		"image": "/media/service-tiles/about-hero.jpg",
+		"imageAlt": "Commercial plumbing services",
+		"featured": true,
+		"order": 2
+	},
 	"title": "Commercial Plumbing",
 	"seo": {
 		"title": "Commercial Plumbing | Hukill's Inc.",

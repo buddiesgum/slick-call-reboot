@@ -1,5 +1,6 @@
 import type { EntryCollection } from "@sveltia/cms"
 import { COMPLEX_ICON_NAMES } from "@/components/complex-service-icons"
+import { SERVICE_TILE_ICON_NAMES } from "@/components/service-tile-icons"
 import { createProjectFiltersField, createSeoField } from "../fields"
 
 export const servicesCollection = {
@@ -15,6 +16,63 @@ export const servicesCollection = {
 	public_folder: "/media/service-pages/{{fields.slug}}",
 	sortable_fields: ["title"],
 	fields: [
+		{
+			name: "tile",
+			label: "Service Tile",
+			widget: "object",
+			required: false,
+			hint: "Controls how this service appears on the Home page and All Services grid.",
+			fields: [
+				{
+					name: "icon",
+					label: "Icon",
+					widget: "select",
+					options: [...SERVICE_TILE_ICON_NAMES],
+					hint: "Lucide icon displayed on the tile card."
+				},
+				{
+					name: "description",
+					label: "Short Description",
+					widget: "text",
+					hint: "One-line blurb shown beneath the title on tile cards."
+				},
+				{
+					name: "image",
+					label: "Tile Image",
+					widget: "image",
+					hint: "Background image for the tile card."
+				},
+				{
+					name: "imageAlt",
+					label: "Image Alt Text",
+					widget: "string"
+				},
+				{
+					name: "path",
+					label: "Custom Link Path (optional)",
+					widget: "string",
+					required: false,
+					pattern: ["^\\/", "Must be a relative path starting with /"],
+					hint: "Override the default /<slug> link. Leave empty to use the service page. Use /contact for CTA-only tiles."
+				},
+				{
+					name: "featured",
+					label: "Featured (Home Page)",
+					widget: "boolean",
+					default: false,
+					hint: "When enabled, this tile appears on the Home page services grid."
+				},
+				{
+					name: "order",
+					label: "Display Order",
+					widget: "number",
+					value_type: "int",
+					min: 1,
+					default: 99,
+					hint: "Lower numbers appear first. Controls position in both the Home and All Services grids."
+				}
+			]
+		},
 		{
 			name: "slug",
 			label: "Slug",
@@ -44,8 +102,8 @@ export const servicesCollection = {
 								{
 									name: "image",
 									label: "Background Image",
-									widget: "string",
-									hint: "URL or upload path. Displayed as the hero background."
+									widget: "image",
+									hint: "Displayed as the hero background."
 								},
 								{
 									name: "imageAlt",
@@ -89,8 +147,7 @@ export const servicesCollection = {
 								{
 									name: "image",
 									label: "Card Image",
-									widget: "string",
-									hint: "URL or upload path."
+									widget: "image"
 								},
 								{ name: "imageAlt", label: "Image Alt Text", widget: "string" },
 								{
@@ -138,8 +195,8 @@ export const servicesCollection = {
 								{
 									name: "image",
 									label: "Background Image",
-									widget: "string",
-									hint: "URL or upload path. Displayed as the hero background at 35% opacity."
+									widget: "image",
+									hint: "Displayed as the hero background at 35% opacity."
 								},
 								{
 									name: "imageAlt",

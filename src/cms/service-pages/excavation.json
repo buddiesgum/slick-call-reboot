@@ -1,5 +1,13 @@
 {
 	"slug": "excavation",
+	"tile": {
+		"icon": "Mountain",
+		"description": "Trenching, septic prep, demolition and underground work.",
+		"image": "/media/service-tiles/about-vision.jpg",
+		"imageAlt": "Excavation services",
+		"featured": true,
+		"order": 3
+	},
 	"title": "Excavation",
 	"seo": {
 		"title": "Excavation Services | Hukill's Inc.",

@@ -1,5 +1,13 @@
 {
 	"slug": "septic-services",
+	"tile": {
+		"icon": "Droplets",
+		"description": "Septic repairs, installs, sewer lines, and underground service work.",
+		"image": "/media/service-tiles/about-vision.jpg",
+		"imageAlt": "Septic services",
+		"featured": false,
+		"order": 10
+	},
 	"title": "Septic Services",
 	"seo": {
 		"title": "Septic Services | Hukill's Inc.",

@@ -1,5 +1,6 @@
 import type { PageSeoData } from "@/components/seo-types"
 import type { ComplexIconName } from "@/components/complex-service-icons"
+import type { ServiceTileIconName } from "@/components/service-tile-icons"
 
 export type { PageSeoData }
 
@@ -61,6 +62,20 @@ export type ComplexLayout = {
 
 export type ServiceLayout = SimpleLayout | ComplexLayout
 
+// ── Tile metadata (home & all-services grids) ─────────────────────────────────
+
+export type ServiceTileMeta = {
+	icon: ServiceTileIconName
+	description: string
+	image: string
+	imageAlt: string
+	/** Override the auto-derived `/{slug}` link target. Use for tiles that should
+	 *  link elsewhere (e.g. a contact CTA) rather than to the service's own page. */
+	path?: string
+	featured: boolean
+	order: number
+}
+
 // ── Top-level record (slug/title/seo are layout-agnostic) ────────────────────
 
 export type ServicePageContent = {
@@ -68,6 +83,7 @@ export type ServicePageContent = {
 	title: string
 	seo?: PageSeoData
 	layout: ServiceLayout
+	tile?: ServiceTileMeta
 }
 
 const modules = import.meta.glob<ServicePageContent>("@/cms/service-pages/*.json", {

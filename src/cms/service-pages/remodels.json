@@ -1,5 +1,13 @@
 {
 	"slug": "remodels",
+	"tile": {
+		"icon": "Home",
+		"description": "Kitchens, baths, painting, cabinets and flooring.",
+		"image": "/media/service-tiles/about-hero.jpg",
+		"imageAlt": "Remodel services",
+		"featured": true,
+		"order": 5
+	},
 	"title": "Remodels",
 	"seo": {
 		"title": "Remodeling Services | Hukill's Inc.",

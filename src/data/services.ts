@@ -1,22 +1,6 @@
-import {
-	Building2,
-	Droplets,
-	Flame,
-	Hammer,
-	HardHat,
-	Home,
-	Landmark,
-	Mountain,
-	Search,
-	Shield,
-	ShowerHead,
-	Wrench,
-	type LucideIcon
-} from "lucide-react"
-import aboutHero from "@/assets/about-hero.jpg"
-import aboutMission from "@/assets/about-mission.jpg"
-import aboutValues from "@/assets/about-values.jpg"
-import aboutVision from "@/assets/about-vision.jpg"
+import type { LucideIcon } from "lucide-react"
+import { servicePagesBySlug } from "@/pages/service-pages"
+import { serviceTileIconMap } from "@/components/service-tile-icons"
 
 export type ServiceTile = {
 	icon: LucideIcon
@@ -24,95 +8,46 @@ export type ServiceTile = {
 	desc: string
 	path: string
 	image: string
+	imageAlt: string
 }
 
-export const featuredServices: ServiceTile[] = [
-	{
-		icon: Wrench,
-		title: "Plumbing",
-		desc: "Repairs, replacements, trenchless technology and more.",
-		path: "/plumbing",
-		image: aboutMission
-	},
-	{
-		icon: Building2,
-		title: "Commercial Plumbing",
-		desc: "Large-scale water, sewer, septic, excavation, and utility work.",
-		path: "/commercial-plumbing",
-		image: aboutHero
-	},
-	{
-		icon: Mountain,
-		title: "Excavation",
-		desc: "Trenching, septic prep, demolition and underground work.",
-		path: "/excavation",
-		image: aboutVision
-	},
-	{
-		icon: Shield,
-		title: "Restoration",
-		desc: "Water, fire, and storm damage restoration — 24/7.",
-		path: "/restoration",
-		image: aboutValues
-	},
-	{
-		icon: Home,
-		title: "Remodels",
-		desc: "Kitchens, baths, painting, cabinets and flooring.",
-		path: "/remodels",
-		image: aboutHero
-	},
-	{
-		icon: Landmark,
-		title: "Foundations",
-		desc: "Push piers, crawl space repair, basement waterproofing.",
-		path: "/foundations",
-		image: aboutVision
-	}
-]
+type IndexedTile = ServiceTile & { order: number; featured: boolean }
 
-export const allServices: ServiceTile[] = [
-	...featuredServices,
-	{
-		icon: ShowerHead,
-		title: "Drain Cleaning",
-		desc: "Clog removal, sewer cleaning, and dependable drain flow restoration.",
-		path: "/drain-cleaning",
-		image: aboutMission
-	},
-	{
-		icon: Search,
-		title: "Leak Detection",
-		desc: "Targeted leak locating before small failures become expensive damage.",
-		path: "/leak-detection",
-		image: aboutValues
-	},
-	{
-		icon: Flame,
-		title: "Water Heaters",
-		desc: "Water heater repair, replacement, maintenance, and installation.",
-		path: "/water-heaters",
-		image: aboutHero
-	},
-	{
-		icon: Droplets,
-		title: "Septic Services",
-		desc: "Septic repairs, installs, sewer lines, and underground service work.",
-		path: "/septic-services",
-		image: aboutVision
-	},
-	{
-		icon: HardHat,
-		title: "New Build Plumbing",
-		desc: "Ground-up plumbing systems for residential and commercial construction.",
-		path: "/new-build-plumbing",
-		image: aboutMission
-	},
-	{
-		icon: Hammer,
-		title: "Emergency Repairs",
-		desc: "Urgent response when water, sewer, or structural issues cannot wait.",
-		path: "/contact",
-		image: aboutValues
-	}
-]
+/**
+ * Services without a `tile` block are intentionally omitted from both
+ * `featuredServices` and `allServices`. Editors who want a service to appear
+ * in grids must populate the tile block via the CMS. Dynamic page routing via
+ * `getStaticPaths` in App.tsx is unaffected — the page still prerenders even
+ * if the tile is absent.
+ */
+const indexed: IndexedTile[] = Object.entries(servicePagesBySlug)
+	.filter(([slug, page]) => {
+		if (page.tile == null) return false
+		if (!(page.tile.icon in serviceTileIconMap)) {
+			console.warn(`[services] Skipping "${slug}": unknown tile icon "${page.tile.icon}".`)
+			return false
+		}
+		return true
+	})
+	.map(([slug, page]) => ({
+		icon: serviceTileIconMap[page.tile!.icon],
+		title: page.title,
+		desc: page.tile!.description,
+		path: page.tile!.path ?? `/${slug}`,
+		image: page.tile!.image,
+		imageAlt: page.tile!.imageAlt,
+		order: page.tile!.order,
+		featured: page.tile!.featured
+	}))
+
+const byOrder = (a: IndexedTile, b: IndexedTile) =>
+	a.order - b.order || a.title.localeCompare(b.title)
+
+const strip = ({ order: _order, featured: _featured, ...tile }: IndexedTile): ServiceTile => tile
+
+export const featuredServices: ServiceTile[] = indexed
+	.filter((t) => t.featured)
+	.sort(byOrder)
+	.map(strip)
+
+export const allServices: ServiceTile[] = indexed.slice().sort(byOrder).map(strip)

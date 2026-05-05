@@ -1,5 +1,13 @@
 {
 	"slug": "foundations",
+	"tile": {
+		"icon": "Landmark",
+		"description": "Push piers, crawl space repair, basement waterproofing.",
+		"image": "/media/service-tiles/about-vision.jpg",
+		"imageAlt": "Foundation services",
+		"featured": true,
+		"order": 6
+	},
 	"title": "Foundations",
 	"seo": {
 		"title": "Foundation Repair | Hukill's Inc.",

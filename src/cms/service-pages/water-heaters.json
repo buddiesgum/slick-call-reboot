@@ -1,5 +1,13 @@
 {
 	"slug": "water-heaters",
+	"tile": {
+		"icon": "Flame",
+		"description": "Water heater repair, replacement, maintenance, and installation.",
+		"image": "/media/service-tiles/about-hero.jpg",
+		"imageAlt": "Water heater services",
+		"featured": false,
+		"order": 9
+	},
 	"title": "Water Heaters",
 	"seo": {
 		"title": "Water Heater Service & Installation | Hukill's Inc.",
