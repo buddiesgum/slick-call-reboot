@@ -2,7 +2,7 @@ import type { CollectionFile } from "@sveltia/cms"
 
 export const serviceCtaSingleton = {
 	name: "serviceCta",
-	label: "Service Pages — Emergency CTA",
+	label: "Service CTA",
 	file: "src/cms/service-cta.json",
 	fields: [
 		{
