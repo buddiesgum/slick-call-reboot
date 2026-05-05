@@ -1,17 +1,9 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { ArrowRight, Building2, Droplets, HardHat, ShieldCheck, Waves } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
+import { ArrowRight, Building2 } from "lucide-react"
+import { Icon } from "@/lib/icons"
 import { buildProjectsPath } from "@/lib/projects-link"
 import type { ComplexLayout } from "@/pages/service-pages"
-import { type ComplexIconName } from "./complex-service-icons"
-
-const iconMap: Record<ComplexIconName, LucideIcon> = {
-	HardHat,
-	Waves,
-	Droplets,
-	ShieldCheck
-}
 
 interface ComplexServiceLayoutProps {
 	content: ComplexLayout
@@ -99,25 +91,22 @@ const ComplexServiceLayout = ({ content }: ComplexServiceLayoutProps) => (
 					</motion.div>
 
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-						{content.scale.items.map((point, index) => {
-							const Icon = iconMap[point.icon] ?? Building2
-							return (
-								<motion.div
-									key={point.label}
-									initial={{ opacity: 0, y: 30 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true, margin: "-60px" }}
-									transition={{ duration: 0.45, delay: index * 0.08 }}
-									className="border border-border bg-card p-6 hover:border-primary transition-colors"
-								>
-									<Icon className="w-8 h-8 text-primary mb-5" />
-									<h3 className="font-display uppercase tracking-tight text-2xl mb-3">
-										{point.label}
-									</h3>
-									<p className="text-sm text-muted-foreground leading-relaxed">{point.text}</p>
-								</motion.div>
-							)
-						})}
+						{content.scale.items.map((point, index) => (
+							<motion.div
+								key={point.label}
+								initial={{ opacity: 0, y: 30 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true, margin: "-60px" }}
+								transition={{ duration: 0.45, delay: index * 0.08 }}
+								className="border border-border bg-card p-6 hover:border-primary transition-colors"
+							>
+								<Icon name={point.icon} className="w-8 h-8 text-primary mb-5" />
+								<h3 className="font-display uppercase tracking-tight text-2xl mb-3">
+									{point.label}
+								</h3>
+								<p className="text-sm text-muted-foreground leading-relaxed">{point.text}</p>
+							</motion.div>
+						))}
 					</div>
 				</div>
 			</section>

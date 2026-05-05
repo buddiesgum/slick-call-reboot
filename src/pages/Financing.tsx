@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { ArrowRight, Calculator, ShieldCheck, Clock, Wallet } from "lucide-react"
+import { ArrowRight, Calculator } from "lucide-react"
+import { Icon, type IconName } from "@/lib/icons"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import data from "@/cms/financing-page.json"
@@ -49,13 +50,6 @@ function loadPaymentCalculatorWidget(container: HTMLElement, signal: AbortSignal
 			}
 		}
 	}
-}
-
-// Map icon name strings from CMS to Lucide components
-const iconMap: Record<string, React.ElementType> = {
-	Wallet,
-	Clock,
-	ShieldCheck
 }
 
 const Financing = () => {
@@ -135,25 +129,22 @@ const Financing = () => {
 			<section className="py-16 md:py-20 bg-background">
 				<div className="container">
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-						{benefits.items.map((b, i) => {
-							const Icon = iconMap[b.icon] ?? Wallet
-							return (
-								<motion.div
-									key={b.title}
-									initial={{ opacity: 0, y: 20 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true }}
-									transition={{ duration: 0.4, delay: i * 0.08 }}
-									className="border border-border bg-card p-8 rounded-sm"
-								>
-									<Icon className="w-8 h-8 text-primary mb-4" />
-									<h3 className="font-display uppercase text-lg tracking-wider text-foreground mb-2">
-										{b.title}
-									</h3>
-									<p className="text-muted-foreground text-sm leading-relaxed">{b.copy}</p>
-								</motion.div>
-							)
-						})}
+						{benefits.items.map((b, i) => (
+							<motion.div
+								key={b.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.4, delay: i * 0.08 }}
+								className="border border-border bg-card p-8 rounded-sm"
+							>
+								<Icon name={b.icon as IconName} className="w-8 h-8 text-primary mb-4" />
+								<h3 className="font-display uppercase text-lg tracking-wider text-foreground mb-2">
+									{b.title}
+								</h3>
+								<p className="text-muted-foreground text-sm leading-relaxed">{b.copy}</p>
+							</motion.div>
+						))}
 					</div>
 				</div>
 			</section>

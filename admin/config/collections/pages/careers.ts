@@ -1,4 +1,5 @@
 import type { CollectionFile } from "@sveltia/cms"
+import { ICON_NAMES } from "@/lib/icons"
 import { createSeoField } from "../../fields"
 
 export const careersPage = {
@@ -63,8 +64,8 @@ export const careersPage = {
 							name: "icon",
 							label: "Icon",
 							widget: "select",
-							options: ["Wrench", "HardHat", "Hammer", "Briefcase"],
-							hint: "Lucide icon name. Adding new options requires a code change."
+							options: [...ICON_NAMES],
+							hint: "Lucide icon name. Add new icons in src/lib/icons.ts."
 						},
 						{ name: "label", label: "Label", widget: "string" }
 					]

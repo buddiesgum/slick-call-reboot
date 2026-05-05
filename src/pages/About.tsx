@@ -1,18 +1,9 @@
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import { motion } from "framer-motion"
-import { Award, Heart, Users, HandHeart, Target, Eye, Scale, type LucideIcon } from "lucide-react"
+import { Eye, Heart, Target } from "lucide-react"
+import { Icon, type IconName } from "@/lib/icons"
 import aboutData from "@/cms/about-page.json"
-
-const iconMap: Record<string, LucideIcon> = {
-	Award,
-	Heart,
-	Users,
-	HandHeart,
-	Target,
-	Eye,
-	Scale
-}
 
 const About = () => {
 	return (
@@ -139,27 +130,27 @@ const About = () => {
 					</motion.div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-						{aboutData.values.items.map((value, i) => {
-							const Icon = iconMap[value.icon] ?? Award
-							return (
-								<motion.div
-									key={value.title}
-									initial={{ opacity: 0, y: 30 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true, margin: "-50px" }}
-									transition={{ duration: 0.5, delay: i * 0.1 }}
-									className="group relative bg-background/5 backdrop-blur-sm border border-primary-foreground/10 p-8 hover:border-primary transition-all duration-300 hover:bg-background/10"
-								>
-									<div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary transition-colors">
-										<Icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
-									</div>
-									<h3 className="text-2xl font-display uppercase tracking-tight text-primary-foreground mb-3">
-										{value.title}
-									</h3>
-									<p className="text-primary-foreground/70 leading-relaxed">{value.description}</p>
-								</motion.div>
-							)
-						})}
+						{aboutData.values.items.map((value, i) => (
+							<motion.div
+								key={value.title}
+								initial={{ opacity: 0, y: 30 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true, margin: "-50px" }}
+								transition={{ duration: 0.5, delay: i * 0.1 }}
+								className="group relative bg-background/5 backdrop-blur-sm border border-primary-foreground/10 p-8 hover:border-primary transition-all duration-300 hover:bg-background/10"
+							>
+								<div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary transition-colors">
+								<Icon
+									name={value.icon as IconName}
+									className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors"
+								/>
+								</div>
+								<h3 className="text-2xl font-display uppercase tracking-tight text-primary-foreground mb-3">
+									{value.title}
+								</h3>
+								<p className="text-primary-foreground/70 leading-relaxed">{value.description}</p>
+							</motion.div>
+						))}
 					</div>
 				</div>
 			</section>

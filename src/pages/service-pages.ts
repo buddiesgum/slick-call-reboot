@@ -1,6 +1,5 @@
 import type { PageSeoData } from "@/components/seo-types"
-import type { ComplexIconName } from "@/components/complex-service-icons"
-import type { ServiceTileIconName } from "@/components/service-tile-icons"
+import type { IconName } from "@/lib/icons"
 
 export type { PageSeoData }
 
@@ -48,7 +47,7 @@ export type ComplexLayout = {
 		heading: string
 		body?: string
 		items: Array<{
-			icon: ComplexIconName
+			icon: IconName
 			label: string
 			text: string
 		}>
@@ -65,7 +64,7 @@ export type ServiceLayout = SimpleLayout | ComplexLayout
 // ── Tile metadata (home & all-services grids) ─────────────────────────────────
 
 export type ServiceTileMeta = {
-	icon: ServiceTileIconName
+	icon: IconName
 	description: string
 	image: string
 	imageAlt: string

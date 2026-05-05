@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react"
 import { servicePagesBySlug } from "@/pages/service-pages"
-import { serviceTileIconMap } from "@/components/service-tile-icons"
+import { iconMap } from "@/lib/icons"
 
 export type ServiceTile = {
 	icon: LucideIcon
@@ -23,14 +23,14 @@ type IndexedTile = ServiceTile & { order: number; featured: boolean }
 const indexed: IndexedTile[] = Object.entries(servicePagesBySlug)
 	.filter(([slug, page]) => {
 		if (page.tile == null) return false
-		if (!(page.tile.icon in serviceTileIconMap)) {
+		if (!(page.tile.icon in iconMap)) {
 			console.warn(`[services] Skipping "${slug}": unknown tile icon "${page.tile.icon}".`)
 			return false
 		}
 		return true
 	})
 	.map(([slug, page]) => ({
-		icon: serviceTileIconMap[page.tile!.icon],
+		icon: iconMap[page.tile!.icon as keyof typeof iconMap],
 		title: page.title,
 		desc: page.tile!.description,
 		path: page.tile!.path ?? `/${slug}`,

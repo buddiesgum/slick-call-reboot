@@ -1,6 +1,5 @@
 import type { EntryCollection } from "@sveltia/cms"
-import { COMPLEX_ICON_NAMES } from "@/components/complex-service-icons"
-import { SERVICE_TILE_ICON_NAMES } from "@/components/service-tile-icons"
+import { ICON_NAMES } from "@/lib/icons"
 import { createProjectFiltersField, createSeoField } from "../fields"
 
 export const servicesCollection = {
@@ -27,8 +26,8 @@ export const servicesCollection = {
 					name: "icon",
 					label: "Icon",
 					widget: "select",
-					options: [...SERVICE_TILE_ICON_NAMES],
-					hint: "Lucide icon displayed on the tile card."
+					options: [...ICON_NAMES],
+					hint: "Lucide icon displayed on the tile card. Add new icons in src/lib/icons.ts."
 				},
 				{
 					name: "description",
@@ -263,8 +262,8 @@ export const servicesCollection = {
 											name: "icon",
 											label: "Icon",
 											widget: "select",
-											options: [...COMPLEX_ICON_NAMES],
-											hint: "Lucide icon name. Adding new options requires a code change in ComplexServiceLayout.tsx."
+											options: [...ICON_NAMES],
+											hint: "Lucide icon name. Add new icons in src/lib/icons.ts."
 										},
 										{ name: "label", label: "Label", widget: "string" },
 										{ name: "text", label: "Description", widget: "text" }
