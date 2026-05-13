@@ -92,6 +92,13 @@ export const allServicesPage = {
 					pattern: ["^\\/", "Must be a relative path starting with /"]
 				},
 				{
+					name: "videoUrl",
+					label: "Video URL",
+					widget: "string",
+					required: false,
+					hint: "Optional. Use the embed URL, not the share URL — e.g. 'https://www.youtube.com/embed/VIDEO_ID' or 'https://player.vimeo.com/video/VIDEO_ID'."
+				},
+				{
 					name: "posterImage",
 					label: "Video Poster Image",
 					widget: "image",

@@ -31,6 +31,7 @@
 		"body": "Use this area for a company video, project reel, customer testimonial, or emergency service overview.",
 		"ctaLabel": "Request 24/7 Help",
 		"ctaPath": "/contact",
+		"videoUrl": "",
 		"posterImage": "",
 		"posterAlt": "Video preview for Hukill's services"
 	},

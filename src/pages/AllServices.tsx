@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { ArrowRight, MapPin, MessageSquare, Phone, Play, Star } from "lucide-react"
+import { ArrowRight, MapPin, MessageSquare, Phone, Star } from "lucide-react"
 import Layout from "@/components/Layout"
 import Seo from "@/components/Seo"
 import LocationSelector from "@/components/LocationSelector"
@@ -116,15 +116,21 @@ const AllServices = () => {
 						</Link>
 					</div>
 					<div className="relative aspect-video border border-primary-foreground/15 bg-background/5 overflow-hidden flex items-center justify-center">
-						<img
-							src={videoPoster}
-							alt={content.video.posterAlt}
-							className="absolute inset-0 w-full h-full object-cover opacity-45"
-						/>
-						<div className="absolute inset-0 bg-secondary/60" />
-						<div className="relative z-10 w-20 h-20 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
-							<Play className="w-9 h-9 ml-1" />
-						</div>
+						{content.video.videoUrl ?
+							<iframe
+								src={content.video.videoUrl}
+								title={content.video.heading}
+								className="absolute inset-0 w-full h-full"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowFullScreen
+								loading="lazy"
+							/>
+						:	<img
+								src={videoPoster}
+								alt={content.video.posterAlt}
+								className="absolute inset-0 w-full h-full object-cover"
+							/>
+						}
 					</div>
 				</div>
 			</section>
