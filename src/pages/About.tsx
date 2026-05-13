@@ -140,10 +140,10 @@ const About = () => {
 								className="group relative bg-background/5 backdrop-blur-sm border border-primary-foreground/10 p-8 hover:border-primary transition-all duration-300 hover:bg-background/10"
 							>
 								<div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary transition-colors">
-								<Icon
-									name={value.icon as IconName}
-									className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors"
-								/>
+									<Icon
+										name={value.icon as IconName}
+										className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors"
+									/>
 								</div>
 								<h3 className="text-2xl font-display uppercase tracking-tight text-primary-foreground mb-3">
 									{value.title}
