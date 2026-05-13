@@ -1,4 +1,5 @@
 import type { EntryCollection } from "@sveltia/cms"
+import { createSlugField } from "../fields"
 
 export const locationsCollection = {
 	name: "locations",
@@ -11,16 +12,13 @@ export const locationsCollection = {
 	slug: "{{id}}",
 	sortable_fields: ["order", "label"],
 	fields: [
-		{
+		createSlugField({
 			name: "id",
 			label: "ID (slug)",
-			widget: "string",
-			pattern: [
-				"^[a-z0-9]+(?:-[a-z0-9]+)*$",
-				"Lowercase letters, digits, and single hyphens only (e.g. 'fort-worth')"
-			],
-			hint: "Used as the file slug and as a stable key in code. Cannot be changed without a code update."
-		},
+			purpose: "Stable identifier used as the file slug and as a key in code — e.g. 'fort-worth'.",
+			consequence:
+				"Renaming changes the JSON filename. Users who manually picked this location lose their saved choice (selection is keyed by id in localStorage) and will fall back to geolocation auto-detect on their next visit."
+		}),
 		{
 			name: "order",
 			label: "Display Order",

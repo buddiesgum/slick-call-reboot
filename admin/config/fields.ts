@@ -1,4 +1,31 @@
-import type { ObjectFieldWithSubFields } from "@sveltia/cms"
+import type { ObjectFieldWithSubFields, StringField } from "@sveltia/cms"
+
+export const createSlugField = ({
+	name,
+	label,
+	purpose,
+	consequence
+}: {
+	name: string
+	label: string
+	purpose: string
+	consequence: string
+}) =>
+	({
+		name,
+		label,
+		widget: "string",
+		pattern: [
+			"^[a-z0-9]+(?:-[a-z0-9]+)*$",
+			"Lowercase letters, numbers, and single hyphens — e.g. 'drain-cleaning'. No spaces, underscores, capital letters, or consecutive hyphens."
+		],
+		hint:
+			`${purpose}\n` +
+			`Format: lowercase letters, numbers, single hyphens.\n` +
+			`Valid:   plumbing, drain-cleaning, water-mitigation-2\n` +
+			`Invalid: Plumbing, drain_cleaning, drain--cleaning, -plumbing, plumbing-, "drain cleaning"\n\n` +
+			consequence
+	}) satisfies StringField
 
 export const createProjectFiltersField = () =>
 	({

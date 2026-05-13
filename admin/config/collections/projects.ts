@@ -1,4 +1,5 @@
 import type { EntryCollection } from "@sveltia/cms"
+import { createSlugField } from "../fields"
 
 export const projectsCollection = {
 	name: "projects",
@@ -13,16 +14,14 @@ export const projectsCollection = {
 	public_folder: "/media/projects/{{fields.id}}",
 	sortable_fields: ["order", "title"],
 	fields: [
-		{
+		createSlugField({
 			name: "id",
 			label: "ID (slug)",
-			widget: "string",
-			pattern: [
-				"^[a-z0-9]+(?:-[a-z0-9]+)*$",
-				"Lowercase letters, digits, and single hyphens only (e.g. 'kitchen-remodel-fw')"
-			],
-			hint: "Used as the file slug and as a stable key in code. Cannot be changed without a code update."
-		},
+			purpose:
+				"Stable identifier used as the file slug and as a key in code — e.g. 'kitchen-remodel-fw'.",
+			consequence:
+				"Renaming changes the JSON filename. Previously uploaded images stay in their old media folder (still reachable via paths saved in this entry); new uploads go under the new id."
+		}),
 		{
 			name: "order",
 			label: "Display Order",
