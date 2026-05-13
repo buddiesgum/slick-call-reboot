@@ -29,10 +29,14 @@ site only — no backend, no env vars required.
 - `src/components/Seo.tsx` — renders `<Head>` tags (vite-react-ssg). Pages use
   `<Seo route="/path" />` to inject per-page title/description/OG tags; values
   are resolved from `src/cms/seo.json` with a global `default` fallback.
-- `src/context/location-context.ts` — exports the `Location` type, `locations`
-  data (Fort Worth TX, Medford OR — phones and addresses live here, not
-  scattered across pages), `LocationContext`, and the `useLocationContext()`
-  hook. Consumers import from this file.
+- `src/context/location-context.ts` — exports the `Location` type, the
+  `locations` array (loaded eagerly from `src/cms/locations/*.json` via
+  `import.meta.glob` and sorted by `order` then `id`), `LOCATION_STORAGE_KEY`,
+  `nearestLocation()` (haversine nearest-neighbour), `LocationContext`, and the
+  `useLocationContext()` hook. Phone numbers, addresses, and coordinates are
+  CMS-managed — edit them under Locations in `/admin`, not in this file. A
+  `FALLBACK_LOCATION` is used if zero JSON entries exist. Consumers import from
+  this file.
 - `src/context/LocationContext.tsx` — exports only `LocationProvider`. Imports
   `LocationContext` and `locations` from `./location-context`. `RootLayout.tsx`
   imports `LocationProvider` from here. The split keeps Vite fast-refresh happy
