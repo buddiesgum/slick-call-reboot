@@ -13,7 +13,7 @@ export const config = {
 	load_config_file: false,
 	backend: {
 		name: "github",
-		repo: "tomatrow/slick-call-reboot",
+		repo: "tomatrow/hukills-www",
 		base_url: "https://sveltia-cms-auth.tomatrow.workers.dev"
 	},
 	media_folder: "public/media",
