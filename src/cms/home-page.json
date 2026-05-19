@@ -1,13 +1,17 @@
 {
 	"seo": {
 		"title": "Hukill's Inc. | One Call Does It All",
-		"description": "Plumbing, restoration, excavation, remodels, and foundations — serving Fort Worth, TX and Medford, OR for over 40 years. Available 24/7."
+		"description": "Plumbing, restoration, excavation, remodels, and foundations — serving Fort Worth, TX and Medford, OR for over 40 years. Available 24/7.",
+		"canonical": "",
+		"ogImageAlt": "",
+		"ogImageWidth": null,
+		"ogImageHeight": null
 	},
 	"hero": {
 		"title": "One Call",
 		"titleAccent": "Does It All",
 		"description": "Plumbing · Restoration · Excavation · Remodels · Foundations — serving communities for over 40 years.",
-		"image": "/media/home/hero.webp",
+		"image": "/media/Screenshot 2025-11-05 at 11.34.48 AM.webp",
 		"primaryCtaLabel": "Call Now",
 		"textCtaLabel": "Text Us",
 		"secondaryCta": {
