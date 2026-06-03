@@ -1,14 +1,18 @@
 {
 	"seo": {
 		"title": "About Hukill's Inc. | Est. 1979",
-		"description": "Family-owned since 1979, Hukill's is built on faith, integrity, and craftsmanship. Learn about our mission, values, and the team behind the work."
+		"description": "Family-owned since 1979, Hukill's is built on faith, integrity, and craftsmanship. Learn about our mission, values, and the team behind the work.",
+		"canonical": "",
+		"ogImageAlt": "",
+		"ogImageWidth": null,
+		"ogImageHeight": null
 	},
 	"hero": {
 		"eyebrow": "Est. 1979 — Faith. Family. Craft.",
-		"title": "Built on a",
-		"titleAccent": "Higher",
-		"titleSuffix": "Standard",
-		"description": "We're a team of craftsmen, problem-solvers, and people of faith — committed to doing honest work that lasts.",
+		"title": "Family",
+		"titleAccent": "Owned",
+		"titleSuffix": "Since 1979",
+		"description": "For more than 40 years, Hukill's has been delivering trusted plumbing, restoration, excavation, remodeling, and foundation services. Built on faith, integrity, and hard work, we remain committed to providing honest solutions, quality workmanship, and exceptional service for every customer we serve.",
 		"image": "/media/about/hero.webp",
 		"imageAlt": "The Hukill's crew on a job site at golden hour"
 	},
@@ -64,7 +68,11 @@
 		"headingAccent": "Impact.",
 		"body": "Our vision is to build a company where success isn't measured only by achievements, but by the impact we have on others. We strive to be a reflection of Jesus Christ in all that we do — so that everyone we encounter, employees, customers, and partners alike, can witness His love and transforming power.",
 		"bulletsLeadIn": "Through faith, integrity, excellence, and hard work, we will:",
-		"bullets": ["Inspire change", "Foster growth", "Glorify God in every aspect of our business"],
+		"bullets": [
+			"Inspire change",
+			"Foster growth",
+			"Glorify God in every aspect of our business"
+		],
 		"image": "/media/about/vision.webp",
 		"imageAlt": "Construction cranes silhouetted at sunrise"
 	},
