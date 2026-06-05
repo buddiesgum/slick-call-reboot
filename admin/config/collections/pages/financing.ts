@@ -7,7 +7,6 @@ export const financingPage = {
 	label: "Financing Page",
 	file: "src/cms/financing-page.json",
 	fields: [
-		createSeoField(),
 		{
 			name: "hero",
 			label: "Hero Section",
@@ -99,6 +98,7 @@ export const financingPage = {
 				{ name: "label", label: "Button Label", widget: "string" },
 				{ name: "path", label: "Button Path", widget: "string" }
 			]
-		}
+		},
+		createSeoField()
 	]
 } satisfies CollectionFile

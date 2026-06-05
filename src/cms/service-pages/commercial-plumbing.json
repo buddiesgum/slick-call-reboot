@@ -9,10 +9,6 @@
 		"order": 2
 	},
 	"title": "Commercial Plumbing",
-	"seo": {
-		"title": "Commercial Plumbing | Hukill's Inc.",
-		"description": "Commercial plumbing for excavation, sewer mains, water lines, underground utilities, and emergency failures. Built for property managers and contractors."
-	},
 	"layout": {
 		"type": "complex",
 		"hero": {
@@ -28,7 +24,10 @@
 			},
 			"secondaryCta": {
 				"label": "View Past Projects",
-				"projectFilters": { "major": "Commercial", "minor": "Plumbing" }
+				"projectFilters": {
+					"major": "Commercial",
+					"minor": "Plumbing"
+				}
 			}
 		},
 		"scale": {
@@ -70,5 +69,9 @@
 				"Fixture, grease line, and high-demand system upgrades"
 			]
 		}
+	},
+	"seo": {
+		"title": "Commercial Plumbing | Hukill's Inc.",
+		"description": "Commercial plumbing for excavation, sewer mains, water lines, underground utilities, and emergency failures. Built for property managers and contractors."
 	}
 }

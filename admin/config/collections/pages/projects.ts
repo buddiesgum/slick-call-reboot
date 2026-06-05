@@ -6,7 +6,6 @@ export const projectsPage = {
 	label: "Projects Page",
 	file: "src/cms/projects-page.json",
 	fields: [
-		createSeoField(),
 		{
 			name: "hero",
 			label: "Hero Section",
@@ -119,6 +118,7 @@ export const projectsPage = {
 			required: false,
 			hint: "Secondary filter tags. Add or rename entries here; the available options in each project's Minor Tags field update automatically.",
 			field: { name: "tag", label: "Tag", widget: "string" }
-		}
+		},
+		createSeoField()
 	]
 } satisfies CollectionFile

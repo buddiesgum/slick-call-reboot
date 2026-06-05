@@ -9,11 +9,6 @@
 		"order": 5
 	},
 	"title": "Remodels",
-	"seo": {
-		"title": "Remodeling Services | Hukill's Inc.",
-		"description": "Kitchen and bath remodels, interior and exterior painting, custom cabinet design and install, and flooring installation. Serving Fort Worth and Medford.",
-		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782425808-3XP2I6BBVXWPG5NSJBUR/remodel-kitchen.jpg"
-	},
 	"layout": {
 		"type": "simple",
 		"hero": {
@@ -23,7 +18,9 @@
 			"imageAlt": "Remodeling services",
 			"cta": {
 				"label": "View Past Projects",
-				"projectFilters": { "minor": "Remodels" }
+				"projectFilters": {
+					"minor": "Remodels"
+				}
 			}
 		},
 		"cards": [
@@ -76,5 +73,10 @@
 				"reverse": true
 			}
 		]
+	},
+	"seo": {
+		"title": "Remodeling Services | Hukill's Inc.",
+		"description": "Kitchen and bath remodels, interior and exterior painting, custom cabinet design and install, and flooring installation. Serving Fort Worth and Medford.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782425808-3XP2I6BBVXWPG5NSJBUR/remodel-kitchen.jpg"
 	}
 }

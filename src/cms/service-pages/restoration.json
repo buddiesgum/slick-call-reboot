@@ -9,11 +9,6 @@
 		"order": 4
 	},
 	"title": "Restoration",
-	"seo": {
-		"title": "Restoration Services | Hukill's Inc.",
-		"description": "24/7 water, fire, and storm damage restoration — extraction, drying, demolition, reconstruction, and deodorizing for homes and businesses.",
-		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426754-0GULUB1GKSIM0MB3PRE0/F47915FA-2B55-4DC0-973B-2C093BB344A9.jpg"
-	},
 	"layout": {
 		"type": "simple",
 		"hero": {
@@ -23,7 +18,9 @@
 			"imageAlt": "Restoration services",
 			"cta": {
 				"label": "View Past Projects",
-				"projectFilters": { "minor": "Restoration" }
+				"projectFilters": {
+					"minor": "Restoration"
+				}
 			}
 		},
 		"cards": [
@@ -59,5 +56,10 @@
 				"reverse": false
 			}
 		]
+	},
+	"seo": {
+		"title": "Restoration Services | Hukill's Inc.",
+		"description": "24/7 water, fire, and storm damage restoration — extraction, drying, demolition, reconstruction, and deodorizing for homes and businesses.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426754-0GULUB1GKSIM0MB3PRE0/F47915FA-2B55-4DC0-973B-2C093BB344A9.jpg"
 	}
 }

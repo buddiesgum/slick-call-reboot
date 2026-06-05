@@ -9,11 +9,6 @@
 		"order": 8
 	},
 	"title": "Leak Detection",
-	"seo": {
-		"title": "Leak Detection | Hukill's Inc.",
-		"description": "Professional leak detection using acoustic ground microphones, tracer gas, utility locating, and camera video inspection for water and gas lines.",
-		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782420474-OGQP7Q1FGWXDAM7QLXRS/leak-detection.jpg"
-	},
 	"layout": {
 		"type": "simple",
 		"hero": {
@@ -23,7 +18,9 @@
 			"imageAlt": "Leak detection services",
 			"cta": {
 				"label": "View Past Projects",
-				"projectFilters": { "minor": "Plumbing" }
+				"projectFilters": {
+					"minor": "Plumbing"
+				}
 			}
 		},
 		"cards": [
@@ -82,5 +79,10 @@
 				"reverse": true
 			}
 		]
+	},
+	"seo": {
+		"title": "Leak Detection | Hukill's Inc.",
+		"description": "Professional leak detection using acoustic ground microphones, tracer gas, utility locating, and camera video inspection for water and gas lines.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782420474-OGQP7Q1FGWXDAM7QLXRS/leak-detection.jpg"
 	}
 }

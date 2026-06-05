@@ -9,11 +9,6 @@
 		"order": 6
 	},
 	"title": "Foundations",
-	"seo": {
-		"title": "Foundation Repair | Hukill's Inc.",
-		"description": "Foundation repair using push piers and helical piers, crawl space encapsulation, and basement waterproofing. Protect your home from settling and water damage.",
-		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/d9fa939c-c14f-4244-8f3d-8815ffcdffef/foundations-page.jpg"
-	},
 	"layout": {
 		"type": "simple",
 		"hero": {
@@ -23,7 +18,9 @@
 			"imageAlt": "Foundation repair services",
 			"cta": {
 				"label": "View Past Projects",
-				"projectFilters": { "minor": "Foundations" }
+				"projectFilters": {
+					"minor": "Foundations"
+				}
 			}
 		},
 		"cards": [
@@ -65,5 +62,10 @@
 				"reverse": false
 			}
 		]
+	},
+	"seo": {
+		"title": "Foundation Repair | Hukill's Inc.",
+		"description": "Foundation repair using push piers and helical piers, crawl space encapsulation, and basement waterproofing. Protect your home from settling and water damage.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/d9fa939c-c14f-4244-8f3d-8815ffcdffef/foundations-page.jpg"
 	}
 }

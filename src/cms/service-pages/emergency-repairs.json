@@ -1,10 +1,6 @@
 {
 	"slug": "emergency-repairs",
 	"title": "Emergency Repairs",
-	"seo": {
-		"title": "Emergency Plumbing & Repair Services | Hukill's Inc.",
-		"description": "Urgent response when water, sewer, or structural issues cannot wait. 24/7 emergency repairs from Hukill's experienced crew."
-	},
 	"layout": {
 		"type": "simple",
 		"hero": {
@@ -51,5 +47,9 @@
 		"path": "/contact",
 		"featured": false,
 		"order": 12
+	},
+	"seo": {
+		"title": "Emergency Plumbing & Repair Services | Hukill's Inc.",
+		"description": "Urgent response when water, sewer, or structural issues cannot wait. 24/7 emergency repairs from Hukill's experienced crew."
 	}
 }

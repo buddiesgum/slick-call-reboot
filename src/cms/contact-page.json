@@ -1,8 +1,4 @@
 {
-	"seo": {
-		"title": "Contact Hukill's Inc. | Fort Worth & Medford",
-		"description": "Reach Hukill's in Fort Worth, TX at (817) 672-7555 or Medford, OR at (541) 734-9000. Available 24/7 for emergency service."
-	},
 	"hero": {
 		"eyebrow": "Get In Touch",
 		"title": "One Call",
@@ -28,15 +24,29 @@
 		"heading": "Tell Us About",
 		"headingAccent": "Your Project.",
 		"description": "Fill out the form below and our team will follow up. Need help right now? Call us — we're available 24/7.",
-		"firstName": { "label": "First Name" },
-		"lastName": { "label": "Last Name" },
-		"phone": { "label": "Phone" },
-		"email": { "label": "Email" },
+		"firstName": {
+			"label": "First Name"
+		},
+		"lastName": {
+			"label": "Last Name"
+		},
+		"phone": {
+			"label": "Phone"
+		},
+		"email": {
+			"label": "Email"
+		},
 		"propertyType": {
 			"label": "Property Type",
 			"options": [
-				{ "value": "residential", "label": "Residential" },
-				{ "value": "commercial", "label": "Commercial" }
+				{
+					"value": "residential",
+					"label": "Residential"
+				},
+				{
+					"value": "commercial",
+					"label": "Commercial"
+				}
 			]
 		},
 		"service": {
@@ -58,5 +68,9 @@
 		"successBody": "We'll be in touch shortly. For urgent service, give us a call — we're available 24/7.",
 		"errorTitle": "Please complete the form",
 		"errorBody": "Check the fields and try again."
+	},
+	"seo": {
+		"title": "Contact Hukill's Inc. | Fort Worth & Medford",
+		"description": "Reach Hukill's in Fort Worth, TX at (817) 672-7555 or Medford, OR at (541) 734-9000. Available 24/7 for emergency service."
 	}
 }

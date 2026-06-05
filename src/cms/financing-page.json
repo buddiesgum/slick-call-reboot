@@ -1,8 +1,4 @@
 {
-	"seo": {
-		"title": "Financing | Hukill's Inc.",
-		"description": "Flexible project financing through Enhancify. Estimate your monthly payment in seconds and get your plumbing, restoration, or remodel project started today."
-	},
 	"hero": {
 		"eyebrow": "Project Financing",
 		"title": "Flexible",
@@ -53,5 +49,9 @@
 		"description": "Reach out and let's scope your project — we'll help you pick the right financing path.",
 		"label": "Contact Us",
 		"path": "/contact"
+	},
+	"seo": {
+		"title": "Financing | Hukill's Inc.",
+		"description": "Flexible project financing through Enhancify. Estimate your monthly payment in seconds and get your plumbing, restoration, or remodel project started today."
 	}
 }

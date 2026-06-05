@@ -7,7 +7,6 @@ export const aboutPage = {
 	label: "About Page",
 	file: "src/cms/about-page.json",
 	fields: [
-		createSeoField(),
 		{
 			name: "hero",
 			label: "Hero Section",
@@ -178,6 +177,7 @@ export const aboutPage = {
 				{ name: "heading", label: "Heading", widget: "string" },
 				{ name: "body", label: "Body Text", widget: "text" }
 			]
-		}
+		},
+		createSeoField()
 	]
 } satisfies CollectionFile

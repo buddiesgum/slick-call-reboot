@@ -9,11 +9,6 @@
 		"order": 1
 	},
 	"title": "Plumbing",
-	"seo": {
-		"title": "Plumbing Services | Hukill's Inc.",
-		"description": "Full-service plumbing including repairs, replacements, water lines, sewer lines, and trenchless pipe replacement. Emergency plumbing available 24/7.",
-		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422119-FY52WQS4PPKSN6X0HGZ5/P1670180.jpg"
-	},
 	"layout": {
 		"type": "simple",
 		"hero": {
@@ -23,7 +18,9 @@
 			"imageAlt": "Plumbing services",
 			"cta": {
 				"label": "View Past Projects",
-				"projectFilters": { "minor": "Plumbing" }
+				"projectFilters": {
+					"minor": "Plumbing"
+				}
 			}
 		},
 		"cards": [
@@ -55,5 +52,10 @@
 				"reverse": true
 			}
 		]
+	},
+	"seo": {
+		"title": "Plumbing Services | Hukill's Inc.",
+		"description": "Full-service plumbing including repairs, replacements, water lines, sewer lines, and trenchless pipe replacement. Emergency plumbing available 24/7.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782422119-FY52WQS4PPKSN6X0HGZ5/P1670180.jpg"
 	}
 }

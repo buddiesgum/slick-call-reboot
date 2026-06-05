@@ -9,11 +9,6 @@
 		"order": 9
 	},
 	"title": "Water Heaters",
-	"seo": {
-		"title": "Water Heater Service & Installation | Hukill's Inc.",
-		"description": "Tank and tankless water heater repair, replacement, and new installation. Honest repair-or-replace guidance and 24/7 emergency water heater service.",
-		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782430522-GO0ZSN821GXI1DS95FNQ/P1660312+2.jpg"
-	},
 	"layout": {
 		"type": "simple",
 		"hero": {
@@ -23,7 +18,9 @@
 			"imageAlt": "Water heater installation and repair",
 			"cta": {
 				"label": "View Past Projects",
-				"projectFilters": { "minor": "Plumbing" }
+				"projectFilters": {
+					"minor": "Plumbing"
+				}
 			}
 		},
 		"cards": [
@@ -54,5 +51,10 @@
 				"reverse": true
 			}
 		]
+	},
+	"seo": {
+		"title": "Water Heater Service & Installation | Hukill's Inc.",
+		"description": "Tank and tankless water heater repair, replacement, and new installation. Honest repair-or-replace guidance and 24/7 emergency water heater service.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782430522-GO0ZSN821GXI1DS95FNQ/P1660312+2.jpg"
 	}
 }

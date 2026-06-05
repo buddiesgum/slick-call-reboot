@@ -6,7 +6,6 @@ export const privacyPolicyPage = {
 	label: "Privacy Policy Page",
 	file: "src/cms/privacy-policy-page.json",
 	fields: [
-		createSeoField(),
 		{
 			name: "hero",
 			label: "Hero Section",
@@ -73,6 +72,7 @@ export const privacyPolicyPage = {
 					]
 				}
 			]
-		}
+		},
+		createSeoField()
 	]
 } satisfies CollectionFile

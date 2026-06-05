@@ -6,7 +6,6 @@ export const contactPage = {
 	label: "Contact Page",
 	file: "src/cms/contact-page.json",
 	fields: [
-		createSeoField(),
 		{
 			name: "hero",
 			label: "Hero Section",
@@ -187,6 +186,7 @@ export const contactPage = {
 				{ name: "errorTitle", label: "Error Toast Title", widget: "string" },
 				{ name: "errorBody", label: "Error Toast Body", widget: "text" }
 			]
-		}
+		},
+		createSeoField()
 	]
 } satisfies CollectionFile

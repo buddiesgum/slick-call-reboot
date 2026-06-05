@@ -9,11 +9,6 @@
 		"order": 11
 	},
 	"title": "New Build Plumbing",
-	"seo": {
-		"title": "New Build Plumbing | Hukill's Inc.",
-		"description": "Licensed plumbing contractors for new construction. System design, piping, fixtures, water supply, drainage, and gas lines for residential and commercial builds.",
-		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782431360-3F7L70UFZPZ50H7RW04P/Untitled+design+%288%29.png"
-	},
 	"layout": {
 		"type": "simple",
 		"hero": {
@@ -23,7 +18,9 @@
 			"imageAlt": "New build plumbing",
 			"cta": {
 				"label": "View Past Projects",
-				"projectFilters": { "minor": "Plumbing" }
+				"projectFilters": {
+					"minor": "Plumbing"
+				}
 			}
 		},
 		"cards": [
@@ -55,5 +52,10 @@
 				"reverse": true
 			}
 		]
+	},
+	"seo": {
+		"title": "New Build Plumbing | Hukill's Inc.",
+		"description": "Licensed plumbing contractors for new construction. System design, piping, fixtures, water supply, drainage, and gas lines for residential and commercial builds.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782431360-3F7L70UFZPZ50H7RW04P/Untitled+design+%288%29.png"
 	}
 }

@@ -6,7 +6,6 @@ export const allServicesPage = {
 	label: "All Services Page",
 	file: "src/cms/all-services-page.json",
 	fields: [
-		createSeoField(),
 		{
 			name: "hero",
 			label: "Hero Section",
@@ -141,6 +140,7 @@ export const allServicesPage = {
 				{ name: "callLabel", label: "Call Button Label", widget: "string" },
 				{ name: "textLabel", label: "Text Button Label", widget: "string" }
 			]
-		}
+		},
+		createSeoField()
 	]
 } satisfies CollectionFile

@@ -6,7 +6,6 @@ export const homePage = {
 	label: "Home Page",
 	file: "src/cms/home-page.json",
 	fields: [
-		createSeoField(),
 		{
 			name: "hero",
 			label: "Hero Section",
@@ -149,6 +148,7 @@ export const homePage = {
 					hint: 'Label for the phone call button, e.g. "Call Hukill\'s Now"'
 				}
 			]
-		}
+		},
+		createSeoField()
 	]
 } satisfies CollectionFile

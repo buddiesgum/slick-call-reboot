@@ -1,12 +1,4 @@
 {
-	"seo": {
-		"title": "Hukill's Inc. | One Call Does It All",
-		"description": "From burst pipes and clogged drains to water damage restoration and excavation, Hukill's handles it all.\nFast response. Quality workmanship. Honest service.\nOver 40 years experience.",
-		"canonical": "",
-		"ogImageAlt": "",
-		"ogImageWidth": null,
-		"ogImageHeight": null
-	},
 	"hero": {
 		"title": "One Call",
 		"titleAccent": "Does It All",
@@ -45,5 +37,13 @@
 		"heading": "Ready to Get Started?",
 		"description": "Whether it's an emergency or a planned project, our team is here to help. One call does it all.",
 		"buttonLabel": "Call Hukill's Now"
+	},
+	"seo": {
+		"title": "Hukill's Inc. | One Call Does It All",
+		"description": "From burst pipes and clogged drains to water damage restoration and excavation, Hukill's handles it all.\nFast response. Quality workmanship. Honest service.\nOver 40 years experience.",
+		"canonical": "",
+		"ogImageAlt": "",
+		"ogImageWidth": null,
+		"ogImageHeight": null
 	}
 }

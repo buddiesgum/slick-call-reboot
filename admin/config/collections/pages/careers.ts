@@ -7,7 +7,6 @@ export const careersPage = {
 	label: "Careers Page",
 	file: "src/cms/careers-page.json",
 	fields: [
-		createSeoField(),
 		{
 			name: "hero",
 			label: "Hero Section",
@@ -140,6 +139,7 @@ export const careersPage = {
 				{ name: "errorTitle", label: "Error Toast Title", widget: "string" },
 				{ name: "errorBody", label: "Error Toast Body", widget: "text" }
 			]
-		}
+		},
+		createSeoField()
 	]
 } satisfies CollectionFile

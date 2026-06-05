@@ -80,7 +80,6 @@ export const servicesCollection = {
 				"Renaming changes the live URL on the next deploy. The old URL will 404 — external links and Google search results pointing to it will break. After renaming, manually update: Header → Navigation, Footer → Services Column, and any service tiles / CTAs in Home. Existing uploaded images keep their original folder; new uploads go under the new slug."
 		}),
 		{ name: "title", label: "Page Title (admin label)", widget: "string" },
-		createSeoField(),
 		{
 			name: "layout",
 			label: "Page Layout",
@@ -296,6 +295,7 @@ export const servicesCollection = {
 					]
 				}
 			]
-		}
+		},
+		createSeoField()
 	]
 } satisfies EntryCollection
