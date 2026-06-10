@@ -1,13 +1,14 @@
 {
-	"slug": "remodels",
 	"tile": {
 		"icon": "Home",
 		"description": "Kitchens, baths, painting, cabinets and flooring.",
-		"image": "/media/service-tiles/about-hero.jpg",
+		"image": "/media/service-pages/remodels/Screenshot 06_08_26 5_06 PM.webp",
 		"imageAlt": "Remodel services",
+		"path": "",
 		"featured": true,
 		"order": 5
 	},
+	"slug": "remodels",
 	"title": "Remodels",
 	"layout": {
 		"type": "simple",
