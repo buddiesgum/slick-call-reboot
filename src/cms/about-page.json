@@ -4,8 +4,8 @@
 		"title": "Family",
 		"titleAccent": "Owned",
 		"titleSuffix": "Since 1979",
-		"description": "For more than 40 years, Hukill's has been delivering trusted plumbing, restoration, excavation, remodeling, and foundation services. Built on faith, integrity, and hard work, we remain committed to providing honest solutions, quality workmanship, and exceptional service for every customer we serve.",
-		"image": "/media/about/hero.webp",
+		"description": "Since 1979, Hukill's has been built on a simple foundation: treat people right, do honest work, and stand behind every job.\nFounded by our family's first generation and passed down through the next, Hukill's has grown from a local plumbing company into a full-service contractor providing plumbing, restoration, excavation, remodeling, and foundation services. While our capabilities have expanded over the years, our commitment to our customers has never changed.\nAs a faith-based, family-owned business, we believe in serving others with integrity, professionalism, and respect. Whether we're helping a homeowner through an unexpected emergency or partnering with a business on a large-scale project, our goal remains the same: deliver quality workmanship, clear communication, and solutions that last.\nFor more than four decades, families, businesses, property managers, and contractors have trusted Hukill's because we treat every project as if it were our own. When you choose Hukill's, you're choosing a team that values relationships, takes pride in its work, and is committed to doing the job right the first time.",
+		"image": "/media/home/hero.webp",
 		"imageAlt": "The Hukill's crew on a job site at golden hour"
 	},
 	"mission": {
@@ -60,7 +60,11 @@
 		"headingAccent": "Impact.",
 		"body": "Our vision is to build a company where success isn't measured only by achievements, but by the impact we have on others. We strive to be a reflection of Jesus Christ in all that we do — so that everyone we encounter, employees, customers, and partners alike, can witness His love and transforming power.",
 		"bulletsLeadIn": "Through faith, integrity, excellence, and hard work, we will:",
-		"bullets": ["Inspire change", "Foster growth", "Glorify God in every aspect of our business"],
+		"bullets": [
+			"Inspire change",
+			"Foster growth",
+			"Glorify God in every aspect of our business"
+		],
 		"image": "/media/about/vision.webp",
 		"imageAlt": "Construction cranes silhouetted at sunrise"
 	},
