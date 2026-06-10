@@ -1,13 +1,14 @@
 {
-	"slug": "new-build-plumbing",
 	"tile": {
 		"icon": "HardHat",
 		"description": "Ground-up plumbing systems for residential and commercial construction.",
-		"image": "/media/service-tiles/about-mission.jpg",
+		"image": "/media/service-pages/new-build-plumbing/2e70c932-fed3-4c15-bac7-571717229aa0.webp",
 		"imageAlt": "New build plumbing services",
+		"path": "",
 		"featured": false,
 		"order": 11
 	},
+	"slug": "new-build-plumbing",
 	"title": "New Build Plumbing",
 	"layout": {
 		"type": "simple",
