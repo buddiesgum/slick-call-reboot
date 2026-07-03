@@ -1,9 +1,10 @@
 packages:
-  - "packages/*"
+    - "packages/*"
 allowBuilds:
-  '@swc/core': true
-  core-js: false
-  esbuild: true
-  protobufjs: false
-  sharp: true
-  workerd: true
+    "@swc/core": true
+    core-js: false
+    esbuild: true
+    protobufjs: false
+    sharp: true
+    workerd: true
+    "@tailwindcss/oxide": true
