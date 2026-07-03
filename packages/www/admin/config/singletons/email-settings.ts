@@ -3,7 +3,7 @@ import type { CollectionFile } from "@sveltia/cms"
 export const emailSettingsSingleton = {
 	name: "emailSettings",
 	label: "Email Settings",
-	file: "src/cms/email-settings.json",
+	file: "packages/www/src/cms/email-settings.json",
 	fields: [
 		{
 			name: "fromAddress",

@@ -3,7 +3,7 @@ import type { CollectionFile } from "@sveltia/cms"
 export const serviceCtaSingleton = {
 	name: "serviceCta",
 	label: "Service CTA",
-	file: "src/cms/service-cta.json",
+	file: "packages/www/src/cms/service-cta.json",
 	fields: [
 		{
 			name: "heading",

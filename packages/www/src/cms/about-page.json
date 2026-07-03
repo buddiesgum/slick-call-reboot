@@ -60,11 +60,7 @@
 		"headingAccent": "Impact.",
 		"body": "Our vision is to build a company where success isn't measured only by achievements, but by the impact we have on others. We strive to be a reflection of Jesus Christ in all that we do — so that everyone we encounter, employees, customers, and partners alike, can witness His love and transforming power.",
 		"bulletsLeadIn": "Through faith, integrity, excellence, and hard work, we will:",
-		"bullets": [
-			"Inspire change",
-			"Foster growth",
-			"Glorify God in every aspect of our business"
-		],
+		"bullets": ["Inspire change", "Foster growth", "Glorify God in every aspect of our business"],
 		"image": "/media/about/vision.webp",
 		"imageAlt": "Construction cranes silhouetted at sunrise"
 	},

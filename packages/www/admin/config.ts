@@ -16,7 +16,7 @@ export const config = {
 		repo: "tomatrow/hukills-www",
 		base_url: "https://sveltia-cms-auth.tomatrow.workers.dev"
 	},
-	media_folder: "public/media",
+	media_folder: "packages/www/public/media",
 	public_folder: "/media",
 	output: {
 		json: {

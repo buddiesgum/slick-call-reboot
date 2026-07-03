@@ -4,7 +4,7 @@ import { createSeoField } from "../../fields"
 export const contactPage = {
 	name: "contactPage",
 	label: "Contact Page",
-	file: "src/cms/contact-page.json",
+	file: "packages/www/src/cms/contact-page.json",
 	fields: [
 		{
 			name: "hero",

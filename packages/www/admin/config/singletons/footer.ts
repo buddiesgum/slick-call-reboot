@@ -3,7 +3,7 @@ import type { CollectionFile } from "@sveltia/cms"
 export const footerSingleton = {
 	name: "footer",
 	label: "Footer",
-	file: "src/cms/footer.json",
+	file: "packages/www/src/cms/footer.json",
 	fields: [
 		{
 			name: "logo",

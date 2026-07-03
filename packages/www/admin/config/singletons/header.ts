@@ -3,7 +3,7 @@ import type { CollectionFile } from "@sveltia/cms"
 export const headerSingleton = {
 	name: "header",
 	label: "Header",
-	file: "src/cms/header.json",
+	file: "packages/www/src/cms/header.json",
 	fields: [
 		{
 			name: "banner",

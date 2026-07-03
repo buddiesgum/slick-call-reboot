@@ -3,7 +3,7 @@ import type { CollectionFile } from "@sveltia/cms"
 export const seoSingleton = {
 	name: "seo",
 	label: "SEO",
-	file: "src/cms/seo.json",
+	file: "packages/www/src/cms/seo.json",
 	fields: [
 		{
 			name: "default",

@@ -4,7 +4,7 @@ import { createSeoField } from "../../fields"
 export const privacyPolicyPage = {
 	name: "privacyPolicyPage",
 	label: "Privacy Policy Page",
-	file: "src/cms/privacy-policy-page.json",
+	file: "packages/www/src/cms/privacy-policy-page.json",
 	fields: [
 		{
 			name: "hero",

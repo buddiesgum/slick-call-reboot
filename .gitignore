@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# pnpm workspace store
+.pnpm-store/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -27,4 +30,4 @@ dist-ssr
 .wrangler/
 .env
 
-/.vite-react-ssg-temp
+.vite-react-ssg-temp

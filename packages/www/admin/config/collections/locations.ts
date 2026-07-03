@@ -5,7 +5,7 @@ export const locationsCollection = {
 	name: "locations",
 	label: "Locations",
 	label_singular: "Location",
-	folder: "src/cms/locations",
+	folder: "packages/www/src/cms/locations",
 	format: "json",
 	extension: "json",
 	identifier_field: "id",

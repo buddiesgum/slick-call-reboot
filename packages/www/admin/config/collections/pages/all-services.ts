@@ -4,7 +4,7 @@ import { createProjectFiltersField, createSeoField } from "../../fields"
 export const allServicesPage = {
 	name: "allServicesPage",
 	label: "All Services Page",
-	file: "src/cms/all-services-page.json",
+	file: "packages/www/src/cms/all-services-page.json",
 	fields: [
 		{
 			name: "hero",
