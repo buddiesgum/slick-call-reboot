@@ -2,5 +2,8 @@
 	"name": "hukill-monorepo",
 	"private": true,
 	"version": "0.0.0",
-	"type": "module"
+	"type": "module",
+	"devDependencies": {
+		"typescript": "^6.0.3"
+	}
 }
