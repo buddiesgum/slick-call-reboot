@@ -62,6 +62,14 @@ project settings.
 
 Note the rename from the old app's `VITE_PUBLIC_*` names to `PUBLIC_*`.
 
+Because `experimental.explicitEnvironmentVariables` is on (`vite.config.ts`),
+always import env vars from `$app/env/public` / `$app/env/private` — never the
+legacy `$env/static/*` or `$env/dynamic/*` modules. New vars must be declared in
+`src/env.ts` (via `defineEnvVars`) first, or the import won't exist. `$app/env`
+also replaces `$app/environment` as the source for `dev` / `browser` /
+`building` / `version` — import those from `$app/env` for consistency, as the
+existing code does.
+
 ## Layout (`packages/www/src`)
 
 - `routes/+layout.svelte` — global root: imports `layout.css`, sets the location
@@ -130,8 +138,8 @@ Note the rename from the old app's `VITE_PUBLIC_*` names to `PUBLIC_*`.
   lead mailbox. `html.ts` escapes user input; `server/posthog.ts` does
   server-side capture and recovers distinct/session ids from the `ph_*` cookie
   via `getRequestEvent()`.
-- **Dev vs. prod addresses:** both remote functions gate on `dev` from
-  `$app/environment`. In dev, the from address and lead recipients are hardcoded
+- **Dev vs. prod addresses:** both remote   functions gate on `dev` from
+  `$app/env`. In dev, the from address and lead recipients are hardcoded
   to the verified `@mail.ajcaldwell.dev` account (`hello@mail.ajcaldwell.dev`,
   `contact_leads_address@…`, `career_leads_address@…`) so local submissions send
   through the dev Resend key without emailing real staff. The CMS values in

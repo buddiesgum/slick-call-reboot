@@ -1,5 +1,5 @@
 import { error, invalid } from "@sveltejs/kit"
-import { dev } from "$app/environment"
+import { dev } from "$app/env"
 import { form } from "$app/server"
 import { careerSchema, validateResumeFile, RESUME_ERROR_MESSAGES } from "$lib/schemas/career"
 import emailSettings from "$lib/cms/email-settings.json"

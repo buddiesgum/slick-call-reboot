@@ -1,5 +1,5 @@
 import { error } from "@sveltejs/kit"
-import { dev } from "$app/environment"
+import { dev } from "$app/env"
 import { form } from "$app/server"
 import { contactSchema } from "$lib/schemas/contact"
 import emailSettings from "$lib/cms/email-settings.json"
