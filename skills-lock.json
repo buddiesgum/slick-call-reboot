@@ -30,6 +30,12 @@
       "skillPath": "skills/productivity/grilling/SKILL.md",
       "computedHash": "ef685a6fa0bbe73b05bbd8dc1ec97258191587f07c6aa7dbc9006675ceb8f90f"
     },
+    "resend": {
+      "source": "resend/resend-skills",
+      "sourceType": "github",
+      "skillPath": "skills/resend/SKILL.md",
+      "computedHash": "b246db7265df47250a7a55efb02778c2870d18e8030164a23e26a6324e4f4f8b"
+    },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",
