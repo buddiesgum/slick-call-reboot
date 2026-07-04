@@ -5,6 +5,7 @@
 	import { page } from "$app/state"
 	import { goto } from "$app/navigation"
 	import Seo from "$lib/components/Seo.svelte"
+	import { reveal } from "$lib/attachments/reveal"
 	import { projects, type Project } from "$lib/cms/projects"
 	import projectsPage from "$lib/cms/projects-page.json"
 	import { posthog } from "$lib/posthog"
@@ -66,12 +67,16 @@
 	<div class="container relative z-10">
 		<div>
 			<h1
+				{@attach reveal({ y: 30 })}
 				class="text-5xl md:text-7xl font-display uppercase tracking-tight text-primary-foreground leading-[0.9]"
 			>
 				{projectsPage.hero.eyebrow}
 				<span class="text-primary">{projectsPage.hero.titleAccent}</span>
 			</h1>
-			<p class="mt-4 text-lg text-primary-foreground/60 max-w-xl">
+			<p
+				{@attach reveal({ delay: 0.15, y: 20 })}
+				class="mt-4 text-lg text-primary-foreground/60 max-w-xl"
+			>
 				{projectsPage.hero.description}
 			</p>
 		</div>

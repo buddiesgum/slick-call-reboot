@@ -2,6 +2,7 @@
 	import { Shield } from "@lucide/svelte"
 	import { Marked } from "marked"
 	import Seo from "$lib/components/Seo.svelte"
+	import { reveal } from "$lib/attachments/reveal"
 	import data from "$lib/cms/privacy-policy-page.json"
 
 	// GFM markdown renderer replicating the old react-markdown component
@@ -32,16 +33,21 @@
 <!-- Hero -->
 <section class="section-dark py-20 md:py-28">
 	<div class="container">
-		<div class="flex items-center gap-3 mb-4">
+		<div {@attach reveal({ y: 20 })} class="flex items-center gap-3 mb-4">
 			<Shield class="w-6 h-6 text-primary" />
 			<span class="font-display uppercase text-xs tracking-[0.2em] text-primary">
 				{data.hero.eyebrow}
 			</span>
 		</div>
-		<h1 class="font-display uppercase text-4xl md:text-6xl tracking-wider text-background mb-4">
+		<h1
+			{@attach reveal({ delay: 0.1, y: 30 })}
+			class="font-display uppercase text-4xl md:text-6xl tracking-wider text-background mb-4"
+		>
 			{data.hero.title}
 		</h1>
-		<p class="text-background/70 font-body max-w-2xl">{data.hero.effectiveDate}</p>
+		<p {@attach reveal({ delay: 0.25, y: 20 })} class="text-background/70 font-body max-w-2xl">
+			{data.hero.effectiveDate}
+		</p>
 	</div>
 </section>
 
