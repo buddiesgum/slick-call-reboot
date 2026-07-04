@@ -1,0 +1,62 @@
+{
+	"tile": {
+		"icon": "HardHat",
+		"description": "Ground-up plumbing systems for residential and commercial construction.",
+		"image": "/media/service-pages/new-build-plumbing/2e70c932-fed3-4c15-bac7-571717229aa0.webp",
+		"imageAlt": "New build plumbing services",
+		"path": "",
+		"featured": false,
+		"order": 11
+	},
+	"slug": "new-build-plumbing",
+	"title": "New Build Plumbing",
+	"layout": {
+		"type": "simple",
+		"hero": {
+			"title": "New Build Plumbing",
+			"subtitle": "Licensed, experienced, and built into your project from day one — seamless plumbing for new construction.",
+			"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782431360-3F7L70UFZPZ50H7RW04P/Untitled+design+%288%29.png",
+			"imageAlt": "New build plumbing",
+			"cta": {
+				"label": "View Past Projects",
+				"projectFilters": {
+					"minor": "Plumbing"
+				}
+			}
+		},
+		"cards": [
+			{
+				"title": "Quality Materials & Workmanship",
+				"description": "Our team of licensed and experienced plumbers brings extensive knowledge to every project. We work closely with builders, contractors, and homeowners to ensure seamless integration of plumbing systems into your new construction — using only high-quality materials and the latest industry techniques to deliver durability and reliability that lasts for years.",
+				"items": [
+					"Licensed, experienced crew",
+					"Builder & contractor partnerships",
+					"Premium materials only",
+					"Latest industry techniques"
+				],
+				"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782431360-3F7L70UFZPZ50H7RW04P/Untitled+design+%288%29.png",
+				"imageAlt": "Quality plumbing workmanship",
+				"reverse": false
+			},
+			{
+				"title": "Customized Solutions",
+				"description": "Every new build is unique, and so are the plumbing requirements. Whether you're constructing a single-family home, a multi-unit complex, or a commercial building, we provide customized plumbing solutions that meet your specific needs — from initial design through final inspection.",
+				"items": [
+					"Plumbing system design",
+					"Piping & fixture installation",
+					"Water supply & drainage systems",
+					"Gas line installation",
+					"Final inspection & testing"
+				],
+				"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782431360-3F7L70UFZPZ50H7RW04P/Untitled+design+%288%29.png",
+				"imageAlt": "Customized plumbing solutions",
+				"reverse": true
+			}
+		]
+	},
+	"seo": {
+		"title": "New Build Plumbing | Hukill's Inc.",
+		"description": "Licensed plumbing contractors for new construction. System design, piping, fixtures, water supply, drainage, and gas lines for residential and commercial builds.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782431360-3F7L70UFZPZ50H7RW04P/Untitled+design+%288%29.png"
+	}
+}

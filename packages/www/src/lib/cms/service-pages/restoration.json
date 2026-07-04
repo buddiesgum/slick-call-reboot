@@ -1,0 +1,65 @@
+{
+	"slug": "restoration",
+	"tile": {
+		"icon": "Shield",
+		"description": "Water, fire, and storm damage restoration — 24/7.",
+		"image": "/media/service-tiles/about-values.jpg",
+		"imageAlt": "Restoration services",
+		"featured": true,
+		"order": 4
+	},
+	"title": "Restoration",
+	"layout": {
+		"type": "simple",
+		"hero": {
+			"title": "Restoration",
+			"subtitle": "Available 24/7 — equipped with the tools and techniques to restore your home.",
+			"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426754-0GULUB1GKSIM0MB3PRE0/F47915FA-2B55-4DC0-973B-2C093BB344A9.jpg",
+			"imageAlt": "Restoration services",
+			"cta": {
+				"label": "View Past Projects",
+				"projectFilters": {
+					"minor": "Restoration"
+				}
+			}
+		},
+		"cards": [
+			{
+				"title": "Water Damage",
+				"description": "It is important to respond fast to water damage. Hukill's Restoration is available 24/7, equipped with the tools and techniques to extract water and initiate the drying process, preventing further damage.",
+				"items": [
+					"Water Extraction and Drying",
+					"Demolition",
+					"Reconstruction",
+					"Cleaning and Deodorizing",
+					"Roof Tarping",
+					"Sewage Cleanup"
+				],
+				"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426754-0GULUB1GKSIM0MB3PRE0/F47915FA-2B55-4DC0-973B-2C093BB344A9.jpg",
+				"imageAlt": "Water damage restoration",
+				"reverse": false
+			},
+			{
+				"title": "Fire Damage",
+				"description": "Hukill's Restoration is equipped to restore your home to its pre-fire state. Our restoration process involves mitigating damage and providing thorough smoke damage cleanup.",
+				"items": ["Emergency Board-Up and Site Containment", "Demolition", "Reconstruction"],
+				"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426758-IVFF9QEPCDHQYB3O3FYU/fire-damage.jpg",
+				"imageAlt": "Fire damage restoration",
+				"reverse": true
+			},
+			{
+				"title": "Storm Damage",
+				"description": "Hukill's Restoration team can help with storm damage, ensuring your property is restored to its former glory. Contact us today to discover how we can assist.",
+				"items": ["Roof Repair & Tarping", "Demolition", "Board-Ups & Clean-Ups", "Reconstruction"],
+				"image": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426761-VG5P84BUKBR53FS3GFZ4/restoration1.jpg",
+				"imageAlt": "Storm damage restoration",
+				"reverse": false
+			}
+		]
+	},
+	"seo": {
+		"title": "Restoration Services | Hukill's Inc.",
+		"description": "24/7 water, fire, and storm damage restoration — extraction, drying, demolition, reconstruction, and deodorizing for homes and businesses.",
+		"ogImage": "https://images.squarespace-cdn.com/content/v1/671a62937af7e4192d2e3eec/1729782426754-0GULUB1GKSIM0MB3PRE0/F47915FA-2B55-4DC0-973B-2C093BB344A9.jpg"
+	}
+}

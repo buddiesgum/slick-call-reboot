@@ -1,1 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+	--background: 0 0% 100%;
+	--foreground: 0 0% 8%;
+
+	--card: 0 0% 98%;
+	--card-foreground: 0 0% 8%;
+
+	--popover: 0 0% 100%;
+	--popover-foreground: 0 0% 8%;
+
+	--primary: 0 78% 50%;
+	--primary-foreground: 0 0% 100%;
+
+	--secondary: 0 0% 12%;
+	--secondary-foreground: 0 0% 98%;
+
+	--muted: 0 0% 94%;
+	--muted-foreground: 0 0% 40%;
+
+	--accent: 0 0% 96%;
+	--accent-foreground: 0 0% 8%;
+
+	--destructive: 0 84.2% 60.2%;
+	--destructive-foreground: 0 0% 100%;
+
+	--border: 0 0% 90%;
+	--input: 0 0% 90%;
+	--ring: 0 78% 50%;
+
+	--radius: 0.5rem;
+
+	--hero-overlay: linear-gradient(135deg, hsla(0, 0%, 8%, 0.85), hsla(0, 0%, 8%, 0.6));
+	--section-dark: 0 0% 8%;
+	--section-dark-foreground: 0 0% 98%;
+}
+
+.dark {
+	--background: 0 0% 6%;
+	--foreground: 0 0% 95%;
+	--card: 0 0% 10%;
+	--card-foreground: 0 0% 95%;
+	--popover: 0 0% 10%;
+	--popover-foreground: 0 0% 95%;
+	--primary: 0 78% 50%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 0 0% 18%;
+	--secondary-foreground: 0 0% 95%;
+	--muted: 0 0% 18%;
+	--muted-foreground: 0 0% 60%;
+	--accent: 0 0% 18%;
+	--accent-foreground: 0 0% 95%;
+	--destructive: 0 62.8% 30.6%;
+	--destructive-foreground: 0 0% 95%;
+	--border: 0 0% 18%;
+	--input: 0 0% 18%;
+	--ring: 0 78% 50%;
+}
+
+@theme inline {
+	--font-display: "Oswald", sans-serif;
+	--font-body: "Inter", sans-serif;
+
+	--color-border: hsl(var(--border));
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
+	--color-primary: hsl(var(--primary));
+	--color-primary-foreground: hsl(var(--primary-foreground));
+	--color-secondary: hsl(var(--secondary));
+	--color-secondary-foreground: hsl(var(--secondary-foreground));
+	--color-destructive: hsl(var(--destructive));
+	--color-destructive-foreground: hsl(var(--destructive-foreground));
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
+	--color-accent: hsl(var(--accent));
+	--color-accent-foreground: hsl(var(--accent-foreground));
+	--color-popover: hsl(var(--popover));
+	--color-popover-foreground: hsl(var(--popover-foreground));
+	--color-card: hsl(var(--card));
+	--color-card-foreground: hsl(var(--card-foreground));
+
+	--radius-lg: var(--radius);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-sm: calc(var(--radius) - 4px);
+
+	--animate-pulse-ring: pulse-ring 1.5s ease-out infinite;
+
+	@keyframes pulse-ring {
+		0% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		100% {
+			transform: scale(1.4);
+			opacity: 0;
+		}
+	}
+}
+
+@utility container {
+	margin-inline: auto;
+	padding-inline: 2rem;
+
+	@media (width >= 96rem) {
+		max-width: 1400px;
+	}
+}
+
+@layer base {
+	* {
+		border-color: var(--color-border);
+	}
+	body {
+		@apply bg-background font-body text-foreground antialiased;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-display;
+	}
+}
+
+@utility text-gradient {
+	@apply bg-gradient-to-r from-primary to-red-400 bg-clip-text text-transparent;
+}
+
+@utility section-dark {
+	background-color: hsl(var(--section-dark));
+	color: hsl(var(--section-dark-foreground));
+}

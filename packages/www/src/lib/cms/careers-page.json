@@ -1,0 +1,67 @@
+{
+	"hero": {
+		"eyebrow": "Now Hiring",
+		"title": "Build a",
+		"titleAccent": "Career",
+		"titleSuffix": "with Purpose",
+		"description": "Looking to join a team of dedicated professionals? Whether your background is in plumbing, restoration, excavation, or construction — we'd love to hear from you.",
+		"image": "/media/careers/hero.webp",
+		"imageAlt": "The Hukill's crew on a job site"
+	},
+	"trades": {
+		"items": [
+			{
+				"icon": "Wrench",
+				"label": "Plumbing"
+			},
+			{
+				"icon": "HardHat",
+				"label": "Restoration"
+			},
+			{
+				"icon": "Hammer",
+				"label": "Excavation"
+			},
+			{
+				"icon": "Briefcase",
+				"label": "Construction"
+			}
+		]
+	},
+	"application": {
+		"eyebrow": "Application",
+		"heading": "Send Us Your Resume",
+		"firstName": {
+			"label": "First Name",
+			"required": true
+		},
+		"lastName": {
+			"label": "Last Name",
+			"required": true
+		},
+		"email": {
+			"label": "Email",
+			"required": true
+		},
+		"message": {
+			"label": "Message",
+			"required": true
+		},
+		"messagePlaceholder": "Tell us about your experience...",
+		"resumeLabel": "Resume",
+		"resumeUploadHint": "Click to upload (PDF, DOC, DOCX — max 4 MB)",
+		"fileTooLargeError": "That file is over 4 MB — please upload a smaller version.",
+		"fileTypeError": "Resumes must be PDF or Word documents (.pdf, .doc, .docx).",
+		"updatesLabel": "Sign me up for news and updates from Hukill's",
+		"submitLabel": "Submit Application",
+		"submittingLabel": "Submitting...",
+		"successTitle": "Application received",
+		"successBody": "Thanks for applying — our team will be in touch shortly.",
+		"errorTitle": "Please check your submission",
+		"errorBody": "Please try again or call us directly."
+	},
+	"seo": {
+		"title": "Careers at Hukill's Inc.",
+		"description": "Join Hukill's team of skilled tradespeople in plumbing, restoration, excavation, and construction. Now hiring in Fort Worth, TX and Medford, OR."
+	}
+}

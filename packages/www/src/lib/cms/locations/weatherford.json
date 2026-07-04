@@ -1,0 +1,11 @@
+{
+	"id": "weatherford",
+	"order": 2,
+	"label": "Weatherford, TX",
+	"short": "Weatherford",
+	"address": "104 N. Line St.",
+	"phone": "tel:8176727555",
+	"phoneDisplay": "(817) 672-7555",
+	"lat": 32.7601,
+	"lng": 97.7979
+}

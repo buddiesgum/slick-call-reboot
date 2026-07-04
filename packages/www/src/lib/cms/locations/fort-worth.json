@@ -1,0 +1,11 @@
+{
+	"id": "fort-worth",
+	"order": 1,
+	"label": "Fort Worth, TX",
+	"short": "Fort Worth",
+	"address": "3310 Lackland Rd, Fort Worth, TX 76116",
+	"phone": "tel:+18176727555",
+	"phoneDisplay": "(817) 672-7555",
+	"lat": 32.7555,
+	"lng": -97.3308
+}

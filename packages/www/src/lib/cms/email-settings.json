@@ -1,0 +1,9 @@
+{
+	"fromAddress": "hello@send.hukills.com",
+	"leadEmail": "contact@hukills.com",
+	"autoReplySubject": "We received your request — Hukill's Inc.",
+	"autoReplyBody": "<h1>Thanks, {{firstName}}!</h1>\n<p>We received your <strong>{{service}}</strong> request and a member of the {{companyName}} team will be in touch shortly.</p>\n<p>If this is an emergency, please call us directly — we're available 24/7.</p>",
+	"careerLeadEmail": "careers@hukills.com",
+	"careerAutoReplySubject": "Application received — Hukill's Inc.",
+	"careerAutoReplyBody": "<h1>Thanks, {{firstName}}!</h1>\n<p>We received your application and will review it shortly. If your experience is a match, someone from the {{companyName}} team will reach out.</p>"
+}

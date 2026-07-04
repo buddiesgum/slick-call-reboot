@@ -1,0 +1,11 @@
+{
+	"id": "kitchen-remodel-fw",
+	"order": 2,
+	"title": "Full Kitchen Remodel — Historic Fort Worth Home",
+	"majorTags": ["Residential"],
+	"minorTags": ["Remodels"],
+	"heroImage": "/media/projects/kitchen-remodel-fw/hero.webp",
+	"gallery": ["/media/projects/kitchen-remodel-fw/gallery-1.webp"],
+	"description": "A top-to-bottom kitchen transformation including custom cabinetry, quartz countertops, new plumbing fixtures, and modern lighting. We preserved the original character of this 1940s bungalow while delivering a fully contemporary kitchen.",
+	"location": "Fort Worth, TX"
+}
