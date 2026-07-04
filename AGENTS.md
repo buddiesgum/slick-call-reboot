@@ -3,25 +3,18 @@
 pnpm-workspace monorepo for Hukill's Plumbing, Drain Cleaning, Restoration, Leak
 Detection, Renovation, Water Mitigation, Mold Remediation and Remodels company.
 
-**Migration status:** the site has been rebuilt as a **SvelteKit 2 + Svelte 5**
-app deployed to **Vercel**. The legacy Vite + React + Cloudflare Worker app is
-retained read-only under `packages/www-old/` until cutover is verified, then
-deleted. Transactional email is sent via the **Resend REST API** from SvelteKit
-server code (Cloudflare Email Sending was dropped — it requires the domain to be
-on Cloudflare DNS, and `hukills.com` stays on its existing IONOS nameservers).
+The site is a **SvelteKit 2 + Svelte 5** app deployed to **Vercel**; transactional
+email is sent via the **Resend REST API** from SvelteKit server code.
 
 ## Repo layout
 
 - Root is the pnpm workspace. Package manager is **pnpm 11.5.2** and Node is
   **24**, both pinned via `mise.toml`. Workspace globs live in
   `pnpm-workspace.yaml` (`packages/*`).
-- `packages/www/` — the current site: **SvelteKit 2 + Svelte 5 (runes) + Tailwind
+- `packages/www/` — the site: **SvelteKit 2 + Svelte 5 (runes) + Tailwind
   4**, deployed to Vercel via `@sveltejs/adapter-vercel`. All pages are
   prerendered; the only server code is remote functions for the two forms. This
   is where all commands below run.
-- `packages/www-old/` — the deprecated React/CF app. Do not develop here; it
-  exists only as a reference and rollback target until the Vercel cutover is
-  confirmed.
 - **All dependency versions in `packages/www/package.json` are pinned exactly**
   (no `^`/`~`). Remote functions are experimental; treat `@sveltejs/kit` and
   `svelte` upgrades as deliberate, tested events, never routine bumps.
@@ -32,8 +25,8 @@ Run from `packages/www` (or `pnpm --filter www <script>` from the root). Prefix
 with `mise exec --` if node/pnpm are not already on PATH.
 
 - `pnpm dev` — Vite dev server. Remote functions run in dev, so `/contact` and
-  `/careers` submissions work locally (email only sends when the Cloudflare env
-  vars below are set).
+  `/careers` submissions work locally (email only sends when `RESEND_API_KEY`
+  is set).
 - `pnpm build` — SvelteKit production build; prerenders every route (21 pages:
   8 static + 12 service `[slug]` pages + `/admin` shell) and emits the Vercel
   adapter output. Fails on broken prerender links — keep nav/footer targets real.
@@ -59,8 +52,6 @@ project settings.
 - `RESEND_API_KEY` — private, imported from `$app/env/private`; used by
   `src/lib/server/email.ts` to call the Resend REST API. Scope it to sending
   access on the account that owns the verified `send.hukills.com` domain.
-
-Note the rename from the old app's `VITE_PUBLIC_*` names to `PUBLIC_*`.
 
 Because `experimental.explicitEnvironmentVariables` is on (`vite.config.ts`),
 always import env vars from `$app/env/public` / `$app/env/private` — never the
@@ -114,7 +105,7 @@ existing code does.
 - Config lives in `src/lib/admin/` — `config.ts` plus `config/collections/*` and
   `config/singletons/*` modules. GitHub backend (`repo: tomatrow/hukills-www`,
   auth via `base_url: https://sveltia-cms-auth.tomatrow.workers.dev` — a small
-  Cloudflare Worker on `workers.dev`, unaffected by the hosting move).
+  Cloudflare Worker on `workers.dev`).
 - Collection/singleton `folder`/`file` paths point at
   `packages/www/src/lib/cms/...`; `media_folder` is `packages/www/static/media`
   with `public_folder: /media`. Media transforms: webp q85, 2048px max.
@@ -185,26 +176,10 @@ existing code does.
 - Custom domains (`hukills.com`, `www.hukills.com`) are attached in the Vercel
   dashboard via DNS records — no nameserver move required (which is why the app
   is on Vercel rather than Cloudflare Workers).
-- `static/robots.txt` ships as-is; `+error.svelte` provides the 404 (no build
-  script needed — the old `copy-404.mjs` hack is gone).
-
-## Pre-launch checklist (operational — needs credentials)
-
-1. Merge this branch to `main` (unfreezes CMS: Sveltia writes to the new
-   `src/lib/cms` paths; Vercel auto-deploys).
-2. Verify the `send.hukills.com` sending domain in Resend (add the MX/SPF/DKIM
-   records it generates at IONOS DNS — root SPF/DMARC stay untouched). Swap the
-   placeholder lead addresses in `src/lib/cms/email-settings.json` (`leadEmail`,
-   `careerLeadEmail`) to real Hukill's M365 addresses; `fromAddress` is already
-   `hello@send.hukills.com`.
-3. Set Vercel env vars; deploy a preview; manually QA both forms (real email +
-   PostHog event) and spot-check SEO tags on a few routes.
-4. Attach domains in Vercel; verify.
-5. Decommission: `wrangler delete` the `hukills` Worker (keep the Sveltia auth
-   worker), then delete `packages/www-old/`.
+- `static/robots.txt` ships as-is; `+error.svelte` provides the 404.
 
 ## Misc
 
-- Vitest is not yet configured in the new app; verification is manual per the
-  migration plan. Add it if automated tests are wanted.
+- Vitest is not yet configured; verification is manual. Add it if automated
+  tests are wanted.
 - `packages/www/.svelte-kit/` and Vercel output are build artifacts (git-ignored).
