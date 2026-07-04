@@ -3,15 +3,11 @@
 	import favicon from "$lib/assets/favicon.svg"
 	import { onMount } from "svelte"
 	import { afterNavigate } from "$app/navigation"
-	import { LocationState, setLocationContext } from "$lib/location/location.svelte"
 	import { initPosthog, capturePageview } from "$lib/posthog"
 
 	let { children } = $props()
 
-	const location = setLocationContext(new LocationState())
-
 	onMount(() => {
-		location.init()
 		initPosthog()
 	})
 

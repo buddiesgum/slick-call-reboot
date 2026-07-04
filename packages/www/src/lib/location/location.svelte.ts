@@ -88,7 +88,7 @@ export class LocationState {
 	/**
 	 * Browser-only initialization: restore a stored manual selection, else
 	 * auto-detect the nearest location via the Geolocation API. Call from
-	 * onMount/$effect in the root layout (no-op on the server).
+	 * onMount/$effect in the (site) layout (no-op on the server).
 	 */
 	init() {
 		if (!browser) return
@@ -136,6 +136,6 @@ export function setLocationContext(state: LocationState): LocationState {
 
 export function getLocationContext(): LocationState {
 	const ctx = getContext<LocationState | undefined>(LOCATION_CONTEXT_KEY)
-	if (!ctx) throw new Error("Location context not found — did the root layout set it?")
+	if (!ctx) throw new Error("Location context not found — did the (site) layout set it?")
 	return ctx
 }
