@@ -22,7 +22,7 @@
 		class="absolute inset-0 bg-cover bg-center"
 		style={`background-image: url(${image})`}
 		role="img"
-		aria-label={imageAlt ?? title}
+		aria-label={imageAlt || title}
 	></div>
 	<div class="absolute inset-0 bg-gradient-to-r from-secondary/90 to-secondary/50"></div>
 	<div class="container relative z-10">

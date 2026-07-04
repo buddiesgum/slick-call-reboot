@@ -32,7 +32,7 @@ const indexed: IndexedTile[] = Object.entries(servicePagesBySlug)
 		icon: iconMap[page.tile!.icon as keyof typeof iconMap],
 		title: page.title,
 		desc: page.tile!.description,
-		path: page.tile!.path ?? `/${slug}`,
+		path: page.tile!.path || `/${slug}`, // sveltia writes ""
 		image: page.tile!.image,
 		imageAlt: page.tile!.imageAlt,
 		order: page.tile!.order,

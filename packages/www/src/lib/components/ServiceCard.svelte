@@ -23,7 +23,7 @@
 		<div class="aspect-[4/3] rounded-lg overflow-hidden">
 			<img
 				src={image}
-				alt={imageAlt ?? title}
+				alt={imageAlt || title}
 				class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
 				loading="lazy"
 			/>

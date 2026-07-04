@@ -158,6 +158,14 @@ Note the rename from the old app's `VITE_PUBLIC_*` names to `PUBLIC_*`.
   before committing.
 - When editing Svelte, use the Svelte MCP tools (`svelte-autofixer`, docs) and
   the `svelte-file-editor` agent.
+- **CMS empty strings — use `||`, not `??`, for CMS-field fallbacks.** Sveltia
+  writes `""` (not `null`/absent) for blank _optional string_ fields, so `??`
+  does NOT trigger the fallback — an empty field silently renders `""` (e.g. a
+  self-linking `href=""`, an empty `alt`/`aria-label`, or a page title that
+  drops through to the global SEO default). Guard any CMS string that needs a
+  fallback with `value || fallback`, or normalize via `emptyToUndefined()` (see
+  `Seo.svelte`) before chaining `??`. Blank _number_ fields emit `null`, so
+  `?? undefined` is correct for those (see `PageSeoData.ogImageWidth`).
 
 ## Deploy (Vercel)
 

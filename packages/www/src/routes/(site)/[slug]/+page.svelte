@@ -7,10 +7,12 @@
 	let { data }: PageProps = $props()
 </script>
 
-<!-- Explicit `title` prop applies the `content.title` fallback when `content.seo.title` is unset. -->
+<!-- Explicit `title` prop applies the `content.title` fallback when `content.seo.title` is
+     unset OR empty. `||` (not `??`): Sveltia writes "" for blank fields, and an empty
+     `seo.title` must fall back to the service title, not silently hit the global SEO default. -->
 <Seo
 	route={`/${data.slug}`}
-	title={data.content.seo?.title ?? data.content.title}
+	title={data.content.seo?.title || data.content.title}
 	seoBlock={data.content.seo}
 />
 
