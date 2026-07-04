@@ -119,7 +119,7 @@
 	<div class="container">
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 			{#each benefits.items as b, i (b.title)}
-				{@const BenefitIcon = getIcon(b.icon)}
+				{const BenefitIcon = getIcon(b.icon)}
 				<div
 					{@attach reveal({ delay: i * 0.08, y: 20 })}
 					class="border border-border bg-card p-8 rounded-sm"

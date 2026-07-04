@@ -185,7 +185,7 @@
 
 <!-- Project Detail Modal -->
 {#if selectedProject}
-	{@const project = selectedProject}
+	{const project = $derived(selectedProject)}
 	<div
 		transition:fade={{ duration: 200 }}
 		class="fixed inset-0 z-[100] bg-secondary/80 backdrop-blur-sm flex items-start justify-center overflow-y-auto py-8 px-4"

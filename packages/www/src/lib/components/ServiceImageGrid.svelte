@@ -7,7 +7,7 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 	{#each services as service, i (service.title)}
-		{@const IconCmp = service.icon}
+		{const IconCmp = $derived(service.icon)}
 		<div {@attach reveal({ delay: i * 0.06, y: 30 })}>
 			<a
 				href={service.path}

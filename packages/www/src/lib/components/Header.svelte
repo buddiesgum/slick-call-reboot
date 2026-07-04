@@ -141,8 +141,8 @@
 		<!-- Desktop Nav -->
 		<nav class="hidden lg:flex items-center gap-6">
 			{#each nav as item (item.path)}
-				{@const hasChildren = !!item.children?.length}
-				{@const active = isActive(item, pathname)}
+				{const hasChildren = !!item.children?.length}
+				{const active = $derived(isActive(item, pathname))}
 
 				{#if !hasChildren}
 					<a
@@ -154,7 +154,7 @@
 						{item.label}
 					</a>
 				{:else}
-					{@const isOpen = desktopOpen === item.path}
+					{const isOpen = $derived(desktopOpen === item.path)}
 					<div class="relative" role="presentation" {@attach desktopDropdown(item.path)}>
 						<button
 							onclick={() => (desktopOpen = isOpen ? null : item.path)}
@@ -174,9 +174,9 @@
 								class="absolute top-full left-0 mt-1 w-52 bg-popover border border-border rounded-md shadow-xl z-50"
 							>
 								{#each item.children ?? [] as child (child.path)}
-									{@const hasSub = !!child.children?.length}
-									{@const childActive = isActive(child, pathname)}
-									{@const subOpen = desktopSubOpen === child.path}
+									{const hasSub = !!child.children?.length}
+									{const childActive = $derived(isActive(child, pathname))}
+									{const subOpen = $derived(desktopSubOpen === child.path)}
 									<div
 										class="relative"
 										role="presentation"
@@ -250,10 +250,10 @@
 			<Sheet.Content side="right" class="bg-secondary border-secondary w-80 overflow-y-auto">
 				<nav class="flex flex-col py-8 gap-1">
 					{#each nav as item, i (item.path)}
-						{@const id = String(i)}
-						{@const hasChildren = !!item.children?.length}
-						{@const active = isActive(item, pathname)}
-						{@const expanded = mobileExpanded.has(id)}
+						{const id = String(i)}
+						{const hasChildren = !!item.children?.length}
+						{const active = $derived(isActive(item, pathname))}
+						{const expanded = $derived(mobileExpanded.has(id))}
 
 						{#if !hasChildren}
 							<a
@@ -282,10 +282,10 @@
 								{#if expanded}
 									<div transition:slide={{ duration: 200 }} class="overflow-hidden">
 										{#each item.children ?? [] as child, j (child.path)}
-											{@const childId = `${id}.${j}`}
-											{@const hasSub = !!child.children?.length}
-											{@const childActive = isActive(child, pathname)}
-											{@const childExpanded = mobileExpanded.has(childId)}
+											{const childId = `${id}.${j}`}
+											{const hasSub = !!child.children?.length}
+											{const childActive = $derived(isActive(child, pathname))}
+											{const childExpanded = $derived(mobileExpanded.has(childId))}
 
 											{#if !hasSub}
 												<a

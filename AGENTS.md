@@ -149,6 +149,14 @@ existing code does.
   `$derived`, `$props`, `$effect`; snippets + `{@render}` (no slots); `onclick`
   (no `on:` directives). Attachments via `{@attach}` (no `use:` where an
   attachment fits).
+- **Markup locals use declaration tags, never legacy `{@const}`.** Svelte 5.56+
+  supports `{const x = …}` / `{let x = …}` anywhere in markup. Prefer them over
+  `{@const}`. A plain `{const x = …}` evaluates **once** at block creation — if
+  the expression depends on reactive state (`$state`, `$derived`, `page`, a
+  `SvelteSet`, a form field `.value()`, etc.), wrap it as
+  `{const x = $derived(…)}` so it stays reactive (this is the true equivalent of
+  the old reactive `{@const}`). Plain `{const}` is correct only for static data
+  (e.g. `getIcon(item.icon)` over CMS JSON in an `{#each}`).
 - Fonts: `font-display` = Oswald, `font-body` = Inter, loaded via a Google Fonts
   `@import` at the top of `layout.css`; exposed through Tailwind 4 `@theme`.
   Design tokens are HSL CSS variables in `layout.css` with a `container` utility

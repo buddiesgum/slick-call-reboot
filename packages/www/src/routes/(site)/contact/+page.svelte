@@ -59,7 +59,7 @@
 	<div class="container">
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
 			{#each locations as loc, i (loc.id)}
-				{@const isActive = location.selected.id === loc.id}
+				{const isActive = $derived(location.selected.id === loc.id)}
 				<div
 					{@attach reveal({ delay: i * 0.1, y: 30 })}
 					class={`group relative border-2 p-8 md:p-10 transition-all ${
@@ -255,7 +255,7 @@
 					</span>
 					<div class="grid grid-cols-2 gap-3">
 						{#each f.propertyType.options as opt (opt.value)}
-							{@const active = contactForm.fields.propertyType.value() === opt.value}
+							{const active = $derived(contactForm.fields.propertyType.value() === opt.value)}
 							<label
 								class={`px-5 py-3 font-display uppercase text-sm tracking-wider border-2 transition-colors rounded-sm text-center cursor-pointer ${
 									active ?

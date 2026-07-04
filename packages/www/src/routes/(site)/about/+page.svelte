@@ -114,7 +114,7 @@
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 			{#each aboutData.values.items as value, i (value.title)}
-				{@const ValueIcon = getIcon(value.icon)}
+				{const ValueIcon = getIcon(value.icon)}
 				<div
 					{@attach reveal({ delay: i * 0.1, y: 30 })}
 					class="group relative bg-background/5 backdrop-blur-sm border border-primary-foreground/10 p-8 hover:border-primary transition-all duration-300 hover:bg-background/10"

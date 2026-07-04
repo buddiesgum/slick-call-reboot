@@ -88,7 +88,7 @@
 	<div class="container">
 		<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
 			{#each careersData.trades.items as trade, i (trade.label)}
-				{@const TradeIcon = getIcon(trade.icon)}
+				{const TradeIcon = getIcon(trade.icon)}
 				<button
 					type="button"
 					onclick={() => {
